@@ -1,0 +1,15 @@
+web/controllers/LoginController.class
+web/domain/repository/UserDAO.class
+web/controllers/PreferencesController.class
+web/domain/repository/UserDAOImpl.class
+web/controllers/MatchController.class
+web/domain/Employer.class
+web/controllers/HomeController.class
+web/controllers/PersonalDetailsController.class
+web/service/UserServiceImpl.class
+web/domain/Freelancer.class
+web/domain/repository/UserImpl.class
+web/domain/User.class
+web/service/UserService.class
+web/domain/repository/UserRepository.class
+web/controllers/CreateAccountController.class
