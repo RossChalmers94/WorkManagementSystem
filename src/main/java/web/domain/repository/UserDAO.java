@@ -2,6 +2,7 @@ package web.domain.repository;
 
 import org.springframework.stereotype.Repository;
 import web.domain.User;
+import java.util.Map;
 
 /**
  * Created by RossChalmers on 11/02/2017.
@@ -9,13 +10,13 @@ import web.domain.User;
 
 public interface UserDAO {
 
-    void insert(User user);
+    void insert(String storedProcedure, Map<String, String> inParameters);
 
-    int getUserID(User user);
+    int get(String storedProcedure, Map<String, String> inParameters);
 
-    void update(User user);
+    void insertPersonal(String storedProcedure, Map<String, String> inParameters);
 
-    void delete(User user);
+    boolean getUserLogIn(String storedProcedure, Map<String, String> inParameters);
 
     void getUsername(User user);
 

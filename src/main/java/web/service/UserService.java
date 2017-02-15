@@ -7,10 +7,12 @@ import web.domain.User;
  */
 public interface UserService {
 
-     void addUser(User user);
+     void insertUser(User user);
 
-     void updateUser(User user);
+     int checkUser(User user);
 
-     int getUserID(User user);
+     void insertUserPersonal(User user, String username);
+
+     boolean getLogIn(User user);
 
 }

@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import web.domain.repository.UserRepository;
 import web.domain.User;
 import web.service.UserService;
-
+import javax.servlet.http.HttpSession;
 /**
  * Created by RossChalmers on 06/02/2017.
  */
@@ -30,26 +30,28 @@ public class CreateAccountController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String getUser(@ModelAttribute("newUser") User newUser, Model model){
+    public String getUser(@ModelAttribute("newUser") User newUser, Model model, HttpSession session){
 
         String role = newUser.getRole();
         String page = "";
+        int value = userService.checkUser(newUser);
+        model.addAttribute("value", value);
 
-        int id = userService.getUserID(newUser);
-        model.addAttribute("id", id);
-        /*if(id > 0) {
-            userService.addUser(newUser);
-            if(role.equals("freelancer")){
+        if(value == 0) {
+
+            userService.insertUser(newUser);
+            session.setAttribute("currentUser", newUser);
+
+            if (role.equals("freelancer")) {
                 page = "redirect:/freelancer";
-            } else if(role.equals("employer")){
+            } else if (role.equals("employer")) {
                 page = "redirect:/employer";
             }
-        }
-        else {
+        } else {
             page = "createaccount";
-        }*/
+        }
 
-        return "createaccount";
+        return page;
 
     }
 

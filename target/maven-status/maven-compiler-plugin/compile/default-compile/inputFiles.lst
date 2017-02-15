@@ -1,5 +1,7 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/PreferencesController.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/UserHomeController.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/repository/UserDAOImpl.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/EmployerServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/repository/UserRepository.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/UserServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/HomeController.java
@@ -13,3 +15,5 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/User.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/repository/UserDAO.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/LoginController.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/EmployerService.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/UserDetails.java

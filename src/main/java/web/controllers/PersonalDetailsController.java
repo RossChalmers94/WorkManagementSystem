@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import web.domain.User;
 import web.service.UserService;
+import web.domain.Employer;
+
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by RossChalmers on 06/02/2017.
  */
@@ -29,15 +33,19 @@ public class PersonalDetailsController {
     }
 
     @RequestMapping(path = "/employer", method = RequestMethod.GET)
-    public String viewEmployer(Model model) {
+    public String viewEmployer(Model model, HttpSession session){
         User user = new User();
-        model.addAttribute("newUser", user);
+        model.addAttribute("userPersonal", user);
         return "employer";
     }
 
     @RequestMapping(path = "/employer", method = RequestMethod.POST)
-    public String confirmEmployer(@ModelAttribute("newUser") User newUser, Model model) {
-        return "employer";
+    public String confirmEmployer(@ModelAttribute("userPersonal") User userPersonal, Model model, HttpSession session) {
+        model.addAttribute("userPersonal", userPersonal);
+        User user = (User) session.getAttribute("currentUser");
+        String username = user.getUsername();
+        userService.insertUserPersonal(userPersonal, username);
+        return "employerpreferences";
     }
 
 }

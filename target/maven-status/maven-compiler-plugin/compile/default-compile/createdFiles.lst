@@ -6,10 +6,14 @@ web/controllers/MatchController.class
 web/domain/Employer.class
 web/controllers/HomeController.class
 web/controllers/PersonalDetailsController.class
+web/controllers/UserHomeController.class
 web/service/UserServiceImpl.class
 web/domain/Freelancer.class
 web/domain/repository/UserImpl.class
 web/domain/User.class
 web/service/UserService.class
+web/enumconstants/UserDetails.class
+web/service/EmployerServiceImpl.class
 web/domain/repository/UserRepository.class
+web/service/EmployerService.class
 web/controllers/CreateAccountController.class

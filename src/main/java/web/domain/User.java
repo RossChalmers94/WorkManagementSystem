@@ -27,7 +27,7 @@ public class User {
     }
 
     public void setUsername(String username){
-        this.username = username;
+        this.username = username.trim();
     }
 
     public String getPassword(){
@@ -35,7 +35,7 @@ public class User {
     }
 
     public String setPassword(String password){
-        return this.password = password;
+        return this.password = password.trim();
     }
 
     public String getFirstname(){
