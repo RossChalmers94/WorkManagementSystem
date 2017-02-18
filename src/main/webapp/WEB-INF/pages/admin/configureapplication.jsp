@@ -23,6 +23,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <label>Skills:</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <c:forEach items="${newApplication.skills}" var="skill" varStatus="i">
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                         <form:input path="skills[${i.index}].skillName" class="form-control" />
@@ -33,12 +35,13 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <label>Location:</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <c:forEach items="${newApplication.locations}" var="location" varStatus="i">
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                         <form:input path="locations[${i.index}].locationName" class="form-control" />
                     </div>
                 </c:forEach>
-
             </div>
         </div>
         <div class="row">

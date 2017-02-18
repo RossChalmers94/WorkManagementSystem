@@ -27,6 +27,7 @@ public class PreferencesServiceImpl implements PreferencesService {
         List<Skill> toReturn = new ArrayList<Skill>();
         for(int i = 0; i < skills.size(); i++){
             Skill skill = new Skill((Integer)skills.get(i).get("skillId"), (String)skills.get(i).get("skillName"));
+            toReturn.add(skill);
         }
 
         return toReturn;
