@@ -69,6 +69,8 @@
 </div>
 </body>
 <footer class="footer">
-    <div class="container"></div>
+    <div class="container">
+        Work Management System
+    </div>
 </footer>
 </html>

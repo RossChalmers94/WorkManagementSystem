@@ -52,7 +52,7 @@ public class LoginController {
     @RequestMapping(path = "/logoutuser", method= RequestMethod.GET)
     public String logOut(Model model, HttpSession session){
         session.removeAttribute("currentUser");
-        return "home";
+        return "redirect:/home";
     }
 
 

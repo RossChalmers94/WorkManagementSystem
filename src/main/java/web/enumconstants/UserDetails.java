@@ -16,7 +16,9 @@ public enum UserDetails {
     USER_POSTCODE("postcode"),
     USER_TOWNCITY("townCity"),
     USER_COMPANY("company"),
-    USER_VALUE("uservalue");
+    USER_VALUE("uservalue"),
+    USER_ROLE("role");
+
 
 
     private String value;

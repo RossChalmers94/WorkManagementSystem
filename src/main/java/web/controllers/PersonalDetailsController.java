@@ -23,29 +23,36 @@ public class PersonalDetailsController {
     private UserService userService;
 
     @RequestMapping(path = "/freelancer", method = RequestMethod.GET)
-    public String viewFreelancer() {
+    public String viewFreelancer(Model model, HttpSession session) {
+        String page = "";
+        User user = new User();
+        model.addAttribute("userPersonal", user);
         return "freelancer";
     }
 
     @RequestMapping(path = "/freelancer", method = RequestMethod.POST)
-    public String confirmFreelancer() {
+    public String confirmFreelancer(@ModelAttribute("userPersonal") User userPersonal, Model model, HttpSession session) {
+        model.addAttribute("userPersonal", userPersonal);
+        User user = (User) session.getAttribute("currentUser");
+        userService.insertUserPersonal(userPersonal, user.getUsername());
         return "freelancerpreferences";
     }
 
-    @RequestMapping(path = "/employer", method = RequestMethod.GET)
+    @RequestMapping(path = "/personal", method = RequestMethod.GET)
     public String viewEmployer(Model model, HttpSession session){
+        String page = "";
         User user = new User();
         model.addAttribute("userPersonal", user);
-        return "employer";
+        return "personal";
     }
 
-    @RequestMapping(path = "/employer", method = RequestMethod.POST)
+    @RequestMapping(path = "/personal", method = RequestMethod.POST)
     public String confirmEmployer(@ModelAttribute("userPersonal") User userPersonal, Model model, HttpSession session) {
         model.addAttribute("userPersonal", userPersonal);
         User user = (User) session.getAttribute("currentUser");
         String username = user.getUsername();
         userService.insertUserPersonal(userPersonal, username);
-        return "employerpreferences";
+        return "preferences";
     }
 
 }

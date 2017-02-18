@@ -4,7 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import web.service.PreferencesService;
 import web.service.UserService;
+import org.springframework.ui.Model;
+import java.util.Map;
+import web.domain.Employer;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by RossChalmers on 09/02/2017.
@@ -13,22 +19,18 @@ import web.service.UserService;
 public class PreferencesController {
 
     @Autowired
-    private UserService userService;
+    private PreferencesService preferencesService;
 
-    @RequestMapping(path = "/employerpreferences", method= RequestMethod.GET)
-    public String viewEmployerPreferences(){
-        return "employerpreferences";
+    @RequestMapping(path = "/preferences", method= RequestMethod.GET)
+    public String viewEmployerPreferences(Model model, HttpSession session){
+        Employer newWorker = new Employer();
+        Map<String, Object> skills = preferencesService.getSkills();
+        model.addAttribute("newWorker", newWorker);
+        model.addAttribute("skills", skills);
+        return "preferences";
     }
-    @RequestMapping(path = "/employerpreferences", method= RequestMethod.POST)
+    @RequestMapping(path = "/preferences", method= RequestMethod.POST)
     public String confirmEmployerPreferences(){
-        return "employerpreferences";
-    }
-    @RequestMapping(path = "/freelancerpreferences", method= RequestMethod.GET)
-    public String viewFreelancerPreferences(){
-        return "freelancerpreferences";
-    }
-    @RequestMapping(path = "/freelancerpreferences", method= RequestMethod.POST)
-    public String confirmFreelancerPreferences(){
-        return "freelancerpreferences";
+        return "match";
     }
 }

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
-import web.domain.repository.UserRepository;
 import web.domain.User;
 import web.service.UserService;
 import javax.servlet.http.HttpSession;
@@ -38,15 +37,9 @@ public class CreateAccountController {
         model.addAttribute("value", value);
 
         if(value == 0) {
-
             userService.insertUser(newUser);
             session.setAttribute("currentUser", newUser);
-
-            if (role.equals("freelancer")) {
-                page = "redirect:/freelancer";
-            } else if (role.equals("employer")) {
-                page = "redirect:/employer";
-            }
+            page = "personal";
         } else {
             page = "createaccount";
         }

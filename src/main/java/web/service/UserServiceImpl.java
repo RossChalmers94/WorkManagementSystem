@@ -1,12 +1,9 @@
 package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import web.domain.User;
 import web.domain.repository.UserDAO;
-import web.domain.repository.UserRepository;
 import web.enumconstants.UserDetails;
 import java.util.Map;
 
@@ -26,6 +23,7 @@ public class UserServiceImpl implements UserService {
         Map<String, String> userDetails = new HashMap<String,String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername().toString());
         userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword().toString());
+        userDetails.put(UserDetails.USER_ROLE.getValue(), user.getRole().toString());
         userDAO.insert("insert_user", userDetails);
     }
 
