@@ -6,5 +6,6 @@ import java.util.List;
  */
 public interface PreferencesDAO {
 
-    List<Map<String, Object>> get(String storedProc);
+    List<Map<String, Object>> getPreferences(String storedProc);
+    Map getAdmin(String storedProc);
 }

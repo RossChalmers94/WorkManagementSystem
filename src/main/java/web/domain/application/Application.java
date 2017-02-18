@@ -8,32 +8,22 @@ import java.util.List;
  */
 public class Application {
 
-    private String databaseServer;
-    private String industryName;
+    private Admin admin;
     private List<Location> locations;
     private List<Skill> skills;
     private List<Salary> salarys;
-    private List<Rating> ratings;
     private List<JobLength> jobLengths;
 
     public Application(){
 
     }
 
-    public String getDatabaseServer(){
-        return databaseServer;
+    public Admin getAdmin(){
+        return admin;
     }
 
-    public void setDatabaseServer(String databaseServer){
-        this.databaseServer = databaseServer.trim();
-    }
-
-    public String getIndustryName(){
-        return industryName;
-    }
-
-    public void setIndustryName (String industryName){
-        this.industryName = industryName.trim();
+    public void setAdmin(Admin admin){
+        this.admin = admin;
     }
 
     public List<Location> getLocations(){
@@ -58,14 +48,6 @@ public class Application {
 
     public void setSkills(List<Skill> skills){
         this.skills = skills;
-    }
-
-    public List<Rating> getRatings(){
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings){
-        this.ratings = ratings;
     }
 
     public List<JobLength> getJobLengths(){

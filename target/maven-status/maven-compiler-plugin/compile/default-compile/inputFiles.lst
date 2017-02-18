@@ -13,6 +13,7 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/User.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/LoginController.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Rating.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Admin.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/EmployerService.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/AdminController.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/PreferencesController.java

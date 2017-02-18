@@ -30,29 +30,14 @@ public class PreferencesDAOImpl implements PreferencesDAO {
         this.callAdminDetails = new SimpleJdbcCall(jdbcTemplate);
     }
 
-    public List<Map<String, Object>> get(String storedProc) {
+    public List<Map<String, Object>> getPreferences(String storedProc) {
         List<Map<String, Object>> get = this.jdbcTemplate.queryForList(storedProc);
         return get;
     }
 
-    public Map getRatings(String storedProc) {
-        List<Map<String, Object>> ratings = this.jdbcTemplate.queryForList("SELECT ratingID, ratingName FROM rating");
-        Map<Integer, String> toReturn = new HashMap<Integer,String>();
-        for(int i = 0; i < ratings.size(); i++){
-            toReturn.put((Integer)ratings.get(i).get("ratingId"), (String)ratings.get(i).get("ratingName"));
-        }
-
-        return toReturn;
-    }
-
-    public Map getLocations(String storedProc){
-        List<Map<String, Object>> ratings = this.jdbcTemplate.queryForList("SELECT locationID, locationName FROM location");
-        Map<Integer, String> toReturn = new HashMap<Integer,String>();
-        for(int i = 0; i < ratings.size(); i++){
-            toReturn.put((Integer)ratings.get(i).get("locationId"), (String)ratings.get(i).get("locationName"));
-        }
-
-        return toReturn;
+    public Map getAdmin(String storedProc) {
+        Map get = this.jdbcTemplate.queryForMap(storedProc);
+        return get;
     }
 
 }

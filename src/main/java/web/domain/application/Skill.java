@@ -5,10 +5,20 @@ package web.domain.application;
  */
 public class Skill {
 
+    private Integer skillID;
     private String skillName;
 
-    public Skill(String skillName){
+    public Skill(Integer skillID, String skillName){
+        this.skillID = skillID;
         this.skillName = skillName;
+    }
+
+    public int getSkillID (){
+        return skillID;
+    }
+
+    public void setSkillID(int skillID){
+        this.skillID = skillID;
     }
 
     public String getSkillName(){

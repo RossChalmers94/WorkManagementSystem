@@ -24,9 +24,8 @@ public class PreferencesController {
     @RequestMapping(path = "/preferences", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
         Employer newWorker = new Employer();
-        Map<String, Object> skills = preferencesService.getSkills();
+        //Map<String, Object> skills = preferencesService.getSkills();
         model.addAttribute("newWorker", newWorker);
-        model.addAttribute("skills", skills);
         return "preferences";
     }
     @RequestMapping(path = "/preferences", method= RequestMethod.POST)

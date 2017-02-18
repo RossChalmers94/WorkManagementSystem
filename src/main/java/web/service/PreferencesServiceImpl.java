@@ -2,14 +2,15 @@ package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import web.domain.User;
 import web.domain.repository.PreferencesDAO;
-import web.domain.repository.UserDAO;
-import web.enumconstants.UserDetails;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import web.domain.application.Admin;
+import web.domain.application.Location;
+import web.domain.application.Skill;
 
 /**
  * Created by RossChalmers on 10/02/2017.
@@ -21,24 +22,37 @@ public class PreferencesServiceImpl implements PreferencesService {
     @Autowired
     private PreferencesDAO preferencesDAO;
 
-    public Map getSkills() {
-        List<Map<String, Object>> skills = preferencesDAO.get("SELECT skillID, skillName FROM skills");
-        Map<Integer, String> toReturn = new HashMap<Integer,String>();
+    public List<Skill> getSkills() {
+        List<Map<String, Object>> skills = preferencesDAO.getPreferences("SELECT skillID, skillName FROM skills");
+        List<Skill> toReturn = new ArrayList<Skill>();
         for(int i = 0; i < skills.size(); i++){
-            toReturn.put((Integer)skills.get(i).get("skillId"), (String)skills.get(i).get("skillName"));
+            Skill skill = new Skill((Integer)skills.get(i).get("skillId"), (String)skills.get(i).get("skillName"));
         }
 
         return toReturn;
     }
 
-    public Map getLocations(){
-        List<Map<String, Object>> locations = preferencesDAO.get("SELECT locationID, locationName FROM location");
-        Map<Integer, String> toReturn = new HashMap<Integer,String>();
+    public List<Location> getLocations(){
+        List<Map<String, Object>> locations = preferencesDAO.getPreferences("SELECT locationID, locationName FROM location");
+        List<Location> toReturn = new ArrayList<Location>();
         for(int i = 0; i < locations.size(); i++){
-            toReturn.put((Integer)locations.get(i).get("locationID"), (String)locations.get(i).get("locationName"));
+            Location location = new Location((Integer)locations.get(i).get("locationID"), (String)locations.get(i).get("locationName"));
+            toReturn.add(location);
         }
 
         return toReturn;
+    }
+
+    public Admin getAdmin(){
+
+        Map get = preferencesDAO.getAdmin("SELECT adminUsername, adminPassword, industryName, databaseServer FROM application");
+        Admin admin = new Admin();
+        admin.setAdminUsername((String)get.get("adminUsername"));
+        admin.setPassword((String)get.get("adminPassword"));
+        admin.setIndustryName((String)get.get("industryName"));
+        admin.setDatabaseServer((String)get.get("databaseServer"));
+
+        return admin;
     }
 
 }

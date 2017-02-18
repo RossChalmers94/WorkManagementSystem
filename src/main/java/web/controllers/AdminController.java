@@ -6,12 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import web.service.PreferencesService;
-import web.service.UserService;
 import web.domain.application.Application;
-import web.domain.application.Salary;
-
-import java.util.HashMap;
-import java.util.List;
+import web.domain.application.Admin;
 import java.util.Map;
 
 /**
@@ -31,11 +27,10 @@ public class AdminController {
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.GET)
     public String viewConfigureApplication(Model model){
         Application newApplication = new Application();
+        newApplication.setLocations(preferencesService.getLocations());
+        newApplication.setAdmin(preferencesService.getAdmin());
+        newApplication.setSkills(preferencesService.getSkills());
         model.addAttribute("newApplication", newApplication);
-        Map<String, String> skills = preferencesService.getSkills();
-        Map<String, String> locations = preferencesService.getLocations();
-        model.addAttribute("skills", skills);
-        model.addAttribute("locations", locations);
         return "admin/configureapplication";
     }
 
