@@ -2,15 +2,13 @@ package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import web.domain.application.*;
 import web.domain.repository.PreferencesDAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
-import web.domain.application.Admin;
-import web.domain.application.Location;
-import web.domain.application.Skill;
 
 /**
  * Created by RossChalmers on 10/02/2017.
@@ -44,6 +42,32 @@ public class PreferencesServiceImpl implements PreferencesService {
         return toReturn;
     }
 
+    public List<Salary> getSalarys(){
+        List<Map<String, Object>> salarys = preferencesDAO.getPreferences("SELECT salaryID, salaryMinValue, salaryMaxValue FROM salary");
+        List<Salary> toReturn = new ArrayList<Salary>();
+        for(int i = 0; i < salarys.size(); i++){
+            Salary salary = new Salary((Integer)salarys.get(i).get("salaryID"), (Integer)salarys.get(i).get("salaryMinValue"),
+                    (Integer)salarys.get(i).get("salaryMaxValue"));
+            toReturn.add(salary);
+        }
+
+        return toReturn;
+    }
+
+    public List<JobLength> getJobLengths(){
+        List<Map<String, Object>> jobLengths =
+                preferencesDAO.getPreferences("SELECT jobLengthID, jobLengthMin, jobLengthMax FROM job_length");
+        List<JobLength> toReturn = new ArrayList<JobLength>();
+        for(int i = 0; i < jobLengths.size(); i++){
+            JobLength jobLength = new JobLength((Integer)jobLengths.get(i).get("jobLengthID"),
+                    (Integer)jobLengths.get(i).get("jobLengthMin"),
+                    (Integer)jobLengths.get(i).get("jobLengthMax"));
+            toReturn.add(jobLength);
+        }
+
+        return toReturn;
+    }
+
     public Admin getAdmin(){
 
         Map get = preferencesDAO.getAdmin("SELECT adminUsername, adminPassword, industryName, databaseServer FROM application");
@@ -52,7 +76,6 @@ public class PreferencesServiceImpl implements PreferencesService {
         admin.setPassword((String)get.get("adminPassword"));
         admin.setIndustryName((String)get.get("industryName"));
         admin.setDatabaseServer((String)get.get("databaseServer"));
-
         return admin;
     }
 

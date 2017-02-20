@@ -12,13 +12,13 @@ public interface UserDAO {
 
     void insert(String storedProcedure, Map<String, String> inParameters);
 
-    int get(String storedProcedure, Map<String, String> inParameters);
-
     void insertPersonal(String storedProcedure, Map<String, String> inParameters);
 
-    boolean getUserLogIn(String storedProcedure, Map<String, String> inParameters);
+    Map<String, Object> checkUserLogIn(String storedProcedure, Map<String, String> inParameters);
 
-    void getUsername(User user);
+    Map<String, Object> get(String storedProc, Map<String, String> inParameters);
+
+    Map<String, Object> getUsername(String storedProc, Map<String, String> inParameters);
 
 
 }

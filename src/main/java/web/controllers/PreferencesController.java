@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import web.domain.application.Application;
 import web.service.PreferencesService;
-import web.service.UserService;
 import org.springframework.ui.Model;
-import java.util.Map;
-import web.domain.Employer;
+import web.domain.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,15 +20,21 @@ public class PreferencesController {
     @Autowired
     private PreferencesService preferencesService;
 
-    @RequestMapping(path = "/preferences", method= RequestMethod.GET)
+    @RequestMapping(path = "user/preferences", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
+        User currentUser = (User) session.getAttribute("currentUser");
         Employer newWorker = new Employer();
-        //Map<String, Object> skills = preferencesService.getSkills();
+        Application application = new Application();
+        application.setSkills(preferencesService.getSkills());
+        application.setLocations(preferencesService.getLocations());
+        application.setJobLengths(preferencesService.getJobLengths());
+        application.setSalarys(preferencesService.getSalarys());
+        newWorker.setApplication(application);
         model.addAttribute("newWorker", newWorker);
-        return "preferences";
+        return "user/preferences";
     }
-    @RequestMapping(path = "/preferences", method= RequestMethod.POST)
+    @RequestMapping(path = "/user/preferences", method= RequestMethod.POST)
     public String confirmEmployerPreferences(){
-        return "match";
+        return "/user/match";
     }
 }

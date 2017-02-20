@@ -34,7 +34,7 @@ public class Application {
         this.locations = locations;
     }
 
-    public List<Salary> getSalary(){
+    public List<Salary> getSalarys(){
         return salarys;
     }
 

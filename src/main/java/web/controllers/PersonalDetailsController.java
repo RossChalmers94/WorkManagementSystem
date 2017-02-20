@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import web.domain.User;
 import web.service.UserService;
-import web.domain.Employer;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,37 +21,22 @@ public class PersonalDetailsController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = "/freelancer", method = RequestMethod.GET)
-    public String viewFreelancer(Model model, HttpSession session) {
-        String page = "";
-        User user = new User();
-        model.addAttribute("userPersonal", user);
-        return "freelancer";
-    }
-
-    @RequestMapping(path = "/freelancer", method = RequestMethod.POST)
-    public String confirmFreelancer(@ModelAttribute("userPersonal") User userPersonal, Model model, HttpSession session) {
-        model.addAttribute("userPersonal", userPersonal);
-        User user = (User) session.getAttribute("currentUser");
-        userService.insertUserPersonal(userPersonal, user.getUsername());
-        return "freelancerpreferences";
-    }
-
-    @RequestMapping(path = "/personal", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/personal", method = RequestMethod.GET)
     public String viewEmployer(Model model, HttpSession session){
         String page = "";
-        User user = new User();
-        model.addAttribute("userPersonal", user);
-        return "personal";
+        model.addAttribute("userPersonal", new User());
+        return "/user/personal";
     }
 
-    @RequestMapping(path = "/personal", method = RequestMethod.POST)
+    @RequestMapping(path = "/user/personal", method = RequestMethod.POST)
     public String confirmEmployer(@ModelAttribute("userPersonal") User userPersonal, Model model, HttpSession session) {
-        model.addAttribute("userPersonal", userPersonal);
+        // Use session variable to get username
         User user = (User) session.getAttribute("currentUser");
         String username = user.getUsername();
+
+        // Add userPersonal object to users table where username is correct
         userService.insertUserPersonal(userPersonal, username);
-        return "preferences";
+        return "redirect:/user/preferences";
     }
 
 }

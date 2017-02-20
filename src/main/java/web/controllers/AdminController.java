@@ -30,6 +30,8 @@ public class AdminController {
         newApplication.setLocations(preferencesService.getLocations());
         newApplication.setAdmin(preferencesService.getAdmin());
         newApplication.setSkills(preferencesService.getSkills());
+        newApplication.setSalarys(preferencesService.getSalarys());
+        newApplication.setJobLengths(preferencesService.getJobLengths());
         model.addAttribute("newApplication", newApplication);
         return "admin/configureapplication";
     }

@@ -31,15 +31,13 @@ public class CreateAccountController {
     @RequestMapping(method = RequestMethod.POST)
     public String getUser(@ModelAttribute("newUser") User newUser, Model model, HttpSession session){
 
-        String role = newUser.getRole();
         String page = "";
-        int value = userService.checkUser(newUser);
-        model.addAttribute("value", value);
+        boolean check = userService.checkUsername(newUser);
 
-        if(value == 0) {
+        if(!check) {
             userService.insertUser(newUser);
             session.setAttribute("currentUser", newUser);
-            page = "personal";
+            page = "redirect:/user/personal";
         } else {
             page = "createaccount";
         }

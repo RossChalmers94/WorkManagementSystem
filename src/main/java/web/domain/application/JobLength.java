@@ -5,29 +5,39 @@ package web.domain.application;
  */
 public class JobLength {
 
-    private String jobMinValue;
-    private String jobMaxValue;
+    private int jobLengthID;
+    private int jobLengthMin;
+    private int jobLengthMax;
 
 
-    public JobLength(String jobMinValue, String jobMaxValue){
-        this.jobMinValue = jobMinValue;
-        this.jobMaxValue = jobMaxValue;
+    public JobLength(int jobLengthID, int jobLengthMin, int jobLengthMax){
+        this.jobLengthID = jobLengthID;
+        this.jobLengthMin = jobLengthMin;
+        this.jobLengthMax = jobLengthMax;
     }
 
-    public String getJobMinValue(){
-        return jobMinValue;
+    public int getJobLengthID(){
+        return jobLengthID;
     }
 
-    public void setJobMinValue(String jobMinValue){
-        this.jobMinValue = jobMinValue.trim();
+    public void setJobLengthID(int jobLengthID){
+        this.jobLengthID = jobLengthID;
     }
 
-    public String getJobMaxValue(){
-        return jobMaxValue;
+    public int getJobLengthMin(){
+        return jobLengthMin;
     }
 
-    public void setJobMaxValue(String jobMaxValue){
-        this.jobMaxValue = jobMaxValue.trim();
+    public void setJobLengthMin(int jobLengthMin){
+        this.jobLengthMin = jobLengthMin;
+    }
+
+    public int getJobLengthMax(){
+        return jobLengthMax;
+    }
+
+    public void setJobLengthMax(int jobLengthMax){
+        this.jobLengthMax = jobLengthMax;
     }
 
 

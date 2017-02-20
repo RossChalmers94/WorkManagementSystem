@@ -27,13 +27,6 @@ public class UserServiceImpl implements UserService {
         userDAO.insert("insert_user", userDetails);
     }
 
-    public int checkUser(User user){
-        int value;
-        Map<String, String> userDetails = new HashMap<String, String>();
-        userDetails.put("username", user.getUsername().toString());
-        value = userDAO.get("check_user_exists", userDetails);
-        return value;
-    }
 
     public void insertUserPersonal(User user, String username){
         Map<String, String> userDetails = new HashMap<String, String>();
@@ -49,12 +42,39 @@ public class UserServiceImpl implements UserService {
         userDAO.insertPersonal("insert_user_personal", userDetails);
     }
 
-    public boolean getLogIn(User user){
+    public boolean checkUserLogIn(User user){
         boolean login = false;
-        Map<String, String> userDetails = new HashMap<String, String>();
-        userDetails.put("username", user.getUsername());
-        userDetails.put("userpassword", user.getPassword());
-        login = userDAO.getUserLogIn("user_log_in", userDetails);
+        Map<String,String> userDetails = new HashMap<String, String>();
+        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
+        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword());
+        Map<String, Object> out = userDAO.checkUserLogIn("check_user_exists", userDetails);
+        int value = (Integer)(out.get(UserDetails.USER_VALUE.getValue()));
+        if(value == 1){
+            login = true;
+        }
+
         return login;
+    }
+
+    public Map<String, Object> getLogIn(User user){
+        Map<String, String> userDetails = new HashMap<String, String>();
+        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
+        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword());
+        Map<String, Object> out = userDAO.get("user_log_in", userDetails);
+
+        return out;
+    }
+
+    public boolean checkUsername(User user){
+        boolean check = false;
+        Map<String, String> userDetails = new HashMap<String, String>();
+        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
+        Map<String, Object> out = userDAO.get("check_username", userDetails);
+        int value = (Integer) out.get(UserDetails.USER_VALUE.getValue());
+        if(value == 1){
+            check = true;
+        }
+
+        return check;
     }
 }

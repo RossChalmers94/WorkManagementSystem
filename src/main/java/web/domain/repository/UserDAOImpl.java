@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
-import org.springframework.stereotype.Repository;
-import web.domain.User;
 
-import java.util.Collection;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,19 +18,22 @@ public class UserDAOImpl implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall insertUser;
-    private SimpleJdbcCall checkUser;
+    private SimpleJdbcCall getUser;
     private SimpleJdbcCall insertUserPersonalDetails;
     private SimpleJdbcCall getLogInUser;
+    private SimpleJdbcCall checkUser;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.insertUser = new SimpleJdbcCall(jdbcTemplate);
-        this.checkUser = new SimpleJdbcCall(jdbcTemplate);
+        this.getUser = new SimpleJdbcCall(jdbcTemplate);
         this.insertUserPersonalDetails = new SimpleJdbcCall(jdbcTemplate);
         this.getLogInUser = new SimpleJdbcCall(jdbcTemplate);
+        this.checkUser = new SimpleJdbcCall(jdbcTemplate);
     }
 
+    // Insert username, password and role after a user creates their account
     public void insert(String storedProc, Map<String, String> inParameters) {
         insertUser.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
@@ -41,17 +41,7 @@ public class UserDAOImpl implements UserDAO {
         insertUser.execute(in);
     }
 
-    public int get(String storedProc, Map<String, String> inParameters) {
-
-        int value;
-        checkUser.withProcedureName(storedProc);
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        Map out = checkUser.execute(in);
-        value = (Integer)(out.get(UserDetails.USER_VALUE.getValue()));
-        return value;
-    }
-
+    // Insert Personal Details into the database
     public void insertPersonal(String storedProc, Map<String, String> inParameters) {
         insertUserPersonalDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
@@ -59,25 +49,33 @@ public class UserDAOImpl implements UserDAO {
         insertUserPersonalDetails.execute(in);
     }
 
-    public boolean getUserLogIn(String storedProc, Map<String, String> inParameters) {
+    public Map<String, Object> checkUserLogIn(String storedProc, Map<String, String> inParameters) {
 
-        Boolean login = false;
-        int value = 0;
         getLogInUser.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map out = getLogInUser.execute(inParameters);
-        value = (Integer)(out.get(UserDetails.USER_VALUE.getValue()));
-        if(value > 0){
-            login = true;
-        }
-
-        return login;
+        return out;
 
     }
 
-    public void getUsername(User user){
-        String username = this.jdbcTemplate.queryForObject("select username from users where username = ?",
-                new Object[] { user.getUsername() }, String.class);
+    // Get a user from the users table
+    public Map<String, Object> get(String storedProc, Map<String, String> inParameters){
+
+        getUser.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValues(inParameters);
+        Map<String, Object> out = getUser.execute(in);
+        return out;
+    }
+
+    // To check if a username already exists
+    public Map<String, Object> getUsername(String storedProc, Map<String, String> inParameters){
+
+        checkUser.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValues(inParameters);
+        Map<String, Object> out = checkUser.execute(in);
+        return out;
     }
 }

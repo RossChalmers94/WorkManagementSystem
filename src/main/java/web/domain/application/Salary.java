@@ -5,27 +5,39 @@ package web.domain.application;
  */
 public class Salary {
 
-    private String salaryMinValue;
-    private String salaryMaxValue;
+    private int salaryID;
+    private int salaryMinValue;
+    private int salaryMaxValue;
 
 
-    public Salary(){
+    public Salary(int salaryID, int salaryMinValue, int salaryMaxValue){
+        this.salaryID = salaryID;
+        this.salaryMinValue = salaryMinValue;
+        this.salaryMaxValue = salaryMaxValue;
     }
 
-    public String getSalaryMinValue(){
+    public int getSalaryID(){
+        return salaryID;
+    }
+
+    public void setSalaryID(int salaryID){
+        this.salaryID = salaryID;
+    }
+
+    public int getSalaryMinValue(){
         return salaryMinValue;
     }
 
-    public void setSalaryMinValue(String salaryMinValue){
-        this.salaryMinValue = salaryMinValue.trim();
+    public void setSalaryMinValue(int salaryMinValue){
+        this.salaryMinValue = salaryMinValue;
     }
 
-    public String getSalaryMaxValue(){
+    public int getSalaryMaxValue(){
         return salaryMaxValue;
     }
 
-    public void setSalaryMaxValue(String salaryMaxValue){
-        this.salaryMaxValue = salaryMaxValue.trim();
+    public void setSalaryMaxValue(int salaryMaxValue){
+        this.salaryMaxValue = salaryMaxValue;
     }
 
 

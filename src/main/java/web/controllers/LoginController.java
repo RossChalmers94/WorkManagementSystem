@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import web.enumconstants.UserDetails;
 import web.service.UserService;
 import org.springframework.ui.Model;
 import web.domain.User;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,16 +38,30 @@ public class LoginController {
     }
     @RequestMapping(path = "/login", method= RequestMethod.POST)
     public String confirmEmployerPreferences(@ModelAttribute("loginUser") User loginUser, Model model, HttpSession session){
-        boolean login = false;
+
         String page = "";
-        login = userService.getLogIn(loginUser);
+        boolean login = userService.checkUserLogIn(loginUser);
         if(login){
-            page = "userhome";
-            session.setAttribute("currentUser", loginUser);
+            Map<String, Object> out = userService.getLogIn(loginUser);
+            User currentUser = new User();
+            currentUser.setUsername(loginUser.getUsername());
+            currentUser.setPassword(loginUser.getPassword());
+            currentUser.setFirstname((String) out.get(UserDetails.USER_FIRSTNAME.getValue()));
+            currentUser.setLastname((String) out.get(UserDetails.USER_LASTNAME.getValue()));
+            currentUser.setTelephone((String) out.get(UserDetails.USER_TELEPHONE.getValue()));
+            currentUser.setEmailaddress((String) out.get(UserDetails.USER_EMAILADDRESS.getValue()));
+            currentUser.setAddress((String) out.get(UserDetails.USER_ADDRESS.getValue()));
+            currentUser.setPostcode((String) out.get(UserDetails.USER_POSTCODE.getValue()));
+            currentUser.setTowncity((String) out.get(UserDetails.USER_TOWNCITY.getValue()));
+            currentUser.setRole((String) out.get(UserDetails.USER_ROLE.getValue()));
+            currentUser.setCompany((String) out.get(UserDetails.USER_COMPANY.getValue()));
+            session.setAttribute("currentUser", currentUser);
+            page = "user/userhome";
         }
-        else{
+        else {
             page = "login";
         }
+
         return page;
     }
 
