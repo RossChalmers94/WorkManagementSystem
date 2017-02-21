@@ -1,4 +1,4 @@
-package web.domain.repository;
+package web.repository;
 import java.util.Map;
 import java.util.List;
 /**

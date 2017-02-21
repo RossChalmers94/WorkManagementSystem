@@ -27,10 +27,10 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h3 class="text-left">Skills</h3>
         </div>
-        <c:forEach items="${newWorker.application.skills}" var="skills" varStatus="i">
+        <c:forEach items="${application.skills}" var="skills" varStatus="i">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                <label><form:checkbox path="skill" value="${newWorker.application.skills[i.index].skillID}"/>
-                        ${newWorker.application.skills[i.index].skillName}</label>
+                <label><form:checkbox path="skill" value="${application.skills[i.index].skillID}"/>
+                        ${application.skills[i.index].skillName}</label>
             </div>
         </c:forEach>
     </div>
@@ -40,9 +40,9 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <form:select path="location" class="form-control">
-                <c:forEach items="${newWorker.application.locations}" var="locations" varStatus="i">
-                    <form:option value="${newWorker.application.locations[i.index].locationID}"
-                                 label="${newWorker.application.locations[i.index].locationName}"/>
+                <c:forEach items="${application.locations}" var="locations" varStatus="i">
+                    <form:option value="${application.locations[i.index].locationID}"
+                                 label="${application.locations[i.index].locationName}"/>
                 </c:forEach>
             </form:select>
         </div>
@@ -51,12 +51,12 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h3 class="text-left">Salary (In Pounds)</h3>
         </div>
-        <c:forEach items="${newWorker.application.salarys}" var="salarys" varStatus="i">
+        <c:forEach items="${application.salarys}" var="salarys" varStatus="i">
             <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
                 <label class="text-center radio-inline"><form:radiobutton path="salary"
-                                                                          value="${newWorker.application.salarys[i.index].salaryID}"/>
-                        ${newWorker.application.salarys[i.index].salaryMinValue}
-                    - ${newWorker.application.salarys[i.index].salaryMaxValue}</label>
+                                                                          value="${application.salarys[i.index].salaryID}"/>
+                        ${application.salarys[i.index].salaryMinValue}
+                    - ${application.salarys[i.index].salaryMaxValue}</label>
             </div>
         </c:forEach>
     </div>
@@ -64,12 +64,12 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h3 class="text-left">Time To Complete Work (Months)</h3>
         </div>
-        <c:forEach items="${newWorker.application.jobLengths}" var="joblengths" varStatus="i">
+        <c:forEach items="${application.jobLengths}" var="joblengths" varStatus="i">
             <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
                 <label class="text-center radio-inline"><form:radiobutton path="jobLength"
-                                                                          value="${newWorker.application.jobLengths[i.index].jobLengthID}"/>
-                        ${newWorker.application.jobLengths[i.index].jobLengthMin} -
-                        ${newWorker.application.jobLengths[i.index].jobLengthMax}</label>
+                                                                          value="${application.jobLengths[i.index].jobLengthID}"/>
+                        ${application.jobLengths[i.index].jobLengthMin} -
+                        ${application.jobLengths[i.index].jobLengthMax}</label>
             </div>
         </c:forEach>
     </div>

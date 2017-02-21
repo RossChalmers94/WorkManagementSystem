@@ -3,7 +3,7 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.domain.User;
-import web.domain.repository.UserDAO;
+import web.repository.UserDAO;
 import web.enumconstants.UserDetails;
 import java.util.Map;
 

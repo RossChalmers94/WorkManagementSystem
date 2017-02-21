@@ -16,6 +16,9 @@ public class User {
     private String towncity;
     private String company;
     private String role;
+    private int freelancerID;
+    private int employerID;
+    private int rating;
 
 
     public User(){
@@ -34,8 +37,8 @@ public class User {
         return password;
     }
 
-    public String setPassword(String password){
-        return this.password = password.trim();
+    public void setPassword(String password){
+         this.password = password.trim();
     }
 
     public String getFirstname(){
@@ -50,8 +53,8 @@ public class User {
         return lastname;
     }
 
-    public String setLastname(String lastname){
-        return this.lastname = lastname;
+    public void setLastname(String lastname){
+        this.lastname = lastname;
     }
 
     public String getTelephone(){
@@ -66,8 +69,8 @@ public class User {
         return emailaddress;
     }
 
-    public String setEmailaddress(String emailaddress){
-        return this.emailaddress = emailaddress;
+    public void setEmailaddress(String emailaddress){
+        this.emailaddress = emailaddress;
     }
 
     public String getAddress(){
@@ -82,8 +85,8 @@ public class User {
         return postcode;
     }
 
-    public String setPostcode(String postcode){
-        return this.postcode = postcode;
+    public void setPostcode(String postcode){
+         this.postcode = postcode;
     }
 
     public String getTowncity(){
@@ -98,8 +101,8 @@ public class User {
         return company;
     }
 
-    public String setCompany(String company){
-        return this.company = company;
+    public void setCompany(String company){
+         this.company = company;
     }
 
     public String getRole(){
@@ -110,5 +113,28 @@ public class User {
         this.role = role;
     }
 
+    public int getFreelancerID(){
+        return freelancerID;
+    }
+
+    public void setFreelancerID(int freelancerID){
+        this.freelancerID = freelancerID;
+    }
+
+    public int getEmployerID(){
+        return employerID;
+    }
+
+    public void setEmployerID(int employerID){
+        this.employerID = employerID;
+    }
+
+    public int getRating(){
+        return rating;
+    }
+
+    public void setRating(int rating){
+        this.rating = rating;
+    }
 
 }

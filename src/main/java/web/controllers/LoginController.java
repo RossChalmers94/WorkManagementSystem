@@ -55,6 +55,15 @@ public class LoginController {
             currentUser.setTowncity((String) out.get(UserDetails.USER_TOWNCITY.getValue()));
             currentUser.setRole((String) out.get(UserDetails.USER_ROLE.getValue()));
             currentUser.setCompany((String) out.get(UserDetails.USER_COMPANY.getValue()));
+            if(out.get(UserDetails.USER_RATING.getValue()) != null){
+                currentUser.setRating((Integer) out.get(UserDetails.USER_RATING.getValue()));
+            }
+            if(out.get(UserDetails.USER_RATING.getValue()) != null){
+                currentUser.setEmployerID((Integer)out.get(UserDetails.USER_EMPLOYERID.getValue()));
+            }
+            if(out.get(UserDetails.USER_RATING.getValue()) != null){
+                currentUser.setFreelancerID((Integer)out.get(UserDetails.USER_FREELANCERID.getValue()));
+            }
             session.setAttribute("currentUser", currentUser);
             page = "user/userhome";
         }

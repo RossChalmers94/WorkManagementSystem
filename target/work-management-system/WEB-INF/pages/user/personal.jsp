@@ -11,7 +11,7 @@
             <form:form modelAttribute="userPersonal" method="post">
                 <div class="col-md-6 col-xs-12 col-sm-6">
                     <label>First Name:</label>
-                    <form:input path="firstname" id="firstname" class="form-control" placeholder="First Name"/>
+                    <form:input path="firstname" id="firstname" class="form-control" placeholder="First Name" value="${currentUser.firstname}"/>
                 </div>
                 <div class="col-md-6 col-xs-12 col-sm-6">
                     <label>Last Name:</label>

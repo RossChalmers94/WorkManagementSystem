@@ -1,7 +1,5 @@
-package web.domain.repository;
+package web.repository;
 
-import org.springframework.stereotype.Repository;
-import web.domain.User;
 import java.util.Map;
 
 /**
@@ -19,6 +17,10 @@ public interface UserDAO {
     Map<String, Object> get(String storedProc, Map<String, String> inParameters);
 
     Map<String, Object> getUsername(String storedProc, Map<String, String> inParameters);
+
+    void insertEmployerID(String storedProc, Map<String, Object> inParameters);
+
+    void insertFreelancerID(String storedProc, Map<String, Object> inParameters);
 
 
 }

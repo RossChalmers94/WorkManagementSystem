@@ -17,7 +17,10 @@ public enum UserDetails {
     USER_TOWNCITY("townCity"),
     USER_COMPANY("company"),
     USER_VALUE("uservalue"),
-    USER_ROLE("role");
+    USER_ROLE("role"),
+    USER_EMPLOYERID("employerID"),
+    USER_FREELANCERID("freelancerID"),
+    USER_RATING("rating");
 
 
 

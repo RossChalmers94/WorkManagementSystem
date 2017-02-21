@@ -3,10 +3,9 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.domain.application.*;
-import web.domain.repository.PreferencesDAO;
+import web.repository.PreferencesDAO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 

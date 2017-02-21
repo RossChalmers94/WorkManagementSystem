@@ -1,4 +1,4 @@
-package web.domain.repository;
+package web.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import web.enumconstants.UserDetails;
 
 /**
  * Created by RossChalmers on 11/02/2017.
@@ -22,6 +21,9 @@ public class UserDAOImpl implements UserDAO {
     private SimpleJdbcCall insertUserPersonalDetails;
     private SimpleJdbcCall getLogInUser;
     private SimpleJdbcCall checkUser;
+    private SimpleJdbcCall insertEmployerID;
+    private SimpleJdbcCall insertFreelancerID;
+
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -31,6 +33,9 @@ public class UserDAOImpl implements UserDAO {
         this.insertUserPersonalDetails = new SimpleJdbcCall(jdbcTemplate);
         this.getLogInUser = new SimpleJdbcCall(jdbcTemplate);
         this.checkUser = new SimpleJdbcCall(jdbcTemplate);
+        this.insertEmployerID = new SimpleJdbcCall(jdbcTemplate);
+        this.insertFreelancerID = new SimpleJdbcCall(jdbcTemplate);
+
     }
 
     // Insert username, password and role after a user creates their account
@@ -77,5 +82,21 @@ public class UserDAOImpl implements UserDAO {
                 .addValues(inParameters);
         Map<String, Object> out = checkUser.execute(in);
         return out;
+    }
+
+    // Insert a user's EmployerID that relates to their record in the Employer table
+    public void insertEmployerID(String storedProc, Map<String, Object> inParameters){
+        insertEmployerID.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValues(inParameters);
+        insertEmployerID.execute(in);
+    }
+
+    // Insert a user's FreelancerID that relates to their record in the Freelancer table
+    public void insertFreelancerID(String storedProc, Map<String, Object> inParameters){
+        insertFreelancerID.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValues(inParameters);
+        insertFreelancerID.execute(in);
     }
 }

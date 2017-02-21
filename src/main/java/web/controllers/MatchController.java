@@ -15,11 +15,11 @@ public class MatchController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = "/match", method= RequestMethod.GET)
+    @RequestMapping(path = "user/match", method= RequestMethod.GET)
     public String viewEmployerPreferences(){
         return "match";
     }
-    @RequestMapping(path = "/match", method= RequestMethod.POST)
+    @RequestMapping(path = "user/match", method= RequestMethod.POST)
     public String confirmEmployerPreferences(){
         return "match";
     }

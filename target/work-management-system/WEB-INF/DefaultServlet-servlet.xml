@@ -18,11 +18,15 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <bean id="UserDAO" class="web.domain.repository.UserDAOImpl">
+    <bean id="UserDAO" class="web.repository.UserDAOImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="PreferencesDAO" class="web.domain.repository.PreferencesDAOImpl">
+    <bean id="PreferencesDAO" class="web.repository.PreferencesDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="WorkerDAO" class="web.repository.WorkerDAOImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
