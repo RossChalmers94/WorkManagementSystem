@@ -20,9 +20,9 @@ public class UserHomeController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = "/userhome", method= RequestMethod.GET)
+    @RequestMapping(path = "user/userhome", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model){
-        return "userhome";
+        return "user/userhome";
     }
 
 }

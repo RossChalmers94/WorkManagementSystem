@@ -1,6 +1,7 @@
 package web.domain;
 
 import web.domain.application.Application;
+import java.util.*;
 
 /**
  * Created by RossChalmers on 10/02/2017.
@@ -9,7 +10,7 @@ public class Worker {
 
     private String jobTitle;
     private String jobDescription;
-    private int skill;
+    private List<Integer> skill;
     private int salary;
     private int location;
     private int jobLength;
@@ -37,11 +38,11 @@ public class Worker {
         this.jobDescription = jobDescription;
     }
 
-    public int getSkill(){
+    public List<Integer> getSkill(){
         return skill;
     }
 
-    public void setSkill(int skill){
+    public void setSkill(List<Integer> skill){
         this.skill = skill;
     }
 

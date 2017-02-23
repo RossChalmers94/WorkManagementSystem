@@ -25,8 +25,9 @@ public class PreferencesController {
     private WorkerService workerService;
 
     @RequestMapping(path = "user/preferences", method= RequestMethod.GET)
-    public String viewEmployerPreferences(Model model, HttpSession session){
-        Worker newWorker = new Worker();
+    public String viewPreferences(Model model, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        Worker newWorker = workerService.getWorkerDetails(user);
         Application application = new Application();
         application.setSkills(preferencesService.getSkills());
         application.setLocations(preferencesService.getLocations());
@@ -37,9 +38,9 @@ public class PreferencesController {
         return "user/preferences";
     }
     @RequestMapping(path = "/user/preferences", method= RequestMethod.POST)
-    public String confirmEmployerPreferences(@ModelAttribute("newWorker") Worker newWorker, Model model, HttpSession session){
+    public String confirmPreferences(@ModelAttribute("newWorker") Worker newWorker, Model model, HttpSession session){
         User user = (User) session.getAttribute("currentUser");
         workerService.insertWorker(newWorker, user);
-        return "/user/match";
+        return "user/match";
     }
 }

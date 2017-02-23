@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <c:choose>
                         <c:when test="${currentUser != null}">
-                            <li><a href="user/userhome"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
+                            <li><a href="userhome"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
                             <li><a href="../logoutuser"></span>Log Out</a></li>
                         </c:when>
                         <c:when test="${adminUser != null}">

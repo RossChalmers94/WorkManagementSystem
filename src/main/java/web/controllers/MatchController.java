@@ -17,11 +17,11 @@ public class MatchController {
 
     @RequestMapping(path = "user/match", method= RequestMethod.GET)
     public String viewEmployerPreferences(){
-        return "match";
+        return "user/match";
     }
     @RequestMapping(path = "user/match", method= RequestMethod.POST)
     public String confirmEmployerPreferences(){
-        return "match";
+        return "user/match";
     }
 
 }

@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>Set Your Preferences</h1>
+        <h1>Become an ${currentUser.role}</h1>
     </div>
     <form:form modelAttribute="newWorker" method="post">
     <c:if test="${currentUser.role == 'Employer'}">
@@ -113,6 +113,8 @@
             <label class="text-center radio-inline"><form:radiobutton path="relaxPreferences" value="5"/>4 Weeks</label>
         </div>
     </div>
+
+        ${user.employerID}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <input type="submit" class="btn btn-default" value="Confirm">

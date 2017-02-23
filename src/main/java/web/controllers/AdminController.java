@@ -3,11 +3,14 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import web.service.PreferencesService;
 import web.domain.application.Application;
 import web.domain.application.Admin;
+
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -25,7 +28,7 @@ public class AdminController {
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.GET)
-    public String viewConfigureApplication(Model model){
+    public String viewConfigureApplication(Model model, HttpSession session){
         Application newApplication = new Application();
         newApplication.setLocations(preferencesService.getLocations());
         newApplication.setAdmin(preferencesService.getAdmin());
@@ -37,9 +40,8 @@ public class AdminController {
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST)
-    public String changeConfigureApplication(Model model){
-        Application newApplication = new Application();
-        model.addAttribute("newApplication", newApplication);
+    public String changeConfigureApplication(@ModelAttribute("newApplication") Application newApplication, Model model, HttpSession session){
+
         return "admin/configureapplication";
     }
 

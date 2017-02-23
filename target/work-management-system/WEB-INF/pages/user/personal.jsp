@@ -47,6 +47,7 @@
                 </c:if>
                 <div class="submit col-md-12 col-xs-12 col-sm-12">
                     <input type="submit" class="btn btn-default" value="Confirm">
+                    <a class="contact btn btn-default" href="userhome">Back</a>
                 </div>
             </form:form>
         </div>

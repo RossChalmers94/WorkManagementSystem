@@ -16,9 +16,9 @@ public class User {
     private String towncity;
     private String company;
     private String role;
-    private int freelancerID;
-    private int employerID;
-    private int rating;
+    private int freelancerID = 0;
+    private int employerID = 0;
+    private int rating = 0;
 
 
     public User(){

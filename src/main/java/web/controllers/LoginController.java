@@ -58,14 +58,14 @@ public class LoginController {
             if(out.get(UserDetails.USER_RATING.getValue()) != null){
                 currentUser.setRating((Integer) out.get(UserDetails.USER_RATING.getValue()));
             }
-            if(out.get(UserDetails.USER_RATING.getValue()) != null){
+            if(out.get(UserDetails.USER_EMPLOYERID.getValue()) != null){
                 currentUser.setEmployerID((Integer)out.get(UserDetails.USER_EMPLOYERID.getValue()));
             }
-            if(out.get(UserDetails.USER_RATING.getValue()) != null){
+            if(out.get(UserDetails.USER_FREELANCERID.getValue()) != null){
                 currentUser.setFreelancerID((Integer)out.get(UserDetails.USER_FREELANCERID.getValue()));
             }
             session.setAttribute("currentUser", currentUser);
-            page = "user/userhome";
+            page = "redirect:/user/userhome";
         }
         else {
             page = "login";

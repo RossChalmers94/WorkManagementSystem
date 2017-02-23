@@ -8,4 +8,6 @@ import web.domain.*;
 public interface WorkerService {
 
     void insertWorker(Worker worker, User user);
+
+    Worker getWorkerDetails(User user);
 }
