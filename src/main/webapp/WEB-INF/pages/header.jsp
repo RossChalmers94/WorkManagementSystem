@@ -36,6 +36,7 @@
                         </c:when>
                         <c:when test="${adminUser != null}">
                             <li><a href="admin/adminhome"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
+                            <li><a href="../logoutuser"></span>Log Out</a></li>
                         </c:when>
                         <c:otherwise>
                             <li><a href="createaccount"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>

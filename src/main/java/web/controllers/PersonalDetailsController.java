@@ -24,7 +24,8 @@ public class PersonalDetailsController {
     @RequestMapping(path = "/user/personal", method = RequestMethod.GET)
     public String viewEmployer(Model model, HttpSession session){
         String page = "";
-        model.addAttribute("userPersonal", new User());
+        User user = (User) session.getAttribute("currentUser");
+        model.addAttribute("userPersonal", user);
         return "/user/personal";
     }
 
@@ -36,6 +37,15 @@ public class PersonalDetailsController {
 
         // Add userPersonal object to users table where username is correct
         userService.insertUserPersonal(userPersonal, username);
+        user.setFirstname(userPersonal.getFirstname());
+        user.setLastname(userPersonal.getLastname());
+        user.setTelephone(userPersonal.getTelephone());
+        user.setEmailaddress(userPersonal.getEmailaddress());
+        user.setAddress(userPersonal.getAddress());
+        user.setPostcode(userPersonal.getPostcode());
+        user.setTowncity(userPersonal.getTowncity());
+        user.setCompany(userPersonal.getCompany());
+        session.setAttribute("currentUser", user);
         return "redirect:/user/preferences";
     }
 

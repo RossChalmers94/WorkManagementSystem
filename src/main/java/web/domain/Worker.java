@@ -16,6 +16,7 @@ public class Worker {
     private int jobLength;
     private int relaxPreferences;
     private int rating;
+    private int minimumMatch;
 
 
     public Worker(){
@@ -84,6 +85,14 @@ public class Worker {
 
     public void setRating(int rating){
         this.rating = rating;
+    }
+
+    public int getMinimumMatch(){
+        return minimumMatch;
+    }
+
+    public void setMinimumMatch(int minimumMatch){
+        this.minimumMatch = minimumMatch;
     }
 
 

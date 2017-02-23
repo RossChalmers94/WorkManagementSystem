@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import web.enumconstants.UserDetails;
 import web.service.UserService;
 import org.springframework.ui.Model;
-import web.domain.User;
+import web.domain.application.*;
+import web.domain.*;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -39,36 +40,20 @@ public class LoginController {
     @RequestMapping(path = "/login", method= RequestMethod.POST)
     public String confirmEmployerPreferences(@ModelAttribute("loginUser") User loginUser, Model model, HttpSession session){
 
-        String page = "";
+        String page = "login";
         boolean login = userService.checkUserLogIn(loginUser);
         if(login){
-            Map<String, Object> out = userService.getLogIn(loginUser);
-            User currentUser = new User();
-            currentUser.setUsername(loginUser.getUsername());
-            currentUser.setPassword(loginUser.getPassword());
-            currentUser.setFirstname((String) out.get(UserDetails.USER_FIRSTNAME.getValue()));
-            currentUser.setLastname((String) out.get(UserDetails.USER_LASTNAME.getValue()));
-            currentUser.setTelephone((String) out.get(UserDetails.USER_TELEPHONE.getValue()));
-            currentUser.setEmailaddress((String) out.get(UserDetails.USER_EMAILADDRESS.getValue()));
-            currentUser.setAddress((String) out.get(UserDetails.USER_ADDRESS.getValue()));
-            currentUser.setPostcode((String) out.get(UserDetails.USER_POSTCODE.getValue()));
-            currentUser.setTowncity((String) out.get(UserDetails.USER_TOWNCITY.getValue()));
-            currentUser.setRole((String) out.get(UserDetails.USER_ROLE.getValue()));
-            currentUser.setCompany((String) out.get(UserDetails.USER_COMPANY.getValue()));
-            if(out.get(UserDetails.USER_RATING.getValue()) != null){
-                currentUser.setRating((Integer) out.get(UserDetails.USER_RATING.getValue()));
-            }
-            if(out.get(UserDetails.USER_EMPLOYERID.getValue()) != null){
-                currentUser.setEmployerID((Integer)out.get(UserDetails.USER_EMPLOYERID.getValue()));
-            }
-            if(out.get(UserDetails.USER_FREELANCERID.getValue()) != null){
-                currentUser.setFreelancerID((Integer)out.get(UserDetails.USER_FREELANCERID.getValue()));
-            }
+            User currentUser = userService.getLogIn(loginUser);
             session.setAttribute("currentUser", currentUser);
             page = "redirect:/user/userhome";
         }
-        else {
-            page = "login";
+        else if(loginUser.getUsername().equals("admin")) {
+            boolean adminLogIn = userService.checkAdminLogIn(loginUser);
+            if (adminLogIn) {
+                Admin admin = userService.getAdminLogIn(loginUser);
+                session.setAttribute("adminUser", admin);
+                page = "redirect:/admin/adminhome";
+            }
         }
 
         return page;
@@ -77,6 +62,7 @@ public class LoginController {
     @RequestMapping(path = "/logoutuser", method= RequestMethod.GET)
     public String logOut(Model model, HttpSession session){
         session.removeAttribute("currentUser");
+        session.removeAttribute("adminUser");
         return "redirect:/home";
     }
 

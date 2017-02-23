@@ -15,7 +15,8 @@ public enum WorkerDetails {
     SKILL_ID("skillID"),
     JOB_MATCH("job_match"),
     JOB_TITLE("jobTitle"),
-    JOB_DESCRIPTION("jobDescription");
+    JOB_DESCRIPTION("jobDescription"),
+    MINIMUM_MATCH("minimumMatch");
 
 
     private String value;

@@ -1,4 +1,5 @@
 package web.repository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlTypeValue;
@@ -42,7 +43,7 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.updateFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
     }
 
-    public Map<String, Object> insertFreelancer(String storedProc, Map<String, Object> inParameters){
+    public Map<String, Object> insertFreelancer(String storedProc, Map<String, Object> inParameters) {
         insertFreelancer.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
@@ -50,7 +51,7 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
-    public Map<String, Object> insertEmployer(String storedProc, Map<String, Object> inParameters){
+    public Map<String, Object> insertEmployer(String storedProc, Map<String, Object> inParameters) {
         insertEmployer.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
@@ -58,35 +59,35 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
-    public void insertFreelancerSkills(String storedProc, Map<String, Object> inParameters){
+    public void insertFreelancerSkills(String storedProc, Map<String, Object> inParameters) {
         insertFreelancerSkills.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertFreelancerSkills.execute(in);
     }
 
-    public void insertEmployerSkills(String storedProc, Map<String, Object> inParameters){
+    public void insertEmployerSkills(String storedProc, Map<String, Object> inParameters) {
         insertEmployerSkills.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertEmployerSkills.execute(in);
     }
 
-    public void deleteFreelancerSkills(String storedProc, Map<String, Object> inParameters){
+    public void deleteFreelancerSkills(String storedProc, Map<String, Object> inParameters) {
         deleteFreelancerSkills.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         deleteFreelancerSkills.execute(in);
     }
 
-    public void deleteEmployerSkills(String storedProc, Map<String, Object> inParameters){
+    public void deleteEmployerSkills(String storedProc, Map<String, Object> inParameters) {
         deleteEmployerSkills.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         deleteEmployerSkills.execute(in);
     }
 
-    public Map<String, Object> getEmployer(String storedProc, int employerID){
+    public Map<String, Object> getEmployer(String storedProc, int employerID) {
         getEmployerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
@@ -94,7 +95,7 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
-    public Map<String, Object> getFreelancer(String storedProc, int freelancerID){
+    public Map<String, Object> getFreelancer(String storedProc, int freelancerID) {
         getFreelancerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
@@ -102,7 +103,7 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
-    public Map<String, Object> updateEmployer(String storedProc, Map<String, Object> inParameters){
+    public Map<String, Object> updateEmployer(String storedProc, Map<String, Object> inParameters) {
         updateEmployerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
@@ -110,7 +111,7 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
-    public Map<String, Object> updateFreelancer(String storedProc, Map<String, Object> inParameters){
+    public Map<String, Object> updateFreelancer(String storedProc, Map<String, Object> inParameters) {
         updateFreelancerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
@@ -118,4 +119,9 @@ public class WorkerDAOImpl implements WorkerDAO {
         return out;
     }
 
+    public List<Integer> getSkills(String storedProc, int id) {
+        List<Integer> get = this.jdbcTemplate.queryForList(storedProc, Integer.class, id);
+        return get;
+    }
 }
+

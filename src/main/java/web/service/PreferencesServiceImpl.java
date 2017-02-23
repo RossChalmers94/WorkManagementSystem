@@ -13,7 +13,7 @@ import java.util.List;
  * Created by RossChalmers on 10/02/2017.
  */
 
-@Service()
+@Service
 public class PreferencesServiceImpl implements PreferencesService {
 
     @Autowired

@@ -31,6 +31,7 @@ public class WorkerServiceImpl implements WorkerService {
         inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), worker.getJobLength());
         inParameters.put(WorkerDetails.RELAX_PREFERENCES.getValue(), worker.getRelaxPreferences());
         inParameters.put(WorkerDetails.RATING.getValue(), worker.getRating());
+        inParameters.put(WorkerDetails.MINIMUM_MATCH.getValue(), worker.getMinimumMatch());
 
         if(user.getRole().equals("Employer")){
             inParameters.put(WorkerDetails.JOB_TITLE.getValue(), worker.getJobTitle());
@@ -124,10 +125,13 @@ public class WorkerServiceImpl implements WorkerService {
 
         Worker worker = new Worker();
         Map<String, Object> out = new HashMap<String, Object>();
+        List<Integer> skills = new ArrayList<Integer>();
         if(user.getEmployerID() != 0){
             out = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
+            skills = getEmployerSkills(user.getEmployerID());
         } else if(user.getFreelancerID() != 0){
             out = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
+            skills = getFreelancerSkills(user.getFreelancerID());
         }
 
         if(!out.values().isEmpty()){
@@ -136,10 +140,22 @@ public class WorkerServiceImpl implements WorkerService {
             worker.setJobLength((Integer) out.get(WorkerDetails.JOB_LENGTH.getValue()));
             worker.setRating((Integer) out.get(WorkerDetails.RATING.getValue()));
             worker.setRelaxPreferences((Integer) out.get(WorkerDetails.RELAX_PREFERENCES.getValue()));
+            worker.setMinimumMatch((Integer) out.get(WorkerDetails.MINIMUM_MATCH.getValue()));
             worker.setJobTitle((String) out.get(WorkerDetails.JOB_TITLE.getValue()));
             worker.setJobDescription((String) out.get(WorkerDetails.JOB_DESCRIPTION.getValue()));
+            worker.setSkill(skills);
         }
 
         return worker;
+    }
+
+    private List<Integer> getEmployerSkills(int employerID){
+        List<Integer> skillList = workerDAO.getSkills("SELECT skillID FROM skill_set WHERE employerID = ?", employerID);
+        return skillList;
+    }
+
+    private List<Integer> getFreelancerSkills(int freelancerID){
+        List<Integer> skillList = workerDAO.getSkills("SELECT skillID FROM skill_set WHERE freelancerID = ?", freelancerID);
+        return skillList;
     }
 }

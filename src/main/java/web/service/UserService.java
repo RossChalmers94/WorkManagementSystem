@@ -1,6 +1,8 @@
 package web.service;
 
 import web.domain.User;
+import web.domain.application.Admin;
+
 import java.util.*;
 
 /**
@@ -12,10 +14,14 @@ public interface UserService {
 
      void insertUserPersonal(User user, String username);
 
-     Map<String, Object> getLogIn(User user);
+     User getLogIn(User user);
 
      boolean checkUserLogIn(User user);
 
      boolean checkUsername(User user);
+
+     boolean checkAdminLogIn(User user);
+
+     Admin getAdminLogIn(User user);
 
 }

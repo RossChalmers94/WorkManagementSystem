@@ -16,4 +16,5 @@ public interface WorkerDAO {
     Map<String, Object> getFreelancer(String storedProc, int freelancerID);
     Map<String, Object> updateEmployer(String storedProc, Map<String, Object> inParameters);
     Map<String, Object> updateFreelancer(String storedProc, Map<String, Object> inParameters);
+    List<Integer> getSkills(String storedProc, int id);
 }

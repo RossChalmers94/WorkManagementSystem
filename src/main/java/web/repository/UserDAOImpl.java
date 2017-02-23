@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import web.enumconstants.AdminDetails;
 
 /**
  * Created by RossChalmers on 11/02/2017.
@@ -23,6 +24,8 @@ public class UserDAOImpl implements UserDAO {
     private SimpleJdbcCall checkUser;
     private SimpleJdbcCall insertEmployerID;
     private SimpleJdbcCall insertFreelancerID;
+    private SimpleJdbcCall checkAdmin;
+    private SimpleJdbcCall getAdmin;
 
 
     @Autowired
@@ -35,6 +38,8 @@ public class UserDAOImpl implements UserDAO {
         this.checkUser = new SimpleJdbcCall(jdbcTemplate);
         this.insertEmployerID = new SimpleJdbcCall(jdbcTemplate);
         this.insertFreelancerID = new SimpleJdbcCall(jdbcTemplate);
+        this.checkAdmin = new SimpleJdbcCall(jdbcTemplate);
+        this.getAdmin = new SimpleJdbcCall(jdbcTemplate);
 
     }
 
@@ -61,7 +66,6 @@ public class UserDAOImpl implements UserDAO {
                 .addValues(inParameters);
         Map out = getLogInUser.execute(inParameters);
         return out;
-
     }
 
     // Get a user from the users table
@@ -98,5 +102,21 @@ public class UserDAOImpl implements UserDAO {
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertFreelancerID.execute(in);
+    }
+
+    public Map<String, Object> checkAdminLogIn(String storedProc, String adminPassword){
+        checkAdmin.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(AdminDetails.ADMIN_PASSWORD.getValue(), adminPassword);
+        Map out = checkAdmin.execute(in);
+        return out;
+    }
+
+    public Map<String, Object> getAdmin(String storedProc, Map<String, Object> inParameters){
+        getAdmin.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValues(inParameters);
+        Map out = getAdmin.execute(in);
+        return out;
     }
 }
