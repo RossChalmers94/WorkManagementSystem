@@ -41,6 +41,6 @@ public class PreferencesController {
     public String confirmPreferences(@ModelAttribute("newWorker") Worker newWorker, Model model, HttpSession session){
         User user = (User) session.getAttribute("currentUser");
         workerService.insertWorker(newWorker, user);
-        return "user/match";
+        return "redirect:/user/match";
     }
 }

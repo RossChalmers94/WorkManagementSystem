@@ -3,9 +3,11 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.domain.application.*;
+import web.enumconstants.PreferenceDetails;
 import web.repository.PreferencesDAO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
@@ -78,4 +80,49 @@ public class PreferencesServiceImpl implements PreferencesService {
         return admin;
     }
 
+    public void updatePreferences(Application application){
+        updateSkills(application.getSkills());
+        updateLocations(application.getLocations());
+        updateJobLengths(application.getJobLengths());
+        updateSalarys(application.getSalarys());
+    }
+
+    private void updateSkills(List<Skill> skills){
+
+        for(int i = 0; i < skills.size(); i++){
+            Map<String, Object> inParameters = new HashMap<String, Object>();
+            inParameters.put(PreferenceDetails.SKILL_ID.getValue(), skills.get(i).getSkillID());
+            inParameters.put(PreferenceDetails.SKILL_NAME.getValue(), skills.get(i).getSkillName());
+            preferencesDAO.updateSkills("update_skills", inParameters);
+        }
+    }
+
+    private void updateLocations(List<Location> locations){
+        for(int i = 0; i < locations.size(); i++){
+            Map<String, Object> inParameters = new HashMap<String, Object>();
+            inParameters.put(PreferenceDetails.LOCATION_ID.getValue(), locations.get(i).getLocationID());
+            inParameters.put(PreferenceDetails.LOCATION_NAME.getValue(), locations.get(i).getLocationName());
+            preferencesDAO.updateLocations("update_locations", inParameters);
+        }
+    }
+
+    private void updateJobLengths(List<JobLength> jobLengths){
+        for(int i = 0; i < jobLengths.size(); i++){
+            Map<String, Object> inParameters = new HashMap<String, Object>();
+            inParameters.put(PreferenceDetails.JOB_LENGTH_ID.getValue(), jobLengths.get(i).getJobLengthID());
+            inParameters.put(PreferenceDetails.JOB_LENGTH_MIN.getValue(), jobLengths.get(i).getJobLengthMin());
+            inParameters.put(PreferenceDetails.JOB_LENGTH_MAX.getValue(), jobLengths.get(i).getJobLengthMax());
+            preferencesDAO.updateJobLengths("update_joblengths", inParameters);
+        }
+    }
+
+    private void updateSalarys(List<Salary> salarys){
+        for(int i = 0; i < salarys.size(); i++){
+            Map<String, Object> inParameters = new HashMap<String, Object>();
+            inParameters.put(PreferenceDetails.SALARY_ID.getValue(), salarys.get(i).getSalaryID());
+            inParameters.put(PreferenceDetails.SALARY_MIN.getValue(), salarys.get(i).getSalaryMinValue());
+            inParameters.put(PreferenceDetails.SALARY_MAX.getValue(), salarys.get(i).getSalaryMaxValue());
+            preferencesDAO.updateSalarys("update_salarys", inParameters);
+        }
+    }
 }

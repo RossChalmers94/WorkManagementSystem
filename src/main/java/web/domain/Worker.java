@@ -1,5 +1,6 @@
 package web.domain;
 
+import com.sun.istack.internal.NotNull;
 import web.domain.application.Application;
 import java.util.*;
 
@@ -17,12 +18,14 @@ public class Worker {
     private int relaxPreferences;
     private int rating;
     private int minimumMatch;
+    private int workerID;
+    private int compareValue;
 
 
     public Worker(){
 
     }
-
+    @NotNull
     public String getJobTitle(){
         return jobTitle;
     }
@@ -93,6 +96,44 @@ public class Worker {
 
     public void setMinimumMatch(int minimumMatch){
         this.minimumMatch = minimumMatch;
+    }
+
+    public int getWorkerID(){
+        return workerID;
+    }
+
+    public void setWorkerID(int workerID){
+        this.workerID = workerID;
+    }
+
+    public int compareTo(Worker worker){
+
+        int counter = 0;
+
+        if(this.salary == worker.getSalary()){
+            counter = counter + 1;
+        }
+
+        if(this.location == worker.getLocation()){
+            counter = counter + 1;
+        }
+        if(this.jobLength == worker.getJobLength()){
+            counter = counter + 1;
+        }
+        if(this.rating == worker.getRating()){
+            counter = counter + 1;
+        }
+
+        int percentage = (counter/4) * 100;
+        return percentage;
+    }
+
+    public int getCompareValue(){
+        return compareValue;
+    }
+
+    public void setCompareValue(int compareValue){
+        this.compareValue = compareValue;
     }
 
 

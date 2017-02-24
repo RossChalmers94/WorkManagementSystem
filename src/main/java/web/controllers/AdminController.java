@@ -41,7 +41,7 @@ public class AdminController {
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST)
     public String changeConfigureApplication(@ModelAttribute("newApplication") Application newApplication, Model model, HttpSession session){
-
+        preferencesService.updatePreferences(newApplication);
         return "admin/configureapplication";
     }
 

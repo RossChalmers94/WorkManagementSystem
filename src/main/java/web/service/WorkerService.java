@@ -10,4 +10,8 @@ public interface WorkerService {
     void insertWorker(Worker worker, User user);
 
     Worker getWorkerDetails(User user);
+
+    Worker getFreelancerMatch(User user);
+
+    Worker getEmployerMatch(User user);
 }

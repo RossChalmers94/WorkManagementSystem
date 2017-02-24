@@ -1,6 +1,7 @@
 package web.repository;
 
 import java.util.*;
+import web.domain.*;
 
 /**
  * Created by RossChalmers on 20/02/2017.
@@ -17,4 +18,6 @@ public interface WorkerDAO {
     Map<String, Object> updateEmployer(String storedProc, Map<String, Object> inParameters);
     Map<String, Object> updateFreelancer(String storedProc, Map<String, Object> inParameters);
     List<Integer> getSkills(String storedProc, int id);
+    List<Worker> getFreelancers();
+    List<Worker> getEmployers();
 }

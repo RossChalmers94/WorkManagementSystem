@@ -14,5 +14,6 @@ public interface PreferencesService {
     List<Salary> getSalarys();
     List<JobLength> getJobLengths();
     Admin getAdmin();
+    void updatePreferences(Application application);
 
 }

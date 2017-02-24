@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
 
     public void insertUser(User user) {
         Map<String, String> userDetails = new HashMap<String,String>();
-        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername().toString());
-        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword().toString());
-        userDetails.put(UserDetails.USER_ROLE.getValue(), user.getRole().toString());
+        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername().trim());
+        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword().trim());
+        userDetails.put(UserDetails.USER_ROLE.getValue(), user.getRole());
         userDAO.insert("insert_user", userDetails);
     }
 
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
         boolean check = false;
         Map<String, String> userDetails = new HashMap<String, String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        Map<String, Object> out = userDAO.get("check_username", userDetails);
+        Map<String, Object> out = userDAO.getUsername("check_username", userDetails);
         int value = (Integer) out.get(UserDetails.USER_VALUE.getValue());
         if(value == 1){
             check = true;

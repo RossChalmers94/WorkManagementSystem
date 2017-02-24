@@ -1,6 +1,7 @@
 package web.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlTypeValue;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -10,6 +11,7 @@ import web.enumconstants.WorkerDetails;
 
 import javax.sql.DataSource;
 import java.util.*;
+import web.domain.*;
 
 /**
  * Created by RossChalmers on 20/02/2017.
@@ -17,16 +19,9 @@ import java.util.*;
 public class WorkerDAOImpl implements WorkerDAO {
 
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcCall insertFreelancer;
-    private SimpleJdbcCall insertEmployer;
-    private SimpleJdbcCall insertFreelancerSkills;
-    private SimpleJdbcCall insertEmployerSkills;
-    private SimpleJdbcCall deleteFreelancerSkills;
-    private SimpleJdbcCall deleteEmployerSkills;
-    private SimpleJdbcCall getFreelancerDetails;
-    private SimpleJdbcCall getEmployerDetails;
-    private SimpleJdbcCall updateEmployerDetails;
-    private SimpleJdbcCall updateFreelancerDetails;
+    private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills, deleteFreelancerSkills,
+            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
+            getFreelancers, getEmployers;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -41,6 +36,8 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.getEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
+        this.getFreelancers = new SimpleJdbcCall(jdbcTemplate);
+        this.getEmployers = new SimpleJdbcCall(jdbcTemplate);
     }
 
     public Map<String, Object> insertFreelancer(String storedProc, Map<String, Object> inParameters) {
@@ -122,6 +119,36 @@ public class WorkerDAOImpl implements WorkerDAO {
     public List<Integer> getSkills(String storedProc, int id) {
         List<Integer> get = this.jdbcTemplate.queryForList(storedProc, Integer.class, id);
         return get;
+    }
+
+    public List<Worker> getFreelancers(){
+        List<Worker> freelancers = getWorkers("SELECT freelancerID, salary, location, " +
+                "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL", WorkerDetails.FREELANCER_ID.getValue());
+        return freelancers;
+
+    }
+
+    public List<Worker> getEmployers(){
+        List<Worker> employers = getWorkers("SELECT employerID, salary, location, " +
+                "jobLength, rating, minimumMatch FROM employer WHERE jobMatch IS NULL", WorkerDetails.EMPLOYER_ID.getValue());
+        return employers;
+    }
+
+    private List<Worker> getWorkers(String storedProc, String parameterName){
+        List<Map<String, Object>> allWorkers = this.jdbcTemplate.queryForList(storedProc);
+        List<Worker> workers = new ArrayList<Worker>();
+        for(int i = 0; i < allWorkers.size(); i++){
+            Worker worker = new Worker();
+            worker.setWorkerID((Integer) allWorkers.get(i).get(parameterName));
+            worker.setSalary((Integer) allWorkers.get(i).get(WorkerDetails.SALARY.getValue()));
+            worker.setLocation((Integer) allWorkers.get(i).get(WorkerDetails.LOCATION.getValue()));
+            worker.setJobLength((Integer) allWorkers.get(i).get(WorkerDetails.JOB_LENGTH.getValue()));
+            worker.setRating((Integer) allWorkers.get(i).get(WorkerDetails.RATING.getValue()));
+            worker.setMinimumMatch((Integer) allWorkers.get(i).get(WorkerDetails.MINIMUM_MATCH.getValue()));
+            workers.add(worker);
+        }
+
+        return workers;
     }
 }
 
