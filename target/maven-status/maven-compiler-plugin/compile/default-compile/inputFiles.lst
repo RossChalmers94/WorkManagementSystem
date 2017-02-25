@@ -23,12 +23,14 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Location.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Salary.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/PreferenceDetails.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/Match.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/UserServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Skill.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/UserService.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/WorkerDAOImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/PreferencesServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/WorkerService.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/MatchDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/AdminDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/WorkerDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/UserDAO.java

@@ -162,7 +162,7 @@ public class WorkerServiceImpl implements WorkerService {
         return skillList;
     }
 
-    public Worker getEmployerMatch(User user) {
+    public Match getEmployerMatch(User user) {
 
         Worker currentWorker = new Worker();
         Map<String, Object> out = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
@@ -171,10 +171,11 @@ public class WorkerServiceImpl implements WorkerService {
         currentWorker.setWorkerID(user.getEmployerID());
         currentWorker.setSkill(getEmployerSkills(user.getEmployerID()));
 
-        return getMatch(out, workers, currentWorker);
+        Worker forProcess = getMatch(out, workers, currentWorker);
+        return workerDAO.getMatch(forProcess);
     }
 
-    public Worker getFreelancerMatch(User user){
+    public Match getFreelancerMatch(User user){
         Worker currentWorker = new Worker();
         Map<String, Object> out = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
         List<Worker> workers = workerDAO.getEmployers();
@@ -182,7 +183,8 @@ public class WorkerServiceImpl implements WorkerService {
         currentWorker.setWorkerID(user.getFreelancerID());
         currentWorker.setSkill(getFreelancerSkills(user.getFreelancerID()));
 
-        return getMatch(out, workers, currentWorker);
+        Worker forProcess = getMatch(out, workers, currentWorker);
+        return workerDAO.getMatch(forProcess);
     }
 
     private Worker getMatch(Map<String, Object> workerDetails, List<Worker> workers, Worker currentWorker){

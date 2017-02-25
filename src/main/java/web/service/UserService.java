@@ -24,4 +24,8 @@ public interface UserService {
 
      Admin getAdminLogIn(User user);
 
+     User getUserByEmployer(int id);
+
+     User getUserByFreelancer(int id);
+
 }

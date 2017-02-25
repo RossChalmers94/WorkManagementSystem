@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import web.service.UserService;
 import web.service.WorkerService;
 import web.domain.User;
+import web.domain.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,9 +27,15 @@ public class MatchController {
     public String viewEmployerPreferences(Model model, HttpSession session){
         User user = (User) session.getAttribute("currentUser");
         if(user.getEmployerID() != 0){
-            model.addAttribute("worker", workerService.getEmployerMatch(user));
+            Match match = workerService.getEmployerMatch(user);
+            model.addAttribute("match", match);
+            User userMatch = userService.getUserByFreelancer(match.getMatchID());
+            model.addAttribute("userMatch", userMatch);
         } else if (user.getFreelancerID() != 0){
-            model.addAttribute("worker", workerService.getFreelancerMatch(user));
+            Match match = workerService.getFreelancerMatch(user);
+            model.addAttribute("match", match);
+            User userMatch = userService.getUserByEmployer(match.getMatchID());
+            model.addAttribute("userMatch", userMatch);
         }
 
         return "user/match";

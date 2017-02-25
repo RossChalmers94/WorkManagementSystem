@@ -13,66 +13,79 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>First Name:</label>
+            ${userMatch.firstname}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Last Name:</label>
+            ${userMatch.lastname}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Contact Telephone No:</label>
+            ${userMatch.telephone}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Email Address:</label>
+            ${userMatch.emailaddress}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Address:</label>
+            ${userMatch.address}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Postcode:</label>
+            ${userMatch.postcode}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Town/City:</label>
+            ${userMatch.towncity}
         </div>
+        <c:if test="${currentUser.role == 'Freelancer'}">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Company:</label>
+            ${userMatch.company}
         </div>
+        </c:if>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h2 class="text-left">Preferences</h2>
         </div>
+        <c:if test="${currentUser.role == 'Freelancer'}">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Job Title:</label>
+            ${match.jobTitle}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Job Description:</label>
+            ${match.jobDescription}
         </div>
+        </c:if>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Skills:</label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Location:</label>
-            ${worker.location}
+            ${match.location}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Salary (£):</label>
-            ${worker.salary}
+            ${match.salary}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Maximum Time to Complete Work:</label>
-            ${worker.jobLength}
+            ${match.jobLength}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Previous Rating:</label>
-            ${worker.rating}
+            ${match.rating}
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <a class="contact btn btn-default" href="mailto:${match.emailaddress}">Contact</a>
+            <a class="contact btn btn-default" href="mailto:">Contact</a>
             <a class="contact btn btn-default" href="userhome">Back</a>
         </div>
     </div>
-    ${worker.compareValue}
 </div>
 </div>
 </body>

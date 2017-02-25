@@ -1,7 +1,5 @@
 package web.domain;
 
-import com.sun.istack.internal.NotNull;
-import web.domain.application.Application;
 import java.util.*;
 
 /**
@@ -25,7 +23,7 @@ public class Worker {
     public Worker(){
 
     }
-    @NotNull
+
     public String getJobTitle(){
         return jobTitle;
     }
@@ -120,11 +118,8 @@ public class Worker {
         if(this.jobLength == worker.getJobLength()){
             counter = counter + 1;
         }
-        if(this.rating == worker.getRating()){
-            counter = counter + 1;
-        }
 
-        int percentage = (counter/4) * 100;
+        int percentage = (counter/3) * 100;
         return percentage;
     }
 

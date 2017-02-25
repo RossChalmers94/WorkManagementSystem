@@ -11,7 +11,7 @@ public interface WorkerService {
 
     Worker getWorkerDetails(User user);
 
-    Worker getFreelancerMatch(User user);
+    Match getFreelancerMatch(User user);
 
-    Worker getEmployerMatch(User user);
+    Match getEmployerMatch(User user);
 }

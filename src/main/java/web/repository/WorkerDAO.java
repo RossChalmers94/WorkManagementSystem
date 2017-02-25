@@ -20,4 +20,5 @@ public interface WorkerDAO {
     List<Integer> getSkills(String storedProc, int id);
     List<Worker> getFreelancers();
     List<Worker> getEmployers();
+    Match getMatch(Worker worker);
 }

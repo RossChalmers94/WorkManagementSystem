@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.SqlTypeValue;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import web.enumconstants.MatchDetails;
 import web.enumconstants.WorkerDetails;
 
 import javax.sql.DataSource;
@@ -21,7 +22,7 @@ public class WorkerDAOImpl implements WorkerDAO {
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills, deleteFreelancerSkills,
             deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
-            getFreelancers, getEmployers;
+            getSkill, getLocation, getSalary, getJobLength;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -36,8 +37,10 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.getEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
-        this.getFreelancers = new SimpleJdbcCall(jdbcTemplate);
-        this.getEmployers = new SimpleJdbcCall(jdbcTemplate);
+        this.getSkill = new SimpleJdbcCall(jdbcTemplate);
+        this.getLocation = new SimpleJdbcCall(jdbcTemplate);
+        this.getSalary = new SimpleJdbcCall(jdbcTemplate);
+        this.getJobLength = new SimpleJdbcCall(jdbcTemplate);
     }
 
     public Map<String, Object> insertFreelancer(String storedProc, Map<String, Object> inParameters) {
@@ -130,7 +133,7 @@ public class WorkerDAOImpl implements WorkerDAO {
 
     public List<Worker> getEmployers(){
         List<Worker> employers = getWorkers("SELECT employerID, salary, location, " +
-                "jobLength, rating, minimumMatch FROM employer WHERE jobMatch IS NULL", WorkerDetails.EMPLOYER_ID.getValue());
+                "jobLength, jobTitle, jobDescription FROM employer WHERE jobMatch IS NULL", WorkerDetails.EMPLOYER_ID.getValue());
         return employers;
     }
 
@@ -143,12 +146,56 @@ public class WorkerDAOImpl implements WorkerDAO {
             worker.setSalary((Integer) allWorkers.get(i).get(WorkerDetails.SALARY.getValue()));
             worker.setLocation((Integer) allWorkers.get(i).get(WorkerDetails.LOCATION.getValue()));
             worker.setJobLength((Integer) allWorkers.get(i).get(WorkerDetails.JOB_LENGTH.getValue()));
-            worker.setRating((Integer) allWorkers.get(i).get(WorkerDetails.RATING.getValue()));
-            worker.setMinimumMatch((Integer) allWorkers.get(i).get(WorkerDetails.MINIMUM_MATCH.getValue()));
+            if(parameterName.equals(WorkerDetails.EMPLOYER_ID.getValue())){
+                worker.setJobTitle((String) allWorkers.get(i).get(WorkerDetails.JOB_TITLE.getValue()));
+                worker.setJobDescription((String) allWorkers.get(i).get(WorkerDetails.JOB_DESCRIPTION.getValue()));
+            }
             workers.add(worker);
         }
 
         return workers;
+    }
+
+    public Match getMatch(Worker worker){
+        Match match = new Match();
+        match.setMatchID(worker.getWorkerID());
+        match.setSalary(getSalary(worker.getSalary()));
+        match.setLocation(getLocation(worker.getLocation()));
+        match.setJobLength(getJobLength(worker.getJobLength()));
+        match.setJobTitle(worker.getJobTitle());
+        match.setJobDescription(worker.getJobDescription());
+        return match;
+    }
+
+    private String getSalary(int salaryID){
+        getSalary.withProcedureName("get_salary");
+        Map<String, Object> out = getPreferences(getSalary, MatchDetails.SALARY_ID.getValue(), salaryID);
+        return (String) out.get("salaryMinValue") + " - " + out.get("salaryMaxValue");
+    }
+
+    private String getLocation(int locationID){
+        getLocation.withProcedureName("get_location");
+        Map<String, Object> out = getPreferences(getLocation, MatchDetails.LOCATION_ID.getValue(), locationID);
+        return (String) out.get("locationName");
+    }
+
+    private String getJobLength(int jobLengthID){
+        getJobLength.withProcedureName("get_joblength");
+        Map<String, Object> out = getPreferences(getJobLength, MatchDetails.JOB_LENGTH_ID.getValue(),jobLengthID);
+        return (String) out.get("jobLengthMin") + " - " + (String) out.get("jobLengthMax");
+    }
+
+    private String getSkill(int skillID){
+        getSkill.withProcedureName("get_skill");
+        Map<String, Object> out = getPreferences(getSkill, MatchDetails.SKILL_ID.getValue(), skillID);
+        return (String) out.get("skillName");
+    }
+
+    private Map<String, Object> getPreferences(SimpleJdbcCall simpleJdbcCall, String parameterName, int id){
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(parameterName, id);
+        Map<String, Object> out = simpleJdbcCall.execute(in);
+        return out;
     }
 }
 
