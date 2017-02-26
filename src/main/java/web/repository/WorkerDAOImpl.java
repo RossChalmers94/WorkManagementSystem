@@ -21,8 +21,7 @@ public class WorkerDAOImpl implements WorkerDAO {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills, deleteFreelancerSkills,
-            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
-            getSkill, getLocation, getSalary, getJobLength;
+            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -37,26 +36,22 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.getEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
-        this.getSkill = new SimpleJdbcCall(jdbcTemplate);
-        this.getLocation = new SimpleJdbcCall(jdbcTemplate);
-        this.getSalary = new SimpleJdbcCall(jdbcTemplate);
-        this.getJobLength = new SimpleJdbcCall(jdbcTemplate);
     }
 
-    public Map<String, Object> insertFreelancer(String storedProc, Map<String, Object> inParameters) {
+    public int insertFreelancer(String storedProc, Map<String, Object> inParameters) {
         insertFreelancer.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map<String, Object> out = insertFreelancer.execute(in);
-        return out;
+        return (Integer) out.get(WorkerDetails.FREELANCER_ID.getValue());
     }
 
-    public Map<String, Object> insertEmployer(String storedProc, Map<String, Object> inParameters) {
+    public int insertEmployer(String storedProc, Map<String, Object> inParameters) {
         insertEmployer.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map<String, Object> out = insertEmployer.execute(in);
-        return out;
+        return (Integer) out.get(WorkerDetails.EMPLOYER_ID.getValue());
     }
 
     public void insertFreelancerSkills(String storedProc, Map<String, Object> inParameters) {
@@ -87,36 +82,36 @@ public class WorkerDAOImpl implements WorkerDAO {
         deleteEmployerSkills.execute(in);
     }
 
-    public Map<String, Object> getEmployer(String storedProc, int employerID) {
+    public Worker getEmployer(String storedProc, int employerID) {
         getEmployerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
         Map<String, Object> out = getEmployerDetails.execute(in);
-        return out;
+        List<Integer> skills = getSkills("SELECT skillID FROM skill_set WHERE employerID = ?", employerID);
+        return configWorker(out, skills);
     }
 
-    public Map<String, Object> getFreelancer(String storedProc, int freelancerID) {
+    public Worker getFreelancer(String storedProc, int freelancerID) {
         getFreelancerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
         Map<String, Object> out = getFreelancerDetails.execute(in);
-        return out;
+        List<Integer> skills = getSkills("SELECT skillID FROM skill_set WHERE freelancerID = ?", freelancerID);
+        return configWorker(out, skills);
     }
 
-    public Map<String, Object> updateEmployer(String storedProc, Map<String, Object> inParameters) {
+    public void updateEmployer(String storedProc, Map<String, Object> inParameters) {
         updateEmployerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
-        Map<String, Object> out = updateEmployerDetails.execute(in);
-        return out;
+        updateEmployerDetails.execute(in);
     }
 
-    public Map<String, Object> updateFreelancer(String storedProc, Map<String, Object> inParameters) {
+    public void updateFreelancer(String storedProc, Map<String, Object> inParameters) {
         updateFreelancerDetails.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
-        Map<String, Object> out = updateFreelancerDetails.execute(in);
-        return out;
+        updateFreelancerDetails.execute(in);
     }
 
     public List<Integer> getSkills(String storedProc, int id) {
@@ -124,78 +119,27 @@ public class WorkerDAOImpl implements WorkerDAO {
         return get;
     }
 
-    public List<Worker> getFreelancers(){
-        List<Worker> freelancers = getWorkers("SELECT freelancerID, salary, location, " +
-                "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL", WorkerDetails.FREELANCER_ID.getValue());
-        return freelancers;
-
-    }
-
-    public List<Worker> getEmployers(){
-        List<Worker> employers = getWorkers("SELECT employerID, salary, location, " +
-                "jobLength, jobTitle, jobDescription FROM employer WHERE jobMatch IS NULL", WorkerDetails.EMPLOYER_ID.getValue());
-        return employers;
-    }
-
-    private List<Worker> getWorkers(String storedProc, String parameterName){
-        List<Map<String, Object>> allWorkers = this.jdbcTemplate.queryForList(storedProc);
-        List<Worker> workers = new ArrayList<Worker>();
-        for(int i = 0; i < allWorkers.size(); i++){
-            Worker worker = new Worker();
-            worker.setWorkerID((Integer) allWorkers.get(i).get(parameterName));
-            worker.setSalary((Integer) allWorkers.get(i).get(WorkerDetails.SALARY.getValue()));
-            worker.setLocation((Integer) allWorkers.get(i).get(WorkerDetails.LOCATION.getValue()));
-            worker.setJobLength((Integer) allWorkers.get(i).get(WorkerDetails.JOB_LENGTH.getValue()));
-            if(parameterName.equals(WorkerDetails.EMPLOYER_ID.getValue())){
-                worker.setJobTitle((String) allWorkers.get(i).get(WorkerDetails.JOB_TITLE.getValue()));
-                worker.setJobDescription((String) allWorkers.get(i).get(WorkerDetails.JOB_DESCRIPTION.getValue()));
-            }
-            workers.add(worker);
+    public static Worker configWorker(Map<String, Object> out, List<Integer> skills){
+        Worker worker = new Worker();
+        if(out.containsKey(WorkerDetails.FREELANCER_ID.getValue())){
+            worker.setWorkerID((Integer)out.get(WorkerDetails.FREELANCER_ID.getValue()));
+        } else if(out.containsKey(WorkerDetails.EMPLOYER_ID.getValue())){
+            worker.setWorkerID((Integer) out.get(WorkerDetails.EMPLOYER_ID.getValue()));
+        }
+        worker.setSalary((Integer) out.get(WorkerDetails.SALARY.getValue()));
+        worker.setLocation((Integer) out.get(WorkerDetails.LOCATION.getValue()));
+        worker.setJobLength((Integer) out.get(WorkerDetails.JOB_LENGTH.getValue()));
+        worker.setRating((Integer) out.get(WorkerDetails.RATING.getValue()));
+        worker.setRelaxPreferences((Integer) out.get(WorkerDetails.RELAX_PREFERENCES.getValue()));
+        worker.setMinimumMatch((Integer) out.get(WorkerDetails.MINIMUM_MATCH.getValue()));
+        worker.setJobTitle((String) out.get(WorkerDetails.JOB_TITLE.getValue()));
+        worker.setJobDescription((String) out.get(WorkerDetails.JOB_DESCRIPTION.getValue()));
+        worker.setSkill(skills);
+        if(out.get(WorkerDetails.JOB_MATCH.getValue()) != null){
+            worker.setJobMatch((Integer) out.get(WorkerDetails.JOB_MATCH.getValue()));
         }
 
-        return workers;
-    }
-
-    public Match getMatch(Worker worker){
-        Match match = new Match();
-        match.setMatchID(worker.getWorkerID());
-        match.setSalary(getSalary(worker.getSalary()));
-        match.setLocation(getLocation(worker.getLocation()));
-        match.setJobLength(getJobLength(worker.getJobLength()));
-        match.setJobTitle(worker.getJobTitle());
-        match.setJobDescription(worker.getJobDescription());
-        return match;
-    }
-
-    private String getSalary(int salaryID){
-        getSalary.withProcedureName("get_salary");
-        Map<String, Object> out = getPreferences(getSalary, MatchDetails.SALARY_ID.getValue(), salaryID);
-        return (String) out.get("salaryMinValue") + " - " + out.get("salaryMaxValue");
-    }
-
-    private String getLocation(int locationID){
-        getLocation.withProcedureName("get_location");
-        Map<String, Object> out = getPreferences(getLocation, MatchDetails.LOCATION_ID.getValue(), locationID);
-        return (String) out.get("locationName");
-    }
-
-    private String getJobLength(int jobLengthID){
-        getJobLength.withProcedureName("get_joblength");
-        Map<String, Object> out = getPreferences(getJobLength, MatchDetails.JOB_LENGTH_ID.getValue(),jobLengthID);
-        return (String) out.get("jobLengthMin") + " - " + (String) out.get("jobLengthMax");
-    }
-
-    private String getSkill(int skillID){
-        getSkill.withProcedureName("get_skill");
-        Map<String, Object> out = getPreferences(getSkill, MatchDetails.SKILL_ID.getValue(), skillID);
-        return (String) out.get("skillName");
-    }
-
-    private Map<String, Object> getPreferences(SimpleJdbcCall simpleJdbcCall, String parameterName, int id){
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValue(parameterName, id);
-        Map<String, Object> out = simpleJdbcCall.execute(in);
-        return out;
+        return worker;
     }
 }
 

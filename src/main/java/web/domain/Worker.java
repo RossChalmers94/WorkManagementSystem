@@ -16,8 +16,9 @@ public class Worker {
     private int relaxPreferences;
     private int rating;
     private int minimumMatch;
-    private int workerID;
-    private int compareValue;
+    private int jobMatch = 0;
+    private int workerID = 0;
+    private float compareValue;
 
 
     public Worker(){
@@ -104,9 +105,9 @@ public class Worker {
         this.workerID = workerID;
     }
 
-    public int compareTo(Worker worker){
+    public float compareTo(Worker worker){
 
-        int counter = 0;
+        float counter = 0;
 
         if(this.salary == worker.getSalary()){
             counter = counter + 1;
@@ -119,17 +120,30 @@ public class Worker {
             counter = counter + 1;
         }
 
-        int percentage = (counter/3) * 100;
+        for(int i = 0; i < this.getSkill().size(); i++){
+            int skill = this.getSkill().get(i);
+            if(worker.getSkill().contains(skill)){
+                counter = counter + 1;
+            }
+        }
+        float size = (this.getSkill().size() + 3);
+        float percentage = (counter/size) * 100;
         return percentage;
     }
 
-    public int getCompareValue(){
+    public float getCompareValue(){
         return compareValue;
     }
 
-    public void setCompareValue(int compareValue){
+    public void setCompareValue(float compareValue){
         this.compareValue = compareValue;
     }
 
+    public int getJobMatch() {
+        return jobMatch;
+    }
 
+    public void setJobMatch(int jobMatch) {
+        this.jobMatch = jobMatch;
+    }
 }

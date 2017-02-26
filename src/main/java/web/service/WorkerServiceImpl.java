@@ -24,7 +24,9 @@ public class WorkerServiceImpl implements WorkerService {
     @Autowired
     private UserDAO userDAO;
 
-    public void insertWorker(Worker worker, User user) {
+    public int insertWorker(Worker worker, User user) {
+
+        int workerID = 0;
 
         Map<String, Object> inParameters = new HashMap<String, Object>();
         inParameters.put(WorkerDetails.SALARY.getValue(), worker.getSalary());
@@ -37,14 +39,16 @@ public class WorkerServiceImpl implements WorkerService {
         if (user.getRole().equals("Employer")) {
             inParameters.put(WorkerDetails.JOB_TITLE.getValue(), worker.getJobTitle());
             inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), worker.getJobDescription());
-            insertEmployer(user, inParameters, worker.getSkill());
+            workerID = insertEmployer(user, inParameters, worker.getSkill());
         } else if (user.getRole().equals("Freelancer")) {
-            insertFreelancer(user, inParameters, worker.getSkill());
+            workerID = insertFreelancer(user, inParameters, worker.getSkill());
         }
+
+        return workerID;
     }
 
     // Insert a Employer's preferences and then add their employerID to the users table
-    private void insertEmployer(User user, Map<String, Object> inParameters, List<Integer> skills) {
+    private int insertEmployer(User user, Map<String, Object> inParameters, List<Integer> skills) {
 
         int employerID;
 
@@ -53,8 +57,7 @@ public class WorkerServiceImpl implements WorkerService {
             workerDAO.updateEmployer("update_employer_details", inParameters);
             employerID = user.getEmployerID();
         } else {
-            Map<String, Object> out = workerDAO.insertEmployer("insert_employer", inParameters);
-            employerID = (Integer) out.get(WorkerDetails.EMPLOYER_ID.getValue());
+            employerID = workerDAO.insertEmployer("insert_employer", inParameters);
             // Insert EmployerID into row that corresponds to the User in the Users table
             Map<String, Object> userParameters = new HashMap<String, Object>();
             userParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
@@ -64,10 +67,11 @@ public class WorkerServiceImpl implements WorkerService {
 
         // Insert Employer Skills
         insertEmployerSkills(employerID, skills);
+        return employerID;
     }
 
     // Insert a Freelancer's preferences and then add their freelancerID to the users table
-    private void insertFreelancer(User user, Map<String, Object> inParameters, List<Integer> skills) {
+    private int insertFreelancer(User user, Map<String, Object> inParameters, List<Integer> skills) {
 
         int freelancerID;
 
@@ -77,8 +81,7 @@ public class WorkerServiceImpl implements WorkerService {
             freelancerID = user.getFreelancerID();
         } else {
             //Insert Freelancer Details. Return freelancerID
-            Map<String, Object> out = workerDAO.insertFreelancer("insert_freelancer", inParameters);
-            freelancerID = (Integer) out.get(WorkerDetails.FREELANCER_ID.getValue());
+            freelancerID = workerDAO.insertFreelancer("insert_freelancer", inParameters);
 
             //Insert FreelancerID into row that corresponds to the User in the Users table
             Map<String, Object> userParameters = new HashMap<String, Object>();
@@ -89,6 +92,7 @@ public class WorkerServiceImpl implements WorkerService {
 
         //Insert Freelancer Skills
         insertFreelancerSkills(freelancerID, skills);
+        return freelancerID;
     }
 
     // Insert an Employer's skill set
@@ -127,28 +131,11 @@ public class WorkerServiceImpl implements WorkerService {
     public Worker getWorkerDetails(User user) {
 
         Worker worker = new Worker();
-        Map<String, Object> out = new HashMap<String, Object>();
-        List<Integer> skills = new ArrayList<Integer>();
         if (user.getEmployerID() != 0) {
-            out = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
-            skills = getEmployerSkills(user.getEmployerID());
+            worker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
         } else if (user.getFreelancerID() != 0) {
-            out = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
-            skills = getFreelancerSkills(user.getFreelancerID());
+            worker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
         }
-
-        if (!out.values().isEmpty()) {
-            worker.setSalary((Integer) out.get(WorkerDetails.SALARY.getValue()));
-            worker.setLocation((Integer) out.get(WorkerDetails.LOCATION.getValue()));
-            worker.setJobLength((Integer) out.get(WorkerDetails.JOB_LENGTH.getValue()));
-            worker.setRating((Integer) out.get(WorkerDetails.RATING.getValue()));
-            worker.setRelaxPreferences((Integer) out.get(WorkerDetails.RELAX_PREFERENCES.getValue()));
-            worker.setMinimumMatch((Integer) out.get(WorkerDetails.MINIMUM_MATCH.getValue()));
-            worker.setJobTitle((String) out.get(WorkerDetails.JOB_TITLE.getValue()));
-            worker.setJobDescription((String) out.get(WorkerDetails.JOB_DESCRIPTION.getValue()));
-            worker.setSkill(skills);
-        }
-
         return worker;
     }
 
@@ -160,61 +147,5 @@ public class WorkerServiceImpl implements WorkerService {
     private List<Integer> getFreelancerSkills(int freelancerID) {
         List<Integer> skillList = workerDAO.getSkills("SELECT skillID FROM skill_set WHERE freelancerID = ?", freelancerID);
         return skillList;
-    }
-
-    public Match getEmployerMatch(User user) {
-
-        Worker currentWorker = new Worker();
-        Map<String, Object> out = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
-        List<Worker> workers = workerDAO.getFreelancers();
-
-        currentWorker.setWorkerID(user.getEmployerID());
-        currentWorker.setSkill(getEmployerSkills(user.getEmployerID()));
-
-        Worker forProcess = getMatch(out, workers, currentWorker);
-        return workerDAO.getMatch(forProcess);
-    }
-
-    public Match getFreelancerMatch(User user){
-        Worker currentWorker = new Worker();
-        Map<String, Object> out = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
-        List<Worker> workers = workerDAO.getEmployers();
-
-        currentWorker.setWorkerID(user.getFreelancerID());
-        currentWorker.setSkill(getFreelancerSkills(user.getFreelancerID()));
-
-        Worker forProcess = getMatch(out, workers, currentWorker);
-        return workerDAO.getMatch(forProcess);
-    }
-
-    private Worker getMatch(Map<String, Object> workerDetails, List<Worker> workers, Worker currentWorker){
-
-        List<Worker> possibleMatches = new ArrayList<Worker>();
-        Worker worker = new Worker();
-
-        currentWorker.setSalary((Integer) workerDetails.get(WorkerDetails.SALARY.getValue()));
-        currentWorker.setLocation((Integer) workerDetails.get(WorkerDetails.LOCATION.getValue()));
-        currentWorker.setJobLength((Integer) workerDetails.get(WorkerDetails.JOB_LENGTH.getValue()));
-        currentWorker.setRating((Integer) workerDetails.get(WorkerDetails.RATING.getValue()));
-        currentWorker.setMinimumMatch((Integer) workerDetails.get(WorkerDetails.MINIMUM_MATCH.getValue()));
-
-        for (int i = 0; i < workers.size(); i++) {
-            int compareWorkers = currentWorker.compareTo(workers.get(i));
-            if (compareWorkers > currentWorker.getMinimumMatch()) {
-                Worker possibleWorker = workers.get(i);
-                possibleWorker.setCompareValue(compareWorkers);
-                possibleMatches.add(possibleWorker);
-            }
-        }
-
-        int counter = 0;
-        for (int j = 0; j < possibleMatches.size(); j++) {
-            if (possibleMatches.get(j).getCompareValue() > counter) {
-                counter = possibleMatches.get(j).getCompareValue();
-                worker = possibleMatches.get(j);
-            }
-        }
-
-        return worker;
     }
 }

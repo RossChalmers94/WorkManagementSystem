@@ -148,7 +148,14 @@
         ${user.employerID}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <c:if test="${newWorker.jobMatch == 0}">
                 <input type="submit" class="btn btn-default" value="Confirm">
+                </c:if>
+                <c:if test="${newWorker.jobMatch != 0}">
+                    <a class="contact btn btn-default" href="match">View Current Match</a>
+                    <a class="contact btn btn-default" href="userhome">Back</a>
+                    ${newWorker.jobMatch}
+                </c:if>
             </div>
         </div>
     </form:form>

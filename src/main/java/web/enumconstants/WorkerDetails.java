@@ -13,7 +13,7 @@ public enum WorkerDetails {
     RELAX_PREFERENCES("relaxPreferences"),
     RATING("rating"),
     SKILL_ID("skillID"),
-    JOB_MATCH("job_match"),
+    JOB_MATCH("jobMatch"),
     JOB_TITLE("jobTitle"),
     JOB_DESCRIPTION("jobDescription"),
     MINIMUM_MATCH("minimumMatch");

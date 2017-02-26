@@ -40,7 +40,13 @@ public class PreferencesController {
     @RequestMapping(path = "/user/preferences", method= RequestMethod.POST)
     public String confirmPreferences(@ModelAttribute("newWorker") Worker newWorker, Model model, HttpSession session){
         User user = (User) session.getAttribute("currentUser");
-        workerService.insertWorker(newWorker, user);
+        int workerID = workerService.insertWorker(newWorker, user);
+        if(user.getRole().equals("Employer")){
+            user.setEmployerID(workerID);
+        } else if(user.getRole().equals("Freelancer")){
+            user.setFreelancerID(workerID);
+        }
+        session.setAttribute("currentWorker", newWorker);
         return "redirect:/user/match";
     }
 }

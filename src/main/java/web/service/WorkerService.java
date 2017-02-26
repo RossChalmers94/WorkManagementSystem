@@ -7,11 +7,7 @@ import web.domain.*;
  */
 public interface WorkerService {
 
-    void insertWorker(Worker worker, User user);
+    int insertWorker(Worker worker, User user);
 
     Worker getWorkerDetails(User user);
-
-    Match getFreelancerMatch(User user);
-
-    Match getEmployerMatch(User user);
 }

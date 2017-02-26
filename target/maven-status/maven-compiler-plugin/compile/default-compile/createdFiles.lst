@@ -7,6 +7,8 @@ web/enumconstants/PreferenceDetails.class
 web/domain/application/Salary.class
 web/domain/application/Rating.class
 web/domain/application/JobLength.class
+web/repository/MatchDAO.class
+web/repository/MatchDAOImpl.class
 web/domain/User.class
 web/repository/UserDAOImpl.class
 web/controllers/AdminController.class
@@ -17,6 +19,7 @@ web/domain/Match.class
 web/controllers/CreateAccountController.class
 web/service/PreferencesService.class
 web/service/PreferencesServiceImpl.class
+web/service/MatchServiceImpl.class
 web/repository/WorkerDAO.class
 web/repository/PreferencesDAOImpl.class
 web/domain/application/Application.class
@@ -29,6 +32,7 @@ web/service/UserServiceImpl.class
 web/domain/Freelancer.class
 web/service/WorkerServiceImpl.class
 web/domain/application/Admin.class
+web/service/MatchService.class
 web/service/UserService.class
 web/repository/WorkerDAOImpl.class
 web/domain/Worker.class

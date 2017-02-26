@@ -62,6 +62,7 @@
         </c:if>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Skills:</label>
+            ${match.skills}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Location:</label>
@@ -82,7 +83,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <a class="contact btn btn-default" href="mailto:">Contact</a>
+            <a class="contact btn btn-default" href="mailto:${userMatch.emailaddress}">Contact</a>
             <a class="contact btn btn-default" href="userhome">Back</a>
         </div>
     </div>
