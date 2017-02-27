@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import web.domain.*;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 /**
  * Created by RossChalmers on 09/02/2017.
@@ -38,25 +40,27 @@ public class LoginController {
         return page;
     }
     @RequestMapping(path = "/login", method= RequestMethod.POST)
-    public String confirmEmployerPreferences(@ModelAttribute("loginUser") User loginUser, Model model, HttpSession session){
+    public String confirmEmployerPreferences(@Valid @ModelAttribute("loginUser") User loginUser, Model model, BindingResult result, HttpSession session){
 
-        String page = "login";
-        boolean login = userService.checkUserLogIn(loginUser);
-        if(login){
-            User currentUser = userService.getLogIn(loginUser);
-            session.setAttribute("currentUser", currentUser);
-            page = "redirect:/user/userhome";
-        }
-        else if(loginUser.getUsername().equals("admin")) {
-            boolean adminLogIn = userService.checkAdminLogIn(loginUser);
-            if (adminLogIn) {
-                Admin admin = userService.getAdminLogIn(loginUser);
-                session.setAttribute("adminUser", admin);
-                page = "redirect:/admin/adminhome";
+        if(!result.hasErrors()) {
+            boolean login = userService.checkUserLogIn(loginUser);
+            if (login) {
+                User currentUser = userService.getLogIn(loginUser);
+                session.setAttribute("currentUser", currentUser);
+                return "redirect:/user/userhome";
+            } else if (loginUser.getUsername().equals("admin")) {
+                boolean adminLogIn = userService.checkAdminLogIn(loginUser);
+                if (adminLogIn) {
+                    Admin admin = userService.getAdminLogIn(loginUser);
+                    session.setAttribute("adminUser", admin);
+                    return "redirect:/admin/adminhome";
+                }
             }
+        } else {
+            model.addAttribute("error", true);
         }
 
-        return page;
+        return "login";
     }
 
     @RequestMapping(path = "/logoutuser", method= RequestMethod.GET)

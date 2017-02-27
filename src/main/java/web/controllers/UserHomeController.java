@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import web.service.UserService;
 import org.springframework.ui.Model;
-import web.domain.User;
+import web.domain.*;
+import web.service.WorkerService;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,10 +19,17 @@ import javax.servlet.http.HttpSession;
 public class UserHomeController {
 
     @Autowired
-    private UserService userService;
+    private WorkerService workerService;
+
 
     @RequestMapping(path = "user/userhome", method= RequestMethod.GET)
-    public String viewEmployerPreferences(Model model){
+    public String viewEmployerPreferences(Model model, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        Worker worker = workerService.getWorkerDetails(user);
+        model.addAttribute("worker", worker);
+        if(worker.getPreviousMatch() != 0){
+            return "redirect:/user/completematch";
+        }
         return "user/userhome";
     }
 

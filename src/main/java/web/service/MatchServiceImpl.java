@@ -92,4 +92,22 @@ public class MatchServiceImpl implements MatchService {
         Worker worker = workerDAO.getEmployer("get_employer_details", employerID);
         return matchDAO.getMatch(worker);
     }
+
+    public void completeMatch(User user, int rating, int matchID){
+        if(user.getEmployerID() != 0){
+            int freelancerID = matchDAO.getEmployerMatch(matchID);
+            matchDAO.completeEmployerMatch(user.getEmployerID(), freelancerID, rating, matchID);
+        } else if(user.getFreelancerID() != 0){
+            int employerID = matchDAO.getFreelancerMatch(matchID);
+            matchDAO.completeFreelancerMatch(user.getFreelancerID(), employerID, rating, matchID);
+        }
+    }
+
+    public void setPreviousRating(User user, int rating, int id){
+        if(user.getEmployerID() != 0){
+            matchDAO.setPreviousFreelancerRating(user.getEmployerID(), id, rating);
+        } else if(user.getFreelancerID() != 0){
+            matchDAO.setPreviousEmployerRating(id, user.getFreelancerID(),rating);
+        }
+    }
 }

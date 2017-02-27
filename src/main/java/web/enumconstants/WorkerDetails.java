@@ -16,7 +16,9 @@ public enum WorkerDetails {
     JOB_MATCH("jobMatch"),
     JOB_TITLE("jobTitle"),
     JOB_DESCRIPTION("jobDescription"),
-    MINIMUM_MATCH("minimumMatch");
+    MINIMUM_MATCH("minimumMatch"),
+    PREVIOUS_RATING("previousRating"),
+    PREVIOUS_MATCH("previousMatch");
 
 
     private String value;

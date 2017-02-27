@@ -1,11 +1,15 @@
 package web.domain;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class User {
 
+    @NotNull
     private String username;
+    @NotNull(message = "You must enter a Password")
     private String password;
     private String firstname;
     private String lastname;

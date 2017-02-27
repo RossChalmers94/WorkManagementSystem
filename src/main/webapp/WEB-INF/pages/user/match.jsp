@@ -83,6 +83,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <a class="contact btn btn-default" href="completematch">Complete Match</a>
             <a class="contact btn btn-default" href="mailto:${userMatch.emailaddress}">Contact</a>
             <a class="contact btn btn-default" href="userhome">Back</a>
         </div>

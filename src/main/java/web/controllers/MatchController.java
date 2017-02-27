@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
@@ -74,14 +75,21 @@ public class MatchController {
     }
 
     @RequestMapping(path = "user/completematch", method= RequestMethod.GET)
-    public String completeMatch(Model model){
+    public String completeMatch(Model model, HttpSession session){
         Worker worker = new Worker();
         model.addAttribute("completeMatch", worker);
         return "user/completematch";
     }
 
     @RequestMapping(path = "user/completematch", method= RequestMethod.POST)
-    public String confirmCompleteMatch(){
-        return "user/completematch";
+    public String confirmCompleteMatch(@ModelAttribute("completeMatch") Worker completeMatch, Model model, HttpSession session){
+        User user = (User) session.getAttribute("currentUser");
+        Worker worker = workerService.getWorkerDetails(user);
+        if(worker.getPreviousMatch() == 0) {
+            matchService.completeMatch(user, completeMatch.getRating(), worker.getJobMatch());
+        } else if(worker.getPreviousMatch() != 0){
+            matchService.setPreviousRating(user, completeMatch.getRating(), worker.getPreviousMatch());
+        }
+        return "redirect:/user/userhome";
     }
 }

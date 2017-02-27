@@ -19,7 +19,8 @@ import web.domain.*;
 public class MatchDAOImpl implements MatchDAO {
 
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcCall getSkill, getLocation, getSalary, getJobLength, insertMatch, getEmployerMatch, getFreelancerMatch;
+    private SimpleJdbcCall getSkill, getLocation, getSalary, getJobLength, insertMatch, getEmployerMatch, getFreelancerMatch,
+    completeEmployerMatch, completeFreelancerMatch, deleteMatch, setPreviousEmployer, setPreviousFreelancer;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -31,6 +32,11 @@ public class MatchDAOImpl implements MatchDAO {
         this.insertMatch = new SimpleJdbcCall(jdbcTemplate);
         this.getEmployerMatch = new SimpleJdbcCall(jdbcTemplate);
         this.getFreelancerMatch = new SimpleJdbcCall(jdbcTemplate);
+        this.completeEmployerMatch = new SimpleJdbcCall(jdbcTemplate);
+        this.completeFreelancerMatch = new SimpleJdbcCall(jdbcTemplate);
+        this.deleteMatch = new SimpleJdbcCall(jdbcTemplate);
+        this.setPreviousEmployer = new SimpleJdbcCall(jdbcTemplate);
+        this.setPreviousFreelancer = new SimpleJdbcCall(jdbcTemplate);
     }
 
     public List<Integer> getSkills(String storedProc, int id) {
@@ -147,6 +153,51 @@ public class MatchDAOImpl implements MatchDAO {
                 .addValue("matchID", matchID);
         Map<String, Object> out = getFreelancerMatch.execute(in);
         return (Integer) out.get(WorkerDetails.EMPLOYER_ID.getValue());
+    }
+
+    public void completeEmployerMatch(int employerID, int freelancerID, int rating, int matchID){
+        completeEmployerMatch.withProcedureName("insert_previous_employer");
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID)
+                .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID)
+                .addValue("previousRating", rating);
+        completeEmployerMatch.execute(in);
+        deleteMatch(matchID);
+    }
+
+    public void completeFreelancerMatch(int freelancerID, int employerID, int rating, int matchID){
+        completeFreelancerMatch.withProcedureName("insert_previous_freelancer");
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID)
+                .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID)
+                .addValue("previousRating", rating);
+        completeFreelancerMatch.execute(in);
+        deleteMatch(matchID);
+
+    }
+
+    private void deleteMatch(int matchID){
+        deleteMatch.withProcedureName("delete_match");
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue("matchID", matchID);
+        deleteMatch.execute(in);
+    }
+
+    public void setPreviousEmployerRating(int employerID, int freelancerID, int rating){
+        setPreviousEmployer.withProcedureName("update_previous_freelancer");
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID)
+                .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID)
+                .addValue("rating", rating);
+        setPreviousEmployer.execute(in);
+    }
+    public void setPreviousFreelancerRating(int employerID, int freelancerID, int rating){
+        setPreviousFreelancer.withProcedureName("update_previous_employer");
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID)
+                .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID)
+                .addValue("rating", rating);
+        setPreviousFreelancer.execute(in);
     }
 
     private Worker configWorker(Map<String, Object> out){

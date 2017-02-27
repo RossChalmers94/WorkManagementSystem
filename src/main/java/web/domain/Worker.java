@@ -18,6 +18,8 @@ public class Worker {
     private int minimumMatch;
     private int jobMatch = 0;
     private int workerID = 0;
+    private int previousRating = 0;
+    private int previousMatch = 0;
     private float compareValue;
 
 
@@ -120,13 +122,17 @@ public class Worker {
             counter = counter + 1;
         }
 
+        if(this.rating >= worker.getPreviousRating() || worker.getPreviousRating() == 0) {
+            counter = counter + 1;
+        }
+
         for(int i = 0; i < this.getSkill().size(); i++){
             int skill = this.getSkill().get(i);
             if(worker.getSkill().contains(skill)){
                 counter = counter + 1;
             }
         }
-        float size = (this.getSkill().size() + 3);
+        float size = (this.getSkill().size() + 4);
         float percentage = (counter/size) * 100;
         return percentage;
     }
@@ -145,5 +151,21 @@ public class Worker {
 
     public void setJobMatch(int jobMatch) {
         this.jobMatch = jobMatch;
+    }
+
+    public int getPreviousRating() {
+        return previousRating;
+    }
+
+    public void setPreviousRating(int previousRating) {
+        this.previousRating = previousRating;
+    }
+
+    public int getPreviousMatch() {
+        return previousMatch;
+    }
+
+    public void setPreviousMatch(int previousMatch) {
+        this.previousMatch = previousMatch;
     }
 }

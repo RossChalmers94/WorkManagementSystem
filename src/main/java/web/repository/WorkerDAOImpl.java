@@ -138,6 +138,12 @@ public class WorkerDAOImpl implements WorkerDAO {
         if(out.get(WorkerDetails.JOB_MATCH.getValue()) != null){
             worker.setJobMatch((Integer) out.get(WorkerDetails.JOB_MATCH.getValue()));
         }
+        if(out.get("previousRating") != null){
+            worker.setPreviousRating((Integer) out.get(WorkerDetails.PREVIOUS_RATING.getValue()));
+        }
+        if(out.get("previousMatch") != null) {
+            worker.setPreviousMatch((Integer) out.get(WorkerDetails.PREVIOUS_MATCH.getValue()));
+        }
 
         return worker;
     }
