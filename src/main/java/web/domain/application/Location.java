@@ -1,25 +1,28 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.omg.PortableInterceptor.INACTIVE;
+
+import javax.validation.constraints.Pattern;
 
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Location {
 
-    private Integer locationID;
+    private int locationID;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]+")
     private String locationName;
 
-    public Location(Integer locationID, String locationName){
-        this.locationName = locationName;
-        this.locationID = locationID;
+    public Location(){
     }
 
     public int getLocationID(){
         return locationID;
     }
 
-    public void setLocationID(Integer locationID){
+    public void setLocationID(int locationID){
         this.locationID = locationID;
     }
 

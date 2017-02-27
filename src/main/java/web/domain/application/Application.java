@@ -1,5 +1,8 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +16,10 @@ public class Application {
     private List<Skill> skills;
     private List<Salary> salarys;
     private List<JobLength> jobLengths;
+    private Skill skill;
+    private List<Integer> skillsSet;
+    private Location location;
+    private List<Integer> locationSet;
 
     public Application(){
 
@@ -58,5 +65,35 @@ public class Application {
         this.jobLengths = jobLengths;
     }
 
+    public Skill getSkill() {
+        return skill;
+    }
 
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<Integer> getSkillsSet() {
+        return skillsSet;
+    }
+
+    public void setSkillsSet(List<Integer> skillsSet) {
+        this.skillsSet = skillsSet;
+    }
+
+    public List<Integer> getLocationSet() {
+        return locationSet;
+    }
+
+    public void setLocationSet(List<Integer> locationSet) {
+        this.locationSet = locationSet;
+    }
 }

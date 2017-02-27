@@ -9,7 +9,7 @@ public enum AdminDetails {
     ADMIN_PASSWORD("adminPassword"),
     INDUSTRY_NAME("industryName"),
     DATABASE_SERVER("databaseServer"),
-    ADMIN_USERVALUE("adminvalue");
+    ADMIN_USERVALUE("adminValue");
 
 
     private String value;

@@ -1,15 +1,23 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Admin {
 
+
     private String databaseServer;
     private String industryName;
     private String adminUsername;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String newPassword;
+    @NotEmpty
     private String confirmPassword;
 
 

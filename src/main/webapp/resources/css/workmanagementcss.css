@@ -121,3 +121,8 @@ a {
     height: 60px;
     background-color: #002b5c;
 }
+
+.thead {
+    background-color: #002b5c;
+    color: #ffffff;
+}

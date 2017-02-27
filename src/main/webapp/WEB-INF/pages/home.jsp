@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>Looking For Work/To Hire?</h1>
+        <h1>Looking For Work/To Hire in ${industryName}</h1>
     </div>
     <div class="row text-center">
         <div class="border-right col-md-4 col-xs-6 col-sm-4 ">

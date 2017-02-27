@@ -1,16 +1,24 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.util.List;
+
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Skill {
 
-    private Integer skillID;
+
+    private int skillID;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]+")
     private String skillName;
 
-    public Skill(Integer skillID, String skillName){
-        this.skillID = skillID;
-        this.skillName = skillName;
+    public Skill(){
+
     }
 
     public int getSkillID (){
@@ -28,6 +36,5 @@ public class Skill {
     public void setSkillName(String skillName){
         this.skillName = skillName.trim();
     }
-
 
 }

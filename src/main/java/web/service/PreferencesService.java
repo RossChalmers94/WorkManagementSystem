@@ -15,5 +15,12 @@ public interface PreferencesService {
     List<JobLength> getJobLengths();
     Admin getAdmin();
     void updatePreferences(Application application);
+    void addSkill(String skillName);
+    void deleteSkill(List<Integer> skills);
+    void addLocation(String locationName);
+    void deleteLocation(List<Integer> locations);
+    void updateApplication(Admin admin);
+    boolean checkAdminPassword(String password);
+    void updatePassword(Admin admin);
 
 }

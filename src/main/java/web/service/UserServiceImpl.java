@@ -95,5 +95,7 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-
+    public String getIndustryName() {
+        return userDAO.getIndustryName();
+    }
 }

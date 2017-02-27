@@ -1,19 +1,24 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Salary {
 
     private int salaryID;
+    @NotEmpty
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
     private int salaryMinValue;
+    @NotEmpty
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
     private int salaryMaxValue;
 
 
-    public Salary(int salaryID, int salaryMinValue, int salaryMaxValue){
-        this.salaryID = salaryID;
-        this.salaryMinValue = salaryMinValue;
-        this.salaryMaxValue = salaryMaxValue;
+    public Salary(){
     }
 
     public int getSalaryID(){

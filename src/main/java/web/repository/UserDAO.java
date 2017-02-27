@@ -36,5 +36,7 @@ public interface UserDAO {
 
     User getUserByFreelancer(String storedProc, int id);
 
+    String getIndustryName();
+
 
 }

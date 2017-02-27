@@ -19,77 +19,98 @@
                 <form:input path="admin.industryName" class="form-control"/>
             </div>
         </div>
-
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <label>Skills:</label>
+                <table class="table table-sm table-striped table-hover table-bordered">
+                    <thead class="thead">
+                    <tr>
+                        <td>Skill Name</td>
+                        <td>Remove?</td>
+                    </tr>
+                    </thead>
+                    <c:forEach items="${skills}" varStatus="i">
+                        <tr>
+                            <td><label>${skills[i.index].skillName}</label></td>
+                            <td><form:checkbox path="skillsSet" value="${skills[i.index].skillID}"/></td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" class="text-right contact btn btn-default" name="deleteskill"
+                                   value="Delete Skills"></td>
+                    </tr>
+                </table>
+                <form:input path="skill.skillName" class="form-control" placeholder="Skill Name"/>
+                <input type="submit" class="contact btn btn-default" name="addskill" value="Add Skill">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <c:forEach items="${newApplication.skills}" varStatus="i">
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                        <form:input path="skills[${i.index}].skillName" class="form-control" />
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <label>Location:</label>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <c:forEach items="${newApplication.locations}" varStatus="i" >
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                        <form:input path="locations[${i.index}].locationName" class="form-control" />
-                    </div>
-                </c:forEach>
+                <table class="table table-striped table-sm table-hover table-bordered">
+                    <thead class="thead">
+                    <tr>
+                        <td>Location</td>
+                        <td>Remove?</td>
+                    </tr>
+                    </thead>
+                    <c:forEach items="${locations}" varStatus="i">
+                        <tr>
+                            <td><label>${locations[i.index].locationName}</label></td>
+                            <td><form:checkbox path="locationSet" value="${locations[i.index].locationID}"/></td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" class="text-right contact btn btn-default" name="deletelocation"
+                                   value="Delete Location"></td>
+                    </tr>
+                </table>
+                <form:input path="location.locationName" class="form-control" placeholder="Location Name"/>
+                <input type="submit" class="contact btn btn-default" name="addlocation" value="Add Location">
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <label>Salary (Minimum and Maximum Range)</label>
+                <table class="table table-striped table-sm table-hover table-bordered">
+                    <thead class="thead">
+                    <tr>
+                        <td>#</td>
+                        <td>Minimum Range</td>
+                        <td>Maximum Range</td>
+                    </tr>
+                    </thead>
+                    <c:forEach items="${newApplication.salarys}" varStatus="i">
+                    <tr>
+                        <td>${(i.index) + 1}</td>
+                        <td><form:input path="salarys[${i.index}].salaryMinValue" class="form-control"/></td>
+                        <td><form:input path="salarys[${i.index}].salaryMaxValue" class="form-control"/></td>
+                    </tr>
+                    </c:forEach>
+                </table>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <c:forEach items="${newApplication.salarys}" varStatus="i">
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                        <form:input path="salarys[${i.index}].salaryMinValue" class="form-control" />
-                        <form:input path="salarys[${i.index}].salaryMaxValue" class="form-control" />
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <label>Job Length:</label>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <c:forEach items="${newApplication.jobLengths}" varStatus="i">
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                        <form:input path="jobLengths[${i.index}].jobLengthMin" class="form-control" />
-                        <form:input path="jobLengths[${i.index}].jobLengthMax" class="form-control" />
-                    </div>
+                <table class="table table-striped table-sm table-hover table-bordered">
+                    <thead class="thead">
+                    <tr>
+                        <td>#</td>
+                        <td>Minimum Time</td>
+                        <td>Maximum Time</td>
+                    </tr>
+                    </thead>
+                <c:forEach items="${newApplication.jobLengths}" var="jobLength" varStatus="i">
+                    <tr>
+                        <td>${(i.index) + 1}</td>
+                        <td><form:input path="jobLengths[${i.index}].jobLengthMin" class="form-control"/></td>
+                        <td><form:input path="jobLengths[${i.index}].jobLengthMax" class="form-control"/></td>
+                    </tr>
                 </c:forEach>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="text-left">Change Admin Password:</h2>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <label class="text-left">Old Password:</label>
-                <input type="password" class="form-control" placeholder="Old Password">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <label class="text-left">New Password:</label>
-                <input type="password" class="form-control" placeholder="New Password">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <label class="text-left">Confirm Password:</label>
-                <input type="password" class="form-control" placeholder="Confirm Password">
+                </table>
             </div>
         </div>
         <div class="row">
-            <input type="submit" class="btn btn-default" value="Confirm Changes">
+            <input type="submit" class="btn btn-default" value="Confirm Changes" name="configureapplication">
         </div>
     </form:form>
 </div>

@@ -36,6 +36,7 @@ web/service/MatchService.class
 web/service/UserService.class
 web/repository/WorkerDAOImpl.class
 web/domain/Worker.class
+web/controllers/ConfigureApplicationController.class
 web/enumconstants/AdminDetails.class
 web/domain/application/Location.class
 web/enumconstants/MatchDetails.class

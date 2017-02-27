@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall insertUser, getUser,insertUserPersonalDetails,getLogInUser,checkUser,
-            insertEmployerID,insertFreelancerID,checkAdmin,getAdmin,getUserByEmployer, getUserByFreelancer;
+            insertEmployerID,insertFreelancerID,checkAdmin,getAdmin,getUserByEmployer, getUserByFreelancer, getIndustryName;
 
 
     @Autowired
@@ -39,6 +39,7 @@ public class UserDAOImpl implements UserDAO {
         this.getAdmin = new SimpleJdbcCall(jdbcTemplate);
         this.getUserByEmployer = new SimpleJdbcCall(jdbcTemplate);
         this.getUserByFreelancer = new SimpleJdbcCall(jdbcTemplate);
+        this.getIndustryName = new SimpleJdbcCall(jdbcTemplate);
 
     }
 
@@ -154,6 +155,12 @@ public class UserDAOImpl implements UserDAO {
         Map out = getUserByFreelancer.execute(in);
         User user = configUser(out);
         return user;
+    }
+
+    public String getIndustryName(){
+        getIndustryName.withProcedureName("get_industry_name");
+        Map out = getIndustryName.execute();
+        return (String) out.get(AdminDetails.INDUSTRY_NAME.getValue());
     }
 
     private User configUser(Map<String, Object> outParameters){

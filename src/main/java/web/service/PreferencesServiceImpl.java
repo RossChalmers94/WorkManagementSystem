@@ -25,7 +25,9 @@ public class PreferencesServiceImpl implements PreferencesService {
         List<Map<String, Object>> skills = preferencesDAO.getPreferences("SELECT skillID, skillName FROM skills");
         List<Skill> toReturn = new ArrayList<Skill>();
         for(int i = 0; i < skills.size(); i++){
-            Skill skill = new Skill((Integer)skills.get(i).get("skillId"), (String)skills.get(i).get("skillName"));
+            Skill skill = new Skill();
+            skill.setSkillID((Integer)skills.get(i).get("skillId"));
+            skill.setSkillName((String)skills.get(i).get("skillName"));
             toReturn.add(skill);
         }
 
@@ -36,7 +38,9 @@ public class PreferencesServiceImpl implements PreferencesService {
         List<Map<String, Object>> locations = preferencesDAO.getPreferences("SELECT locationID, locationName FROM location");
         List<Location> toReturn = new ArrayList<Location>();
         for(int i = 0; i < locations.size(); i++){
-            Location location = new Location((Integer)locations.get(i).get("locationID"), (String)locations.get(i).get("locationName"));
+            Location location = new Location();
+            location.setLocationID((Integer)locations.get(i).get("locationID"));
+            location.setLocationName((String)locations.get(i).get("locationName"));
             toReturn.add(location);
         }
 
@@ -47,8 +51,10 @@ public class PreferencesServiceImpl implements PreferencesService {
         List<Map<String, Object>> salarys = preferencesDAO.getPreferences("SELECT salaryID, salaryMinValue, salaryMaxValue FROM salary");
         List<Salary> toReturn = new ArrayList<Salary>();
         for(int i = 0; i < salarys.size(); i++){
-            Salary salary = new Salary((Integer)salarys.get(i).get("salaryID"), (Integer)salarys.get(i).get("salaryMinValue"),
-                    (Integer)salarys.get(i).get("salaryMaxValue"));
+            Salary salary = new Salary();
+            salary.setSalaryID((Integer)salarys.get(i).get("salaryID"));
+            salary.setSalaryMinValue((Integer)salarys.get(i).get("salaryMinValue"));
+            salary.setSalaryMaxValue((Integer)salarys.get(i).get("salaryMaxValue"));
             toReturn.add(salary);
         }
 
@@ -60,9 +66,10 @@ public class PreferencesServiceImpl implements PreferencesService {
                 preferencesDAO.getPreferences("SELECT jobLengthID, jobLengthMin, jobLengthMax FROM job_length");
         List<JobLength> toReturn = new ArrayList<JobLength>();
         for(int i = 0; i < jobLengths.size(); i++){
-            JobLength jobLength = new JobLength((Integer)jobLengths.get(i).get("jobLengthID"),
-                    (Integer)jobLengths.get(i).get("jobLengthMin"),
-                    (Integer)jobLengths.get(i).get("jobLengthMax"));
+            JobLength jobLength = new JobLength();
+            jobLength.setJobLengthID((Integer)jobLengths.get(i).get("jobLengthID"));
+            jobLength.setJobLengthMin((Integer)jobLengths.get(i).get("jobLengthMin"));
+            jobLength.setJobLengthMax((Integer)jobLengths.get(i).get("jobLengthMax"));
             toReturn.add(jobLength);
         }
 
@@ -81,29 +88,8 @@ public class PreferencesServiceImpl implements PreferencesService {
     }
 
     public void updatePreferences(Application application){
-        updateSkills(application.getSkills());
-        updateLocations(application.getLocations());
         updateJobLengths(application.getJobLengths());
         updateSalarys(application.getSalarys());
-    }
-
-    private void updateSkills(List<Skill> skills){
-
-        for(int i = 0; i < skills.size(); i++){
-            Map<String, Object> inParameters = new HashMap<String, Object>();
-            inParameters.put(PreferenceDetails.SKILL_ID.getValue(), skills.get(i).getSkillID());
-            inParameters.put(PreferenceDetails.SKILL_NAME.getValue(), skills.get(i).getSkillName());
-            preferencesDAO.updateSkills("update_skills", inParameters);
-        }
-    }
-
-    private void updateLocations(List<Location> locations){
-        for(int i = 0; i < locations.size(); i++){
-            Map<String, Object> inParameters = new HashMap<String, Object>();
-            inParameters.put(PreferenceDetails.LOCATION_ID.getValue(), locations.get(i).getLocationID());
-            inParameters.put(PreferenceDetails.LOCATION_NAME.getValue(), locations.get(i).getLocationName());
-            preferencesDAO.updateLocations("update_locations", inParameters);
-        }
     }
 
     private void updateJobLengths(List<JobLength> jobLengths){
@@ -123,6 +109,40 @@ public class PreferencesServiceImpl implements PreferencesService {
             inParameters.put(PreferenceDetails.SALARY_MIN.getValue(), salarys.get(i).getSalaryMinValue());
             inParameters.put(PreferenceDetails.SALARY_MAX.getValue(), salarys.get(i).getSalaryMaxValue());
             preferencesDAO.updateSalarys("update_salarys", inParameters);
+        }
+    }
+
+    public void addSkill(String skillName){
+        preferencesDAO.addSkill("insert_skill", skillName);
+    }
+    public void deleteSkill(List<Integer> skills){
+        for(int i = 0; i < skills.size(); i++){
+            preferencesDAO.deleteSkill("delete_skill", skills.get(i));
+        }
+    }
+    public void addLocation(String locationName) {
+        preferencesDAO.addLocation("insert_location", locationName);
+    }
+    public void deleteLocation(List<Integer> locations) {
+        for(int i = 0; i < locations.size(); i++){
+            preferencesDAO.deleteLocation("delete_location", locations.get(i));
+        }
+    }
+
+    public void updateApplication(Admin admin) {
+        preferencesDAO.updateApplication("update_application", admin.getIndustryName());
+    }
+
+    public void updatePassword(Admin admin) {
+        preferencesDAO.updatePassword("update_admin_password", admin.getNewPassword());
+    }
+
+    public boolean checkAdminPassword(String password){
+        int check = preferencesDAO.checkAdminPassword("check_admin", password);
+        if(check == 1){
+            return true;
+        } else {
+            return false;
         }
     }
 }

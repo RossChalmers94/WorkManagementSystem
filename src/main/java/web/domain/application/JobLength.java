@@ -1,19 +1,24 @@
 package web.domain.application;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class JobLength {
 
     private int jobLengthID;
+    @NotEmpty
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
     private int jobLengthMin;
+    @NotEmpty
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
     private int jobLengthMax;
 
 
-    public JobLength(int jobLengthID, int jobLengthMin, int jobLengthMax){
-        this.jobLengthID = jobLengthID;
-        this.jobLengthMin = jobLengthMin;
-        this.jobLengthMax = jobLengthMax;
+    public JobLength(){
     }
 
     public int getJobLengthID(){

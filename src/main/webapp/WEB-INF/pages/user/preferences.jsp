@@ -153,9 +153,9 @@
                 </c:if>
                 <c:if test="${newWorker.jobMatch != 0}">
                     <a class="contact btn btn-default" href="match">View Current Match</a>
+                    <a class="contact btn btn-default" href="userhome">Back</a>
                     ${newWorker.jobMatch}
                 </c:if>
-                <a class="contact btn btn-default" href="userhome">Back</a>
             </div>
         </div>
     </form:form>

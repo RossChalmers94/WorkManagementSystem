@@ -35,7 +35,7 @@
                             <li><a href="../logoutuser"></span>Log Out</a></li>
                         </c:when>
                         <c:when test="${adminUser != null}">
-                            <li><a href="admin/adminhome"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
+                            <li><a href="adminhome"><span class="glyphicon glyphicon-log-in"></span>Home</a></li>
                             <li><a href="../logoutuser"></span>Log Out</a></li>
                         </c:when>
                         <c:otherwise>

@@ -28,4 +28,6 @@ public interface UserService {
 
      User getUserByFreelancer(int id);
 
+     String getIndustryName();
+
 }
