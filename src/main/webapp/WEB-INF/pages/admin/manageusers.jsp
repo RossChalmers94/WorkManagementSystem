@@ -9,67 +9,52 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h3 class="text-left">Freelancers</h3>
-            <table class="table table-striped">
-                <tbody>
+            <label>Skills:</label>
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead class="thead">
                 <tr>
-                    <td>Freelancer1</td>
-                    <td><input type="checkbox" name="freelancer1"></td>
+                    <td>Freelancers</td>
+                    <td>Remove?</td>
                 </tr>
+                </thead>
+                <c:forEach items="${skills}" varStatus="i">
+                    <tr>
+                        <td><label>${skills[i.index].skillName}</label></td>
+                        <td><form:checkbox path="skillsSet" value="${skills[i.index].skillID}"/></td>
+                    </tr>
+                </c:forEach>
                 <tr>
-                    <td>Freelancer2</td>
-                    <td><input type="checkbox" name="freelancer2"></td>
+                    <td></td>
+                    <td><input type="submit" class="text-right contact btn btn-default" name="deleteskill"
+                               value="Delete Skills"></td>
                 </tr>
-                <tr>
-                    <td>Freelancer3</td>
-                    <td><input type="checkbox" name="freelancer3"></td>
-                </tr>
-                </tbody>
             </table>
-            <a class="contact btn btn-default">Confirm Deletions</a>
+            <form:input path="skill.skillName" class="form-control" placeholder="Skill Name"/>
+            <input type="submit" class="contact btn btn-default" name="addskill" value="Add Skill">
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h3 class="text-left">Employers</h3>
-            <table class="table table-striped">
-                <tbody>
+            <label>Skills:</label>
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead class="thead">
                 <tr>
-                    <td>Employer1</td>
-                    <td><input type="checkbox" name="employer1"></td>
+                    <td>Skill Name</td>
+                    <td>Remove?</td>
                 </tr>
+                </thead>
+                <c:forEach items="${skills}" varStatus="i">
+                    <tr>
+                        <td><label>${skills[i.index].skillName}</label></td>
+                        <td><form:checkbox path="skillsSet" value="${skills[i.index].skillID}"/></td>
+                    </tr>
+                </c:forEach>
                 <tr>
-                    <td>Employer2</td>
-                    <td><input type="checkbox" name="employer2"></td>
+                    <td></td>
+                    <td><input type="submit" class="text-right contact btn btn-default" name="deleteskill"
+                               value="Delete Skills"></td>
                 </tr>
-                <tr>
-                    <td>Employer3</td>
-                    <td><input type="checkbox" name="employer3"></td>
-                </tr>
-                </tbody>
             </table>
-            <a class="contact btn btn-default">Confirm Deletions</a>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <h3 class="text-left">Current Matches</h3>
-            <table class="table table-striped">
-                <tbody>
-                <tr>
-                    <td>Freelancer1</td>
-                    <td>Employer1</td>
-                    <td><input type="checkbox" name="employer1"></td>
-                </tr>
-                <tr>
-                    <td>Freelancer2</td>
-                    <td>Employer2</td>
-                    <td><input type="checkbox" name="employer2"></td>
-                </tr>
-                <tr>
-                    <td>Freelancer3</td>
-                    <td>Employer3</td>
-                    <td><input type="checkbox" name="employer3"></td>
-                </tr>
-                </tbody>
-            </table>
-            <a class="contact btn btn-default">Confirm Deletions</a>
+            <form:input path="skill.skillName" class="form-control" placeholder="Skill Name"/>
+            <input type="submit" class="contact btn btn-default" name="addskill" value="Add Skill">
         </div>
     </div>
 </div>

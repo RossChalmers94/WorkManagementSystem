@@ -17,13 +17,20 @@
                 <label class="text-left">Password:</label>
                 <form:input path="password" id="password" class="form-control" placeholder="Password"/>
             </div>
+            <c:if test="${error == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label>Incorrect Username or Password.</label>
+                </div>
+            </c:if>
+            <c:if test="${details == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <form:errors path="username"/><br>
+                        <form:errors path="password"/><br>
+                </div>
+            </c:if>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Log In">
             </div>
-            ${firstName}
-            ${values}
-            ${loginUser.username}
-            ${loginUser.password}
         </div>
         </form:form>
     </div>

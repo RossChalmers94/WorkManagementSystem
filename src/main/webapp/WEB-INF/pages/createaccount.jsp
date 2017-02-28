@@ -21,6 +21,18 @@
                 <label class="radio-inline"><form:radiobutton path="role" value="Freelancer"/>Freelancer</label>
                 <label class="radio-inline"><form:radiobutton path="role" value="Employer"/>Employer</label>
             </div>
+            <c:if test="${error == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <form:errors path="username"/></br>
+                    <form:errors path="password"/></br>
+                    <form:errors path="role"/>
+                </div>
+            </c:if>
+            <c:if test="${exists == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label>An account already exists with the username you have provided.</label>
+                </div>
+            </c:if>
             <div class="form-group">
                 <input type="submit" class="btn btn-default" value="Create Account">
             </div>

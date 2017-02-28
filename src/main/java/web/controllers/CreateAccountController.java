@@ -2,6 +2,7 @@ package web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import web.domain.User;
 import web.service.UserService;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 /**
  * Created by RossChalmers on 06/02/2017.
  */
@@ -29,20 +32,24 @@ public class CreateAccountController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String getUser(@ModelAttribute("newUser") User newUser, Model model, HttpSession session){
+    public String getUser(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model, HttpSession session){
 
-        String page = "";
         boolean check = userService.checkUsername(newUser);
 
-        if(!check) {
-            userService.insertUser(newUser);
-            session.setAttribute("currentUser", newUser);
-            page = "redirect:/user/personal";
+        if(!result.hasErrors()) {
+            if (!check) {
+                userService.insertUser(newUser);
+                session.setAttribute("currentUser", newUser);
+                return "redirect:/user/personal";
+            } else {
+                model.addAttribute("exists", true);
+            }
         } else {
-            page = "createaccount";
+            model.addAttribute("error", true);
+            return "createaccount";
         }
 
-        return page;
+        return "createaccount";
 
     }
 

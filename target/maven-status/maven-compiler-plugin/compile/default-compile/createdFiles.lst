@@ -18,6 +18,7 @@ web/domain/application/Skill.class
 web/domain/Match.class
 web/controllers/CreateAccountController.class
 web/service/PreferencesService.class
+web/domain/User$personalDetails.class
 web/service/PreferencesServiceImpl.class
 web/service/MatchServiceImpl.class
 web/repository/WorkerDAO.class
@@ -28,8 +29,10 @@ web/domain/Employer.class
 web/controllers/HomeController.class
 web/controllers/UserHomeController.class
 web/service/WorkerService.class
+web/domain/User$createAccount.class
 web/service/UserServiceImpl.class
 web/domain/Freelancer.class
+web/domain/User$logIn.class
 web/service/WorkerServiceImpl.class
 web/domain/application/Admin.class
 web/service/MatchService.class
