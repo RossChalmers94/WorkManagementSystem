@@ -3,21 +3,26 @@ package web.domain.application;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Admin {
 
+    public interface application{};
+    public interface password{};
+
 
     private String databaseServer;
+    @Size(groups = application.class, min = 1, max = 50, message = "Industry Name must not be empty and must be less than 50 characters.")
     private String industryName;
     private String adminUsername;
-    @NotEmpty
+    @NotEmpty(groups = password.class)
     private String password;
-    @NotEmpty
+    @NotEmpty(groups = password.class)
     private String newPassword;
-    @NotEmpty
+    @NotEmpty(groups = password.class)
     private String confirmPassword;
 
 

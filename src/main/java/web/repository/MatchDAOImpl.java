@@ -44,16 +44,14 @@ public class MatchDAOImpl implements MatchDAO {
         return get;
     }
 
-    public List<Worker> getFreelancers(){
-        List<Worker> freelancers = getWorkers("SELECT freelancerID, salary, location, " +
-                "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL", WorkerDetails.FREELANCER_ID.getValue());
+    public List<Worker> getFreelancers(String storedProc){
+        List<Worker> freelancers = getWorkers(storedProc, WorkerDetails.FREELANCER_ID.getValue());
         return freelancers;
 
     }
 
-    public List<Worker> getEmployers(){
-        List<Worker> employers = getWorkers("SELECT employerID, salary, location, " +
-                "jobLength, jobTitle, jobDescription FROM employer WHERE jobMatch IS NULL", WorkerDetails.EMPLOYER_ID.getValue());
+    public List<Worker> getEmployers(String storedProc){
+        List<Worker> employers = getWorkers(storedProc, WorkerDetails.EMPLOYER_ID.getValue());
         return employers;
     }
 

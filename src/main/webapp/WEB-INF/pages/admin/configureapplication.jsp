@@ -10,14 +10,21 @@
     </div>
     <form:form modelAttribute="newApplication" method="post">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <label class="text-left">Database Server:</label>
-                <form:input path="admin.databaseServer" class="form-control"/>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <label class="text-left">Industry Name:</label>
-                <form:input path="admin.industryName" class="form-control"/>
-            </div>
+            <c:if test="${param.error == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <c:if test="${param.preferences == true}">
+                        <label>There has been an error submitting salaries and job lengths.</label>
+                    </c:if>
+                    <c:if test="${param.skills == true}">
+                        <label>There has been an error submitting a new skill.<br>
+                        Please ensure the skill is between 5-20 characters.</label>
+                    </c:if>
+                    <c:if test="${param.locations == true}">
+                        <label>There has been an error submitting a new location..<br>
+                            Please ensure the locations is between 5-20 characters.</label>
+                    </c:if>
+                </div>
+            </c:if>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -29,10 +36,10 @@
                         <td>Remove?</td>
                     </tr>
                     </thead>
-                    <c:forEach items="${skills}" varStatus="i">
+                    <c:forEach items="${newApplication.skills}" varStatus="i">
                         <tr>
-                            <td><label>${skills[i.index].skillName}</label></td>
-                            <td><form:checkbox path="skillsSet" value="${skills[i.index].skillID}"/></td>
+                            <td><label>${newApplication.skills[i.index].skillName}</label></td>
+                            <td><form:checkbox path="skillsSet" value="${newApplication.skills[i.index].skillID}"/></td>
                         </tr>
                     </c:forEach>
                     <tr>
@@ -53,10 +60,10 @@
                         <td>Remove?</td>
                     </tr>
                     </thead>
-                    <c:forEach items="${locations}" varStatus="i">
+                    <c:forEach items="${newApplication.locations}" varStatus="i">
                         <tr>
-                            <td><label>${locations[i.index].locationName}</label></td>
-                            <td><form:checkbox path="locationSet" value="${locations[i.index].locationID}"/></td>
+                            <td><label>${newApplication.locations[i.index].locationName}</label></td>
+                            <td><form:checkbox path="locationSet" value="${newApplication.locations[i.index].locationID}"/></td>
                         </tr>
                     </c:forEach>
                     <tr>
@@ -102,7 +109,7 @@
                 <c:forEach items="${newApplication.jobLengths}" var="jobLength" varStatus="i">
                     <tr>
                         <td>${(i.index) + 1}</td>
-                        <td><form:input path="jobLengths[${i.index}].jobLengthMin" class="form-control"/></td>
+                        <td><form:input path="jobLengths[${i.index}].jobLengthMin" class="form-control" /></td>
                         <td><form:input path="jobLengths[${i.index}].jobLengthMax" class="form-control"/></td>
                     </tr>
                 </c:forEach>

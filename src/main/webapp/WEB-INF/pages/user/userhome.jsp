@@ -17,8 +17,6 @@
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
             <a class="selection btn btn-default" <c:if test="${worker.jobMatch != 0}">href="match"</c:if> >View Match</a>
         </div>
-        ${worker.previousRating}
-        ${worker.previousMatch}
     </div>
 </div>
 </div>

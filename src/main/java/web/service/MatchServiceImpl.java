@@ -26,7 +26,8 @@ public class MatchServiceImpl implements MatchService {
     public Match getEmployerMatch(User user) {
 
         Worker currentWorker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
-        List<Worker> workers = matchDAO.getFreelancers();
+        List<Worker> workers = matchDAO.getFreelancers("SELECT freelancerID, salary, location, " +
+                "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
         Worker forProcess = getWorker(workers, currentWorker);
         if(forProcess == null){
@@ -40,7 +41,8 @@ public class MatchServiceImpl implements MatchService {
     public Match getFreelancerMatch(User user){
 
         Worker currentWorker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
-        List<Worker> workers = matchDAO.getEmployers();
+        List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, " +
+                "jobLength, jobTitle, jobDescription FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
         Worker forProcess = getWorker(workers, currentWorker);
         if(forProcess == null){
@@ -109,5 +111,15 @@ public class MatchServiceImpl implements MatchService {
         } else if(user.getFreelancerID() != 0){
             matchDAO.setPreviousEmployerRating(id, user.getFreelancerID(),rating);
         }
+    }
+
+    public List<Worker> getEmployers() {
+        return matchDAO.getEmployers("SELECT employerID, salary, location, " +
+                "jobLength, jobTitle, jobDescription FROM employer");
+    }
+
+    public List<Worker> getFreelancers() {
+        return matchDAO.getFreelancers("SELECT freelancerID, salary, location, " +
+                "jobLength FROM freelancer");
     }
 }

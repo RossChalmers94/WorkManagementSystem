@@ -4,15 +4,18 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.omg.PortableInterceptor.INACTIVE;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Created by RossChalmers on 09/02/2017.
  */
 public class Location {
 
+    public interface location{}
+
     private int locationID;
-    @NotEmpty
-    @Pattern(regexp = "[a-zA-Z]+")
+//    @Pattern(regexp = "[a-zA-Z]+")
+//    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
     private String locationName;
 
     public Location(){

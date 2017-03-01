@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User getLogIn(User user){
-        User currentUser = new User();
+        User currentUser;
         Map<String, String> userDetails = new HashMap<String, String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
         userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword());

@@ -57,7 +57,6 @@ public class PreferencesServiceImpl implements PreferencesService {
             salary.setSalaryMaxValue((Integer)salarys.get(i).get("salaryMaxValue"));
             toReturn.add(salary);
         }
-
         return toReturn;
     }
 

@@ -6,42 +6,62 @@
 
 <div class="container">
     <div class="row">
-        <h1>Change Password</h1>
+        <h1>Application Settings</h1>
     </div>
     <form:form modelAttribute="admin" method="post">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label>Change Password</label>
-            <table class="table table-striped table-sm table-hover table-bordered">
-                <thead class="thead">
-                <tr>
-                    <td>Current Password</td>
-                    <td>New Password</td>
-                    <td>Confirm Password</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><form:password path="password" class="form-control"/></td>
-                    <td><form:password path="newPassword" class="form-control"/></td>
-                    <td><form:password path="confirmPassword" class="form-control"/></td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-            <c:if test="${error == true}">
-            <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label>There has been an error.</label>
-            </div>
-            </c:if>
-            <c:if test="${success == true}">
-                <div class="alert alert-success col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <label>You have successfully updated your password!</label>
-                </div>
-            </c:if>
-            <input type="submit" class="btn btn-default" value="Confirm Changes">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label class="text-left">Current Password</label>
+            <form:password path="password" class="form-control"/>
         </div>
-    </form:form>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label class="text-left">New Password</label>
+            <form:password path="newPassword" class="form-control"/>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label class="text-left">Current Password</label>
+            <form:password path="confirmPassword" class="form-control"/>
+        </div>
+
+    <c:if test="${error == true}">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger">
+            <label>There has been an error.</label>
+        </div>
+    </c:if>
+    <c:if test="${success == true}">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-success">
+            <label>You have successfully updated your password!</label>
+        </div>
+    </c:if>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <input type="submit" class="btn btn-default" value="Confirm Password" name="confirmpassword">
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <label class="text-left">Database Server:</label>
+        <form:input path="databaseServer" class="form-control"/>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <label class="text-left">Industry Name:</label>
+        <form:input path="industryName" class="form-control"/>
+    </div>
+    <c:if test="${applicationerror == true}">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-danger">
+            <label><form:errors path="industryName"/></label>
+        </div>
+    </c:if>
+    <c:if test="${applicationsuccess == true}">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 alert alert-success">
+            <label>You have successfully updated the Industry Name!</label>
+        </div>
+    </c:if>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <input type="submit" class="btn btn-default" value="Confirm Changes" name="application">
+    </div>
+</div>
+</form:form>
 </div>
 </body>
 <footer class="footer">

@@ -11,10 +11,10 @@ public class JobLength {
 
     private int jobLengthID;
     @NotEmpty
-    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n", message = "Job Length Minimum Value must be a number")
     private int jobLengthMin;
     @NotEmpty
-    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n", message = "Job Length Maximum Value must be a number")
     private int jobLengthMax;
 
 

@@ -5,10 +5,8 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/MatchController.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/PreferencesService.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Application.java
-/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/Freelancer.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/MatchService.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/PersonalDetailsController.java
-/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/Employer.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/MatchDAO.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/WorkerServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/JobLength.java
@@ -37,6 +35,7 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/MatchDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/AdminDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/WorkerDetails.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/ManageUsers.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/UserDAO.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/enumconstants/UserDetails.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/MatchDAOImpl.java

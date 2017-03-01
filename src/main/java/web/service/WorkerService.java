@@ -10,4 +10,5 @@ public interface WorkerService {
     int insertWorker(Worker worker, User user);
 
     Worker getWorkerDetails(User user);
+
 }

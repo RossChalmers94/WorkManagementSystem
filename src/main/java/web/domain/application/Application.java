@@ -1,9 +1,6 @@
 package web.domain.application;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -11,11 +8,11 @@ import java.util.List;
  */
 public class Application {
 
-    private Admin admin;
     private List<Location> locations;
     private List<Skill> skills;
     private List<Salary> salarys;
     private List<JobLength> jobLengths;
+    @Valid
     private Skill skill;
     private List<Integer> skillsSet;
     private Location location;
@@ -23,14 +20,6 @@ public class Application {
 
     public Application(){
 
-    }
-
-    public Admin getAdmin(){
-        return admin;
-    }
-
-    public void setAdmin(Admin admin){
-        this.admin = admin;
     }
 
     public List<Location> getLocations(){

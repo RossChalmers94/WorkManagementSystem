@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label class="text-left">Password:</label>
-                <form:input path="password" id="password" class="form-control" placeholder="Password"/>
+                <form:password path="password" id="password" class="form-control" placeholder="Password"/>
             </div>
             <div class="form-group">
                 <label class="radio-inline"><form:radiobutton path="role" value="Freelancer"/>Freelancer</label>
@@ -23,9 +23,9 @@
             </div>
             <c:if test="${error == true}">
                 <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <form:errors path="username"/></br>
-                    <form:errors path="password"/></br>
-                    <form:errors path="role"/>
+                    <label><form:errors path="username"/><br>
+                    <form:errors path="password"/><br>
+                    <form:errors path="role"/></label>
                 </div>
             </c:if>
             <c:if test="${exists == true}">

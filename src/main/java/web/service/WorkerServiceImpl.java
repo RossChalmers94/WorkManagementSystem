@@ -21,14 +21,13 @@ public class WorkerServiceImpl implements WorkerService {
 
     @Autowired
     private WorkerDAO workerDAO;
-    @Autowired
-    private UserDAO userDAO;
 
     public int insertWorker(Worker worker, User user) {
 
         int workerID = 0;
 
         Map<String, Object> inParameters = new HashMap<String, Object>();
+        inParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
         inParameters.put(WorkerDetails.SALARY.getValue(), worker.getSalary());
         inParameters.put(WorkerDetails.LOCATION.getValue(), worker.getLocation());
         inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), worker.getJobLength());
@@ -58,11 +57,6 @@ public class WorkerServiceImpl implements WorkerService {
             employerID = user.getEmployerID();
         } else {
             employerID = workerDAO.insertEmployer("insert_employer", inParameters);
-            // Insert EmployerID into row that corresponds to the User in the Users table
-            Map<String, Object> userParameters = new HashMap<String, Object>();
-            userParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-            userParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
-            userDAO.insertEmployerID("insert_user_employer", userParameters);
         }
 
         // Insert Employer Skills
@@ -82,12 +76,6 @@ public class WorkerServiceImpl implements WorkerService {
         } else {
             //Insert Freelancer Details. Return freelancerID
             freelancerID = workerDAO.insertFreelancer("insert_freelancer", inParameters);
-
-            //Insert FreelancerID into row that corresponds to the User in the Users table
-            Map<String, Object> userParameters = new HashMap<String, Object>();
-            userParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-            userParameters.put(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
-            userDAO.insertFreelancerID("insert_user_freelancer", userParameters);
         }
 
         //Insert Freelancer Skills
@@ -137,15 +125,5 @@ public class WorkerServiceImpl implements WorkerService {
             worker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
         }
         return worker;
-    }
-
-    private List<Integer> getEmployerSkills(int employerID) {
-        List<Integer> skillList = workerDAO.getSkills("SELECT skillID FROM skill_set WHERE employerID = ?", employerID);
-        return skillList;
-    }
-
-    private List<Integer> getFreelancerSkills(int freelancerID) {
-        List<Integer> skillList = workerDAO.getSkills("SELECT skillID FROM skill_set WHERE freelancerID = ?", freelancerID);
-        return skillList;
     }
 }

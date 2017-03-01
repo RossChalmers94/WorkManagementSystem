@@ -144,8 +144,6 @@
                 <label class="text-center radio-inline"><form:radiobutton path="minimumMatch" value="100"/>100%</label>
             </div>
         </div>
-
-        ${user.employerID}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <c:if test="${newWorker.jobMatch == 0}">
@@ -153,9 +151,9 @@
                 </c:if>
                 <c:if test="${newWorker.jobMatch != 0}">
                     <a class="contact btn btn-default" href="match">View Current Match</a>
-                    <a class="contact btn btn-default" href="userhome">Back</a>
                     ${newWorker.jobMatch}
                 </c:if>
+                <a class="contact btn btn-default" href="userhome">Back</a>
             </div>
         </div>
     </form:form>

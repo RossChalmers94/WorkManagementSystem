@@ -11,10 +11,10 @@ public class Salary {
 
     private int salaryID;
     @NotEmpty
-    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n", message = "Salary Minimum Value must be a number")
     private int salaryMinValue;
     @NotEmpty
-    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n")
+    @Pattern(regexp = "^(0|[1-9][0-9]*)$\n", message = "Salary Maximum Value must be a number")
     private int salaryMaxValue;
 
 

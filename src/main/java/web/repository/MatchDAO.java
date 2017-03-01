@@ -8,8 +8,8 @@ import web.domain.*;
 public interface MatchDAO {
 
     List<Integer> getSkills(String storedProc, int id);
-    List<Worker> getFreelancers();
-    List<Worker> getEmployers();
+    List<Worker> getFreelancers(String storedProc);
+    List<Worker> getEmployers(String storedProc);
     Match getMatch(Worker worker);
     int insertMatch(int employerID, int freelancerID);
     int getEmployerMatch(int matchID);
