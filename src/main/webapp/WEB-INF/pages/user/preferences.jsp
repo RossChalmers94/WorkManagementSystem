@@ -11,15 +11,26 @@
                 <h1>Become an Employer</h1>
             </div>
             <div class="row">
+                <c:if test="${employererror == true}">
+                    <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label>There has been an error submitting your preferences.</label>
+                    </div>
+                </c:if>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <h3 class="text-left">Job Title</h3>
                     <form:input path="jobTitle" id="jobTitle" class="form-control" placeholder="Job Title"/>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <form:errors path="jobTitle" class="alert-danger"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <h3 class="text-left">Job Description</h3>
                     <form:textarea path="jobDescription" id="jobDescription" class="form-control" rows="10"/>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <form:errors path="jobDescription" class="alert-danger"/>
                 </div>
             </div>
         </c:if>
@@ -29,6 +40,11 @@
             </div>
         </c:if>
         <div class="row">
+            <c:if test="${freelancererror == true}">
+                <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label>There has been an error submitting your preferences.</label>
+                </div>
+            </c:if>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h3 class="text-left">Skills</h3>
             </div>
@@ -38,6 +54,9 @@
                             ${application.skills[i.index].skillName}</label>
                 </div>
             </c:forEach>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="skill" class="alert-danger"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -50,6 +69,9 @@
                                      label="${application.locations[i.index].locationName}"/>
                     </c:forEach>
                 </form:select>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <form:errors path="location" class="alert-danger"/>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -64,6 +86,9 @@
                         - ${application.salarys[i.index].salaryMaxValue}</label>
                 </div>
             </c:forEach>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="salary" class="alert-danger"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -77,6 +102,9 @@
                             ${application.jobLengths[i.index].jobLengthMax}</label>
                 </div>
             </c:forEach>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="jobLength" class="alert-danger"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -96,6 +124,9 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <label class="text-center radio-inline"><form:radiobutton path="rating" value="5"/>Excellent</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="rating" class="alert-danger"/>
             </div>
         </div>
         <div class="row">
@@ -122,6 +153,9 @@
                 <label class="text-center radio-inline"><form:radiobutton path="relaxPreferences" value="5"/>4
                     Weeks</label>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="relaxPreferences" class="alert-danger"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -143,11 +177,21 @@
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <label class="text-center radio-inline"><form:radiobutton path="minimumMatch" value="100"/>100%</label>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <form:errors path="minimumMatch" class="alert-danger"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <c:if test="${newWorker.jobMatch == 0}">
-                <input type="submit" class="btn btn-default" value="Confirm">
+                    <c:choose>
+                        <c:when test="${currentUser.role == 'Employer'}">
+                            <input type="submit" class="btn btn-default" value="Confirm Employer" name="employer">
+                        </c:when>
+                        <c:otherwise>
+                            <input type="submit" class="btn btn-default" value="Confirm Freelancer" name="freelancer">
+                        </c:otherwise>
+                    </c:choose>
                 </c:if>
                 <c:if test="${newWorker.jobMatch != 0}">
                     <a class="contact btn btn-default" href="match">View Current Match</a>

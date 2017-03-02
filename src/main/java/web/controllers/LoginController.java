@@ -27,11 +27,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-/*    @InitBinder
-    public void initialiseBinder(WebDataBinder binder){
-        binder.setDisallowedFields("role");
-    }*/
-
     @RequestMapping(path = "/login", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
         String page = "";

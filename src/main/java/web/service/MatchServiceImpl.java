@@ -30,22 +30,22 @@ public class MatchServiceImpl implements MatchService {
                 "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
         Worker forProcess = getWorker(workers, currentWorker);
-        if(forProcess == null){
+        if (forProcess == null) {
             return null;
         } else {
-            int matchID = matchDAO.insertMatch(user.getEmployerID(), forProcess.getWorkerID());
+            matchDAO.insertMatch(user.getEmployerID(), forProcess.getWorkerID());
             return matchDAO.getMatch(forProcess);
         }
     }
 
-    public Match getFreelancerMatch(User user){
+    public Match getFreelancerMatch(User user) {
 
         Worker currentWorker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
         List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, " +
-                "jobLength, jobTitle, jobDescription FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
+                "jobLength, jobTitle, jobDescription, minimumMatch FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
         Worker forProcess = getWorker(workers, currentWorker);
-        if(forProcess == null){
+        if (forProcess == null) {
             return null;
         } else {
             matchDAO.insertMatch(forProcess.getWorkerID(), user.getFreelancerID());
@@ -53,63 +53,67 @@ public class MatchServiceImpl implements MatchService {
         }
     }
 
-    private Worker getWorker(List<Worker> workers, Worker currentWorker){
+    private Worker getWorker(List<Worker> workers, Worker currentWorker) {
 
         List<Worker> possibleMatches = new ArrayList<Worker>();
         Worker worker = new Worker();
 
-        for (int i = 0; i < workers.size(); i++) {
-            float compareWorkers = currentWorker.compareTo(workers.get(i));
-            if (compareWorkers >= currentWorker.getMinimumMatch() && compareWorkers >= workers.get(i).getMinimumMatch()) {
-                Worker possibleWorker = workers.get(i);
-                possibleWorker.setCompareValue(compareWorkers);
-                possibleMatches.add(possibleWorker);
-            }
-        }
-
-        if(possibleMatches.isEmpty()){
-            return null;
-        } else {
-
-            float counter = 0;
-            for (int j = 0; j < possibleMatches.size(); j++) {
-                if (possibleMatches.get(j).getCompareValue() > counter) {
-                    counter = possibleMatches.get(j).getCompareValue();
-                    worker = possibleMatches.get(j);
+        if (!workers.isEmpty()) {
+            for (int i = 0; i < workers.size(); i++) {
+                float compareWorkers = compareTo(currentWorker, workers.get(i));
+                if (compareWorkers >= currentWorker.getMinimumMatch() && compareWorkers >= workers.get(i).getMinimumMatch()) {
+                    Worker possibleWorker = workers.get(i);
+                    possibleWorker.setCompareValue(compareWorkers);
+                    possibleMatches.add(possibleWorker);
                 }
             }
 
-            return worker;
+            if (possibleMatches.isEmpty()) {
+                return null;
+            } else {
+
+                float counter = 0;
+                for (int j = 0; j < possibleMatches.size(); j++) {
+                    if (possibleMatches.get(j).getCompareValue() > counter) {
+                        counter = possibleMatches.get(j).getCompareValue();
+                        worker = possibleMatches.get(j);
+                    }
+                }
+
+                return worker;
+            }
+        } else {
+            return null;
         }
     }
 
-    public Match getExistingEmployerMatch(int matchID){
+    public Match getExistingEmployerMatch(int matchID) {
         int freelancerID = matchDAO.getEmployerMatch(matchID);
         Worker worker = workerDAO.getFreelancer("get_freelancer_details", freelancerID);
         return matchDAO.getMatch(worker);
     }
 
-    public Match getExistingFreelancerMatch(int matchID){
+    public Match getExistingFreelancerMatch(int matchID) {
         int employerID = matchDAO.getFreelancerMatch(matchID);
         Worker worker = workerDAO.getEmployer("get_employer_details", employerID);
         return matchDAO.getMatch(worker);
     }
 
-    public void completeMatch(User user, int rating, int matchID){
-        if(user.getEmployerID() != 0){
+    public void completeMatch(User user, int rating, int matchID) {
+        if (user.getEmployerID() != 0) {
             int freelancerID = matchDAO.getEmployerMatch(matchID);
             matchDAO.completeEmployerMatch(user.getEmployerID(), freelancerID, rating, matchID);
-        } else if(user.getFreelancerID() != 0){
+        } else if (user.getFreelancerID() != 0) {
             int employerID = matchDAO.getFreelancerMatch(matchID);
             matchDAO.completeFreelancerMatch(user.getFreelancerID(), employerID, rating, matchID);
         }
     }
 
-    public void setPreviousRating(User user, int rating, int id){
-        if(user.getEmployerID() != 0){
+    public void setPreviousRating(User user, int rating, int id) {
+        if (user.getEmployerID() != 0) {
             matchDAO.setPreviousFreelancerRating(user.getEmployerID(), id, rating);
-        } else if(user.getFreelancerID() != 0){
-            matchDAO.setPreviousEmployerRating(id, user.getFreelancerID(),rating);
+        } else if (user.getFreelancerID() != 0) {
+            matchDAO.setPreviousEmployerRating(id, user.getFreelancerID(), rating);
         }
     }
 
@@ -123,7 +127,38 @@ public class MatchServiceImpl implements MatchService {
                 "jobLength FROM freelancer");
     }
 
-    public List<Match> getAllMatches(){
-       return matchDAO.getAllMatches();
+    public List<Match> getAllMatches() {
+        return matchDAO.getAllMatches();
+    }
+
+    private float compareTo(Worker currentWorker, Worker worker){
+
+        float counter = 0;
+
+        if(currentWorker.getSalary() == worker.getSalary()){
+            counter = counter + 1;
+        }
+
+        if(currentWorker.getLocation() == worker.getLocation()){
+            counter = counter + 1;
+        }
+
+        if(currentWorker.getJobLength() == worker.getJobLength()){
+            counter = counter + 1;
+        }
+
+        if(currentWorker.getRating() >= worker.getPreviousMatch()){
+            counter = counter + 1;
+        }
+
+        for(int i = 0; i < currentWorker.getSkill().size(); i++){
+            if(worker.getSkill().contains(currentWorker.getSkill().get(i))){
+                counter = counter + 1;
+            }
+        }
+
+        float size = (currentWorker.getSkill().size() + 4);
+        float percentage = (counter/size) * 100;
+        return percentage;
     }
 }

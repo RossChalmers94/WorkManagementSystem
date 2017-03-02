@@ -8,15 +8,15 @@
         <h1>Looking For Work/To Hire in ${industryName}</h1>
     </div>
     <div class="row text-center">
-        <div class="border-right col-md-4 col-xs-6 col-sm-4 ">
+        <div class="border-right col-md-4 col-xs-12 col-sm-4">
             <img src="${mainImages}chooserole.png" class="img-responsive">
             <p>CHOOSE YOUR ROLE</p>
         </div>
-        <div class="border-right col-md-4 col-xs-6 col-sm-4 ">
+        <div class="border-right col-md-4 col-xs-12 col-sm-4">
             <img src="${mainImages}preferences.png" class="img-responsive">
             <p>SET YOUR PREFERENCES</p>
         </div>
-        <div class="col-md-4 col-xs-6 col-sm-4">
+        <div class="col-md-4 col-xs-12 col-sm-4">
             <img src="${mainImages}findmatch.png" class="img-responsive">
             <p>RECEIVE YOUR MATCH</p>
         </div>

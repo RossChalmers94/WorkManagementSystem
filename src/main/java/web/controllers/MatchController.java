@@ -29,7 +29,8 @@ public class MatchController {
 
     @RequestMapping(path = "user/match", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
-        User user = (User) session.getAttribute("currentUser");
+        User getUser = (User) session.getAttribute("currentUser");
+        User user = userService.getLogIn(getUser);
         Worker worker = workerService.getWorkerDetails(user);
         Match match = new Match();
         User userMatch = new User();

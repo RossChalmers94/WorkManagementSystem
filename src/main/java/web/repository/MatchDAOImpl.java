@@ -65,6 +65,7 @@ public class MatchDAOImpl implements MatchDAO {
             worker.setSalary((Integer) allWorkers.get(i).get(WorkerDetails.SALARY.getValue()));
             worker.setLocation((Integer) allWorkers.get(i).get(WorkerDetails.LOCATION.getValue()));
             worker.setJobLength((Integer) allWorkers.get(i).get(WorkerDetails.JOB_LENGTH.getValue()));
+            worker.setMinimumMatch((Integer) allWorkers.get(i).get(WorkerDetails.MINIMUM_MATCH.getValue()));
             if(parameterName.equals(WorkerDetails.EMPLOYER_ID.getValue())){
                 worker.setJobTitle((String) allWorkers.get(i).get(WorkerDetails.JOB_TITLE.getValue()));
                 worker.setJobDescription((String) allWorkers.get(i).get(WorkerDetails.JOB_DESCRIPTION.getValue()));
