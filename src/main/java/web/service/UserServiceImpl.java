@@ -6,7 +6,7 @@ import web.domain.User;
 import web.enumconstants.AdminDetails;
 import web.repository.UserDAO;
 import web.enumconstants.UserDetails;
-import java.util.Map;
+import java.util.*;
 import web.domain.application.Admin;
 
 import java.util.HashMap;
@@ -97,5 +97,9 @@ public class UserServiceImpl implements UserService {
 
     public String getIndustryName() {
         return userDAO.getIndustryName();
+    }
+
+    public List<User> getAllUsers(){
+        return userDAO.getAllUsers();
     }
 }

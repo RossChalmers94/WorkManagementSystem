@@ -18,4 +18,6 @@ public interface MatchDAO {
     void completeFreelancerMatch(int freelancerID, int employerID, int rating, int matchID);
     void setPreviousEmployerRating(int employerID, int freelancerID, int rating);
     void setPreviousFreelancerRating(int employerID, int freelancerID, int rating);
+    List<Match> getAllMatches();
+
 }

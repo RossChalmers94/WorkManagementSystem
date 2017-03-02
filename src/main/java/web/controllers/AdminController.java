@@ -13,6 +13,7 @@ import web.domain.application.*;
 import web.service.MatchService;
 import web.service.PreferencesService;
 import web.domain.application.Admin.*;
+import web.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -28,6 +29,8 @@ public class AdminController {
     private PreferencesService preferencesService;
     @Autowired
     private MatchService matchService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(path = "/admin/adminhome", method= RequestMethod.GET)
     public String viewAdminHome(Model model){
@@ -38,8 +41,10 @@ public class AdminController {
     @RequestMapping(path = "admin/manageusers", method = RequestMethod.GET)
     public String viewManageUsers(Model model){
         model.addAttribute("manageUsers", new ManageUsers());
+        model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("employers", matchService.getEmployers());
         model.addAttribute("freelancers", matchService.getFreelancers());
+        model.addAttribute("matches", matchService.getAllMatches());
         return "admin/manageusers";
     }
 

@@ -7,6 +7,7 @@ import web.enumconstants.AdminDetails;
 import java.util.Map;
 import web.domain.*;
 import web.domain.application.Admin;
+import java.util.List;
 
 /**
  * Created by RossChalmers on 11/02/2017.
@@ -37,6 +38,8 @@ public interface UserDAO {
     User getUserByFreelancer(String storedProc, int id);
 
     String getIndustryName();
+
+    List<User> getAllUsers();
 
 
 }

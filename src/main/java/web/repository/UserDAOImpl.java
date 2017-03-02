@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 
+import java.util.ArrayList;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,6 +14,7 @@ import web.domain.User;
 import web.enumconstants.UserDetails;
 import web.enumconstants.WorkerDetails;
 import web.domain.application.Admin;
+import java.util.List;
 
 /**
  * Created by RossChalmers on 11/02/2017.
@@ -161,6 +163,28 @@ public class UserDAOImpl implements UserDAO {
         getIndustryName.withProcedureName("get_industry_name");
         Map out = getIndustryName.execute();
         return (String) out.get(AdminDetails.INDUSTRY_NAME.getValue());
+    }
+
+    public List<User> getAllUsers(){
+        List<Map<String, Object>> out = this.jdbcTemplate.queryForList("SELECT username, firstName, lastName, " +
+                "freelancerID, employerID FROM users");
+        List<User> users = new ArrayList<User>();
+        for(int i = 0; i < out.size(); i++){
+            User user = new User();
+            user.setUsername((String) out.get(i).get(UserDetails.USER_NAME.getValue()));
+            user.setFirstname((String) out.get(i).get(UserDetails.USER_FIRSTNAME.getValue()));
+            user.setLastname((String) out.get(i).get(UserDetails.USER_LASTNAME.getValue()));
+            if(out.get(i).get(UserDetails.USER_FREELANCERID.getValue()) != null) {
+                user.setFreelancerID((Integer) out.get(i).get(UserDetails.USER_FREELANCERID.getValue()));
+            }
+            if(out.get(i).get(UserDetails.USER_EMPLOYERID.getValue()) != null) {
+                user.setEmployerID((Integer) out.get(i).get(UserDetails.USER_EMPLOYERID.getValue()));
+            }
+            users.add(user);
+        }
+
+        return users;
+
     }
 
     private User configUser(Map<String, Object> outParameters){

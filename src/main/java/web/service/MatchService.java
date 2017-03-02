@@ -19,4 +19,5 @@ public interface MatchService {
     void setPreviousRating(User user, int rating, int id);
     List<Worker> getFreelancers();
     List<Worker> getEmployers();
+    List<Match> getAllMatches();
 }

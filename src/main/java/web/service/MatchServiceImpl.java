@@ -122,4 +122,8 @@ public class MatchServiceImpl implements MatchService {
         return matchDAO.getFreelancers("SELECT freelancerID, salary, location, " +
                 "jobLength FROM freelancer");
     }
+
+    public List<Match> getAllMatches(){
+       return matchDAO.getAllMatches();
+    }
 }

@@ -18,6 +18,8 @@ public class Match {
     private String skills;
     private String jobTitle;
     private String jobDescription;
+    private int freelancerID;
+    private int employerID;
 
     public Match() {
     }
@@ -94,4 +96,19 @@ public class Match {
         this.jobDescription = jobDescription;
     }
 
+    public int getEmployerID() {
+        return employerID;
+    }
+
+    public void setEmployerID(int employerID) {
+        this.employerID = employerID;
+    }
+
+    public int getFreelancerID() {
+        return freelancerID;
+    }
+
+    public void setFreelancerID(int freelancerID) {
+        this.freelancerID = freelancerID;
+    }
 }

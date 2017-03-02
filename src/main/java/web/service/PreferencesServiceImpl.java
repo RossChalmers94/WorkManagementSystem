@@ -86,27 +86,22 @@ public class PreferencesServiceImpl implements PreferencesService {
         return admin;
     }
 
-    public void updatePreferences(Application application){
-        updateJobLengths(application.getJobLengths());
-        updateSalarys(application.getSalarys());
-    }
-
-    private void updateJobLengths(List<JobLength> jobLengths){
-        for(int i = 0; i < jobLengths.size(); i++){
+    public void updateJobLengths(JobLength jobLength){
+        for(int i = 0; i < jobLength.getJobLengths().size(); i++){
             Map<String, Object> inParameters = new HashMap<String, Object>();
-            inParameters.put(PreferenceDetails.JOB_LENGTH_ID.getValue(), jobLengths.get(i).getJobLengthID());
-            inParameters.put(PreferenceDetails.JOB_LENGTH_MIN.getValue(), jobLengths.get(i).getJobLengthMin());
-            inParameters.put(PreferenceDetails.JOB_LENGTH_MAX.getValue(), jobLengths.get(i).getJobLengthMax());
+            inParameters.put(PreferenceDetails.JOB_LENGTH_ID.getValue(), i+1);
+            inParameters.put(PreferenceDetails.JOB_LENGTH_MIN.getValue(), jobLength.getJobLengths().get(i).getJobLengthMin());
+            inParameters.put(PreferenceDetails.JOB_LENGTH_MAX.getValue(), jobLength.getJobLengths().get(i).getJobLengthMax());
             preferencesDAO.updateJobLengths("update_joblengths", inParameters);
         }
     }
 
-    private void updateSalarys(List<Salary> salarys){
-        for(int i = 0; i < salarys.size(); i++){
+    public void updateSalaries(Salary salary){
+        for(int i = 0; i < salary.getSalarys().size(); i++){
             Map<String, Object> inParameters = new HashMap<String, Object>();
-            inParameters.put(PreferenceDetails.SALARY_ID.getValue(), salarys.get(i).getSalaryID());
-            inParameters.put(PreferenceDetails.SALARY_MIN.getValue(), salarys.get(i).getSalaryMinValue());
-            inParameters.put(PreferenceDetails.SALARY_MAX.getValue(), salarys.get(i).getSalaryMaxValue());
+            inParameters.put(PreferenceDetails.SALARY_ID.getValue(), i+1);
+            inParameters.put(PreferenceDetails.SALARY_MIN.getValue(), salary.getSalarys().get(i).getSalaryMinValue());
+            inParameters.put(PreferenceDetails.SALARY_MAX.getValue(), salary.getSalarys().get(i).getSalaryMaxValue());
             preferencesDAO.updateSalarys("update_salarys", inParameters);
         }
     }

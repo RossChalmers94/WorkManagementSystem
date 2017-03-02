@@ -30,4 +30,6 @@ public interface UserService {
 
      String getIndustryName();
 
+     List<User> getAllUsers();
+
 }

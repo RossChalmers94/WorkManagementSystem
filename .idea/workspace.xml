@@ -2,60 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6322fc4-3a17-437d-86b4-0f0779a2987d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/web/domain/Employer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/web/domain/Freelancer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/Employer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/Freelancer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/User$personalDetails.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/ConfigureApplicationController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/ConfigureApplicationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/CreateAccountController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/CreateAccountController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/PersonalDetailsController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/PersonalDetailsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/User.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Admin.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Application.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/JobLength.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/JobLength.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Location.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Location.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Salary.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Salary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Skill.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Skill.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/MatchDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/MatchDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/MatchDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/MatchDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/MatchService.class" afterPath="$PROJECT_DIR$/target/classes/web/service/MatchService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/PreferencesServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/PreferencesServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/WorkerServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/WorkerServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Application.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/Match.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/Match.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/MatchService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/MatchService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createaccount.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createaccount.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,11 +37,74 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+      <file leaf-file-name="configureapplication.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="71" column="77" lean-forward="false" selection-start-line="71" selection-start-column="77" selection-end-line="71" selection-end-column="77" />
+            <state relative-caret-position="557">
+              <caret line="144" column="55" lean-forward="false" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigureApplicationController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="482">
+              <caret line="95" column="65" lean-forward="false" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Salary.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1068#1069#0" expanded="true" />
+                <element signature="e#1120#1121#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreferencesServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="91" column="76" lean-forward="false" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
+              <folding>
+                <element signature="method#getSkills#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#getLocations#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#getJobLengths#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#getAdmin#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#deleteSkill#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#deleteLocation#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#updatePassword#0;class#PreferencesServiceImpl#0" expanded="false" />
+                <element signature="method#checkAdminPassword#0;class#PreferencesServiceImpl#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreferencesService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Skill.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,52 +112,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonalDetailsController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java">
+      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Location.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminpassword.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminhome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="40" column="104" lean-forward="false" selection-start-line="40" selection-start-column="104" selection-end-line="40" selection-end-column="104" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="personal.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="58" column="72" lean-forward="false" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
-              <folding />
+            <state relative-caret-position="555">
+              <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1138#1139#0" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,48 +158,48 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/messages.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/skills.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/enumconstants/AdminDetails.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/workmanagementcss.css" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/PreferencesController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createaccount.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/MatchService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/Match.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/ManageUsers.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/Match.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/MatchService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
       </list>
     </option>
   </component>
@@ -1191,12 +1183,12 @@
       <workItem from="1486304334765" duration="3367000" />
       <workItem from="1486308307410" duration="286094000" />
       <workItem from="1488129764944" duration="64947000" />
-      <workItem from="1488376174927" duration="12613000" />
+      <workItem from="1488376174927" duration="23311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378014000" />
+    <option name="totallyTimeSpent" value="388712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1204,7 +1196,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1224,7 +1216,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3263889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1323,14 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="11" lean-forward="false" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1343,14 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1407,20 +1383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1202">
-          <caret line="162" column="71" lean-forward="false" selection-start-line="162" selection-start-column="71" selection-end-line="162" selection-end-column="71" />
-          <folding>
-            <element signature="method#insert#0;class#UserDAOImpl#0" expanded="false" />
-            <element signature="method#insertPersonal#0;class#UserDAOImpl#0" expanded="false" />
-            <element signature="method#checkUserLogIn#0;class#UserDAOImpl#0" expanded="false" />
-            <element signature="method#getUsername#0;class#UserDAOImpl#0" expanded="false" />
-            <element signature="method#getAdmin#0;class#UserDAOImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -1442,17 +1404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-          <folding>
-            <element signature="method#insertUser#0;class#UserServiceImpl#0" expanded="false" />
-            <element signature="method#insertUserPersonal#0;class#UserServiceImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -1469,14 +1420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="30" lean-forward="false" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
@@ -1487,65 +1430,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="47" lean-forward="false" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/service/WorkerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/MatchService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="97" column="36" lean-forward="false" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#650#666#0" expanded="false" />
-            <element signature="e#3529#3545#0" expanded="false" />
-            <element signature="e#3822#3838#0" expanded="false" />
-            <element signature="e#4373#4389#0" expanded="false" />
-            <element signature="e#4743#4759#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/Match.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="122" column="45" lean-forward="false" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="58" lean-forward="false" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1571,60 +1459,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/enumconstants/PreferenceDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding>
-            <element signature="e#496#497#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#561#562#0" expanded="false" />
-            <element signature="e#589#590#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="57" lean-forward="false" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
-          <folding>
-            <element signature="method#getMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getSalary#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getLocation#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getJobLength#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getSkill#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getPreferences#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#insertMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getEmployerMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#getFreelancerMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#completeEmployerMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#deleteMatch#0;class#MatchDAOImpl#0" expanded="false" />
-            <element signature="method#configWorker#0;class#MatchDAOImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="70" lean-forward="false" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -1637,52 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1691,39 +1483,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
-          <folding>
-            <element signature="method#getSkills#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#getLocations#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#getSalarys#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#getJobLengths#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#getAdmin#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#deleteSkill#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#deleteLocation#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#updatePassword#0;class#PreferencesServiceImpl#0" expanded="false" />
-            <element signature="method#checkAdminPassword#0;class#PreferencesServiceImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/PreferencesController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="28" column="63" lean-forward="true" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="71" column="77" lean-forward="false" selection-start-line="71" selection-start-column="77" selection-end-line="71" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1743,10 +1507,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="40" column="104" lean-forward="false" selection-start-line="40" selection-start-column="104" selection-end-line="40" selection-end-column="104" />
+        <state relative-caret-position="480">
+          <caret line="32" column="72" lean-forward="true" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1203#1204#0" expanded="true" />
+            <element signature="e#1264#1265#0" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1759,10 +1545,238 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="72" lean-forward="false" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
+        <state relative-caret-position="317">
+          <caret line="97" column="36" lean-forward="false" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="102" column="37" lean-forward="false" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#insertUser#0;class#UserServiceImpl#0" expanded="false" />
+            <element signature="method#insertUserPersonal#0;class#UserServiceImpl#0" expanded="false" />
+            <element signature="e#3660#3661#0" expanded="false" />
+            <element signature="e#3708#3709#0" expanded="false" />
+            <element signature="e#3746#3747#0" expanded="false" />
+            <element signature="e#3790#3791#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="183" column="9" lean-forward="true" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#insert#0;class#UserDAOImpl#0" expanded="false" />
+            <element signature="method#insertPersonal#0;class#UserDAOImpl#0" expanded="false" />
+            <element signature="method#checkUserLogIn#0;class#UserDAOImpl#0" expanded="false" />
+            <element signature="method#getAdmin#0;class#UserDAOImpl#0" expanded="false" />
+            <element signature="e#7147#7153#0" expanded="true" />
+            <marker date="1488416139000" expanded="true" signature="7009:7081" ph="SELECT usern... " />
+            <marker date="1488416139000" expanded="true" signature="7009:7103" ph="SELECT usern... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/Match.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="110" column="35" lean-forward="false" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
+          <folding>
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+            <element signature="e#2061#2062#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
+            <element signature="e#2132#2133#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2233#2234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="32" lean-forward="false" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="213" column="23" lean-forward="false" selection-start-line="213" selection-start-column="23" selection-end-line="213" selection-end-column="23" />
+          <folding>
+            <element signature="method#getMatch#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getSalary#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getLocation#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getJobLength#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getSkill#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getPreferences#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#insertMatch#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getEmployerMatch#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#getFreelancerMatch#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="method#deleteMatch#0;class#MatchDAOImpl#0" expanded="false" />
+            <element signature="e#9793#9800#0" expanded="true" />
+            <element signature="method#configWorker#0;class#MatchDAOImpl#0" expanded="false" />
+            <marker date="1488417484000" expanded="true" signature="9670:9746" ph="SELECT match... job_match" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/MatchService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="126" column="13" lean-forward="false" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="13" />
+          <folding>
+            <element signature="e#4730#4731#0" expanded="false" />
+            <element signature="e#4776#4777#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="46" column="68" lean-forward="false" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="677">
+          <caret line="121" column="24" lean-forward="true" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="47" column="19" lean-forward="true" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/enumconstants/PreferenceDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="95" column="65" lean-forward="false" selection-start-line="95" selection-start-column="65" selection-end-line="95" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="91" column="76" lean-forward="false" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
+          <folding>
+            <element signature="method#getSkills#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#getLocations#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#getJobLengths#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#getAdmin#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#deleteSkill#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#deleteLocation#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#updatePassword#0;class#PreferencesServiceImpl#0" expanded="false" />
+            <element signature="method#checkAdminPassword#0;class#PreferencesServiceImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1120#1121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="144" column="55" lean-forward="false" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
           <folding />
         </state>
       </provider>

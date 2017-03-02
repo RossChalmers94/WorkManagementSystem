@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import web.domain.application.Application;
+import web.domain.application.*;
 import web.domain.application.Application.*;
 import web.service.PreferencesService;
 
@@ -27,19 +27,31 @@ public class ConfigureApplicationController {
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.GET)
     public String viewConfigureApplication(Model model, HttpSession session){
         Application newApplication = new Application();
-        newApplication.setLocations(preferencesService.getLocations());
+/*        newApplication.setLocations(preferencesService.getLocations());
         newApplication.setSkills(preferencesService.getSkills());
         newApplication.setSalarys(preferencesService.getSalarys());
-        newApplication.setJobLengths(preferencesService.getJobLengths());
+        newApplication.setJobLengths(preferencesService.getJobLengths());*/
         model.addAttribute("newApplication", newApplication);
+        Skill configureSkills = new Skill();
+        configureSkills.setSkills(preferencesService.getSkills());
+        Location configureLocations = new Location();
+        configureLocations.setLocations(preferencesService.getLocations());
+        Salary configureSalaries = new Salary();
+        configureSalaries.setSalarys(preferencesService.getSalarys());
+        JobLength configureJobLengths = new JobLength();
+        configureJobLengths.setJobLengths(preferencesService.getJobLengths());
+        model.addAttribute("configureSkills", configureSkills);
+        model.addAttribute("configureLocations", configureLocations);
+        model.addAttribute("configureSalaries", configureSalaries);
+        model.addAttribute("configureJobLengths", configureJobLengths);
         return "admin/configureapplication";
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addskill")
-    public String addSkill(@Valid @ModelAttribute("newApplication") Application newApplication, BindingResult result,
+    public String addSkill(@Validated @ModelAttribute("configureSkills") Skill configureSkills, BindingResult result,
                            Model model, HttpSession session){
         if(!result.hasErrors()){
-            preferencesService.addSkill(newApplication.getSkill().getSkillName().trim());
+            preferencesService.addSkill(configureSkills.getSkillName().trim());
             return "redirect:/admin/configureapplication";
         } else {
             model.addAttribute("error", true);
@@ -50,17 +62,17 @@ public class ConfigureApplicationController {
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "deleteskill")
-    public String deleteSkills(@Valid @ModelAttribute("newApplication") Application newApplication, BindingResult result,
+    public String deleteSkills(@Valid @ModelAttribute("configureSkills") Skill configureSkills, BindingResult result,
                                              Model model, HttpSession session){
-        preferencesService.deleteSkill(newApplication.getSkillsSet());
+        preferencesService.deleteSkill(configureSkills.getSkillsSet());
         return "redirect:/admin/configureapplication";
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addlocation")
-    public String addLocation(@Valid @ModelAttribute("newApplication") Application newApplication, BindingResult result,
+    public String addLocation(@Valid @ModelAttribute("configureLocations") Location configureLocations, BindingResult result,
                            Model model, HttpSession session){
         if(!result.hasErrors()){
-            preferencesService.addLocation(newApplication.getLocation().getLocationName().trim());
+            preferencesService.addLocation(configureLocations.getLocationName().trim());
             return "redirect:/admin/configureapplication";
         } else {
             model.addAttribute("error", true);
@@ -70,17 +82,18 @@ public class ConfigureApplicationController {
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "deletelocation")
-    public String deleteLocation(@ModelAttribute("newApplication") Application newApplication, BindingResult result,
+    public String deleteLocation(@ModelAttribute("configureLocations") Location configureLocations, BindingResult result,
                                Model model, HttpSession session){
-        preferencesService.deleteLocation(newApplication.getLocationSet());
+        preferencesService.deleteLocation(configureLocations.getLocationSet());
         return "redirect:/admin/configureapplication";
     }
 
-    @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "configureapplication")
-    public String configureApplication(@Valid @ModelAttribute("newApplication") Application newApplication, BindingResult result,
+    @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addsalaries")
+    public String configureApplication(@Valid @ModelAttribute("configureSalaries") Salary configureSalaries,
+                                       BindingResult result,
                                        Model model, HttpSession session){
         if(!result.hasErrors()) {
-            preferencesService.updatePreferences(newApplication);
+            preferencesService.updateSalaries(configureSalaries);
             return "redirect:/admin/configureapplication";
         } else {
             model.addAttribute("error", true);

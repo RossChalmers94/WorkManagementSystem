@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import web.enumconstants.MatchDetails;
+import web.enumconstants.UserDetails;
 import web.enumconstants.WorkerDetails;
 
 import javax.sql.DataSource;
@@ -196,6 +197,21 @@ public class MatchDAOImpl implements MatchDAO {
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID)
                 .addValue("rating", rating);
         setPreviousFreelancer.execute(in);
+    }
+
+    public List<Match> getAllMatches() {
+        List<Map<String, Object>> out = this.jdbcTemplate.queryForList("SELECT matchID, freelancerID, " +
+                "employerID FROM job_match");
+        List<Match> matches = new ArrayList<Match>();
+        for(int i = 0; i < out.size(); i++){
+            Match match = new Match();
+            match.setMatchID((Integer) out.get(i).get("matchID"));
+            match.setFreelancerID((Integer) out.get(i).get(UserDetails.USER_FREELANCERID.getValue()));
+            match.setEmployerID((Integer) out.get(i).get(UserDetails.USER_EMPLOYERID.getValue()));
+            matches.add(match);
+        }
+
+        return matches;
     }
 
     private Worker configWorker(Map<String, Object> out){

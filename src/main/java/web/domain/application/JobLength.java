@@ -3,6 +3,7 @@ package web.domain.application;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 /**
  * Created by RossChalmers on 09/02/2017.
@@ -16,6 +17,8 @@ public class JobLength {
     @NotEmpty
     @Pattern(regexp = "^(0|[1-9][0-9]*)$\n", message = "Job Length Maximum Value must be a number")
     private int jobLengthMax;
+
+    private List<JobLength> jobLengths;
 
 
     public JobLength(){
@@ -45,5 +48,11 @@ public class JobLength {
         this.jobLengthMax = jobLengthMax;
     }
 
+    public List<JobLength> getJobLengths() {
+        return jobLengths;
+    }
 
+    public void setJobLengths(List<JobLength> jobLengths) {
+        this.jobLengths = jobLengths;
+    }
 }

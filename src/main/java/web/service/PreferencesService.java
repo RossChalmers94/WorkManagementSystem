@@ -14,7 +14,8 @@ public interface PreferencesService {
     List<Salary> getSalarys();
     List<JobLength> getJobLengths();
     Admin getAdmin();
-    void updatePreferences(Application application);
+    void updateJobLengths(JobLength jobLength);
+    void updateSalaries(Salary salary);
     void addSkill(String skillName);
     void deleteSkill(List<Integer> skills);
     void addLocation(String locationName);
