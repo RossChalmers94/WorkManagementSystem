@@ -89,11 +89,26 @@ public class ConfigureApplicationController {
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addsalaries")
-    public String configureApplication(@Valid @ModelAttribute("configureSalaries") Salary configureSalaries,
+    public String configureSalaries(@Valid @ModelAttribute("configureSalaries") Salary configureSalaries,
                                        BindingResult result,
                                        Model model, HttpSession session){
         if(!result.hasErrors()) {
             preferencesService.updateSalaries(configureSalaries);
+            return "redirect:/admin/configureapplication";
+        } else {
+            model.addAttribute("error", true);
+            model.addAttribute("preferences", true);
+            return "redirect:/admin/configureapplication";
+        }
+
+    }
+
+    @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addJobLengths")
+    public String configureJobLengths(@Valid @ModelAttribute("configureJobLengths") JobLength configureJobLengths,
+                                       BindingResult result,
+                                       Model model, HttpSession session){
+        if(!result.hasErrors()) {
+            preferencesService.updateJobLengths(configureJobLengths);
             return "redirect:/admin/configureapplication";
         } else {
             model.addAttribute("error", true);

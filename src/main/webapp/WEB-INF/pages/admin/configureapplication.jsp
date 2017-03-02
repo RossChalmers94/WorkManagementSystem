@@ -96,7 +96,7 @@
                 <c:forEach items="${configureSalaries.salarys}" varStatus="i">
                     <tr>
                         <td>${(i.index) + 1}</td>
-                        <td><form:select path="salarys[${i.index}].salaryMinValue">
+                        <td><form:select path="salarys[${i.index}].salaryMinValue" class="form-control">
                             <form:option value="10000">£10,000</form:option>
                             <form:option value="20000">£20,000</form:option>
                             <form:option value="30000">£30,000</form:option>
@@ -110,7 +110,7 @@
                             <form:option value="110000">£110,000</form:option>
                             <form:option value="120000">£120,000</form:option>
                         </form:select></td>
-                        <td><form:select path="salarys[${i.index}].salaryMaxValue">
+                        <td><form:select path="salarys[${i.index}].salaryMaxValue" class="form-control">
                             <form:option value="10000">£10,000</form:option>
                             <form:option value="20000">£20,000</form:option>
                             <form:option value="30000">£30,000</form:option>
@@ -133,7 +133,7 @@
         </form:form>
         <form:form modelAttribute="configureJobLengths" method="post">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <label>Job Length:</label>
+            <label>Job Length (Months):</label>
             <table class="table table-striped table-sm table-hover table-bordered">
                 <thead class="thead">
                 <tr>
@@ -142,18 +142,42 @@
                     <td>Maximum Time</td>
                 </tr>
                 </thead>
-                <c:forEach items="${configureJobLengths.jobLengths}" var="jobLength" varStatus="i">
+                <c:forEach items="${configureJobLengths.jobLengths}" varStatus="i">
                     <tr>
                         <td>${(i.index) + 1}</td>
-                        <td><form:input path="jobLengths[${i.index}].jobLengthMin" class="form-control"/></td>
-                        <td><form:input path="jobLengths[${i.index}].jobLengthMax" class="form-control"/></td>
+                        <td><form:select path="jobLengths[${i.index}].jobLengthMin" class="form-control">
+                            <form:option value="1">1</form:option>
+                            <form:option value="2">2</form:option>
+                            <form:option value="3">3</form:option>
+                            <form:option value="4">4</form:option>
+                            <form:option value="5">5</form:option>
+                            <form:option value="6">6</form:option>
+                            <form:option value="7">7</form:option>
+                            <form:option value="8">8</form:option>
+                            <form:option value="9">9</form:option>
+                            <form:option value="10">10</form:option>
+                            <form:option value="11">11</form:option>
+                            <form:option value="12">12</form:option>
+                        </form:select></td>
+                        <td><form:select path="jobLengths[${i.index}].jobLengthMax" class="form-control">
+                            <form:option value="1">1</form:option>
+                            <form:option value="2">2</form:option>
+                            <form:option value="3">3</form:option>
+                            <form:option value="4">4</form:option>
+                            <form:option value="5">5</form:option>
+                            <form:option value="6">6</form:option>
+                            <form:option value="7">7</form:option>
+                            <form:option value="8">8</form:option>
+                            <form:option value="9">9</form:option>
+                            <form:option value="10">10</form:option>
+                            <form:option value="11">11</form:option>
+                            <form:option value="12">12</form:option>
+                        </form:select></td>
                     </tr>
                 </c:forEach>
             </table>
+            <input type="submit" class="btn btn-default" value="Confirm Changes" name="addJobLengths">
         </div>
-    </div>
-    <div class="row">
-        <input type="submit" class="btn btn-default" value="Confirm Changes" name="configureapplication">
     </div>
     </form:form>
     </div>
