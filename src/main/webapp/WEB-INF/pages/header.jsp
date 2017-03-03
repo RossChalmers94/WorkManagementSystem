@@ -25,7 +25,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home">Work Management System</a>
+                <c:choose>
+                    <c:when test="${adminUser != null}">
+                        <a class="navbar-brand" href="adminhome">Work Management System</a>
+                    </c:when>
+                    <c:when test="${currentUser != null}">
+                        <a class="navbar-brand" href="userhome">Work Management System</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="navbar-brand" href="home">Work Management System</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

@@ -14,6 +14,7 @@ import web.service.MatchService;
 import web.service.PreferencesService;
 import web.domain.application.Admin.*;
 import web.service.UserService;
+import web.service.WorkerService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -31,34 +32,60 @@ public class AdminController {
     private MatchService matchService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private WorkerService workerService;
 
     @RequestMapping(path = "/admin/adminhome", method= RequestMethod.GET)
-    public String viewAdminHome(Model model){
-        return "admin/adminhome";
+    public String viewAdminHome(Model model, HttpSession session){
+        if(session.getAttribute("adminUser") != null) {
+            return "admin/adminhome";
+        } else {
+            return "redirect:/login";
+        }
     }
 
 
     @RequestMapping(path = "admin/manageusers", method = RequestMethod.GET)
-    public String viewManageUsers(Model model){
-        model.addAttribute("manageUsers", new ManageUsers());
-        model.addAttribute("users", userService.getAllUsers());
-        model.addAttribute("employers", matchService.getEmployers());
-        model.addAttribute("freelancers", matchService.getFreelancers());
-        model.addAttribute("matches", matchService.getAllMatches());
-        return "admin/manageusers";
+    public String viewManageUsers(Model model, HttpSession session){
+        if(session.getAttribute("adminUser") != null) {
+            model.addAttribute("manageUsers", new ManageUsers());
+            model.addAttribute("users", userService.getAllUsers());
+            model.addAttribute("employers", matchService.getEmployers());
+            model.addAttribute("freelancers", matchService.getFreelancers());
+            model.addAttribute("matches", matchService.getAllMatches());
+            return "admin/manageusers";
+        } else {
+            return "redirect:/login";
+        }
     }
 
-    @RequestMapping(path = "admin/manageusers", method = RequestMethod.POST)
-    public String viewManageUsers(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model){
-        model.addAttribute("employers", matchService.getEmployers());
-        model.addAttribute("freelancers", matchService.getFreelancers());
-        return "admin/manageusers";
+    @RequestMapping(path = "admin/manageusers", method = RequestMethod.POST, params = "deletefreelancer")
+    public String deleteFreelancer(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model){
+        workerService.deleteFreelancer(manageUsers.getFreelancers());
+        return "redirect:/admin/manageusers";
     }
+
+    @RequestMapping(path = "admin/manageusers", method = RequestMethod.POST, params = "deleteemployer")
+    public String deleteEmployer(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model){
+        workerService.deleteEmployer(manageUsers.getEmployers());
+        return "redirect:/admin/manageusers";
+    }
+
+    @RequestMapping(path = "admin/manageusers", method = RequestMethod.POST, params = "deletematch")
+    public String deleteMatch(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model){
+        matchService.deleteMatch(manageUsers.getMatches());
+        return "redirect:/admin/manageusers";
+    }
+
 
     @RequestMapping(path = "admin/adminpassword", method = RequestMethod.GET)
-    public String viewChangePassword(Model model){
-        model.addAttribute("admin", preferencesService.getAdmin());
-        return "admin/adminpassword";
+    public String viewChangePassword(Model model, HttpSession session){
+        if(session.getAttribute("adminUser") != null) {
+            model.addAttribute("admin", preferencesService.getAdmin());
+            return "admin/adminpassword";
+        } else {
+            return "redirect:/login";
+        }
     }
 
 

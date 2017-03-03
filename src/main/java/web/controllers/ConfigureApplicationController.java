@@ -26,25 +26,25 @@ public class ConfigureApplicationController {
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.GET)
     public String viewConfigureApplication(Model model, HttpSession session){
-        Application newApplication = new Application();
-/*        newApplication.setLocations(preferencesService.getLocations());
-        newApplication.setSkills(preferencesService.getSkills());
-        newApplication.setSalarys(preferencesService.getSalarys());
-        newApplication.setJobLengths(preferencesService.getJobLengths());*/
-        model.addAttribute("newApplication", newApplication);
-        Skill configureSkills = new Skill();
-        configureSkills.setSkills(preferencesService.getSkills());
-        Location configureLocations = new Location();
-        configureLocations.setLocations(preferencesService.getLocations());
-        Salary configureSalaries = new Salary();
-        configureSalaries.setSalarys(preferencesService.getSalarys());
-        JobLength configureJobLengths = new JobLength();
-        configureJobLengths.setJobLengths(preferencesService.getJobLengths());
-        model.addAttribute("configureSkills", configureSkills);
-        model.addAttribute("configureLocations", configureLocations);
-        model.addAttribute("configureSalaries", configureSalaries);
-        model.addAttribute("configureJobLengths", configureJobLengths);
-        return "admin/configureapplication";
+        if(session.getAttribute("adminUser") != null) {
+            Application newApplication = new Application();
+            model.addAttribute("newApplication", newApplication);
+            Skill configureSkills = new Skill();
+            configureSkills.setSkills(preferencesService.getSkills());
+            Location configureLocations = new Location();
+            configureLocations.setLocations(preferencesService.getLocations());
+            Salary configureSalaries = new Salary();
+            configureSalaries.setSalarys(preferencesService.getSalarys());
+            JobLength configureJobLengths = new JobLength();
+            configureJobLengths.setJobLengths(preferencesService.getJobLengths());
+            model.addAttribute("configureSkills", configureSkills);
+            model.addAttribute("configureLocations", configureLocations);
+            model.addAttribute("configureSalaries", configureSalaries);
+            model.addAttribute("configureJobLengths", configureJobLengths);
+            return "admin/configureapplication";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.POST, params = "addskill")

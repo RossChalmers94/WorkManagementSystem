@@ -11,4 +11,8 @@ public interface WorkerService {
 
     Worker getWorkerDetails(User user);
 
+    void deleteEmployer(List<Integer> employers);
+
+    void deleteFreelancer(List<Integer> freelancers);
+
 }

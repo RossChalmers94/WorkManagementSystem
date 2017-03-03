@@ -61,17 +61,12 @@ public class UserDAOImpl implements UserDAO {
         insertUserPersonalDetails.execute(in);
     }
 
-    public boolean checkUserLogIn(String storedProc, Map<String, String> inParameters) {
-        boolean check = false;
+    public String checkUserLogIn(String storedProc, Map<String, String> inParameters) {
         getLogInUser.withProcedureName(storedProc);
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map out = getLogInUser.execute(inParameters);
-        int value = (Integer)(out.get(UserDetails.USER_VALUE.getValue()));
-        if(value == 1){
-            check = true;
-        }
-        return check;
+        return (String) out.get(UserDetails.USER_PASSWORD.getValue());
     }
 
     // Get a user from the users table
@@ -190,7 +185,6 @@ public class UserDAOImpl implements UserDAO {
     private User configUser(Map<String, Object> outParameters){
         User user = new User();
         user.setUsername((String) outParameters.get(UserDetails.USER_NAME.getValue()));
-        user.setPassword((String) outParameters.get(UserDetails.USER_PASSWORD.getValue()));
         user.setFirstname((String) outParameters.get(UserDetails.USER_FIRSTNAME.getValue()));
         user.setLastname((String) outParameters.get(UserDetails.USER_LASTNAME.getValue()));
         user.setTelephone((String) outParameters.get(UserDetails.USER_TELEPHONE.getValue()));

@@ -19,7 +19,7 @@ public interface UserDAO {
 
     void insertPersonal(String storedProcedure, Map<String, String> inParameters);
 
-    boolean checkUserLogIn(String storedProcedure, Map<String, String> inParameters);
+    String checkUserLogIn(String storedProcedure, Map<String, String> inParameters);
 
     User get(String storedProc, Map<String, String> inParameters);
 

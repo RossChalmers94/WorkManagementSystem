@@ -19,5 +19,7 @@ public interface MatchDAO {
     void setPreviousEmployerRating(int employerID, int freelancerID, int rating);
     void setPreviousFreelancerRating(int employerID, int freelancerID, int rating);
     List<Match> getAllMatches();
+    void deleteMatch(int matchID);
+
 
 }

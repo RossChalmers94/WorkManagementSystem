@@ -1,6 +1,7 @@
 package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import web.domain.User;
 import web.enumconstants.AdminDetails;
@@ -21,10 +22,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public void insertUser(User user) {
         Map<String, String> userDetails = new HashMap<String,String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername().trim());
-        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword().trim());
+        userDetails.put(UserDetails.USER_PASSWORD.getValue(), passwordEncoder.encode(user.getPassword().trim()));
         userDetails.put(UserDetails.USER_ROLE.getValue(), user.getRole());
         userDAO.insert("insert_user", userDetails);
     }
@@ -45,19 +48,21 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean checkUserLogIn(User user){
-        boolean login;
+        String password;
         Map<String,String> userDetails = new HashMap<String, String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword());
-        login = userDAO.checkUserLogIn("check_user_exists", userDetails);
-        return login;
+        password = userDAO.checkUserLogIn("check_user_exists", userDetails);
+        if(passwordEncoder.matches(user.getPassword().trim(), password)){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public User getLogIn(User user){
         User currentUser;
         Map<String, String> userDetails = new HashMap<String, String>();
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        userDetails.put(UserDetails.USER_PASSWORD.getValue(), user.getPassword());
         currentUser = userDAO.get("user_log_in", userDetails);
         return currentUser;
     }

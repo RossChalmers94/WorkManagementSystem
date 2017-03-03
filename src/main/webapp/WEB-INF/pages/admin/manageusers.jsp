@@ -110,6 +110,7 @@
                             <td><label>${matches[i.index].matchID}</label></td>
                             <td><label>${matches[i.index].freelancerID}</label></td>
                             <td><label>${matches[i.index].employerID}</label></td>
+                            <td><form:checkbox path="matches" value="${matches[i.index].matchID}"/></td>
                         </tr>
                     </c:forEach>
                     <tr>

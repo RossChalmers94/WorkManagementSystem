@@ -26,10 +26,14 @@ public class PersonalDetailsController {
 
     @RequestMapping(path = "/user/personal", method = RequestMethod.GET)
     public String viewPersonal(Model model, HttpSession session){
-        User user = (User) session.getAttribute("currentUser");
-        User newUser = userService.getLogIn(user);
-        model.addAttribute("userPersonal", newUser);
-        return "/user/personal";
+        if(session.getAttribute("currentUser") != null) {
+            User user = (User) session.getAttribute("currentUser");
+            User newUser = userService.getLogIn(user);
+            model.addAttribute("userPersonal", newUser);
+            return "/user/personal";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping(path = "/user/personal", method = RequestMethod.POST, params = "employer")

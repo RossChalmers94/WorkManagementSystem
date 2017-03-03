@@ -30,11 +30,15 @@ public class PreferencesController {
 
     @RequestMapping(path = "user/preferences", method= RequestMethod.GET)
     public String viewPreferences(Model model, HttpSession session){
-        User user = (User) session.getAttribute("currentUser");
-        Worker newWorker = workerService.getWorkerDetails(user);
-        model.addAttribute("application", setApplication());
-        model.addAttribute("newWorker", newWorker);
-        return "user/preferences";
+        if(session.getAttribute("currentUser") != null) {
+            User user = (User) session.getAttribute("currentUser");
+            Worker newWorker = workerService.getWorkerDetails(user);
+            model.addAttribute("application", setApplication());
+            model.addAttribute("newWorker", newWorker);
+            return "user/preferences";
+        } else {
+            return "redirect:/login";
+        }
     }
     @RequestMapping(path = "/user/preferences", method= RequestMethod.POST, params = "employer")
     public String confirmEmployerPreferences(@Validated({preferencesDetailsEmployer.class})@ModelAttribute("newWorker") Worker newWorker,

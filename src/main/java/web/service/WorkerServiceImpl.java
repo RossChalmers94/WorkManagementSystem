@@ -116,4 +116,16 @@ public class WorkerServiceImpl implements WorkerService {
         }
         return worker;
     }
+
+    public void deleteEmployer(List<Integer> employers) {
+        for(int i = 0; i < employers.size(); i++){
+            workerDAO.deleteEmployer("delete_employer", employers.get(i));
+        }
+    }
+
+    public void deleteFreelancer(List<Integer> freelancers) {
+        for(int i = 0; i < freelancers.size(); i++){
+            workerDAO.deleteFreelancer("delete_freelancer", freelancers.get(i));
+        }
+    }
 }

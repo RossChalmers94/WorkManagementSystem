@@ -20,4 +20,5 @@ public interface MatchService {
     List<Worker> getFreelancers();
     List<Worker> getEmployers();
     List<Match> getAllMatches();
+    void deleteMatch(List<Integer> matches);
 }

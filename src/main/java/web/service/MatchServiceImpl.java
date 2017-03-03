@@ -119,16 +119,22 @@ public class MatchServiceImpl implements MatchService {
 
     public List<Worker> getEmployers() {
         return matchDAO.getEmployers("SELECT employerID, salary, location, " +
-                "jobLength, jobTitle, jobDescription FROM employer");
+                "jobLength, jobTitle, minimumMatch, jobDescription FROM employer");
     }
 
     public List<Worker> getFreelancers() {
         return matchDAO.getFreelancers("SELECT freelancerID, salary, location, " +
-                "jobLength FROM freelancer");
+                "jobLength, minimumMatch FROM freelancer");
     }
 
     public List<Match> getAllMatches() {
         return matchDAO.getAllMatches();
+    }
+
+    public void deleteMatch(List<Integer> matches) {
+        for(int i = 0; i < matches.size(); i++){
+            matchDAO.deleteMatch(matches.get(i));
+        }
     }
 
     private float compareTo(Worker currentWorker, Worker worker){

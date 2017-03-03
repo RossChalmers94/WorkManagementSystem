@@ -21,7 +21,8 @@ public class WorkerDAOImpl implements WorkerDAO {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills, deleteFreelancerSkills,
-            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails;
+            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
+            deleteEmployer, deleteFreelancer;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -30,8 +31,8 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.insertEmployer = new SimpleJdbcCall(jdbcTemplate);
         this.insertFreelancerSkills = new SimpleJdbcCall(jdbcTemplate);
         this.insertEmployerSkills = new SimpleJdbcCall(jdbcTemplate);
-        this.deleteFreelancerSkills = new SimpleJdbcCall(jdbcTemplate);
-        this.deleteEmployerSkills = new SimpleJdbcCall(jdbcTemplate);
+        this.deleteEmployer = new SimpleJdbcCall(jdbcTemplate);
+        this.deleteFreelancer = new SimpleJdbcCall(jdbcTemplate);
         this.getFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.getEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
         this.updateEmployerDetails = new SimpleJdbcCall(jdbcTemplate);
@@ -66,20 +67,6 @@ public class WorkerDAOImpl implements WorkerDAO {
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertEmployerSkills.execute(in);
-    }
-
-    public void deleteFreelancerSkills(String storedProc, Map<String, Object> inParameters) {
-        deleteFreelancerSkills.withProcedureName(storedProc);
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        deleteFreelancerSkills.execute(in);
-    }
-
-    public void deleteEmployerSkills(String storedProc, Map<String, Object> inParameters) {
-        deleteEmployerSkills.withProcedureName(storedProc);
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        deleteEmployerSkills.execute(in);
     }
 
     public Worker getEmployer(String storedProc, int employerID) {
@@ -117,6 +104,20 @@ public class WorkerDAOImpl implements WorkerDAO {
     public List<Integer> getSkills(String storedProc, int id) {
         List<Integer> get = this.jdbcTemplate.queryForList(storedProc, Integer.class, id);
         return get;
+    }
+
+    public void deleteEmployer(String storedProc, int employerID) {
+        deleteEmployer.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
+        deleteEmployer.execute(in);
+    }
+
+    public void deleteFreelancer(String storedProc, int freelancerID) {
+        deleteFreelancer.withProcedureName(storedProc);
+        SqlParameterSource in = new MapSqlParameterSource()
+                .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
+        deleteFreelancer.execute(in);
     }
 
     public static Worker configWorker(Map<String, Object> out, List<Integer> skills){

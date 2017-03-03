@@ -176,7 +176,7 @@ public class MatchDAOImpl implements MatchDAO {
 
     }
 
-    private void deleteMatch(int matchID){
+    public void deleteMatch(int matchID){
         deleteMatch.withProcedureName("delete_match");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue("matchID", matchID);

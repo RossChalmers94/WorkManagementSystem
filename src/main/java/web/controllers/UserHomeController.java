@@ -24,13 +24,17 @@ public class UserHomeController {
 
     @RequestMapping(path = "user/userhome", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
-        User user = (User) session.getAttribute("currentUser");
-        Worker worker = workerService.getWorkerDetails(user);
-        model.addAttribute("worker", worker);
-        if(worker.getPreviousMatch() != 0){
-            return "redirect:/user/completematch";
+        if(session.getAttribute("currentUser") != null) {
+            User user = (User) session.getAttribute("currentUser");
+            Worker worker = workerService.getWorkerDetails(user);
+            model.addAttribute("worker", worker);
+            if (worker.getPreviousMatch() != 0) {
+                return "redirect:/user/completematch";
+            }
+            return "user/userhome";
+        } else {
+            return "redirect:/login";
         }
-        return "user/userhome";
     }
 
 }
