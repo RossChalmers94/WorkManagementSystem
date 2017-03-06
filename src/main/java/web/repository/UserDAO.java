@@ -25,10 +25,6 @@ public interface UserDAO {
 
     boolean getUsername(String storedProc, String username);
 
-    void insertEmployerID(String storedProc, Map<String, Object> inParameters);
-
-    void insertFreelancerID(String storedProc, Map<String, Object> inParameters);
-
     boolean checkAdminLogIn(String storedProc, String adminPassword);
 
     Admin getAdmin(String storedProc, Map<String, Object> inParameters);

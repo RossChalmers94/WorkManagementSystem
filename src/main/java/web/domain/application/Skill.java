@@ -13,6 +13,8 @@ public class Skill {
 
 
     private int skillID;
+    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$")
     private String skillName;
     private List<Skill> skills;
     private List<Integer> skillsSet;

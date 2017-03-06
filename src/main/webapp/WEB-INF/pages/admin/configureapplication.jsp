@@ -179,6 +179,9 @@
             <input type="submit" class="btn btn-default" value="Confirm Changes" name="addJobLengths">
         </div>
     </div>
+    <div class="row">
+        <a class="contact btn btn-default" href="adminhome">Back</a>
+    </div>
     </form:form>
     </div>
     </body>

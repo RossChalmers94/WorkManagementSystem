@@ -26,12 +26,12 @@ public class User {
     private String password;
     @NotEmpty(groups = {createAccount.class}, message = "You must select a Role.")
     private String role;
-    @Size(min = 5, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
+    @Size(min = 3, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "First Name must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "First Name must only contain letters.", regexp = "[a-zA-Z]+")
     private String firstname;
-    @Size(min = 5, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
+    @Size(min = 3 ,max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "Last Name must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "Last Name must only contain letters.", regexp = "[a-zA-Z]+")

@@ -26,14 +26,20 @@ import java.util.List;
 @Controller
 public class AdminController {
 
-    @Autowired
+
     private PreferencesService preferencesService;
-    @Autowired
     private MatchService matchService;
-    @Autowired
     private UserService userService;
-    @Autowired
     private WorkerService workerService;
+
+    @Autowired
+    public AdminController(PreferencesService preferencesService, MatchService matchService, UserService userService,
+                           WorkerService workerService){
+        this.preferencesService = preferencesService;
+        this.matchService = matchService;
+        this.userService = userService;
+        this.workerService = workerService;
+    }
 
     @RequestMapping(path = "/admin/adminhome", method= RequestMethod.GET)
     public String viewAdminHome(Model model, HttpSession session){
@@ -90,10 +96,10 @@ public class AdminController {
 
 
     @RequestMapping(path = "/admin/adminpassword", params = {"application"}, method = RequestMethod.POST)
-    public String configureApplication(@Validated({application.class}) @ModelAttribute("admin") Admin admin,
+    public String configureApplication(@Validated({application.class}) @ModelAttribute("applicationAdmin") Admin applicationAdmin,
                                         BindingResult result, Model model){
         if(!result.hasErrors()){
-            preferencesService.updateApplication(admin);
+            preferencesService.updateApplication(applicationAdmin);
             model.addAttribute("applicationsuccess", true);
         } else {
             model.addAttribute("applicationerror", true);
@@ -101,13 +107,14 @@ public class AdminController {
         return "admin/adminpassword";
     }
 
-    @RequestMapping(path = "/admin/adminpassword", params = {"confirmpassword"}, method = RequestMethod.POST)
-    public String changePassword(@Validated({password.class})@ModelAttribute("admin") Admin admin, BindingResult result, Model model){
+    @RequestMapping(path = "/admin/adminpassword", params = {"passwordconfirmation"}, method = RequestMethod.POST)
+    public String changePassword(@Validated({password.class})@ModelAttribute("passwordAdmin") Admin passwordAdmin,
+                                 BindingResult result, Model model){
         if(!result.hasErrors()){
-            if(preferencesService.checkAdminPassword(admin.getPassword())){
-                if(admin.getNewPassword().trim().equals(admin.getConfirmPassword().trim())){
-                    preferencesService.updatePassword(admin);
-                    preferencesService.updateApplication(admin);
+            if(preferencesService.checkAdminPassword(passwordAdmin.getPassword())){
+                if(passwordAdmin.getNewPassword().trim().equals(passwordAdmin.getConfirmPassword().trim())){
+                    preferencesService.updatePassword(passwordAdmin);
+                    preferencesService.updateApplication(passwordAdmin);
                     model.addAttribute("success", true);
                 } else {
                     model.addAttribute("error", true);

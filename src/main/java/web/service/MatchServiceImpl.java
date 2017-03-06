@@ -23,6 +23,11 @@ public class MatchServiceImpl implements MatchService {
     @Autowired
     private WorkerDAO workerDAO;
 
+    public MatchServiceImpl(MatchDAO matchDAO, WorkerDAO workerDAO){
+        this.matchDAO = matchDAO;
+        this.workerDAO = workerDAO;
+    }
+
     public Match getEmployerMatch(User user) {
 
         Worker currentWorker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
@@ -79,7 +84,6 @@ public class MatchServiceImpl implements MatchService {
                         worker = possibleMatches.get(j);
                     }
                 }
-
                 return worker;
             }
         } else {

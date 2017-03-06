@@ -19,24 +19,28 @@ import web.domain.User.*;
 
 
 @Controller
-@RequestMapping("/createaccount")
 public class CreateAccountController {
 
-    @Autowired
+
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @Autowired
+    public CreateAccountController(UserService userService){
+        this.userService = userService;
+    }
+
+    @RequestMapping(path = "/newaccount", method = RequestMethod.GET)
     public String viewPage(Model model) {
         User user = new User();
         model.addAttribute("newUser", user);
         return "createaccount";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(path = "/newaccount", method = RequestMethod.POST)
     public String getUser(@Validated({createAccount.class}) @ModelAttribute("newUser") User newUser, BindingResult result,
                           Model model, HttpSession session){
 
-        boolean check = userService.checkUsername(newUser);
+        boolean check = userService.checkUsername(newUser.getUsername());
 
         if(!result.hasErrors()) {
             if (!check) {

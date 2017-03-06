@@ -8,7 +8,6 @@ public interface PreferencesDAO {
 
     List<Map<String, Object>> getPreferences(String storedProc);
     Map getAdmin(String storedProc);
-    void updateLocations(String storedProc, Map<String, Object> inParameters);
     void updateJobLengths(String storedProc, Map<String, Object> inParameters);
     void updateSalarys(String storedProc, Map<String, Object> inParameters);
     void addSkill(String storedProc, String skillName);

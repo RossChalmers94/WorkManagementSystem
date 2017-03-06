@@ -67,9 +67,9 @@ public class UserServiceImpl implements UserService {
         return currentUser;
     }
 
-    public boolean checkUsername(User user){
+    public boolean checkUsername(String username){
         boolean check = false;
-        check = userDAO.getUsername("check_username", user.getUsername());
+        check = userDAO.getUsername("check_username", username);
         return check;
     }
 

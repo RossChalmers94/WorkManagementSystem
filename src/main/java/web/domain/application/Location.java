@@ -16,8 +16,8 @@ public class Location {
     public interface location{}
 
     private int locationID;
-//    @Pattern(regexp = "[a-zA-Z]+")
-//    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$")
+    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
     private String locationName;
     private List<Location> locations;
     private List<Integer> locationSet;

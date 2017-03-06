@@ -18,7 +18,7 @@ public interface UserService {
 
      boolean checkUserLogIn(User user);
 
-     boolean checkUsername(User user);
+     boolean checkUsername(String username);
 
      boolean checkAdminLogIn(User user);
 

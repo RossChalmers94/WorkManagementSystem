@@ -12,11 +12,7 @@ import java.util.List;
 public class JobLength {
 
     private int jobLengthID;
-    /*@NotBlank
-    @Pattern(regexp = "[0-9]+", message = "Job Length Minimum Value must be a number")*/
     private int jobLengthMin;
-    /*@NotBlank
-    @Pattern(regexp = "[0-9]+", message = "Job Length Maximum Value must be a number")*/
     private int jobLengthMax;
 
     private List<JobLength> jobLengths;

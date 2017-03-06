@@ -21,8 +21,13 @@ import javax.validation.Valid;
 @Controller
 public class ConfigureApplicationController {
 
-    @Autowired
+
     private PreferencesService preferencesService;
+
+    @Autowired
+    public ConfigureApplicationController(PreferencesService preferencesService){
+        this.preferencesService = preferencesService;
+    }
 
     @RequestMapping(path = "admin/configureapplication", method = RequestMethod.GET)
     public String viewConfigureApplication(Model model, HttpSession session){
