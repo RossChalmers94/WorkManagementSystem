@@ -16,11 +16,11 @@ public interface UserService {
 
      User getLogIn(User user);
 
-     boolean checkUserLogIn(User user);
+     boolean checkUserLogIn(String username, String password);
 
      boolean checkUsername(String username);
 
-     boolean checkAdminLogIn(User user);
+     boolean checkAdminLogIn(String password);
 
      Admin getAdminLogIn(User user);
 

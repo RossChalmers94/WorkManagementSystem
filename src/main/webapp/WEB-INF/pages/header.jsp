@@ -49,8 +49,8 @@
                             <li><a href="../logoutuser"></span>Log Out</a></li>
                         </c:when>
                         <c:otherwise>
-                            <li><a href="createaccount"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-                            <li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                            <li><a href="newaccount"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+                            <li><a href="newlogin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>

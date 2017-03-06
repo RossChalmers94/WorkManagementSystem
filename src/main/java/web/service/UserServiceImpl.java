@@ -47,12 +47,12 @@ public class UserServiceImpl implements UserService {
         userDAO.insertPersonal("insert_user_personal", userDetails);
     }
 
-    public boolean checkUserLogIn(User user){
-        String password;
+    public boolean checkUserLogIn(String username, String password){
+        String outPassword;
         Map<String,String> userDetails = new HashMap<String, String>();
-        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        password = userDAO.checkUserLogIn("check_user_exists", userDetails);
-        if(passwordEncoder.matches(user.getPassword().trim(), password)){
+        userDetails.put(UserDetails.USER_NAME.getValue(), username);
+        outPassword = userDAO.checkUserLogIn("check_user_exists", userDetails);
+        if(passwordEncoder.matches(password.trim(), outPassword)){
             return true;
         } else {
             return false;
@@ -74,9 +74,9 @@ public class UserServiceImpl implements UserService {
     }
 
     // Check to ensure admin password given is correct
-    public boolean checkAdminLogIn(User user) {
-        boolean adminLogIn = false;
-        adminLogIn = userDAO.checkAdminLogIn("check_admin", user.getPassword());
+    public boolean checkAdminLogIn(String password) {
+        boolean adminLogIn;
+        adminLogIn = userDAO.checkAdminLogIn("check_admin", password);
         return adminLogIn;
     }
 

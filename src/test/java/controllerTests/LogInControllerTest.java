@@ -10,9 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import web.controllers.CreateAccountController;
+import web.domain.User;
+import web.controllers.LoginController;
 import web.service.UserService;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -31,48 +33,80 @@ public class LogInControllerTest {
     @Mock
     private UserService userService;
     private MockMvc mockMvc;
-    private CreateAccountController createAccountController;
+    private LoginController loginController;
+    User currentUser;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        this.createAccountController = new CreateAccountController(userService);
-        when(userService.checkUsername("username")).thenReturn(true);
-        this.mockMvc = MockMvcBuilders.standaloneSetup(createAccountController).build();
+        this.loginController = new LoginController(userService);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(loginController).build();
+        currentUser = new User();
+        currentUser.setUsername("username");
+        currentUser.setPassword("password");
+        currentUser.setRole("Freelancer");
+        when(userService.checkUserLogIn("username", "password")).thenReturn(true);
+        when(userService.checkAdminLogIn("password")).thenReturn(true);
     }
 
     @Test
-    public void viewCreateAccountTest() throws Exception {
+    public void viewLogInTest() throws Exception {
         this.mockMvc
-                .perform(get("/newaccount"))
+                .perform(get("/newlogin").sessionAttr("currentUser", currentUser))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(model().attributeExists("newUser"))
-                .andExpect(view().name("createaccount"));
+                .andExpect(view().name("user/userhome"));
+        this.mockMvc
+                .perform(get("/newlogin"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("loginUser"))
+                .andExpect(view().name("login"));
     }
 
     @Test
-    public void createNewAccountTest() throws Exception {
+    public void newLogInTest() throws Exception {
         this.mockMvc
-                .perform(post("/newaccount").param("username", "").param("password", "").param("role", ""))
+                .perform(post("/newlogin").param("username", "").param("password", ""))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(model().attributeHasFieldErrors("newUser", "username", "password", "role"))
-                .andExpect(model().attributeExists("error"))
-                .andExpect(view().name("createaccount"));
+                .andExpect(model().attributeHasFieldErrors("loginUser", "username", "password"))
+                .andExpect(model().attributeExists("details"))
+                .andExpect(view().name("login"));
         this.mockMvc
-                .perform(post("/newaccount").param("username", "username").param("userpassword", "password")
-                        .param("role", "Employer"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(model().attributeHasNoErrors("newUser"))
-                .andExpect(view().name("createaccount"));
-        this.mockMvc
-                .perform(post("/newaccount").param("username", "notusername").param("userpassword", "password")
-                        .param("role", "Employer"))
+                .perform(post("/newlogin").param("username", "username").param("password", "password"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(model().attributeHasNoErrors("newUser"))
-                .andExpect(view().name("redirect:/user/personal"));
+                .andExpect(model().attributeHasNoErrors("loginUser"))
+                .andExpect(view().name("redirect:/user/userhome"));
+        this.mockMvc
+                .perform(post("/newlogin").param("username", "notusername").param("password", "password"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attributeHasNoErrors("loginUser"))
+                .andExpect(model().attributeExists("error"))
+                .andExpect(view().name("login"));
+        this.mockMvc
+                .perform(post("/newlogin").param("username", "admin").param("password", "password"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(model().attributeHasNoErrors("loginUser"))
+                .andExpect(view().name("redirect:/admin/adminhome"));
+        this.mockMvc
+                .perform(post("/newlogin").param("username", "admin").param("password", "notpassword"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attributeHasNoErrors("loginUser"))
+                .andExpect(model().attributeExists("error"))
+                .andExpect(view().name("login"));
+    }
+
+    @Test
+    public void logoutTest() throws Exception{
+        this.mockMvc
+                .perform(get("/logoutuser"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/home"));
     }
 }

@@ -29,12 +29,12 @@ public class User {
     @Size(min = 3, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "First Name must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
-            message = "First Name must only contain letters.", regexp = "[a-zA-Z]+")
+            message = "First Name must only contain letters.", regexp = "^[a-zA-Z\\s]+$")
     private String firstname;
     @Size(min = 3 ,max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "Last Name must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
-            message = "Last Name must only contain letters.", regexp = "[a-zA-Z]+")
+            message = "Last Name must only contain letters.", regexp = "^[a-zA-Z\\s]+$")
     private String lastname;
     @Size(min = 5, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "Telephone Number must be between 5-20 characters.")
@@ -54,11 +54,11 @@ public class User {
     @Size(min = 5, max = 20, groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
             message = "Town or City must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
-            message = "Town or City must only contain letters.", regexp = "[a-zA-Z]+")
+            message = "Town or City must only contain letters.", regexp = "^[a-zA-Z\\s]+$")
     private String towncity;
     @Size(min = 5, max = 20, groups = {personalDetailsEmployer.class}, message = "Company must be between 5-20 characters.")
     @Pattern(groups = {personalDetailsFreelancer.class, personalDetailsEmployer.class},
-            message = "Company must only contain letters.", regexp = "[a-zA-Z]+")
+            message = "Company must only contain letters.", regexp = "^[a-zA-Z\\s]+$")
     private String company;
     private int freelancerID = 0;
     private int employerID = 0;

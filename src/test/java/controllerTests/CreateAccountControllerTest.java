@@ -61,14 +61,14 @@ public class CreateAccountControllerTest {
                 .andExpect(model().attributeExists("error"))
                 .andExpect(view().name("createaccount"));
         this.mockMvc
-                .perform(post("/newaccount").param("username", "username").param("userpassword", "password")
+                .perform(post("/newaccount").param("username", "username").param("password", "password")
                         .param("role", "Employer"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attributeHasNoErrors("newUser"))
                 .andExpect(view().name("createaccount"));
         this.mockMvc
-                .perform(post("/newaccount").param("username", "notusername").param("userpassword", "password")
+                .perform(post("/newaccount").param("username", "notusername").param("password", "password")
                         .param("role", "Employer"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())

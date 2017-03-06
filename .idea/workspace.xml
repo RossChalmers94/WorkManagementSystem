@@ -2,33 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6322fc4-3a17-437d-86b4-0f0779a2987d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_servlet_api_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/UserDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/UserDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/workmanagementsystem_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/workmanagementsystem_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/DefaultServlet-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/DefaultServlet-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/workmanagementsystem.iml" afterPath="$PROJECT_DIR$/workmanagementsystem.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/controllerTests/CreateAccountControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controllerTests/CreateAccountControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/controllerTests/LogInControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controllerTests/LogInControllerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,12 +44,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogInControllerTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LogInControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/LogInControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="587">
+              <caret line="106" column="41" lean-forward="false" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonalDetailsControllerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/PersonalDetailsControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-337">
+              <caret line="69" column="65" lean-forward="false" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonalDetailsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding>
+                <element signature="e#820#821#0" expanded="true" />
+                <element signature="e#866#867#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-45">
+              <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+              <folding>
+                <element signature="method#insertUserPersonal#0;class#UserServiceImpl#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,8 +106,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-277">
-              <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+            <state relative-caret-position="548">
+              <caret line="56" column="89" lean-forward="false" selection-start-line="56" selection-start-column="89" selection-end-line="56" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -106,36 +136,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigureApplicationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-565">
-              <caret line="47" column="34" lean-forward="true" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Location.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Skill.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -159,19 +159,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/Worker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Rating.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/completematch.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/UserHomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/PreferencesController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/MatchController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" />
@@ -203,13 +199,17 @@
         <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
         <option value="$PROJECT_DIR$/src/test/java/controllerTests/ConfigureApplicationControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/DefaultServlet-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
         <option value="$PROJECT_DIR$/src/test/java/controllerTests/CreateAccountControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/test/java/controllerTests/LogInControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controllerTests/PersonalDetailsControllerTest.java" />
       </list>
     </option>
   </component>
@@ -366,6 +366,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workmanagementsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workmanagementsystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -615,8 +649,8 @@
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CreateAccountControllerTest">
-    <configuration default="false" name="ConfigureApplicationControllerTest.addDeleteSkillsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PersonalDetailsControllerTest">
+    <configuration default="false" name="LogInControllerTest.newLogInTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="controllerTests.*" />
@@ -627,8 +661,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="controllerTests" />
-      <option name="MAIN_CLASS_NAME" value="controllerTests.ConfigureApplicationControllerTest" />
-      <option name="METHOD_NAME" value="addDeleteSkillsTest" />
+      <option name="MAIN_CLASS_NAME" value="controllerTests.LogInControllerTest" />
+      <option name="METHOD_NAME" value="newLogInTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -642,7 +676,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ConfigureApplicationControllerTest.addDeleteLocationsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="LogInControllerTest.logoutTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="controllerTests.*" />
@@ -653,8 +687,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="controllerTests" />
-      <option name="MAIN_CLASS_NAME" value="controllerTests.ConfigureApplicationControllerTest" />
-      <option name="METHOD_NAME" value="addDeleteLocationsTest" />
+      <option name="MAIN_CLASS_NAME" value="controllerTests.LogInControllerTest" />
+      <option name="METHOD_NAME" value="logoutTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -668,7 +702,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ConfigureApplicationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PersonalDetailsControllerTest.viewPersonalDetailsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="controllerTests.*" />
@@ -679,34 +713,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="controllerTests" />
-      <option name="MAIN_CLASS_NAME" value="controllerTests.ConfigureApplicationControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="CreateAccountControllerTest.createNewAccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="controllerTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="workmanagementsystem" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="controllerTests" />
-      <option name="MAIN_CLASS_NAME" value="controllerTests.CreateAccountControllerTest" />
-      <option name="METHOD_NAME" value="createNewAccountTest" />
+      <option name="MAIN_CLASS_NAME" value="controllerTests.PersonalDetailsControllerTest" />
+      <option name="METHOD_NAME" value="viewPersonalDetailsTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -720,7 +728,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="CreateAccountControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="controllerTests.*" />
@@ -731,7 +739,33 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="controllerTests" />
-      <option name="MAIN_CLASS_NAME" value="controllerTests.CreateAccountControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="controllerTests.PersonalDetailsControllerTest" />
+      <option name="METHOD_NAME" value="submitPersonalDetailsFreelancerTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PersonalDetailsControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="controllerTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="workmanagementsystem" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="controllerTests" />
+      <option name="MAIN_CLASS_NAME" value="controllerTests.PersonalDetailsControllerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1291,19 +1325,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 8.5.11" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest.addDeleteSkillsTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest.addDeleteLocationsTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.CreateAccountControllerTest.createNewAccountTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.CreateAccountControllerTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.LogInControllerTest.newLogInTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.LogInControllerTest.logoutTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest.viewPersonalDetailsTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.CreateAccountControllerTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.CreateAccountControllerTest.createNewAccountTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest.addDeleteLocationsTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ConfigureApplicationControllerTest.addDeleteSkillsTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PersonalDetailsControllerTest.viewPersonalDetailsTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.LogInControllerTest.logoutTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.LogInControllerTest.newLogInTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1324,44 +1358,44 @@
       <workItem from="1488376174927" duration="23457000" />
       <workItem from="1488423482150" duration="48717000" />
       <workItem from="1488799589813" duration="11233000" />
-      <workItem from="1488816022294" duration="5638000" />
+      <workItem from="1488816022294" duration="12073000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConfigureApplicationControllerTest_addDeleteLocationsTest - 2017.03.06 at 16h 58m 08s.xml">
-      <configuration name="ConfigureApplicationControllerTest.addDeleteLocationsTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest - 2017.03.06 at 19h 57m 03s.xml">
+      <configuration name="PersonalDetailsControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ConfigureApplicationControllerTest_addDeleteLocationsTest - 2017.03.06 at 16h 58m 52s.xml">
-      <configuration name="ConfigureApplicationControllerTest.addDeleteLocationsTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest - 2017.03.06 at 19h 58m 00s.xml">
+      <configuration name="PersonalDetailsControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest - 2017.03.06 at 17h 57m 02s.xml">
-      <configuration name="CreateAccountControllerTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest - 2017.03.06 at 19h 59m 40s.xml">
+      <configuration name="PersonalDetailsControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 29m 23s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_submitPersonalDetailsFreelancerTest - 2017.03.06 at 19h 42m 32s.xml">
+      <configuration name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 30m 12s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_submitPersonalDetailsFreelancerTest - 2017.03.06 at 19h 43m 32s.xml">
+      <configuration name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 34m 14s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_submitPersonalDetailsFreelancerTest - 2017.03.06 at 19h 46m 19s.xml">
+      <configuration name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 35m 33s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_submitPersonalDetailsFreelancerTest - 2017.03.06 at 19h 48m 38s.xml">
+      <configuration name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 50m 25s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_submitPersonalDetailsFreelancerTest - 2017.03.06 at 19h 50m 54s.xml">
+      <configuration name="PersonalDetailsControllerTest.submitPersonalDetailsFreelancerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 51m 43s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_viewPersonalDetailsTest - 2017.03.06 at 19h 29m 13s.xml">
+      <configuration name="PersonalDetailsControllerTest.viewPersonalDetailsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CreateAccountControllerTest_createNewAccountTest - 2017.03.06 at 17h 54m 36s.xml">
-      <configuration name="CreateAccountControllerTest.createNewAccountTest" configurationId="JUnit" />
+    <history-entry file="PersonalDetailsControllerTest_viewPersonalDetailsTest - 2017.03.06 at 19h 29m 31s.xml">
+      <configuration name="PersonalDetailsControllerTest.viewPersonalDetailsTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="454446000" />
+    <option name="totallyTimeSpent" value="460881000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1386,7 +1420,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36567163" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36567163" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1412,7 +1446,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="47" />
+      <option name="time" value="49" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1421,47 +1455,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/MatchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/Match.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#2185#2186#0" expanded="false" />
-            <element signature="e#2233#2234#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/WorkerDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="93" column="42" lean-forward="true" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="178" column="10" lean-forward="false" selection-start-line="178" selection-start-column="10" selection-end-line="178" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/match.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1583,6 +1576,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1626,6 +1620,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="610" column="0" lean-forward="false" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
+          <folding>
+            <element signature="e#22485#22486#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1710,14 +1707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-565">
@@ -1734,36 +1723,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="71" column="62" lean-forward="false" selection-start-line="71" selection-start-column="62" selection-end-line="71" selection-end-column="62" />
-          <folding>
-            <element signature="method#insertUserPersonal#0;class#UserServiceImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/AdminControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1020">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-375">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1795,29 +1758,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-277">
-          <caret line="34" column="24" lean-forward="false" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/CreateAccountControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="38" column="60" lean-forward="true" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        <state relative-caret-position="330">
+          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="59" column="5" lean-forward="true" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#insertUserPersonal#0;class#UserServiceImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="69" column="50" lean-forward="true" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+          <folding>
+            <element signature="e#1007#1008#0" expanded="false" />
+            <element signature="e#1053#1054#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/LogInControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="587">
+          <caret line="106" column="41" lean-forward="false" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/CreateAccountControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="70" column="85" lean-forward="false" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#820#821#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="56" column="89" lean-forward="false" selection-start-line="56" selection-start-column="89" selection-end-line="56" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/controllerTests/PersonalDetailsControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="69" column="65" lean-forward="false" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

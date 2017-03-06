@@ -24,14 +24,19 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-    @Autowired
+
     private UserService userService;
 
-    @RequestMapping(path = "/login", method= RequestMethod.GET)
+    @Autowired
+    public LoginController(UserService userService){
+        this.userService = userService;
+    }
+
+    @RequestMapping(path = "/newlogin", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session){
         String page = "";
         if(session.getAttribute("currentUser") != null){
-            page = "userhome";
+            page = "user/userhome";
         } else
         {
             User user = new User();
@@ -41,22 +46,25 @@ public class LoginController {
 
         return page;
     }
-    @RequestMapping(path = "/login", method= RequestMethod.POST)
+    @RequestMapping(path = "/newlogin", method= RequestMethod.POST)
     public String confirmEmployerPreferences(@Validated({logIn.class}) @ModelAttribute("loginUser") User loginUser, BindingResult result,
                                              Model model, HttpSession session){
 
         if(!result.hasErrors()) {
-            boolean login = userService.checkUserLogIn(loginUser);
+            boolean login = userService.checkUserLogIn(loginUser.getUsername(), loginUser.getPassword());
             if (login) {
                 User currentUser = userService.getLogIn(loginUser);
                 session.setAttribute("currentUser", currentUser);
                 return "redirect:/user/userhome";
             } else if (loginUser.getUsername().equals("admin")) {
-                boolean adminLogIn = userService.checkAdminLogIn(loginUser);
+                boolean adminLogIn = userService.checkAdminLogIn(loginUser.getPassword());
                 if (adminLogIn) {
                     Admin admin = userService.getAdminLogIn(loginUser);
                     session.setAttribute("adminUser", admin);
                     return "redirect:/admin/adminhome";
+                }
+                else {
+                    model.addAttribute("error", true);
                 }
             } else {
                 model.addAttribute("error", true);
