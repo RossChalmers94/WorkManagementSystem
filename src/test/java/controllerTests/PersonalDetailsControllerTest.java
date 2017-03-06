@@ -55,6 +55,11 @@ public class PersonalDetailsControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("userPersonal"))
                 .andExpect(view().name("/user/personal"));
+        this.mockMvc
+                .perform(get("/user/personaldetails"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/login"));
     }
 
     @Test

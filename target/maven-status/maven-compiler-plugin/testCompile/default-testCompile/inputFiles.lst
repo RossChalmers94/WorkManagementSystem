@@ -4,4 +4,5 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/UserTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/AdminControllerTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/CreateAccountControllerTest.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/PreferencesControllerTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/PersonalDetailsControllerTest.java

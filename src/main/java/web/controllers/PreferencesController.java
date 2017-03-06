@@ -22,13 +22,17 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PreferencesController {
 
-    @Autowired
     private PreferencesService preferencesService;
-    @Autowired
     private WorkerService workerService;
 
+    @Autowired
+    public PreferencesController(PreferencesService preferencesService, WorkerService workerService){
+        this.preferencesService = preferencesService;
+        this.workerService = workerService;
+    }
 
-    @RequestMapping(path = "user/preferences", method= RequestMethod.GET)
+
+    @RequestMapping(path = "user/preferencesdetails", method= RequestMethod.GET)
     public String viewPreferences(Model model, HttpSession session){
         if(session.getAttribute("currentUser") != null) {
             User user = (User) session.getAttribute("currentUser");
@@ -40,7 +44,7 @@ public class PreferencesController {
             return "redirect:/login";
         }
     }
-    @RequestMapping(path = "/user/preferences", method= RequestMethod.POST, params = "employer")
+    @RequestMapping(path = "user/preferencesdetails", method= RequestMethod.POST, params = "employer")
     public String confirmEmployerPreferences(@Validated({preferencesDetailsEmployer.class})@ModelAttribute("newWorker") Worker newWorker,
                                              BindingResult result, Model model, HttpSession session){
         if(!result.hasErrors()) {
@@ -58,9 +62,9 @@ public class PreferencesController {
         }
     }
 
-    @RequestMapping(path = "/user/preferences", method= RequestMethod.POST, params = "freelancer")
-    public String confirmFreelancerPreferences(@Validated({preferencesDetailsFreelancer.class})@ModelAttribute("newWorker") Worker newWorker, BindingResult result,
-                                               Model model, HttpSession session){
+    @RequestMapping(path = "user/preferencesdetails", method= RequestMethod.POST, params = "freelancer")
+    public String confirmFreelancerPreferences(@Validated({preferencesDetailsFreelancer.class})@ModelAttribute("newWorker")
+                                                           Worker newWorker, BindingResult result, Model model, HttpSession session){
         if(!result.hasErrors()) {
             User user = (User) session.getAttribute("currentUser");
             int workerID = workerService.insertWorker(newWorker, user);
