@@ -27,12 +27,15 @@ import java.util.List;
 public class AdminController {
 
 
+    @Autowired
     private PreferencesService preferencesService;
+    @Autowired
     private MatchService matchService;
+    @Autowired
     private UserService userService;
+    @Autowired
     private WorkerService workerService;
 
-    @Autowired
     public AdminController(PreferencesService preferencesService, MatchService matchService, UserService userService,
                            WorkerService workerService){
         this.preferencesService = preferencesService;

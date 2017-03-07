@@ -1,3 +1,5 @@
+package serviceTests;
+
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.Mock;
@@ -23,7 +25,7 @@ public class MatchServiceTest {
 
     @Before
             public void setUp(){
-            this.matchService = new MatchServiceImpl(matchDAO, workerDAO);
+           // this.matchService = new MatchServiceImpl(matchDAO, workerDAO);
     }
 
     @Test

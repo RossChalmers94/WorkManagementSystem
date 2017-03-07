@@ -2,6 +2,7 @@ package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import web.domain.User;
 import web.enumconstants.AdminDetails;
@@ -21,8 +22,13 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDAO;
+    private PasswordEncoder passwordEncoder;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    public UserServiceImpl(UserDAO userDAO){
+        this.userDAO = userDAO;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
 
     public void insertUser(User user) {
         Map<String, String> userDetails = new HashMap<String,String>();
@@ -34,24 +40,13 @@ public class UserServiceImpl implements UserService {
 
 
     public void insertUserPersonal(User user, String username){
-        Map<String, String> userDetails = new HashMap<String, String>();
-        userDetails.put("firstName", user.getFirstname());
-        userDetails.put("lastName", user.getLastname());
-        userDetails.put("telephoneNo", user.getTelephone());
-        userDetails.put("emailAddress", user.getEmailaddress());
-        userDetails.put("address", user.getAddress());
-        userDetails.put("postcode", user.getPostcode());
-        userDetails.put("townCity", user.getTowncity());
-        userDetails.put("company", user.getCompany());
-        userDetails.put("username", username);
-        userDAO.insertPersonal("insert_user_personal", userDetails);
+        user.setUsername(username);
+        userDAO.insertPersonal(user);
     }
 
     public boolean checkUserLogIn(String username, String password){
         String outPassword;
-        Map<String,String> userDetails = new HashMap<String, String>();
-        userDetails.put(UserDetails.USER_NAME.getValue(), username);
-        outPassword = userDAO.checkUserLogIn("check_user_exists", userDetails);
+        outPassword = userDAO.checkUserLogIn(username);
         if(passwordEncoder.matches(password.trim(), outPassword)){
             return true;
         } else {
@@ -61,22 +56,20 @@ public class UserServiceImpl implements UserService {
 
     public User getLogIn(User user){
         User currentUser;
-        Map<String, String> userDetails = new HashMap<String, String>();
-        userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        currentUser = userDAO.get("user_log_in", userDetails);
+        currentUser = userDAO.getLogIn(user.getUsername());
         return currentUser;
     }
 
     public boolean checkUsername(String username){
         boolean check = false;
-        check = userDAO.getUsername("check_username", username);
+        check = userDAO.getUsername(username);
         return check;
     }
 
     // Check to ensure admin password given is correct
     public boolean checkAdminLogIn(String password) {
         boolean adminLogIn;
-        adminLogIn = userDAO.checkAdminLogIn("check_admin", password);
+        adminLogIn = userDAO.checkAdminLogIn(password);
         return adminLogIn;
     }
 
@@ -86,17 +79,17 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> adminDetails = new HashMap<String, Object>();
         adminDetails.put(AdminDetails.ADMIN_USERNAME.getValue(), "admin");
         adminDetails.put(AdminDetails.ADMIN_PASSWORD.getValue(), user.getPassword());
-        admin = userDAO.getAdmin("admin_log_in", adminDetails);
+        admin = userDAO.getAdmin(adminDetails);
         return admin;
     }
 
     public User getUserByEmployer(int id){
-        User user = userDAO.getUserByEmployer("get_user_by_employer", id);
+        User user = userDAO.getUserByEmployer(id);
         return user;
     }
 
     public User getUserByFreelancer(int id){
-        User user = userDAO.getUserByFreelancer("get_user_by_freelancer", id);
+        User user = userDAO.getUserByFreelancer(id);
         return user;
     }
 

@@ -24,71 +24,88 @@ import javax.validation.Valid;
 @Controller
 public class MatchController {
 
-    @Autowired
     private UserService userService;
-    @Autowired
     private WorkerService workerService;
-    @Autowired
     private MatchService matchService;
 
-    @RequestMapping(path = "user/match", method= RequestMethod.GET)
-    public String viewEmployerPreferences(Model model, HttpSession session){
-        if(session.getAttribute("currentUser") != null) {
+    @Autowired
+    public MatchController(UserService userService, WorkerService workerService, MatchService matchService) {
+        this.userService = userService;
+        this.workerService = workerService;
+        this.matchService = matchService;
+    }
+
+    @RequestMapping(path = "user/yourmatch", method = RequestMethod.GET)
+    public String viewEmployerPreferences(Model model, HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
             User getUser = (User) session.getAttribute("currentUser");
             User user = userService.getLogIn(getUser);
             Worker worker = workerService.getWorkerDetails(user);
             Match match = new Match();
-            User userMatch = new User();
             if (user.getEmployerID() != 0) {
-                if (worker.getJobMatch() == 0) {
-                    match = matchService.getEmployerMatch(user);
-                    if (match == null) {
-                        return "redirect:/user/nomatch";
-                    } else {
-                        userMatch = userService.getUserByFreelancer(match.getMatchID());
-                    }
-                } else {
-                    match = matchService.getExistingEmployerMatch(worker.getJobMatch());
-                    userMatch = userService.getUserByFreelancer(match.getMatchID());
-                }
+                match = getEmployerMatch(user, worker);
             } else if (user.getFreelancerID() != 0) {
-                if (worker.getJobMatch() == 0) {
-                    match = matchService.getFreelancerMatch(user);
-                    if (match == null) {
-                        return "redirect:/user/nomatch";
-                    } else {
-                        userMatch = userService.getUserByEmployer(match.getMatchID());
-                    }
-                } else {
-                    match = matchService.getExistingFreelancerMatch(worker.getJobMatch());
-                    userMatch = userService.getUserByEmployer(match.getMatchID());
-                }
+                match = getFreelancerMatch(user, worker);
             }
 
-            model.addAttribute("match", match);
-            model.addAttribute("userMatch", userMatch);
-            ;
-            return "user/match";
+            if(match != null) {
+                model.addAttribute("match", match);
+                return "user/match";
+            } else {
+                return "redirect:/user/nomatch";
+            }
         } else {
             return "redirect:/login";
         }
+
     }
-    @RequestMapping(path = "user/match", method= RequestMethod.POST)
-    public String confirmEmployerPreferences(){
+
+
+    private Match getEmployerMatch(User user, Worker worker) {
+        Match match;
+        if (worker.getJobMatch() == 0) {
+            match = matchService.getEmployerMatch(user);
+            if (match == null) {
+                return null;
+            } else {
+                return match;
+            }
+        } else {
+            return matchService.getExistingEmployerMatch(worker.getJobMatch());
+        }
+    }
+
+    private Match getFreelancerMatch(User user, Worker worker) {
+        Match match;
+        if (worker.getJobMatch() == 0) {
+            match = matchService.getFreelancerMatch(user);
+            if (match == null) {
+                return null;
+            } else {
+                return match;
+            }
+        } else {
+            return matchService.getExistingFreelancerMatch(worker.getJobMatch());
+        }
+    }
+
+
+    @RequestMapping(path = "user/yourmatch", method = RequestMethod.POST)
+    public String confirmEmployerPreferences() {
         return "user/match";
     }
 
-    @RequestMapping(path = "user/nomatch", method= RequestMethod.GET)
-    public String noMatch(HttpSession session){
-        if(session.getAttribute("currentUser") != null){
+    @RequestMapping(path = "user/nomatch", method = RequestMethod.GET)
+    public String noMatch(HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
             return "user/nomatch";
         }
         return "redirect:/login";
     }
 
-    @RequestMapping(path = "user/completematch", method= RequestMethod.GET)
-    public String completeMatch(Model model, HttpSession session){
-        if(session.getAttribute("currentUser") != null) {
+    @RequestMapping(path = "user/completematch", method = RequestMethod.GET)
+    public String completeMatch(Model model, HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
             Rating giveRating = new Rating();
             model.addAttribute("giveRating", giveRating);
             return "user/completematch";
@@ -97,11 +114,11 @@ public class MatchController {
         }
     }
 
-    @RequestMapping(path = "user/completematch", method= RequestMethod.POST)
-    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating, BindingResult result,  Model model, HttpSession session){
+    @RequestMapping(path = "user/completematch", method = RequestMethod.POST)
+    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating, BindingResult result, Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         Worker worker = workerService.getWorkerDetails(user);
-        if(!result.hasErrors()) {
+        if (!result.hasErrors()) {
             if (worker.getPreviousMatch() == 0) {
                 matchService.completeMatch(user, giveRating.getRating(), worker.getJobMatch());
             } else if (worker.getPreviousMatch() != 0) {

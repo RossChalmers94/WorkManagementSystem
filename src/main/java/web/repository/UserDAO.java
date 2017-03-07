@@ -17,21 +17,21 @@ public interface UserDAO {
 
     void insert(String storedProcedure, Map<String, String> inParameters);
 
-    void insertPersonal(String storedProcedure, Map<String, String> inParameters);
+    void insertPersonal(User user);
 
-    String checkUserLogIn(String storedProcedure, Map<String, String> inParameters);
+    String checkUserLogIn(String username);
 
-    User get(String storedProc, Map<String, String> inParameters);
+    User getLogIn(String username);
 
-    boolean getUsername(String storedProc, String username);
+    boolean getUsername(String username);
 
-    boolean checkAdminLogIn(String storedProc, String adminPassword);
+    boolean checkAdminLogIn(String adminPassword);
 
-    Admin getAdmin(String storedProc, Map<String, Object> inParameters);
+    Admin getAdmin(Map<String, Object> inParameters);
 
-    User getUserByEmployer(String storedProc, int id);
+    User getUserByEmployer(int id);
 
-    User getUserByFreelancer(String storedProc, int id);
+    User getUserByFreelancer(int id);
 
     String getIndustryName();
 

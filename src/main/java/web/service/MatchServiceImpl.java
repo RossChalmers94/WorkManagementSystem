@@ -18,19 +18,21 @@ import java.util.List;
 @Service
 public class MatchServiceImpl implements MatchService {
 
-    @Autowired
-    private MatchDAO matchDAO;
-    @Autowired
-    private WorkerDAO workerDAO;
 
-    public MatchServiceImpl(MatchDAO matchDAO, WorkerDAO workerDAO){
+    private MatchDAO matchDAO;
+    private WorkerDAO workerDAO;
+    private UserDAO userDAO;
+
+    @Autowired
+    public MatchServiceImpl(MatchDAO matchDAO, WorkerDAO workerDAO, UserDAO userDAO){
         this.matchDAO = matchDAO;
         this.workerDAO = workerDAO;
+        this.userDAO = userDAO;
     }
 
     public Match getEmployerMatch(User user) {
 
-        Worker currentWorker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
+        Worker currentWorker = workerDAO.getEmployer(user.getEmployerID());
         List<Worker> workers = matchDAO.getFreelancers("SELECT freelancerID, salary, location, " +
                 "jobLength, rating, minimumMatch FROM freelancer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
@@ -39,13 +41,15 @@ public class MatchServiceImpl implements MatchService {
             return null;
         } else {
             matchDAO.insertMatch(user.getEmployerID(), forProcess.getWorkerID());
+            Match match = matchDAO.getMatch(forProcess);
+            match.setUserMatch(userDAO.getUserByFreelancer(match.getMatchID()));
             return matchDAO.getMatch(forProcess);
         }
     }
 
     public Match getFreelancerMatch(User user) {
 
-        Worker currentWorker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
+        Worker currentWorker = workerDAO.getFreelancer(user.getFreelancerID());
         List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, " +
                 "jobLength, jobTitle, jobDescription, minimumMatch FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
@@ -54,6 +58,8 @@ public class MatchServiceImpl implements MatchService {
             return null;
         } else {
             matchDAO.insertMatch(forProcess.getWorkerID(), user.getFreelancerID());
+            Match match = matchDAO.getMatch(forProcess);
+            match.setUserMatch(userDAO.getUserByEmployer(match.getMatchID()));
             return matchDAO.getMatch(forProcess);
         }
     }
@@ -93,13 +99,13 @@ public class MatchServiceImpl implements MatchService {
 
     public Match getExistingEmployerMatch(int matchID) {
         int freelancerID = matchDAO.getEmployerMatch(matchID);
-        Worker worker = workerDAO.getFreelancer("get_freelancer_details", freelancerID);
+        Worker worker = workerDAO.getFreelancer(freelancerID);
         return matchDAO.getMatch(worker);
     }
 
     public Match getExistingFreelancerMatch(int matchID) {
         int employerID = matchDAO.getFreelancerMatch(matchID);
-        Worker worker = workerDAO.getEmployer("get_employer_details", employerID);
+        Worker worker = workerDAO.getEmployer(employerID);
         return matchDAO.getMatch(worker);
     }
 

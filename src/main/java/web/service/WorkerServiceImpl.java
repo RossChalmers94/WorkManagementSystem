@@ -22,6 +22,10 @@ public class WorkerServiceImpl implements WorkerService {
     @Autowired
     private WorkerDAO workerDAO;
 
+    public WorkerServiceImpl(WorkerDAO workerDAO){
+        this.workerDAO = workerDAO;
+    }
+
     public int insertWorker(Worker worker, User user) {
 
         int workerID = 0;
@@ -38,48 +42,45 @@ public class WorkerServiceImpl implements WorkerService {
         if (user.getRole().equals("Employer")) {
             inParameters.put(WorkerDetails.JOB_TITLE.getValue(), worker.getJobTitle());
             inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), worker.getJobDescription());
-            workerID = insertEmployer(user, inParameters, worker.getSkill());
+            workerID = insertEmployer(user, inParameters);
+            insertEmployerSkills(workerID, worker.getSkill());
         } else if (user.getRole().equals("Freelancer")) {
-            workerID = insertFreelancer(user, inParameters, worker.getSkill());
+            workerID = insertFreelancer(user, inParameters);
+            insertFreelancerSkills(workerID, worker.getSkill());
         }
 
         return workerID;
     }
 
     // Insert a Employer's preferences and then add their employerID to the users table
-    private int insertEmployer(User user, Map<String, Object> inParameters, List<Integer> skills) {
+    private int insertEmployer(User user, Map<String, Object> inParameters) {
 
         int employerID;
 
         if (user.getEmployerID() != 0) {
             inParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), user.getEmployerID());
-            workerDAO.updateEmployer("update_employer_details", inParameters);
+            workerDAO.updateEmployer(inParameters);
             employerID = user.getEmployerID();
         } else {
-            employerID = workerDAO.insertEmployer("insert_employer", inParameters);
+            employerID = workerDAO.insertEmployer(inParameters);
         }
-
-        // Insert Employer Skills
-        insertEmployerSkills(employerID, skills);
         return employerID;
     }
 
     // Insert a Freelancer's preferences and then add their freelancerID to the users table
-    private int insertFreelancer(User user, Map<String, Object> inParameters, List<Integer> skills) {
+    private int insertFreelancer(User user, Map<String, Object> inParameters) {
 
         int freelancerID;
 
         if (user.getFreelancerID() != 0) {
             inParameters.put(WorkerDetails.FREELANCER_ID.getValue(), user.getFreelancerID());
-            workerDAO.updateFreelancer("update_freelancer_details", inParameters);
+            workerDAO.updateFreelancer(inParameters);
             freelancerID = user.getFreelancerID();
         } else {
             //Insert Freelancer Details. Return freelancerID
-            freelancerID = workerDAO.insertFreelancer("insert_freelancer", inParameters);
+            freelancerID = workerDAO.insertFreelancer(inParameters);
         }
 
-        //Insert Freelancer Skills
-        insertFreelancerSkills(freelancerID, skills);
         return freelancerID;
     }
 
@@ -90,7 +91,7 @@ public class WorkerServiceImpl implements WorkerService {
             Map<String, Object> inParameters = new HashMap<String, Object>();
             inParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
             inParameters.put(WorkerDetails.SKILL_ID.getValue(), skills.get(i));
-            workerDAO.insertEmployerSkills("insert_employer_skills", inParameters);
+            workerDAO.insertEmployerSkills(inParameters);
         }
     }
 
@@ -102,7 +103,7 @@ public class WorkerServiceImpl implements WorkerService {
             Map<String, Object> inParameters = new HashMap<String, Object>();
             inParameters.put(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
             inParameters.put(WorkerDetails.SKILL_ID.getValue(), skills.get(i));
-            workerDAO.insertFreelancerSkills("insert_freelancer_skills", inParameters);
+            workerDAO.insertFreelancerSkills(inParameters);
         }
     }
 
@@ -110,9 +111,9 @@ public class WorkerServiceImpl implements WorkerService {
 
         Worker worker = new Worker();
         if (user.getEmployerID() != 0) {
-            worker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
+            worker = workerDAO.getEmployer(user.getEmployerID());
         } else if (user.getFreelancerID() != 0) {
-            worker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
+            worker = workerDAO.getFreelancer(user.getFreelancerID());
         }
         return worker;
     }

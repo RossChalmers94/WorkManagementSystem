@@ -39,38 +39,38 @@ public class WorkerDAOImpl implements WorkerDAO {
         this.updateFreelancerDetails = new SimpleJdbcCall(jdbcTemplate);
     }
 
-    public int insertFreelancer(String storedProc, Map<String, Object> inParameters) {
-        insertFreelancer.withProcedureName(storedProc);
+    public int insertFreelancer(Map<String, Object> inParameters) {
+        insertFreelancer.withProcedureName("insert_freelancer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map<String, Object> out = insertFreelancer.execute(in);
         return (Integer) out.get(WorkerDetails.FREELANCER_ID.getValue());
     }
 
-    public int insertEmployer(String storedProc, Map<String, Object> inParameters) {
-        insertEmployer.withProcedureName(storedProc);
+    public int insertEmployer(Map<String, Object> inParameters) {
+        insertEmployer.withProcedureName("insert_employer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map<String, Object> out = insertEmployer.execute(in);
         return (Integer) out.get(WorkerDetails.EMPLOYER_ID.getValue());
     }
 
-    public void insertFreelancerSkills(String storedProc, Map<String, Object> inParameters) {
-        insertFreelancerSkills.withProcedureName(storedProc);
+    public void insertFreelancerSkills(Map<String, Object> inParameters) {
+        insertFreelancerSkills.withProcedureName("insert_freelancer_skills");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertFreelancerSkills.execute(in);
     }
 
-    public void insertEmployerSkills(String storedProc, Map<String, Object> inParameters) {
-        insertEmployerSkills.withProcedureName(storedProc);
+    public void insertEmployerSkills(Map<String, Object> inParameters) {
+        insertEmployerSkills.withProcedureName("insert_employer_skills");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertEmployerSkills.execute(in);
     }
 
-    public Worker getEmployer(String storedProc, int employerID) {
-        getEmployerDetails.withProcedureName(storedProc);
+    public Worker getEmployer(int employerID) {
+        getEmployerDetails.withProcedureName("get_employer_details");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
         Map<String, Object> out = getEmployerDetails.execute(in);
@@ -78,8 +78,8 @@ public class WorkerDAOImpl implements WorkerDAO {
         return configWorker(out, skills);
     }
 
-    public Worker getFreelancer(String storedProc, int freelancerID) {
-        getFreelancerDetails.withProcedureName(storedProc);
+    public Worker getFreelancer(int freelancerID) {
+        getFreelancerDetails.withProcedureName("get_freelancer_details");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
         Map<String, Object> out = getFreelancerDetails.execute(in);
@@ -87,15 +87,15 @@ public class WorkerDAOImpl implements WorkerDAO {
         return configWorker(out, skills);
     }
 
-    public void updateEmployer(String storedProc, Map<String, Object> inParameters) {
-        updateEmployerDetails.withProcedureName(storedProc);
+    public void updateEmployer(Map<String, Object> inParameters) {
+        updateEmployerDetails.withProcedureName("update_employer_details");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         updateEmployerDetails.execute(in);
     }
 
-    public void updateFreelancer(String storedProc, Map<String, Object> inParameters) {
-        updateFreelancerDetails.withProcedureName(storedProc);
+    public void updateFreelancer(Map<String, Object> inParameters) {
+        updateFreelancerDetails.withProcedureName("update_freelancer_details");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         updateFreelancerDetails.execute(in);

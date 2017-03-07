@@ -54,36 +54,44 @@ public class UserDAOImpl implements UserDAO {
     }
 
     // Insert Personal Details into the database
-    public void insertPersonal(String storedProc, Map<String, String> inParameters) {
-        insertUserPersonalDetails.withProcedureName(storedProc);
+    public void insertPersonal(User user) {
+        insertUserPersonalDetails.withProcedureName("insert_user_personal");
         SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
+                .addValue(UserDetails.USER_NAME.getValue(), user.getUsername())
+                .addValue(UserDetails.USER_FIRSTNAME.getValue(), user.getFirstname())
+                .addValue(UserDetails.USER_LASTNAME.getValue(), user.getLastname())
+                .addValue(UserDetails.USER_TELEPHONE.getValue(), user.getTelephone())
+                .addValue(UserDetails.USER_EMAILADDRESS.getValue(), user.getEmailaddress())
+                .addValue(UserDetails.USER_ADDRESS.getValue(), user.getAddress())
+                .addValue(UserDetails.USER_POSTCODE.getValue(), user.getPostcode())
+                .addValue(UserDetails.USER_TOWNCITY.getValue(), user.getTowncity())
+                .addValue(UserDetails.USER_COMPANY.getValue(), user.getCompany());
         insertUserPersonalDetails.execute(in);
     }
 
-    public String checkUserLogIn(String storedProc, Map<String, String> inParameters) {
-        getLogInUser.withProcedureName(storedProc);
+    public String checkUserLogIn(String username) {
+        getLogInUser.withProcedureName("check_user_exists");
         SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        Map out = getLogInUser.execute(inParameters);
+                .addValue(UserDetails.USER_NAME.getValue(), username);
+        Map out = getLogInUser.execute(in);
         return (String) out.get(UserDetails.USER_PASSWORD.getValue());
     }
 
     // Get a user from the users table
-    public User get(String storedProc, Map<String, String> inParameters){
+    public User getLogIn(String username){
 
-        getUser.withProcedureName(storedProc);
+        getUser.withProcedureName("user_log_in");
         SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
+                .addValue(UserDetails.USER_NAME.getValue(), username);
         Map<String, Object> out = getUser.execute(in);
         User user = configUser(out);
         return user;
     }
 
     // To check if a username already exists
-    public boolean getUsername(String storedProc, String username){
+    public boolean getUsername(String username){
         boolean check = false;
-        checkUser.withProcedureName(storedProc);
+        checkUser.withProcedureName("check_username");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(UserDetails.USER_NAME.getValue(), username);
         Map<String, Object> out = checkUser.execute(in);
@@ -94,25 +102,9 @@ public class UserDAOImpl implements UserDAO {
         return check;
     }
 
-    // Insert a user's EmployerID that relates to their record in the Employer table
-    public void insertEmployerID(String storedProc, Map<String, Object> inParameters){
-        insertEmployerID.withProcedureName(storedProc);
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        insertEmployerID.execute(in);
-    }
-
-    // Insert a user's FreelancerID that relates to their record in the Freelancer table
-    public void insertFreelancerID(String storedProc, Map<String, Object> inParameters){
-        insertFreelancerID.withProcedureName(storedProc);
-        SqlParameterSource in = new MapSqlParameterSource()
-                .addValues(inParameters);
-        insertFreelancerID.execute(in);
-    }
-
-    public boolean checkAdminLogIn(String storedProc, String adminPassword){
+    public boolean checkAdminLogIn(String adminPassword){
         boolean check = false;
-        checkAdmin.withProcedureName(storedProc);
+        checkAdmin.withProcedureName("check_admin");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(AdminDetails.ADMIN_PASSWORD.getValue(), adminPassword);
         Map out = checkAdmin.execute(in);
@@ -123,9 +115,9 @@ public class UserDAOImpl implements UserDAO {
         return check;
     }
 
-    public Admin getAdmin(String storedProc, Map<String, Object> inParameters){
+    public Admin getAdmin(Map<String, Object> inParameters){
         Admin admin = new Admin();
-        getAdmin.withProcedureName(storedProc);
+        getAdmin.withProcedureName("admin_log_in");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         Map out = getAdmin.execute(in);
@@ -136,8 +128,8 @@ public class UserDAOImpl implements UserDAO {
         return admin;
     }
 
-    public User getUserByEmployer(String storedProc, int id){
-        getUserByEmployer.withProcedureName(storedProc);
+    public User getUserByEmployer(int id){
+        getUserByEmployer.withProcedureName("get_user_by_employer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), id);
         Map out = getUserByEmployer.execute(in);
@@ -145,8 +137,8 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
-    public User getUserByFreelancer(String storedProc, int id){
-        getUserByFreelancer.withProcedureName(storedProc);
+    public User getUserByFreelancer(int id){
+        getUserByFreelancer.withProcedureName("get_user_by_freelancer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), id);
         Map out = getUserByFreelancer.execute(in);
