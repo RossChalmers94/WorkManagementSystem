@@ -54,8 +54,9 @@ public class PreferencesControllerTest {
         currentUser.setPassword("password");
         currentUser.setRole("Freelancer");
         Worker worker = new Worker();
+        currentUser.setUserWorker(worker);
         when(workerService.getWorkerDetails(currentUser)).thenReturn(worker);
-        when(workerService.insertWorker(worker, currentUser)).thenReturn(1);
+        when(workerService.insertWorker(currentUser)).thenReturn(1);
     }
 
     @Test

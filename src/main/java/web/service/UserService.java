@@ -12,7 +12,7 @@ public interface UserService {
 
      void insertUser(User user);
 
-     void insertUserPersonal(User user, String username);
+     void insertUserPersonal(User user);
 
      User getLogIn(User user);
 

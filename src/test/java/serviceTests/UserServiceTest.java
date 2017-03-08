@@ -48,7 +48,7 @@ public class UserServiceTest {
         returnedUser = new User();
         returnedUser.setUsername("returnedUsername");
         returnedUser.setPassword("notpassword");
-        returnedUser.setFirstname("Ross");
+        returnedUser.getUserPersonal().setFirstname("Ross");
 
     }
 

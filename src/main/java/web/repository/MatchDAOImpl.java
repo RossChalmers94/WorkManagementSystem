@@ -20,7 +20,7 @@ import web.domain.*;
 public class MatchDAOImpl implements MatchDAO {
 
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcCall getSkill, getLocation, getSalary, getJobLength, insertMatch, getEmployerMatch, getFreelancerMatch,
+    private SimpleJdbcCall getSkill, getLocation, getSalary, getJobLength, getRating, insertMatch, getEmployerMatch, getFreelancerMatch,
     completeEmployerMatch, completeFreelancerMatch, deleteMatch, setPreviousEmployer, setPreviousFreelancer;
 
     @Autowired
@@ -30,6 +30,7 @@ public class MatchDAOImpl implements MatchDAO {
         this.getLocation = new SimpleJdbcCall(jdbcTemplate);
         this.getSalary = new SimpleJdbcCall(jdbcTemplate);
         this.getJobLength = new SimpleJdbcCall(jdbcTemplate);
+        this.getRating = new SimpleJdbcCall(jdbcTemplate);
         this.insertMatch = new SimpleJdbcCall(jdbcTemplate);
         this.getEmployerMatch = new SimpleJdbcCall(jdbcTemplate);
         this.getFreelancerMatch = new SimpleJdbcCall(jdbcTemplate);
@@ -87,6 +88,7 @@ public class MatchDAOImpl implements MatchDAO {
         match.setJobLength(getJobLength(worker.getJobLength()));
         match.setJobTitle(worker.getJobTitle());
         match.setJobDescription(worker.getJobDescription());
+        match.setPreviousRating(getRating(worker.getPreviousRating()));
         StringBuffer skillSet = new StringBuffer();
         for(int i = 0; i < worker.getSkill().size(); i++){
             if(i == worker.getSkill().size() - 1){
@@ -121,6 +123,12 @@ public class MatchDAOImpl implements MatchDAO {
         getSkill.withProcedureName("get_skill");
         Map<String, Object> out = getPreferences(getSkill, MatchDetails.SKILL_ID.getValue(), skillID);
         return (String) out.get("skillName");
+    }
+
+    private String getRating(int ratingID){
+        getRating.withProcedureName("get_rating");
+        Map<String, Object> out = getPreferences(getRating, MatchDetails.RATING_ID.getValue(), ratingID);
+        return (String) out.get("ratingName");
     }
 
     private Map<String, Object> getPreferences(SimpleJdbcCall simpleJdbcCall, String parameterName, int id){

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import web.domain.User;
 import web.domain.User.*;
+import web.domain.UserPersonal;
+import web.domain.UserPersonal.personalDetailsEmployer;
+import web.domain.UserPersonal.personalDetailsFreelancer;
 import web.service.UserService;
 
 import javax.servlet.http.HttpSession;
@@ -34,39 +37,41 @@ public class PersonalDetailsController {
         if(session.getAttribute("currentUser") != null) {
             User user = (User) session.getAttribute("currentUser");
             User newUser = userService.getLogIn(user);
-            model.addAttribute("userPersonal", newUser);
+            UserPersonal userPersonal = newUser.getUserPersonal();
+            model.addAttribute("userPersonal", userPersonal);
             return "/user/personal";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 
     @RequestMapping(path = "/user/personaldetails", method = RequestMethod.POST, params = "employer")
     public String confirmPersonalEmployer(@Validated({personalDetailsEmployer.class})@ModelAttribute("userPersonal")
-                                              User userPersonal, BindingResult result, Model model, HttpSession session) {
+                                                  UserPersonal personal, BindingResult result, Model model, HttpSession session) {
         // Use session variable to get username
         User user = (User) session.getAttribute("currentUser");
-        String username = user.getUsername();
+        user.setUserPersonal(personal);
 
-        return enterPersonalDetails(userPersonal, username, result, model, session);
+        return enterPersonalDetails(user, result, model, session);
     }
 
     @RequestMapping(path = "/user/personaldetails", method = RequestMethod.POST, params = "freelancer")
     public String confirmPersonalFreelancer(@Validated({personalDetailsFreelancer.class})@ModelAttribute("userPersonal")
-                                          User userPersonal, BindingResult result, Model model, HttpSession session) {
+                                          UserPersonal personal, BindingResult result, Model model, HttpSession session) {
         // Use session variable to get username
         User user = (User) session.getAttribute("currentUser");
-        String username = user.getUsername();
+        user.setUserPersonal(personal);
 
-        return enterPersonalDetails(userPersonal, username, result, model, session);
+        return enterPersonalDetails(user, result, model, session);
 
     }
 
-    private String enterPersonalDetails(User user, String username, BindingResult result, Model model, HttpSession session){
+
+    private String enterPersonalDetails(User user, BindingResult result, Model model, HttpSession session){
 
         if(!result.hasErrors()){
-            userService.insertUserPersonal(user, username);
-            return "redirect:/user/preferences";
+            userService.insertUserPersonal(user);
+            return "redirect:/user/preferencesdetails";
         } else {
             model.addAttribute("error", true);
             return "user/personal";

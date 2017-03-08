@@ -7,7 +7,7 @@ import web.domain.*;
  */
 public interface WorkerService {
 
-    int insertWorker(Worker worker, User user);
+    int insertWorker(User user);
 
     Worker getWorkerDetails(User user);
 

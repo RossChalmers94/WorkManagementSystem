@@ -13,36 +13,36 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>First Name:</label>
-            ${userMatch.firstname}
+            ${match.userMatch.firstname}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Last Name:</label>
-            ${userMatch.lastname}
+            ${match.userMatch.lastname}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Contact Telephone No:</label>
-            ${userMatch.telephone}
+            ${match.userMatch.telephone}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Email Address:</label>
-            ${userMatch.emailaddress}
+            ${match.userMatch.emailaddress}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Address:</label>
-            ${userMatch.address}
+            ${match.userMatch.address}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Postcode:</label>
-            ${userMatch.postcode}
+            ${match.userMatch.postcode}
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Town/City:</label>
-            ${userMatch.towncity}
+            ${match.userMatch.towncity}
         </div>
         <c:if test="${currentUser.role == 'Freelancer'}">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Company:</label>
-            ${userMatch.company}
+            ${match.userMatch.company}
         </div>
         </c:if>
     </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Previous Rating:</label>
-            ${match.rating}
+            ${match.previousRating}
         </div>
     </div>
     <div class="row">

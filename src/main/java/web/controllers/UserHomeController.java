@@ -33,7 +33,7 @@ public class UserHomeController {
             }
             return "user/userhome";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 

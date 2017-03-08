@@ -53,10 +53,14 @@ public class WorkerServiceTest {
         userNewFreelancer.setRole("Freelancer");
         freelancer = new Worker();
         freelancer.setWorkerID(1);
+        freelancer.setSkill(Arrays.asList(1,2,3));
         employer = new Worker();
         employer.setWorkerID(1);
         employer.setSkill(Arrays.asList(1,3,2));
-        freelancer.setSkill(Arrays.asList(1,2,3));
+        userEmployer.setUserWorker(employer);
+        userNewEmployer.setUserWorker(employer);
+        userFreelancer.setUserWorker(freelancer);
+        userNewFreelancer.setUserWorker(freelancer);
     }
 
     @Test
@@ -72,15 +76,15 @@ public class WorkerServiceTest {
     @Test
     public void insertWorkerTest(){
         int workerID;
-        workerID = workerService.insertWorker(employer, userEmployer);
+        workerID = workerService.insertWorker(userEmployer);
         Assert.assertSame(workerID, 1);
         when(workerDAO.insertEmployer(Matchers.any(Map.class))).thenReturn(2);
-        workerID = workerService.insertWorker(employer, userNewEmployer);
+        workerID = workerService.insertWorker(userNewEmployer);
         Assert.assertSame(workerID, 2);
-        workerID = workerService.insertWorker(freelancer, userFreelancer);
+        workerID = workerService.insertWorker(userFreelancer);
         Assert.assertSame(workerID, 1);
         when(workerDAO.insertFreelancer(Matchers.any(Map.class))).thenReturn(2);
-        workerID = workerService.insertWorker(freelancer, userNewFreelancer);
+        workerID = workerService.insertWorker(userNewFreelancer);
         Assert.assertSame(workerID, 2);
     }
 

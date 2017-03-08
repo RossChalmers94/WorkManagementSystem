@@ -20,8 +20,8 @@ import web.domain.*;
 public class WorkerDAOImpl implements WorkerDAO {
 
     private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills, deleteFreelancerSkills,
-            deleteEmployerSkills, getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
+    private SimpleJdbcCall insertFreelancer, insertEmployer, insertFreelancerSkills, insertEmployerSkills,
+            getFreelancerDetails, getEmployerDetails, updateEmployerDetails, updateFreelancerDetails,
             deleteEmployer, deleteFreelancer;
 
     @Autowired
@@ -106,15 +106,15 @@ public class WorkerDAOImpl implements WorkerDAO {
         return get;
     }
 
-    public void deleteEmployer(String storedProc, int employerID) {
-        deleteEmployer.withProcedureName(storedProc);
+    public void deleteEmployer(int employerID) {
+        deleteEmployer.withProcedureName("delete_employer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
         deleteEmployer.execute(in);
     }
 
-    public void deleteFreelancer(String storedProc, int freelancerID) {
-        deleteFreelancer.withProcedureName(storedProc);
+    public void deleteFreelancer(int freelancerID) {
+        deleteFreelancer.withProcedureName("delete_freelancer");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
         deleteFreelancer.execute(in);

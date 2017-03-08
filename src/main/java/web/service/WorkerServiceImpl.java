@@ -26,27 +26,27 @@ public class WorkerServiceImpl implements WorkerService {
         this.workerDAO = workerDAO;
     }
 
-    public int insertWorker(Worker worker, User user) {
+    public int insertWorker(User user) {
 
         int workerID = 0;
 
         Map<String, Object> inParameters = new HashMap<String, Object>();
         inParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        inParameters.put(WorkerDetails.SALARY.getValue(), worker.getSalary());
-        inParameters.put(WorkerDetails.LOCATION.getValue(), worker.getLocation());
-        inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), worker.getJobLength());
-        inParameters.put(WorkerDetails.RELAX_PREFERENCES.getValue(), worker.getRelaxPreferences());
-        inParameters.put(WorkerDetails.RATING.getValue(), worker.getRating());
-        inParameters.put(WorkerDetails.MINIMUM_MATCH.getValue(), worker.getMinimumMatch());
+        inParameters.put(WorkerDetails.SALARY.getValue(), user.getUserWorker().getSalary());
+        inParameters.put(WorkerDetails.LOCATION.getValue(), user.getUserWorker().getLocation());
+        inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), user.getUserWorker().getJobLength());
+        inParameters.put(WorkerDetails.RELAX_PREFERENCES.getValue(), user.getUserWorker().getRelaxPreferences());
+        inParameters.put(WorkerDetails.RATING.getValue(), user.getUserWorker().getRating());
+        inParameters.put(WorkerDetails.MINIMUM_MATCH.getValue(), user.getUserWorker().getMinimumMatch());
 
         if (user.getRole().equals("Employer")) {
-            inParameters.put(WorkerDetails.JOB_TITLE.getValue(), worker.getJobTitle());
-            inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), worker.getJobDescription());
+            inParameters.put(WorkerDetails.JOB_TITLE.getValue(), user.getUserWorker().getJobTitle());
+            inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), user.getUserWorker().getJobDescription());
             workerID = insertEmployer(user, inParameters);
-            insertEmployerSkills(workerID, worker.getSkill());
+            insertEmployerSkills(workerID, user.getUserWorker().getSkill());
         } else if (user.getRole().equals("Freelancer")) {
             workerID = insertFreelancer(user, inParameters);
-            insertFreelancerSkills(workerID, worker.getSkill());
+            insertFreelancerSkills(workerID, user.getUserWorker().getSkill());
         }
 
         return workerID;
@@ -120,13 +120,13 @@ public class WorkerServiceImpl implements WorkerService {
 
     public void deleteEmployer(List<Integer> employers) {
         for(int i = 0; i < employers.size(); i++){
-            workerDAO.deleteEmployer("delete_employer", employers.get(i));
+            workerDAO.deleteEmployer(employers.get(i));
         }
     }
 
     public void deleteFreelancer(List<Integer> freelancers) {
         for(int i = 0; i < freelancers.size(); i++){
-            workerDAO.deleteFreelancer("delete_freelancer", freelancers.get(i));
+            workerDAO.deleteFreelancer(freelancers.get(i));
         }
     }
 }

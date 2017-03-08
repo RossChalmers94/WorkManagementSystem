@@ -13,7 +13,7 @@ public class Match {
     private String salary;
     private String location;
     private String jobLength;
-    private String rating;
+    private String previousRating;
     private String minimumMatch;
     private String skills;
     private String jobTitle;
@@ -57,12 +57,12 @@ public class Match {
         this.jobLength = jobLength;
     }
 
-    public String getRating() {
-        return rating;
+    public String getPreviousRating() {
+        return previousRating;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setPreviousRating(String previousRating) {
+        this.previousRating = previousRating;
     }
 
     public String getMinimumMatch() {

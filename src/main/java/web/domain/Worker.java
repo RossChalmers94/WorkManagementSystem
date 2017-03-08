@@ -36,7 +36,8 @@ public class Worker {
     private int workerID = 0;
     private int previousRating = 0;
     private int previousMatch = 0;
-    private float compareValue;
+    private int compareValue;
+    private Match currentMatch;
 
 
     public Worker(){
@@ -147,32 +148,11 @@ public class Worker {
         this.workerID = workerID;
     }
 
-    public float compareTo(Worker worker){
-
-        float counter = 1;
-
-        if(worker.getSalary() > 0){
-            counter = counter + 20;
-        }
-
-        if(worker.getLocation() > 0){
-            counter = counter + 1;
-        }
-        if(worker.getJobLength() > 0){
-            counter = counter + 1;
-        }
-
-
-        float size = 3;
-        float percentage = (counter/size) * 100;
-        return percentage;
-    }
-
-    public float getCompareValue(){
+    public int getCompareValue(){
         return compareValue;
     }
 
-    public void setCompareValue(float compareValue){
+    public void setCompareValue(int compareValue){
         this.compareValue = compareValue;
     }
 
@@ -198,5 +178,55 @@ public class Worker {
 
     public void setPreviousMatch(int previousMatch) {
         this.previousMatch = previousMatch;
+    }
+
+    public Match getCurrentMatch() {
+        return currentMatch;
+    }
+
+    public void setCurrentMatch(Match currentMatch) {
+        this.currentMatch = currentMatch;
+    }
+
+    public float compareTo(Worker worker) {
+
+        float counter = 0;
+        float skillSetOne = 0;
+        float skillSetTwo = 0;
+
+        if (this.getSalary() == worker.getSalary()) {
+            counter = counter + 3;
+        }
+
+        if (this.getLocation() == worker.getLocation()) {
+            counter = counter + 4;
+        }
+
+        if (this.getJobLength() == worker.getJobLength()) {
+            counter = counter + 2;
+        }
+
+        if (this.getRating() >= worker.getPreviousMatch()) {
+            counter = counter + 1;
+        }
+
+        for (int i = 0; i < this.getSkill().size(); i++) {
+            if (worker.getSkill().contains(this.getSkill().get(i))) {
+                skillSetOne = skillSetOne + 1;
+            }
+        }
+        skillSetOne = (skillSetOne/this.getSkill().size());
+
+        for(int j = 0; j < worker.getSkill().size(); j++){
+            if(this.getSkill().contains(worker.getSkill().get(j))) {
+                skillSetTwo = skillSetTwo + 1;
+            }
+        }
+        skillSetTwo = (skillSetTwo/worker.getSkill().size());
+        float skillResult = (skillSetOne + skillSetTwo)/2;
+        counter = counter + (skillResult * 10);
+
+        float percentage = (counter / 20) * 100;
+        return percentage;
     }
 }

@@ -37,11 +37,12 @@ public class PreferencesController {
         if(session.getAttribute("currentUser") != null) {
             User user = (User) session.getAttribute("currentUser");
             Worker newWorker = workerService.getWorkerDetails(user);
+            user.setUserWorker(newWorker);
             model.addAttribute("application", setApplication());
             model.addAttribute("newWorker", newWorker);
             return "user/preferences";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
     @RequestMapping(path = "user/preferencesdetails", method= RequestMethod.POST, params = "employer")
@@ -49,12 +50,13 @@ public class PreferencesController {
                                              BindingResult result, Model model, HttpSession session){
         if(!result.hasErrors()) {
             User user = (User) session.getAttribute("currentUser");
-            int workerID = workerService.insertWorker(newWorker, user);
+            user.setUserWorker(newWorker);
+            int workerID = workerService.insertWorker(user);
             user.setEmployerID(workerID);
             session.removeAttribute("currentUser");
             session.setAttribute("currentUser", user);
             session.setAttribute("currentWorker", newWorker);
-            return "redirect:/user/match";
+            return "redirect:/user/yourmatch";
         } else {
             model.addAttribute("employererror", true);
             model.addAttribute(setApplication());
@@ -67,12 +69,13 @@ public class PreferencesController {
                                                            Worker newWorker, BindingResult result, Model model, HttpSession session){
         if(!result.hasErrors()) {
             User user = (User) session.getAttribute("currentUser");
-            int workerID = workerService.insertWorker(newWorker, user);
+            user.setUserWorker(newWorker);
+            int workerID = workerService.insertWorker(user);
             user.setFreelancerID(workerID);
             session.removeAttribute("currentUser");
             session.setAttribute("currentUser", user);
             session.setAttribute("currentWorker", newWorker);
-            return "redirect:/user/match";
+            return "redirect:/user/yourmatch";
         } else {
             model.addAttribute("freelancererror", true);
             model.addAttribute(setApplication());

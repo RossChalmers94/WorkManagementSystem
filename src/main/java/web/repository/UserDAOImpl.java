@@ -46,8 +46,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     // Insert username, password and role after a user creates their account
-    public void insert(String storedProc, Map<String, String> inParameters) {
-        insertUser.withProcedureName(storedProc);
+    public void insert(Map<String, String> inParameters) {
+        insertUser.withProcedureName("insert_user");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValues(inParameters);
         insertUser.execute(in);
@@ -58,14 +58,14 @@ public class UserDAOImpl implements UserDAO {
         insertUserPersonalDetails.withProcedureName("insert_user_personal");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(UserDetails.USER_NAME.getValue(), user.getUsername())
-                .addValue(UserDetails.USER_FIRSTNAME.getValue(), user.getFirstname())
-                .addValue(UserDetails.USER_LASTNAME.getValue(), user.getLastname())
-                .addValue(UserDetails.USER_TELEPHONE.getValue(), user.getTelephone())
-                .addValue(UserDetails.USER_EMAILADDRESS.getValue(), user.getEmailaddress())
-                .addValue(UserDetails.USER_ADDRESS.getValue(), user.getAddress())
-                .addValue(UserDetails.USER_POSTCODE.getValue(), user.getPostcode())
-                .addValue(UserDetails.USER_TOWNCITY.getValue(), user.getTowncity())
-                .addValue(UserDetails.USER_COMPANY.getValue(), user.getCompany());
+                .addValue(UserDetails.USER_FIRSTNAME.getValue(), user.getUserPersonal().getFirstname())
+                .addValue(UserDetails.USER_LASTNAME.getValue(), user.getUserPersonal().getLastname())
+                .addValue(UserDetails.USER_TELEPHONE.getValue(), user.getUserPersonal().getTelephone())
+                .addValue(UserDetails.USER_EMAILADDRESS.getValue(), user.getUserPersonal().getEmailaddress())
+                .addValue(UserDetails.USER_ADDRESS.getValue(), user.getUserPersonal().getAddress())
+                .addValue(UserDetails.USER_POSTCODE.getValue(), user.getUserPersonal().getPostcode())
+                .addValue(UserDetails.USER_TOWNCITY.getValue(), user.getUserPersonal().getTowncity())
+                .addValue(UserDetails.USER_COMPANY.getValue(), user.getUserPersonal().getCompany());
         insertUserPersonalDetails.execute(in);
     }
 
@@ -159,8 +159,8 @@ public class UserDAOImpl implements UserDAO {
         for(int i = 0; i < out.size(); i++){
             User user = new User();
             user.setUsername((String) out.get(i).get(UserDetails.USER_NAME.getValue()));
-            user.setFirstname((String) out.get(i).get(UserDetails.USER_FIRSTNAME.getValue()));
-            user.setLastname((String) out.get(i).get(UserDetails.USER_LASTNAME.getValue()));
+            user.getUserPersonal().setFirstname((String) out.get(i).get(UserDetails.USER_FIRSTNAME.getValue()));
+            user.getUserPersonal().setLastname((String) out.get(i).get(UserDetails.USER_LASTNAME.getValue()));
             if(out.get(i).get(UserDetails.USER_FREELANCERID.getValue()) != null) {
                 user.setFreelancerID((Integer) out.get(i).get(UserDetails.USER_FREELANCERID.getValue()));
             }
@@ -177,14 +177,14 @@ public class UserDAOImpl implements UserDAO {
     private User configUser(Map<String, Object> outParameters){
         User user = new User();
         user.setUsername((String) outParameters.get(UserDetails.USER_NAME.getValue()));
-        user.setFirstname((String) outParameters.get(UserDetails.USER_FIRSTNAME.getValue()));
-        user.setLastname((String) outParameters.get(UserDetails.USER_LASTNAME.getValue()));
-        user.setTelephone((String) outParameters.get(UserDetails.USER_TELEPHONE.getValue()));
-        user.setAddress((String) outParameters.get(UserDetails.USER_ADDRESS.getValue()));
-        user.setEmailaddress((String) outParameters.get(UserDetails.USER_EMAILADDRESS.getValue()));
-        user.setPostcode((String) outParameters.get(UserDetails.USER_POSTCODE.getValue()));
-        user.setTowncity((String) outParameters.get(UserDetails.USER_TOWNCITY.getValue()));
-        user.setCompany((String) outParameters.get(UserDetails.USER_COMPANY.getValue()));
+        user.getUserPersonal().setFirstname((String) outParameters.get(UserDetails.USER_FIRSTNAME.getValue()));
+        user.getUserPersonal().setLastname((String) outParameters.get(UserDetails.USER_LASTNAME.getValue()));
+        user.getUserPersonal().setTelephone((String) outParameters.get(UserDetails.USER_TELEPHONE.getValue()));
+        user.getUserPersonal().setAddress((String) outParameters.get(UserDetails.USER_ADDRESS.getValue()));
+        user.getUserPersonal().setEmailaddress((String) outParameters.get(UserDetails.USER_EMAILADDRESS.getValue()));
+        user.getUserPersonal().setPostcode((String) outParameters.get(UserDetails.USER_POSTCODE.getValue()));
+        user.getUserPersonal().setTowncity((String) outParameters.get(UserDetails.USER_TOWNCITY.getValue()));
+        user.getUserPersonal().setCompany((String) outParameters.get(UserDetails.USER_COMPANY.getValue()));
         user.setRole((String) outParameters.get(UserDetails.USER_ROLE.getValue()));
         if(outParameters.get(UserDetails.USER_RATING.getValue()) != null){
             user.setRating((Integer) outParameters.get(UserDetails.USER_RATING.getValue()));

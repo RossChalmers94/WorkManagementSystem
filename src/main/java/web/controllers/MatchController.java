@@ -41,13 +41,13 @@ public class MatchController {
             User getUser = (User) session.getAttribute("currentUser");
             User user = userService.getLogIn(getUser);
             Worker worker = workerService.getWorkerDetails(user);
+            user.setUserWorker(worker);
             Match match = new Match();
             if (user.getEmployerID() != 0) {
-                match = getEmployerMatch(user, worker);
+                match = getEmployerMatch(user);
             } else if (user.getFreelancerID() != 0) {
-                match = getFreelancerMatch(user, worker);
+                match = getFreelancerMatch(user);
             }
-
             if(match != null) {
                 model.addAttribute("match", match);
                 return "user/match";
@@ -55,15 +55,15 @@ public class MatchController {
                 return "redirect:/user/nomatch";
             }
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
 
     }
 
 
-    private Match getEmployerMatch(User user, Worker worker) {
+    private Match getEmployerMatch(User user) {
         Match match;
-        if (worker.getJobMatch() == 0) {
+        if (user.getUserWorker().getJobMatch() == 0) {
             match = matchService.getEmployerMatch(user);
             if (match == null) {
                 return null;
@@ -71,13 +71,13 @@ public class MatchController {
                 return match;
             }
         } else {
-            return matchService.getExistingEmployerMatch(worker.getJobMatch());
+            return matchService.getExistingEmployerMatch(user.getUserWorker().getJobMatch());
         }
     }
 
-    private Match getFreelancerMatch(User user, Worker worker) {
+    private Match getFreelancerMatch(User user) {
         Match match;
-        if (worker.getJobMatch() == 0) {
+        if (user.getUserWorker().getJobMatch() == 0) {
             match = matchService.getFreelancerMatch(user);
             if (match == null) {
                 return null;
@@ -85,7 +85,7 @@ public class MatchController {
                 return match;
             }
         } else {
-            return matchService.getExistingFreelancerMatch(worker.getJobMatch());
+            return matchService.getExistingFreelancerMatch(user.getUserWorker().getJobMatch());
         }
     }
 
@@ -100,7 +100,7 @@ public class MatchController {
         if (session.getAttribute("currentUser") != null) {
             return "user/nomatch";
         }
-        return "redirect:/login";
+        return "redirect:/newlogin";
     }
 
     @RequestMapping(path = "user/completematch", method = RequestMethod.GET)
@@ -110,7 +110,7 @@ public class MatchController {
             model.addAttribute("giveRating", giveRating);
             return "user/completematch";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 

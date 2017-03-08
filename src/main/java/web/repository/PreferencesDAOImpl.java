@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
-import web.domain.application.Salary;
+import web.domain.application.Admin;
 import web.enumconstants.AdminDetails;
 import web.enumconstants.WorkerDetails;
 
@@ -52,21 +52,22 @@ public class PreferencesDAOImpl implements PreferencesDAO {
         return get;
     }
 
-    public Map getAdmin(String storedProc) {
-        Map get = this.jdbcTemplate.queryForMap(storedProc);
-        return get;
+    public Admin getAdmin() {
+        Map out = this.jdbcTemplate.queryForMap("SELECT adminUsername, adminPassword, industryName, databaseServer FROM application");
+        Admin admin = new Admin();
+        admin.setAdminUsername((String)out.get("adminUsername"));
+        admin.setPassword((String)out.get("adminPassword"));
+        admin.setIndustryName((String)out.get("industryName"));
+        admin.setDatabaseServer((String)out.get("databaseServer"));
+        return admin;
     }
 
-    public void updateLocations(String storedProc, Map<String, Object> inParameters){
-        updateLocations.withProcedureName(storedProc);
-        update(updateLocations, inParameters);
-    }
-    public void updateJobLengths(String storedProc, Map<String, Object> inParameters){
-        updateJobLengths.withProcedureName(storedProc);
+    public void updateJobLengths(Map<String, Object> inParameters){
+        updateJobLengths.withProcedureName("update_joblengths");
         update(updateJobLengths, inParameters);
     }
-    public void updateSalarys(String storedProc, Map<String, Object> inParameters){
-        updateSalarys.withProcedureName(storedProc);
+    public void updateSalarys(Map<String, Object> inParameters){
+        updateSalarys.withProcedureName("update_salarys");
         update(updateSalarys, inParameters);
     }
 
@@ -76,33 +77,33 @@ public class PreferencesDAOImpl implements PreferencesDAO {
         storedProc.execute(in);
     }
 
-    public void addSkill(String storedProc, String skillName){
-        addSkill.withProcedureName(storedProc);
+    public void addSkill(String skillName){
+        addSkill.withProcedureName("insert_skill");
         add(addSkill, "skillName", skillName);
     }
 
-    public void deleteSkill(String storedProc, int skillID){
-        deleteSkills.withProcedureName(storedProc);
+    public void deleteSkill(int skillID){
+        deleteSkills.withProcedureName("delete_skill");
         delete(deleteSkills, "skillID", skillID);
     }
 
-    public void addLocation(String storedProc, String locationName){
-        addLocation.withProcedureName(storedProc);
+    public void addLocation(String locationName){
+        addLocation.withProcedureName("insert_location");
         add(addLocation, "locationName", locationName);
     }
 
-    public void deleteLocation(String storedProc, int locationID){
-        deleteLocation.withProcedureName(storedProc);
+    public void deleteLocation(int locationID){
+        deleteLocation.withProcedureName("delete_location");
         delete(deleteLocation, "locationID", locationID);
     }
 
-    public void updateApplication(String storedProc, String name) {
+    public void updateApplication(String name) {
         updateApplication.withProcedureName("update_admin");
         add(updateApplication, "industryName", name);
     }
 
-    public void updatePassword(String storedProc, String password) {
-        updatePassword.withProcedureName(storedProc);
+    public void updatePassword(String password) {
+        updatePassword.withProcedureName("update_admin_password");
         add(updatePassword, "adminPassword", password);
     }
 
@@ -118,12 +119,17 @@ public class PreferencesDAOImpl implements PreferencesDAO {
         storedProc.execute(in);
     }
 
-    public int checkAdminPassword(String storedProc, String password){
-        getUpdatePassword.withProcedureName(storedProc);
+    public boolean checkAdminPassword(String password){
+        getUpdatePassword.withProcedureName("check_admin");
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(AdminDetails.ADMIN_PASSWORD.getValue(), password);
         Map<String, Object> out = getUpdatePassword.execute(in);
-        return (Integer) out.get("adminValue");
+        int value = (Integer) out.get("adminValue");
+        if(value == 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

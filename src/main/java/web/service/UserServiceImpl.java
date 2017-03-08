@@ -35,12 +35,11 @@ public class UserServiceImpl implements UserService {
         userDetails.put(UserDetails.USER_NAME.getValue(), user.getUsername().trim());
         userDetails.put(UserDetails.USER_PASSWORD.getValue(), passwordEncoder.encode(user.getPassword().trim()));
         userDetails.put(UserDetails.USER_ROLE.getValue(), user.getRole());
-        userDAO.insert("insert_user", userDetails);
+        userDAO.insert(userDetails);
     }
 
 
-    public void insertUserPersonal(User user, String username){
-        user.setUsername(username);
+    public void insertUserPersonal(User user){
         userDAO.insertPersonal(user);
     }
 

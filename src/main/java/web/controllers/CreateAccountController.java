@@ -46,7 +46,7 @@ public class CreateAccountController {
             if (!check) {
                 userService.insertUser(newUser);
                 session.setAttribute("currentUser", newUser);
-                return "redirect:/user/personal";
+                return "redirect:/user/personaldetails";
             } else {
                 model.addAttribute("exists", true);
             }

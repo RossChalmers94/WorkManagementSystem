@@ -16,6 +16,6 @@ public interface WorkerDAO {
     void updateEmployer(Map<String, Object> inParameters);
     void updateFreelancer(Map<String, Object> inParameters);
     List<Integer> getSkills(String storedProc, int id);
-    void deleteEmployer(String storedProc, int employerID);
-    void deleteFreelancer(String storedProc, int freelancerID);
+    void deleteEmployer(int employerID);
+    void deleteFreelancer(int freelancerID);
 }

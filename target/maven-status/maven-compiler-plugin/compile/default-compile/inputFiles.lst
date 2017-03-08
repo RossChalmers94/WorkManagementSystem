@@ -27,6 +27,7 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/Match.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/UserServiceImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/application/Skill.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/domain/UserPersonal.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/service/UserService.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/repository/WorkerDAOImpl.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/main/java/web/controllers/ConfigureApplicationController.java

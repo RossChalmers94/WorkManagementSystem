@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    void insert(String storedProcedure, Map<String, String> inParameters);
+    void insert(Map<String, String> inParameters);
 
     void insertPersonal(User user);
 

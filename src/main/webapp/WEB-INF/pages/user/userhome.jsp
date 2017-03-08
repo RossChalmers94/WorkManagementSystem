@@ -9,13 +9,13 @@
     </div>
     <div class="row text-center">
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1">
-            <a class="selection btn btn-default" href="personal">Edit Personal Details</a>
+            <a class="selection btn btn-default" href="personaldetails">Edit Personal Details</a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
-            <a class="selection btn btn-default" href="preferences">Edit Preferences</a>
+            <a class="selection btn btn-default" href="preferencesdetails">Edit Preferences</a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-            <a class="selection btn btn-default" <c:if test="${worker.jobMatch != 0}">href="match"</c:if> >View Match</a>
+            <a class="selection btn btn-default" <c:if test="${worker.jobMatch != 0}">href="yourmatch"</c:if> >View Match</a>
         </div>
     </div>
 </div>
