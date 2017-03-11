@@ -9,24 +9,24 @@
         <h1>Configure Application</h1>
     </div>
     <c:if test="${param.error == true}">
-    <div class="row">
-        <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <c:if test="${param.preferences == true}">
-                <label>There has been an error submitting salaries and job lengths.</label>
-            </c:if>
-            <c:if test="${param.skills == true}">
-                <label>There has been an error submitting a new skill.<br>
-                    Please ensure the skill is between 5-20 characters.</label>
-            </c:if>
-            <c:if test="${param.locations == true}">
-                <label>There has been an error submitting a new location..<br>
-                    Please ensure the locations is between 5-20 characters.</label>
-            </c:if>
+        <div class="row">
+            <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <c:if test="${error == true}">
+                    <label>There has been an error.</label><br>
+                </c:if>
+                <c:if test="${param.skills == true}">
+                    <label>There has been an error submitting a new skill.
+                        Please ensure the skill is between 5-20 characters.</label>
+                </c:if>
+                <c:if test="${param.locations == true}">
+                    <label>There has been an error submitting a new location.
+                        Please ensure the location is between 5-20 characters.</label>
+                </c:if>
+            </div>
         </div>
-    </div>
     </c:if>
-    <form:form modelAttribute="configureSkills" method="post">
     <div class="row">
+        <form:form modelAttribute="configureSkills" method="post">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <label>Skills:</label>
             <table class="table table-sm table-striped table-hover table-bordered">
@@ -49,8 +49,8 @@
                 </tr>
             </table>
             <form:input path="skillName" class="form-control" placeholder="Skill Name"/>
-            <form:errors path="skillName" class="alert-danger"/>
-            <input type="submit" class="contact btn btn-default" name="addskill" value="Add Skill">
+            <form:errors path="skillName" class="alert alert-danger"/>
+            <input type="submit" class="contact btn btn-default" name="newSkill" value="Add Skill">
         </div>
         </form:form>
         <form:form modelAttribute="configureLocations" method="post">
@@ -77,10 +77,11 @@
                 </tr>
             </table>
             <form:input path="locationName" class="form-control" placeholder="Location Name"/>
-            <input type="submit" class="contact btn btn-default" name="addlocation" value="Add Location">
+            <form:errors path="locationName" class="alert alert-danger"/>
+            <input type="submit" class="contact btn btn-default" name="newLocation" value="Add Location">
         </div>
+        </form:form>
     </div>
-    </form:form>
     <form:form modelAttribute="configureSalaries" method="post">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -97,37 +98,42 @@
                     <tr>
                         <td>${(i.index) + 1}</td>
                         <td><form:select path="salarys[${i.index}].salaryMinValue" class="form-control">
-                            <form:option value="10000">£10,000</form:option>
-                            <form:option value="20000">£20,000</form:option>
-                            <form:option value="30000">£30,000</form:option>
-                            <form:option value="40000">£40,000</form:option>
-                            <form:option value="50000">£50,000</form:option>
-                            <form:option value="60000">£60,000</form:option>
-                            <form:option value="70000">£70,000</form:option>
-                            <form:option value="80000">£80,000</form:option>
-                            <form:option value="90000">£90,000</form:option>
-                            <form:option value="100000">£100,000</form:option>
-                            <form:option value="110000">£110,000</form:option>
-                            <form:option value="120000">£120,000</form:option>
+                            <form:option value="10000">10,000</form:option>
+                            <form:option value="20000">20,000</form:option>
+                            <form:option value="30000">30,000</form:option>
+                            <form:option value="40000">40,000</form:option>
+                            <form:option value="50000">50,000</form:option>
+                            <form:option value="60000">60,000</form:option>
+                            <form:option value="70000">70,000</form:option>
+                            <form:option value="80000">80,000</form:option>
+                            <form:option value="90000">90,000</form:option>
+                            <form:option value="100000">100,000</form:option>
+                            <form:option value="110000">110,000</form:option>
+                            <form:option value="120000">120,000</form:option>
                         </form:select></td>
                         <td><form:select path="salarys[${i.index}].salaryMaxValue" class="form-control">
-                            <form:option value="10000">£10,000</form:option>
-                            <form:option value="20000">£20,000</form:option>
-                            <form:option value="30000">£30,000</form:option>
-                            <form:option value="40000">£40,000</form:option>
-                            <form:option value="50000">£50,000</form:option>
-                            <form:option value="60000">£60,000</form:option>
-                            <form:option value="70000">£70,000</form:option>
-                            <form:option value="80000">£80,000</form:option>
-                            <form:option value="90000">£90,000</form:option>
-                            <form:option value="100000">£100,000</form:option>
-                            <form:option value="110000">£110,000</form:option>
-                            <form:option value="120000">£120,000</form:option>
+                            <form:option value="10000">10,000</form:option>
+                            <form:option value="20000">20,000</form:option>
+                            <form:option value="30000">30,000</form:option>
+                            <form:option value="40000">40,000</form:option>
+                            <form:option value="50000">50,000</form:option>
+                            <form:option value="60000">60,000</form:option>
+                            <form:option value="70000">70,000</form:option>
+                            <form:option value="80000">80,000</form:option>
+                            <form:option value="90000">90,000</form:option>
+                            <form:option value="100000">100,000</form:option>
+                            <form:option value="110000">110,000</form:option>
+                            <form:option value="120000">120,000</form:option>
                         </form:select></td>
                     </tr>
                 </c:forEach>
             </table>
-            <input type="submit" class="btn btn-default" value="Confirm Changes" name="addsalaries">
+            <input type="submit" class="btn btn-default" value="Confirm Salaries" name="newSalaries">
+            <c:if test="${salarySuccess == true}">
+                <div class="alert alert-success">
+                    <label>You have successfully updated the Salary Ranges!</label>
+                </div>
+            </c:if>
         </div>
 
         </form:form>
@@ -176,16 +182,21 @@
                     </tr>
                 </c:forEach>
             </table>
-            <input type="submit" class="btn btn-default" value="Confirm Changes" name="addJobLengths">
+            <input type="submit" class="btn btn-default" value="Confirm Job Lengths" name="newJobLengths">
+            <c:if test="${jobLengthSuccess == true}">
+                <div class="alert alert-success">
+                    <label>You have successfully updated the Job Lengths!</label>
+                </div>
+            </c:if>
         </div>
     </div>
     <div class="row">
         <a class="contact btn btn-default" href="adminhome">Back</a>
     </div>
     </form:form>
-    </div>
-    </body>
-    <footer class="footer">
-        <div class="container"></div>
-    </footer>
+</div>
+</body>
+<footer class="footer">
+    <div class="container"></div>
+</footer>
 </html>

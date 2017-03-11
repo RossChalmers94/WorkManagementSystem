@@ -87,6 +87,8 @@ public class WorkerServiceImpl implements WorkerService {
     // Insert an Employer's skill set
     private void insertEmployerSkills(int employerID, List<Integer> skills) {
 
+        workerDAO.deleteEmployerSkills(employerID);
+
         for (int i = 0; i < skills.size(); i++) {
             Map<String, Object> inParameters = new HashMap<String, Object>();
             inParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
@@ -97,6 +99,8 @@ public class WorkerServiceImpl implements WorkerService {
 
     // Insert a Freelancer's skill set
     private void insertFreelancerSkills(int freelancerID, List<Integer> skills) {
+
+        workerDAO.deleteFreelancerSkills(freelancerID);
 
         // Insert each new Freelancer skill into the skill_set table
         for (int i = 0; i < skills.size(); i++) {

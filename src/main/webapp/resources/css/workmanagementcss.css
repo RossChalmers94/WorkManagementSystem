@@ -126,3 +126,7 @@ a {
     background-color: #002b5c;
     color: #ffffff;
 }
+
+.users {
+    border: 2px solid #ffffff;
+}

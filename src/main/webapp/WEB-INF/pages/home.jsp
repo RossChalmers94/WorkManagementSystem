@@ -24,7 +24,7 @@
     <div class="row text-center">
         <h2>Are you a Freelancer or an Employer?</h2>
         <div class="col-md-6 col-xs-12 col-sm-6 col-md-offset-3 col-sm-offset-3">
-            <a class="selection btn btn-default" href="createaccount">Create Account</a>
+            <a class="selection btn btn-default" href="newaccount">Create Account</a>
         </div>
     </div>
 

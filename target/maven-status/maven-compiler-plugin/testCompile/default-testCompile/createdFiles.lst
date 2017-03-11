@@ -1,0 +1,12 @@
+controllerTests/LogInControllerTest.class
+serviceTests/MatchServiceTest.class
+controllerTests/PreferencesControllerTest.class
+controllerTests/MatchControllerTest.class
+serviceTests/WorkerServiceTest.class
+controllerTests/ConfigureApplicationControllerTest.class
+controllerTests/CreateAccountControllerTest.class
+controllerTests/PersonalDetailsControllerTest.class
+domainTests/WorkerTest.class
+controllerTests/AdminControllerTest.class
+domainTests/UserTest.class
+serviceTests/UserServiceTest.class

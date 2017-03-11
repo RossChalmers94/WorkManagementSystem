@@ -11,10 +11,12 @@ import java.util.List;
  */
 public class Skill {
 
+    public interface addSkill{};
+
 
     private int skillID;
-    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
-    @Pattern(regexp = "^[a-zA-Z\\s]+$")
+    @Size(groups = {addSkill.class}, min = 1, max = 20, message = "Skill must not be empty and must be less than 20 characters.")
+    @Pattern(groups = {addSkill.class}, regexp = "^[a-zA-Z\\s]+$", message = "Skill Name must only consist of letters.")
     private String skillName;
     private List<Skill> skills;
     private List<Integer> skillsSet;

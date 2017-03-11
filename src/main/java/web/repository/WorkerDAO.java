@@ -11,6 +11,8 @@ public interface WorkerDAO {
     int insertEmployer(Map<String, Object> inParameters);
     void insertEmployerSkills(Map<String, Object> inParameters);
     void insertFreelancerSkills(Map<String, Object> inParameters);
+    void deleteEmployerSkills(int employerID);
+    void deleteFreelancerSkills(int freelancerID);
     Worker getEmployer(int employerID);
     Worker getFreelancer(int freelancerID);
     void updateEmployer(Map<String, Object> inParameters);

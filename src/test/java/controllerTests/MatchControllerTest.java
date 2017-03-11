@@ -69,7 +69,7 @@ public class MatchControllerTest {
                 .perform(get("/user/yourmatch"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test

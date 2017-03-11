@@ -1,4 +1,5 @@
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/serviceTests/UserServiceTest.java
+/Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/domainTests/WorkerTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/LogInControllerTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/controllerTests/ConfigureApplicationControllerTest.java
 /Users/RossChalmers/Documents/tomcat/webapps/workmanagementsystem/src/test/java/domainTests/UserTest.java

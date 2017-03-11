@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class Location {
 
-    public interface location{}
+    public interface addLocation{}
 
     private int locationID;
-    @Pattern(regexp = "^[a-zA-Z\\s]+$")
-    @Size(min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
+    @Pattern(groups = {addLocation.class}, regexp = "^[a-zA-Z\\s]+$", message = "Location must only consist of letters.")
+    @Size(groups = {addLocation.class}, min = 1, max = 20, message = "Location must not be empty and must be less than 20 characters.")
     private String locationName;
     private List<Location> locations;
     private List<Integer> locationSet;

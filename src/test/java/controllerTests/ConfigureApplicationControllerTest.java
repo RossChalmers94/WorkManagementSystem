@@ -60,34 +60,34 @@ public class ConfigureApplicationControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeDoesNotExist("newApplication", "configureSkills", "configureLocations",
                         "configureSalaries", "configureJobLengths"))
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test
     public void addDeleteSkillsTest() throws Exception {
         this.mockMvc
-                .perform(post("/admin/configureapplication?addskill=").param("skillName", ""))
+                .perform(post("/admin/configureapplication?newSkill=").param("skillName", ""))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureSkills", "skillName"))
                 .andExpect(model().attributeExists("error", "skills"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addskill=").param("skillName", "sdfasdfdsf221"))
+                .perform(post("/admin/configureapplication?newSkill=").param("skillName", "sdfasdfdsf221"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureSkills", "skillName"))
                 .andExpect(model().attributeExists("error", "skills"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addskill=").param("skillName", "overthelimitoverthelimit"))
+                .perform(post("/admin/configureapplication?newSkill=").param("skillName", "overthelimitoverthelimit"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureSkills", "skillName"))
                 .andExpect(model().attributeExists("error", "skills"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addskill=").param("skillName", "New York"))
+                .perform(post("/admin/configureapplication?newSkill=").param("skillName", "New York"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("configureSkills"))
@@ -102,34 +102,34 @@ public class ConfigureApplicationControllerTest {
     @Test
     public void addDeleteLocationsTest() throws Exception {
         this.mockMvc
-                .perform(post("/admin/configureapplication?addlocation=").param("locationName", ""))
+                .perform(post("/admin/configureapplication?newLocation=").param("locationName", ""))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureLocations", "locationName"))
                 .andExpect(model().attributeExists("error", "locations"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addlocation=").param("locationName", "overthelimitoverthelimit"))
+                .perform(post("/admin/configureapplication?newLocation=").param("locationName", "overthelimitoverthelimit"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureLocations", "locationName"))
                 .andExpect(model().attributeExists("error", "locations"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addlocation=").param("locationName", "dsfsdfs32"))
+                .perform(post("/admin/configureapplication?newLocation=").param("locationName", "dsfsdfs32"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasFieldErrors("configureLocations", "locationName"))
                 .andExpect(model().attributeExists("error", "locations"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addlocation=").param("locationName", "New York"))
+                .perform(post("/admin/configureapplication?newLocation=").param("locationName", "New York"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("configureLocations"))
                 .andExpect(view().name("redirect:/admin/configureapplication"));
         this.mockMvc
-                .perform(post("/admin/configureapplication?addlocation=").param("locationName", "banter"))
+                .perform(post("/admin/configureapplication?newLocation=").param("locationName", "banter"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("configureLocations"))

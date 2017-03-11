@@ -59,7 +59,7 @@ public class PersonalDetailsControllerTest {
                 .perform(get("/user/personaldetails"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class PersonalDetailsControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("userPersonal"))
-                .andExpect(view().name("redirect:/user/preferences"));
+                .andExpect(view().name("redirect:/user/preferencesdetails"));
     }
 
     @Test
@@ -127,7 +127,7 @@ public class PersonalDetailsControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("userPersonal"))
-                .andExpect(view().name("redirect:/user/preferences"));
+                .andExpect(view().name("redirect:/user/preferencesdetails"));
     }
 
 }

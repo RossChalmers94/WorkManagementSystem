@@ -203,10 +203,14 @@ public class Worker {
         }
 
         if (this.getJobLength() == worker.getJobLength()) {
-            counter = counter + 2;
+            counter = counter + 1;
         }
 
-        if (this.getRating() >= worker.getPreviousMatch()) {
+        if (this.getRating() <= worker.getPreviousRating()) {
+            counter = counter + 1;
+        }
+
+        if (worker.getRating() <= this.getPreviousRating()){
             counter = counter + 1;
         }
 

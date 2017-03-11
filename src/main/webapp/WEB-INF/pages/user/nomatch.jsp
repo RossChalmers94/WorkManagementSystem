@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 col-md-offset-4 col-lg-offset-4">
-                <a class="selection btn btn-default" href="preferences">Edit Preferences</a>
+                <a class="selection btn btn-default" href="preferencesdetails">Edit Preferences</a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <a class="selection btn btn-default" href="userhome">Home Page</a>

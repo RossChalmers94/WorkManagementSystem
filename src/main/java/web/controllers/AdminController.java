@@ -49,7 +49,7 @@ public class AdminController {
         if(session.getAttribute("adminUser") != null) {
             return "admin/adminhome";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 
@@ -57,14 +57,10 @@ public class AdminController {
     @RequestMapping(path = "admin/manageusers", method = RequestMethod.GET)
     public String viewManageUsers(Model model, HttpSession session){
         if(session.getAttribute("adminUser") != null) {
-            model.addAttribute("manageUsers", new ManageUsers());
-            model.addAttribute("users", userService.getAllUsers());
-            model.addAttribute("employers", matchService.getEmployers());
-            model.addAttribute("freelancers", matchService.getFreelancers());
-            model.addAttribute("matches", matchService.getAllMatches());
+            prePopulateUsers(model);
             return "admin/manageusers";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 
@@ -90,10 +86,11 @@ public class AdminController {
     @RequestMapping(path = "admin/adminpassword", method = RequestMethod.GET)
     public String viewChangePassword(Model model, HttpSession session){
         if(session.getAttribute("adminUser") != null) {
-            model.addAttribute("admin", preferencesService.getAdmin());
+            model.addAttribute("passwordAdmin", preferencesService.getAdmin());
+            model.addAttribute("applicationAdmin", preferencesService.getAdmin());
             return "admin/adminpassword";
         } else {
-            return "redirect:/login";
+            return "redirect:/newlogin";
         }
     }
 
@@ -129,6 +126,14 @@ public class AdminController {
             model.addAttribute("error", true);
         }
         return "admin/adminpassword";
+    }
+
+    private void prePopulateUsers(Model model){
+        model.addAttribute("manageUsers", new ManageUsers());
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("employers", matchService.getEmployers());
+        model.addAttribute("freelancers", matchService.getFreelancers());
+        model.addAttribute("matches", matchService.getAllMatches());
     }
 
 }

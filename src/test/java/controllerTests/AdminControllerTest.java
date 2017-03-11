@@ -66,7 +66,7 @@ public class AdminControllerTest {
                 .perform(get("/admin/adminhome"))
                 .andDo(print())
                 .andExpect(status().is(302))
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AdminControllerTest {
                 .perform(get("/admin/manageusers"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test

@@ -73,6 +73,6 @@ public class CreateAccountControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("newUser"))
-                .andExpect(view().name("redirect:/user/personal"));
+                .andExpect(view().name("redirect:/user/personaldetails"));
     }
 }

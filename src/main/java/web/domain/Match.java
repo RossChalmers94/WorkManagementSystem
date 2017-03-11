@@ -20,7 +20,7 @@ public class Match {
     private String jobDescription;
     private int freelancerID;
     private int employerID;
-    private User userMatch;
+    private UserPersonal userMatch;
 
     public Match() {
     }
@@ -113,11 +113,11 @@ public class Match {
         this.freelancerID = freelancerID;
     }
 
-    public User getUserMatch() {
+    public UserPersonal getUserMatch() {
         return userMatch;
     }
 
-    public void setUserMatch(User userMatch) {
+    public void setUserMatch(UserPersonal userMatch) {
         this.userMatch = userMatch;
     }
 }

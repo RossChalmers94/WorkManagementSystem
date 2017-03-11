@@ -41,8 +41,10 @@ public class MatchServiceImpl implements MatchService {
         List<Worker> possibleWorkers = new ArrayList<Worker>();
         for (Worker worker : workers) {
             int compareValue = getWorker(worker, user.getUserWorker());
-            worker.setCompareValue(compareValue);
-            possibleWorkers.add(worker);
+            if(compareValue > 0) {
+                worker.setCompareValue(compareValue);
+                possibleWorkers.add(worker);
+            }
         }
 
         if(possibleWorkers.isEmpty()){
@@ -51,7 +53,7 @@ public class MatchServiceImpl implements MatchService {
             Worker bestWorker = findBestWorker(possibleWorkers);
             matchDAO.insertMatch(user.getEmployerID(), bestWorker.getWorkerID());
             Match match = matchDAO.getMatch(bestWorker);
-            match.setUserMatch(userDAO.getUserByFreelancer(match.getMatchID()));
+            match.setUserMatch(userDAO.getUserByFreelancer(match.getMatchID()).getUserPersonal());
             return match;
         }
     }
@@ -64,8 +66,10 @@ public class MatchServiceImpl implements MatchService {
         List<Worker> possibleWorkers = new ArrayList<Worker>();
         for (Worker worker : workers) {
             int compareValue = getWorker(worker, user.getUserWorker());
-            worker.setCompareValue(compareValue);
-            possibleWorkers.add(worker);
+            if(compareValue > 0) {
+                worker.setCompareValue(compareValue);
+                possibleWorkers.add(worker);
+            }
         }
 
         if(possibleWorkers.isEmpty()){
@@ -74,15 +78,15 @@ public class MatchServiceImpl implements MatchService {
             Worker bestWorker = findBestWorker(possibleWorkers);
             matchDAO.insertMatch(bestWorker.getWorkerID(), user.getFreelancerID());
             Match match = matchDAO.getMatch(bestWorker);
-            match.setUserMatch(userDAO.getUserByEmployer(match.getMatchID()));
+            match.setUserMatch(userDAO.getUserByEmployer(match.getMatchID()).getUserPersonal());
             return match;
         }
     }
 
     private int getWorker(Worker worker, Worker currentWorker) {
 
-        float compareWorkers = currentWorker.compareTo(worker);
-        if (compareWorkers >= currentWorker.getMinimumMatch() && compareWorkers >= worker.getMinimumMatch()) {
+        float compareWorkers = compareTo(worker, currentWorker);
+        if (compareWorkers >= currentWorker.getMinimumMatch() && compareWorkers >= worker.getMinimumMatch() ) {
             return Math.round(compareWorkers);
         } else {
             return 0;
@@ -93,7 +97,7 @@ public class MatchServiceImpl implements MatchService {
         int freelancerID = matchDAO.getEmployerMatch(matchID);
         Worker worker = workerDAO.getFreelancer(freelancerID);
         Match match = matchDAO.getMatch(worker);
-        match.setUserMatch(userDAO.getUserByFreelancer(freelancerID));
+        match.setUserMatch(userDAO.getUserByFreelancer(freelancerID).getUserPersonal());
         return match;
     }
 
@@ -101,7 +105,7 @@ public class MatchServiceImpl implements MatchService {
         int employerID = matchDAO.getFreelancerMatch(matchID);
         Worker worker = workerDAO.getEmployer(employerID);
         Match match = matchDAO.getMatch(worker);
-        match.setUserMatch(userDAO.getUserByEmployer(employerID));
+        match.setUserMatch(userDAO.getUserByEmployer(employerID).getUserPersonal());
         return match;
     }
 
@@ -143,7 +147,21 @@ public class MatchServiceImpl implements MatchService {
         }
     }
 
-    private float compareTo(Worker currentWorker, Worker worker) {
+
+    private Worker findBestWorker(List<Worker> possibleWorkers){
+        int counter = 0;
+        Worker bestWorker = new Worker();
+        for(Worker worker : possibleWorkers){
+            if(worker.getCompareValue() > counter){
+                counter = worker.getCompareValue();
+                bestWorker = worker;
+            }
+        }
+
+        return bestWorker;
+    }
+
+    private float compareTo(Worker worker, Worker currentWorker) {
 
         float counter = 0;
         float skillSetOne = 0;
@@ -158,10 +176,14 @@ public class MatchServiceImpl implements MatchService {
         }
 
         if (currentWorker.getJobLength() == worker.getJobLength()) {
-            counter = counter + 2;
+            counter = counter + 1;
         }
 
-        if (currentWorker.getRating() >= worker.getPreviousMatch()) {
+        if (currentWorker.getRating() <= worker.getPreviousRating()) {
+            counter = counter + 1;
+        }
+
+        if (worker.getRating() <= currentWorker.getPreviousRating()){
             counter = counter + 1;
         }
 
@@ -183,18 +205,5 @@ public class MatchServiceImpl implements MatchService {
 
         float percentage = (counter / 20) * 100;
         return percentage;
-    }
-
-    private Worker findBestWorker(List<Worker> possibleWorkers){
-        int counter = 0;
-        Worker bestWorker = new Worker();
-        for(Worker worker : possibleWorkers){
-            if(worker.getCompareValue() > counter){
-                counter = worker.getCompareValue();
-                bestWorker = worker;
-            }
-        }
-
-        return bestWorker;
     }
 }

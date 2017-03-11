@@ -71,7 +71,7 @@ public class PreferencesControllerTest {
                 .perform(get("/user/preferencesdetails"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/login"));
+                .andExpect(view().name("redirect:/newlogin"));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class PreferencesControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("newWorker"))
-                .andExpect(view().name("redirect:/user/match"));
+                .andExpect(view().name("redirect:/user/yourmatch"));
     }
 
     @Test
@@ -122,7 +122,7 @@ public class PreferencesControllerTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeHasNoErrors("newWorker"))
-                .andExpect(view().name("redirect:/user/match"));
+                .andExpect(view().name("redirect:/user/yourmatch"));
     }
 
 }

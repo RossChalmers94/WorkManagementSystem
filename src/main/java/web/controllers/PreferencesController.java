@@ -56,6 +56,7 @@ public class PreferencesController {
             session.removeAttribute("currentUser");
             session.setAttribute("currentUser", user);
             session.setAttribute("currentWorker", newWorker);
+            session.setAttribute("skillsSet", newWorker.getSkill());
             return "redirect:/user/yourmatch";
         } else {
             model.addAttribute("employererror", true);

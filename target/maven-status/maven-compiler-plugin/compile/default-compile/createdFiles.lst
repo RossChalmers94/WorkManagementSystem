@@ -1,4 +1,5 @@
 web/domain/application/Admin$application.class
+web/domain/application/Location$addLocation.class
 web/domain/UserPersonal$personalDetailsFreelancer.class
 web/repository/UserDAO.class
 web/enumconstants/PreferenceDetails.class
@@ -18,6 +19,7 @@ web/domain/User$createAccount.class
 web/service/UserServiceImpl.class
 web/domain/application/Admin.class
 web/service/MatchService.class
+web/domain/application/Skill$addSkill.class
 web/enumconstants/AdminDetails.class
 web/domain/Worker$preferencesDetailsEmployer.class
 web/repository/PreferencesDAO.class
@@ -28,7 +30,6 @@ web/domain/UserPersonal$personalDetailsEmployer.class
 web/controllers/PersonalDetailsController.class
 web/domain/application/Salary.class
 web/domain/application/Rating.class
-web/domain/application/Location$location.class
 web/domain/User.class
 web/controllers/AdminController.class
 web/enumconstants/WorkerDetails.class

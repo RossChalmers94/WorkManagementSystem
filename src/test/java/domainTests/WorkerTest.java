@@ -20,10 +20,10 @@ public class WorkerTest {
     public void setUp(){
         currentWorker = new Worker();
         worker1 = new Worker();
-        currentWorker.setSalary(1); currentWorker.setLocation(1); currentWorker.setJobLength(1); currentWorker.setRating(1);
-        currentWorker.setSkill(Arrays.asList(1,2,3,4));
-        worker1.setSalary(1); worker1.setLocation(1); worker1.setJobLength(1); worker1.setRating(1);
-        worker1.setSkill(Arrays.asList(1,2,3,4));
+        currentWorker.setSalary(1); currentWorker.setLocation(1); currentWorker.setJobLength(1); currentWorker.setRating(5);
+        currentWorker.setSkill(Arrays.asList(1,2,3,4)); currentWorker.setPreviousRating(3);
+        worker1.setSalary(1); worker1.setLocation(1); worker1.setJobLength(1); worker1.setPreviousRating(5);
+        worker1.setRating(1); worker1.setSkill(Arrays.asList(1,2,3,4));
     }
 
     @Test
@@ -55,10 +55,23 @@ public class WorkerTest {
 
     @Test
     public void compareTo30Test(){
-        worker1.setSkill(Arrays.asList(5,6,7,8));
-        worker1.setLocation(2);
+        worker1.setSalary(2); worker1.setLocation(1); worker1.setJobLength(2); worker1.setRating(5);
+        worker1.setPreviousRating(3);worker1.setSkill(Arrays.asList(5,6,7,8));
         int compareValue = Math.round(currentWorker.compareTo(worker1));
-        Assert.assertSame(compareValue, 30);
+        Assert.assertSame(compareValue, 20);
+    }
+
+    @Test
+    public void compareTo10Test(){
+        worker1.setSalary(2); worker1.setLocation(2); worker1.setJobLength(2); worker1.setRating(3);
+        worker1.setPreviousRating(5);worker1.setSkill(Arrays.asList(5,6,7,8));
+        int compareValue = Math.round(currentWorker.compareTo(worker1));
+        Assert.assertSame(compareValue, 10);
+    }
+
+    @Test
+    public void compareTo0Test(){
+        worker1.getPreviousRating();
     }
 
 
