@@ -16,12 +16,12 @@
                         <label>There has been an error.</label>
                     </div>
                 </c:if>
-                <div class="col-md-6 col-xs-12 col-sm-6">
+                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
                     <label>First Name:</label>
                     <form:input path="firstname" id="firstname" class="form-control" placeholder="First Name"/>
                     <form:errors path="firstname" class="alert-danger"/>
                 </div>
-                <div class="col-md-6 col-xs-12 col-sm-6">
+                <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6">
                     <label>Last Name:</label>
                     <form:input path="lastname" id="lastname" class="form-control" placeholder="Last Name"/>
                     <form:errors path="lastname" class="alert-danger"/>

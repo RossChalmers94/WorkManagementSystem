@@ -1,13 +1,10 @@
 package web.domain.application;
 
-import javax.validation.Valid;
 import java.util.List;
+import javax.validation.Valid;
 
-/**
- * Created by RossChalmers on 09/02/2017.
- */
-public class Application {
-
+public class Application
+{
     private List<Location> locations;
     private List<Skill> skills;
     private List<Salary> salarys;
@@ -18,39 +15,38 @@ public class Application {
     private Location location;
     private List<Integer> locationSet;
 
-    public Application(){
+    public Application() {}
 
-    }
-
-    public List<Location> getLocations(){
+    public List<Location> getLocations()
+    {
         return locations;
     }
 
-    public void setLocations(List<Location> locations){
+    public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
 
-    public List<Salary> getSalarys(){
+    public List<Salary> getSalarys() {
         return salarys;
     }
 
-    public void setSalarys(List<Salary> salarys){
+    public void setSalarys(List<Salary> salarys) {
         this.salarys = salarys;
     }
 
-    public List<Skill> getSkills(){
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<Skill> skills){
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
-    public List<JobLength> getJobLengths(){
+    public List<JobLength> getJobLengths() {
         return jobLengths;
     }
 
-    public void setJobLengths(List<JobLength> jobLengths){
+    public void setJobLengths(List<JobLength> jobLengths) {
         this.jobLengths = jobLengths;
     }
 

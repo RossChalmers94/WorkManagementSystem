@@ -1,30 +1,31 @@
 package web.domain;
 
-import web.domain.application.Skill;
 
-import java.util.*;
-
-/**
- * Created by RossChalmers on 24/02/2017.
- */
-public class Match {
-
+public class Match
+{
     private int matchID;
+
     private String salary;
+
     private String location;
+
     private String jobLength;
-    private String rating;
+
+    private String previousRating;
+
     private String minimumMatch;
+
     private String skills;
     private String jobTitle;
     private String jobDescription;
     private int freelancerID;
     private int employerID;
+    private UserPersonal userMatch;
 
-    public Match() {
-    }
+    public Match() {}
 
-    public int getMatchID() {
+    public int getMatchID()
+    {
         return matchID;
     }
 
@@ -56,12 +57,12 @@ public class Match {
         this.jobLength = jobLength;
     }
 
-    public String getRating() {
-        return rating;
+    public String getPreviousRating() {
+        return previousRating;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setPreviousRating(String previousRating) {
+        this.previousRating = previousRating;
     }
 
     public String getMinimumMatch() {
@@ -76,7 +77,7 @@ public class Match {
         return skills;
     }
 
-    public void setSkills(String skills){
+    public void setSkills(String skills) {
         this.skills = skills;
     }
 
@@ -110,5 +111,13 @@ public class Match {
 
     public void setFreelancerID(int freelancerID) {
         this.freelancerID = freelancerID;
+    }
+
+    public UserPersonal getUserMatch() {
+        return userMatch;
+    }
+
+    public void setUserMatch(UserPersonal userMatch) {
+        this.userMatch = userMatch;
     }
 }

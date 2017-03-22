@@ -11,25 +11,16 @@ import java.util.*;
 public interface UserService {
 
      void insertUser(User user);
-
-     void insertUserPersonal(User user, String username);
-
+     void insertUserPersonal(User user);
      User getLogIn(User user);
-
-     boolean checkUserLogIn(User user);
-
-     boolean checkUsername(User user);
-
-     boolean checkAdminLogIn(User user);
-
+     boolean checkUserLogIn(String username, String password);
+     boolean checkUsername(String username);
+     boolean checkAdminLogIn(String password);
      Admin getAdminLogIn(User user);
-
      User getUserByEmployer(int id);
-
      User getUserByFreelancer(int id);
-
      String getIndustryName();
-
      List<User> getAllUsers();
+     void updateAdminPassword(String password);
 
 }

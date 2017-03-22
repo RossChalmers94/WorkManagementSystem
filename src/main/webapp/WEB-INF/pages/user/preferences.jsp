@@ -108,7 +108,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h3 class="text-left">Freelancer Rating (Minimum Rating)</h3>
+                <h3 class="text-left">Rating (Minimum Rating)</h3>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <label class="text-center radio-inline"><form:radiobutton path="rating" value="1"/>Poor</label>
@@ -194,8 +194,7 @@
                     </c:choose>
                 </c:if>
                 <c:if test="${newWorker.jobMatch != 0}">
-                    <a class="contact btn btn-default" href="match">View Current Match</a>
-                    ${newWorker.jobMatch}
+                    <a class="contact btn btn-default" href="yourmatch">View Current Match</a>
                 </c:if>
                 <a class="contact btn btn-default" href="userhome">Back</a>
             </div>

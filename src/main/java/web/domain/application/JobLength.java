@@ -1,51 +1,44 @@
 package web.domain.application;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.validation.constraints.Pattern;
 import java.util.List;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.NotBlank;
 
-/**
- * Created by RossChalmers on 09/02/2017.
- */
-public class JobLength {
-
+public class JobLength
+{
     private int jobLengthID;
-    /*@NotBlank
-    @Pattern(regexp = "[0-9]+", message = "Job Length Minimum Value must be a number")*/
+    @NotBlank
+    @Pattern(regexp="[0-9]+", message="Job Length must only consist of numbers")
     private int jobLengthMin;
-    /*@NotBlank
-    @Pattern(regexp = "[0-9]+", message = "Job Length Maximum Value must be a number")*/
+    @NotBlank
+    @Pattern(regexp="[0-9]+", message="Job Length must only consist of numbers")
     private int jobLengthMax;
-
     private List<JobLength> jobLengths;
 
+    public JobLength() {}
 
-    public JobLength(){
-    }
-
-    public int getJobLengthID(){
+    public int getJobLengthID()
+    {
         return jobLengthID;
     }
 
-    public void setJobLengthID(int jobLengthID){
+    public void setJobLengthID(int jobLengthID) {
         this.jobLengthID = jobLengthID;
     }
 
-    public int getJobLengthMin(){
+    public int getJobLengthMin() {
         return jobLengthMin;
     }
 
-    public void setJobLengthMin(int jobLengthMin){
+    public void setJobLengthMin(int jobLengthMin) {
         this.jobLengthMin = jobLengthMin;
     }
 
-    public int getJobLengthMax(){
+    public int getJobLengthMax() {
         return jobLengthMax;
     }
 
-    public void setJobLengthMax(int jobLengthMax){
+    public void setJobLengthMax(int jobLengthMax) {
         this.jobLengthMax = jobLengthMax;
     }
 

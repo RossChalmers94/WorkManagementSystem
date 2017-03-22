@@ -14,32 +14,29 @@ import java.util.List;
  */
 
 public interface UserDAO {
+    void insert(Map<String, String> inParameters);
 
-    void insert(String storedProcedure, Map<String, String> inParameters);
+    void insertPersonal(User user);
 
-    void insertPersonal(String storedProcedure, Map<String, String> inParameters);
+    String checkUserLogIn(String username);
 
-    String checkUserLogIn(String storedProcedure, Map<String, String> inParameters);
+    User getLogIn(String username);
 
-    User get(String storedProc, Map<String, String> inParameters);
+    boolean getUsername(String username);
 
-    boolean getUsername(String storedProc, String username);
+    String checkAdminLogIn();
 
-    void insertEmployerID(String storedProc, Map<String, Object> inParameters);
+    Admin getAdmin();
 
-    void insertFreelancerID(String storedProc, Map<String, Object> inParameters);
+    User getUserByEmployer(int id);
 
-    boolean checkAdminLogIn(String storedProc, String adminPassword);
-
-    Admin getAdmin(String storedProc, Map<String, Object> inParameters);
-
-    User getUserByEmployer(String storedProc, int id);
-
-    User getUserByFreelancer(String storedProc, int id);
+    User getUserByFreelancer(int id);
 
     String getIndustryName();
 
     List<User> getAllUsers();
+
+    void updateAdminPassword(String password);
 
 
 }

@@ -1,115 +1,131 @@
 package web.controllers;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.ui.Model;
+import web.domain.Match;
+import web.domain.User;
+import web.domain.Worker;
+import web.domain.application.Rating;
 import web.service.MatchService;
 import web.service.UserService;
 import web.service.WorkerService;
-import web.domain.User;
-import web.domain.*;
-import web.domain.application.Rating;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
-/**
- * Created by RossChalmers on 09/02/2017.
- */
+
+
+
 @Controller
-public class MatchController {
-
-    @Autowired
+public class MatchController
+{
     private UserService userService;
-    @Autowired
     private WorkerService workerService;
-    @Autowired
     private MatchService matchService;
 
-    @RequestMapping(path = "user/match", method= RequestMethod.GET)
-    public String viewEmployerPreferences(Model model, HttpSession session){
-        if(session.getAttribute("currentUser") != null) {
-            User getUser = (User) session.getAttribute("currentUser");
+    @Autowired
+    public MatchController(UserService userService, WorkerService workerService, MatchService matchService)
+    {
+        this.userService = userService;
+        this.workerService = workerService;
+        this.matchService = matchService;
+    }
+
+    @RequestMapping(path={"user/yourmatch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public String viewEmployerPreferences(Model model, HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
+            User getUser = (User)session.getAttribute("currentUser");
             User user = userService.getLogIn(getUser);
             Worker worker = workerService.getWorkerDetails(user);
+            user.setUserWorker(worker);
             Match match = new Match();
-            User userMatch = new User();
             if (user.getEmployerID() != 0) {
-                if (worker.getJobMatch() == 0) {
-                    match = matchService.getEmployerMatch(user);
-                    if (match == null) {
-                        return "redirect:/user/nomatch";
-                    } else {
-                        userMatch = userService.getUserByFreelancer(match.getMatchID());
-                    }
-                } else {
-                    match = matchService.getExistingEmployerMatch(worker.getJobMatch());
-                    userMatch = userService.getUserByFreelancer(match.getMatchID());
-                }
+                match = getEmployerMatch(user);
             } else if (user.getFreelancerID() != 0) {
-                if (worker.getJobMatch() == 0) {
-                    match = matchService.getFreelancerMatch(user);
-                    if (match == null) {
-                        return "redirect:/user/nomatch";
-                    } else {
-                        userMatch = userService.getUserByEmployer(match.getMatchID());
-                    }
-                } else {
-                    match = matchService.getExistingFreelancerMatch(worker.getJobMatch());
-                    userMatch = userService.getUserByEmployer(match.getMatchID());
-                }
+                match = getFreelancerMatch(user);
             }
-
-            model.addAttribute("match", match);
-            model.addAttribute("userMatch", userMatch);
-            ;
-            return "user/match";
-        } else {
-            return "redirect:/login";
+            if (match != null) {
+                model.addAttribute("match", match);
+                return "user/match";
+            }
+            return "redirect:/user/nomatch";
         }
+
+        return "redirect:/newlogin";
     }
-    @RequestMapping(path = "user/match", method= RequestMethod.POST)
-    public String confirmEmployerPreferences(){
+
+
+
+
+    private Match getEmployerMatch(User user)
+    {
+        if (user.getUserWorker().getJobMatch() == 0) {
+            Match match = matchService.getEmployerMatch(user);
+            if (match == null) {
+                return null;
+            }
+            return match;
+        }
+
+        return matchService.getExistingEmployerMatch(user.getUserWorker().getJobMatch());
+    }
+
+
+    private Match getFreelancerMatch(User user)
+    {
+        if (user.getUserWorker().getJobMatch() == 0) {
+            Match match = matchService.getFreelancerMatch(user);
+            if (match == null) {
+                return null;
+            }
+            return match;
+        }
+
+        return matchService.getExistingFreelancerMatch(user.getUserWorker().getJobMatch());
+    }
+
+
+    @RequestMapping(path={"user/yourmatch"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
+    public String confirmEmployerPreferences()
+    {
         return "user/match";
     }
 
-    @RequestMapping(path = "user/nomatch", method= RequestMethod.GET)
-    public String noMatch(HttpSession session){
-        if(session.getAttribute("currentUser") != null){
+    @RequestMapping(path={"user/nomatch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public String noMatch(HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
             return "user/nomatch";
         }
-        return "redirect:/login";
+        return "redirect:/newlogin";
     }
 
-    @RequestMapping(path = "user/completematch", method= RequestMethod.GET)
-    public String completeMatch(Model model, HttpSession session){
-        if(session.getAttribute("currentUser") != null) {
+    @RequestMapping(path={"user/completematch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public String completeMatch(Model model, HttpSession session) {
+        if (session.getAttribute("currentUser") != null) {
             Rating giveRating = new Rating();
             model.addAttribute("giveRating", giveRating);
             return "user/completematch";
-        } else {
-            return "redirect:/login";
         }
+        return "redirect:/newlogin";
     }
 
-    @RequestMapping(path = "user/completematch", method= RequestMethod.POST)
-    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating, BindingResult result,  Model model, HttpSession session){
-        User user = (User) session.getAttribute("currentUser");
+    @RequestMapping(path={"user/completematch"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
+    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating, BindingResult result, Model model, HttpSession session)
+    {
+        User user = (User)session.getAttribute("currentUser");
         Worker worker = workerService.getWorkerDetails(user);
-        if(!result.hasErrors()) {
+        if (!result.hasErrors()) {
             if (worker.getPreviousMatch() == 0) {
                 matchService.completeMatch(user, giveRating.getRating(), worker.getJobMatch());
             } else if (worker.getPreviousMatch() != 0) {
                 matchService.setPreviousRating(user, giveRating.getRating(), worker.getPreviousMatch());
             }
             return "redirect:/user/userhome";
-        } else {
-            return "user/completematch";
         }
+        return "user/completematch";
     }
 }

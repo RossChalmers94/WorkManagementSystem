@@ -1,131 +1,130 @@
 package web.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import web.domain.User;
+import web.domain.Worker;
 import web.enumconstants.UserDetails;
 import web.enumconstants.WorkerDetails;
-import web.repository.UserDAO;
 import web.repository.WorkerDAO;
-import web.domain.*;
-
-import java.util.*;
-
-import java.util.HashMap;
-
-/**
- * Created by RossChalmers on 20/02/2017.
- */
 
 @Service
-public class WorkerServiceImpl implements WorkerService {
-
-    @Autowired
+public class WorkerServiceImpl implements WorkerService
+{
     private WorkerDAO workerDAO;
 
-    public int insertWorker(Worker worker, User user) {
+    @Autowired
+    public WorkerServiceImpl(WorkerDAO workerDAO)
+    {
+        this.workerDAO = workerDAO;
+    }
 
+    public int insertWorker(User user)
+    {
         int workerID = 0;
 
         Map<String, Object> inParameters = new HashMap<String, Object>();
         inParameters.put(UserDetails.USER_NAME.getValue(), user.getUsername());
-        inParameters.put(WorkerDetails.SALARY.getValue(), worker.getSalary());
-        inParameters.put(WorkerDetails.LOCATION.getValue(), worker.getLocation());
-        inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), worker.getJobLength());
-        inParameters.put(WorkerDetails.RELAX_PREFERENCES.getValue(), worker.getRelaxPreferences());
-        inParameters.put(WorkerDetails.RATING.getValue(), worker.getRating());
-        inParameters.put(WorkerDetails.MINIMUM_MATCH.getValue(), worker.getMinimumMatch());
+        inParameters.put(WorkerDetails.SALARY.getValue(), user.getUserWorker().getSalary());
+        inParameters.put(WorkerDetails.LOCATION.getValue(), user.getUserWorker().getLocation());
+        inParameters.put(WorkerDetails.JOB_LENGTH.getValue(), user.getUserWorker().getJobLength());
+        inParameters.put(WorkerDetails.RELAX_PREFERENCES.getValue(), user.getUserWorker().getRelaxPreferences());
+        inParameters.put(WorkerDetails.RATING.getValue(), user.getUserWorker().getRating());
+        inParameters.put(WorkerDetails.MINIMUM_MATCH.getValue(), user.getUserWorker().getMinimumMatch());
 
         if (user.getRole().equals("Employer")) {
-            inParameters.put(WorkerDetails.JOB_TITLE.getValue(), worker.getJobTitle());
-            inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), worker.getJobDescription());
-            workerID = insertEmployer(user, inParameters, worker.getSkill());
+            inParameters.put(WorkerDetails.JOB_TITLE.getValue(), user.getUserWorker().getJobTitle());
+            inParameters.put(WorkerDetails.JOB_DESCRIPTION.getValue(), user.getUserWorker().getJobDescription());
+            workerID = insertEmployer(user, inParameters);
+            insertEmployerSkills(workerID, user.getUserWorker().getSkill());
         } else if (user.getRole().equals("Freelancer")) {
-            workerID = insertFreelancer(user, inParameters, worker.getSkill());
+            workerID = insertFreelancer(user, inParameters);
+            insertFreelancerSkills(workerID, user.getUserWorker().getSkill());
         }
 
         return workerID;
     }
 
-    // Insert a Employer's preferences and then add their employerID to the users table
-    private int insertEmployer(User user, Map<String, Object> inParameters, List<Integer> skills) {
 
+    private int insertEmployer(User user, Map<String, Object> inParameters)
+    {
         int employerID;
-
         if (user.getEmployerID() != 0) {
             inParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), user.getEmployerID());
-            workerDAO.updateEmployer("update_employer_details", inParameters);
+            workerDAO.updateEmployer(inParameters);
             employerID = user.getEmployerID();
         } else {
-            employerID = workerDAO.insertEmployer("insert_employer", inParameters);
+            employerID = workerDAO.insertEmployer(inParameters);
         }
-
-        // Insert Employer Skills
-        insertEmployerSkills(employerID, skills);
         return employerID;
     }
 
-    // Insert a Freelancer's preferences and then add their freelancerID to the users table
-    private int insertFreelancer(User user, Map<String, Object> inParameters, List<Integer> skills) {
 
+    private int insertFreelancer(User user, Map<String, Object> inParameters)
+    {
         int freelancerID;
-
         if (user.getFreelancerID() != 0) {
             inParameters.put(WorkerDetails.FREELANCER_ID.getValue(), user.getFreelancerID());
-            workerDAO.updateFreelancer("update_freelancer_details", inParameters);
+            workerDAO.updateFreelancer(inParameters);
             freelancerID = user.getFreelancerID();
-        } else {
-            //Insert Freelancer Details. Return freelancerID
-            freelancerID = workerDAO.insertFreelancer("insert_freelancer", inParameters);
+        }
+        else {
+            freelancerID = workerDAO.insertFreelancer(inParameters);
         }
 
-        //Insert Freelancer Skills
-        insertFreelancerSkills(freelancerID, skills);
         return freelancerID;
     }
 
-    // Insert an Employer's skill set
-    private void insertEmployerSkills(int employerID, List<Integer> skills) {
+
+    private void insertEmployerSkills(int employerID, List<Integer> skills)
+    {
+        workerDAO.deleteEmployerSkills(employerID);
 
         for (int i = 0; i < skills.size(); i++) {
             Map<String, Object> inParameters = new HashMap<String, Object>();
             inParameters.put(WorkerDetails.EMPLOYER_ID.getValue(), employerID);
             inParameters.put(WorkerDetails.SKILL_ID.getValue(), skills.get(i));
-            workerDAO.insertEmployerSkills("insert_employer_skills", inParameters);
+            workerDAO.insertEmployerSkills(inParameters);
         }
     }
 
-    // Insert a Freelancer's skill set
-    private void insertFreelancerSkills(int freelancerID, List<Integer> skills) {
 
-        // Insert each new Freelancer skill into the skill_set table
+    private void insertFreelancerSkills(int freelancerID, List<Integer> skills)
+    {
+        workerDAO.deleteFreelancerSkills(freelancerID);
+
+
         for (int i = 0; i < skills.size(); i++) {
             Map<String, Object> inParameters = new HashMap<String, Object>();
             inParameters.put(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
             inParameters.put(WorkerDetails.SKILL_ID.getValue(), skills.get(i));
-            workerDAO.insertFreelancerSkills("insert_freelancer_skills", inParameters);
+            workerDAO.insertFreelancerSkills(inParameters);
         }
     }
 
-    public Worker getWorkerDetails(User user) {
-
+    public Worker getWorkerDetails(User user)
+    {
         Worker worker = new Worker();
         if (user.getEmployerID() != 0) {
-            worker = workerDAO.getEmployer("get_employer_details", user.getEmployerID());
+            worker = workerDAO.getEmployer(user.getEmployerID());
         } else if (user.getFreelancerID() != 0) {
-            worker = workerDAO.getFreelancer("get_freelancer_details", user.getFreelancerID());
+            worker = workerDAO.getFreelancer(user.getFreelancerID());
         }
         return worker;
     }
 
     public void deleteEmployer(List<Integer> employers) {
-        for(int i = 0; i < employers.size(); i++){
-            workerDAO.deleteEmployer("delete_employer", employers.get(i));
+        for (int i = 0; i < employers.size(); i++) {
+            workerDAO.deleteEmployer(((Integer)employers.get(i)));
         }
     }
 
     public void deleteFreelancer(List<Integer> freelancers) {
-        for(int i = 0; i < freelancers.size(); i++){
-            workerDAO.deleteFreelancer("delete_freelancer", freelancers.get(i));
+        for (int i = 0; i < freelancers.size(); i++) {
+            workerDAO.deleteFreelancer(((Integer)freelancers.get(i)));
         }
     }
 }

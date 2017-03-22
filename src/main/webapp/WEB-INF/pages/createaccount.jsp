@@ -7,6 +7,8 @@
 <div class="container">
     <div class="row">
         <h3>Create Account</h3>
+
+
         <form:form method="post" modelAttribute="newUser">
         <div class="col-xs-8 col-sm-6 col-md-4 col-lg-4 col-sm-offset-3 col-md-offset-4 col-xs-offset-2">
             <div class="form-group">
@@ -38,9 +40,6 @@
             </div>
         </div>
         </form:form>
-
-        ${value}
-        ${currentUser.username}
     </div>
 
 

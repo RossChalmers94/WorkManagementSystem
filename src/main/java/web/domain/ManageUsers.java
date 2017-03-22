@@ -2,20 +2,16 @@ package web.domain;
 
 import java.util.List;
 
-/**
- * Created by RossChalmers on 01/03/2017.
- */
-public class ManageUsers {
-
+public class ManageUsers
+{
     private List<Integer> freelancers;
     private List<Integer> employers;
     private List<Integer> matches;
 
-    public ManageUsers(){
+    public ManageUsers() {}
 
-    }
-
-    public List<Integer> getEmployers() {
+    public List<Integer> getEmployers()
+    {
         return employers;
     }
 

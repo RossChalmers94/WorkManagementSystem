@@ -37,7 +37,7 @@
                 <input type="submit" class="btn btn-default" value="Complete Match">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                <a class="contact btn btn-default" href="match">Back</a>
+                <a class="contact btn btn-default" href="yourmatch">Back</a>
             </div>
         </div>
         </form:form>
