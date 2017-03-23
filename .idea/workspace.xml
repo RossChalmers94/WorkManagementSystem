@@ -2,94 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6322fc4-3a17-437d-86b4-0f0779a2987d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/employerpreferences.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/freelancerpreferences.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/User$personalDetailsEmployer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/User$personalDetailsFreelancer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Location$location.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/AdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/ConfigureApplicationController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/ConfigureApplicationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/CreateAccountController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/CreateAccountController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/HomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/MatchController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/MatchController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/PersonalDetailsController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/PersonalDetailsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/PreferencesController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/PreferencesController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/controllers/UserHomeController.class" afterPath="$PROJECT_DIR$/target/classes/web/controllers/UserHomeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/ManageUsers.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/ManageUsers.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/Match.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/Match.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/User.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/Worker.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/Worker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Admin.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Application.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/JobLength.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/JobLength.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Location.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Location.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Rating.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Rating.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Salary.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Salary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/domain/application/Skill.class" afterPath="$PROJECT_DIR$/target/classes/web/domain/application/Skill.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/MatchDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/MatchDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/PreferencesDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/UserDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/UserDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/UserDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/UserDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/WorkerDAO.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/WorkerDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/repository/WorkerDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/repository/WorkerDAOImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/MatchServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/PreferencesServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/PreferencesServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/web/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/WorkerService.class" afterPath="$PROJECT_DIR$/target/classes/web/service/WorkerService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/web/service/WorkerServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/web/service/WorkerServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/ConfigureApplicationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/CreateAccountController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/HomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/MatchController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/MatchController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/PersonalDetailsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/PreferencesController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/PreferencesController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/controllers/UserHomeController.java" afterPath="$PROJECT_DIR$/src/main/java/web/controllers/UserHomeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/ManageUsers.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/ManageUsers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/Match.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/Match.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/Worker.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/Worker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Application.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/JobLength.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Location.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Rating.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Rating.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Salary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" afterPath="$PROJECT_DIR$/src/main/java/web/domain/application/Skill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/MatchDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/PreferencesDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/UserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/UserDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAO.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/repository/WorkerDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/MatchServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/PreferencesServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/WorkerService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/DefaultServlet-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/DefaultServlet-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createaccount.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/createaccount.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/completematch.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/completematch.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/match.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/match.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/nomatch.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/nomatch.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/workmanagementsystem.iml" afterPath="$PROJECT_DIR$/workmanagementsystem.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -106,75 +19,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WorkerServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java">
+      <file leaf-file-name="manageusers.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#535#536#0" expanded="true" />
-                <element signature="e#577#578#0" expanded="true" />
-                <element signature="e#706#722#0" expanded="true" />
-                <element signature="e#3253#3269#0" expanded="true" />
-                <element signature="e#3761#3777#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java">
+      <file leaf-file-name="workmanagementcss.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/workmanagementcss.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#776#777#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userhome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/userhome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-1281">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminhome.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp">
+      <file leaf-file-name="configureapplication.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="55" lean-forward="false" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+            <state relative-caret-position="225">
+              <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkerService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/service/WorkerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/domain/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -221,12 +91,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminpassword.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/PreferencesService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/preferences.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/web/service/MatchService.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/repository/MatchDAO.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/completematch.jsp" />
@@ -266,6 +134,8 @@
         <option value="$PROJECT_DIR$/src/main/java/web/service/WorkerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/web/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp" />
       </list>
     </option>
   </component>
@@ -469,6 +339,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorkManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorkManagementSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1221,12 +1121,12 @@
       <workItem from="1490146142425" duration="1214000" />
       <workItem from="1490147794050" duration="293000" />
       <workItem from="1490148777943" duration="959000" />
-      <workItem from="1490187251319" duration="10158000" />
+      <workItem from="1490187251319" duration="13892000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431084000" />
+    <option name="totallyTimeSpent" value="434818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1321,21 +1221,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/personal.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-795">
@@ -1370,13 +1255,6 @@
         <state relative-caret-position="482">
           <caret line="54" column="44" lean-forward="false" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="112" column="95" lean-forward="false" selection-start-line="112" selection-start-column="95" selection-end-line="112" selection-end-column="95" />
         </state>
       </provider>
     </entry>
@@ -1874,7 +1752,7 @@
         <state relative-caret-position="300">
           <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1938,11 +1816,11 @@
         <state relative-caret-position="1050">
           <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1049#1057#0" expanded="true" />
-            <element signature="e#2056#2064#0" expanded="true" />
-            <element signature="e#5021#5022#0" expanded="true" />
-            <element signature="e#5068#5069#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1049#1057#0" expanded="false" />
+            <element signature="e#2056#2064#0" expanded="false" />
+            <element signature="e#5021#5022#0" expanded="false" />
+            <element signature="e#5068#5069#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1960,20 +1838,20 @@
         <state relative-caret-position="480">
           <caret line="32" column="50" lean-forward="true" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1680#1690#0" expanded="true" />
-            <element signature="e#2267#2275#0" expanded="true" />
-            <element signature="e#2944#2955#0" expanded="true" />
-            <element signature="e#3443#3444#0" expanded="true" />
-            <element signature="e#3491#3492#0" expanded="true" />
-            <element signature="e#3677#3693#0" expanded="true" />
-            <element signature="e#4303#4319#0" expanded="true" />
-            <element signature="e#4754#4755#0" expanded="true" />
-            <element signature="e#4804#4805#0" expanded="true" />
-            <element signature="e#5041#5042#0" expanded="true" />
-            <element signature="e#5097#5098#0" expanded="true" />
-            <element signature="e#5347#5348#0" expanded="true" />
-            <element signature="e#5420#5421#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1680#1690#0" expanded="false" />
+            <element signature="e#2267#2275#0" expanded="false" />
+            <element signature="e#2944#2955#0" expanded="false" />
+            <element signature="e#3443#3444#0" expanded="false" />
+            <element signature="e#3491#3492#0" expanded="false" />
+            <element signature="e#3677#3693#0" expanded="false" />
+            <element signature="e#4303#4319#0" expanded="false" />
+            <element signature="e#4754#4755#0" expanded="false" />
+            <element signature="e#4804#4805#0" expanded="false" />
+            <element signature="e#5041#5042#0" expanded="false" />
+            <element signature="e#5097#5098#0" expanded="false" />
+            <element signature="e#5347#5348#0" expanded="false" />
+            <element signature="e#5420#5421#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2065,8 +1943,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/adminhome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="55" lean-forward="false" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+        <state relative-caret-position="390">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/workmanagementcss.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1281">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/configureapplication.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/admin/manageusers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
           <folding />
         </state>
       </provider>
