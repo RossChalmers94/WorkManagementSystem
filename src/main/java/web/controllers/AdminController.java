@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.ManageUsers;
 import web.domain.application.Admin;
 import web.domain.application.Admin.application;
@@ -31,7 +32,8 @@ public class AdminController
     private WorkerService workerService;
     BCryptPasswordEncoder passwordEncoder;
 
-    public AdminController(PreferencesService preferencesService, MatchService matchService, UserService userService, WorkerService workerService)
+    public AdminController(PreferencesService preferencesService, MatchService matchService,
+                           UserService userService, WorkerService workerService)
     {
         this.preferencesService = preferencesService;
         this.matchService = matchService;
@@ -40,7 +42,7 @@ public class AdminController
         passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    @RequestMapping(path={"/admin/adminhome"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="/admin/adminhome", method=RequestMethod.GET)
     public String viewAdminHome(Model model, HttpSession session) {
         if (session.getAttribute("adminUser") != null) {
             return "admin/adminhome";
@@ -49,7 +51,7 @@ public class AdminController
     }
 
 
-    @RequestMapping(path={"admin/manageusers"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="admin/manageusers", method=RequestMethod.GET)
     public String viewManageUsers(Model model, HttpSession session)
     {
         if (session.getAttribute("adminUser") != null) {
@@ -59,26 +61,26 @@ public class AdminController
         return "redirect:/newlogin";
     }
 
-    @RequestMapping(path={"admin/manageusers"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"deletefreelancer"})
+    @RequestMapping(path="admin/manageusers", method=RequestMethod.POST, params="deletefreelancer")
     public String deleteFreelancer(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model)
     {
         workerService.deleteFreelancer(manageUsers.getFreelancers());
         return "redirect:/admin/manageusers";
     }
 
-    @RequestMapping(path={"admin/manageusers"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"deleteemployer"})
+    @RequestMapping(path="admin/manageusers", method=RequestMethod.POST, params="deleteemployer")
     public String deleteEmployer(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model) {
         workerService.deleteEmployer(manageUsers.getEmployers());
         return "redirect:/admin/manageusers";
     }
 
-    @RequestMapping(path={"admin/manageusers"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"deletematch"})
+    @RequestMapping(path={"admin/manageusers"}, method=RequestMethod.POST, params="deletematch")
     public String deleteMatch(@ModelAttribute("manageUsers") ManageUsers manageUsers, Model model) {
         matchService.deleteMatch(manageUsers.getMatches());
         return "redirect:/admin/manageusers";
     }
 
-    @RequestMapping(path={"admin/adminpassword"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="admin/adminpassword", method=RequestMethod.GET)
     public String viewChangePassword(Model model, HttpSession session)
     {
         if (session.getAttribute("adminUser") != null) {
@@ -91,34 +93,36 @@ public class AdminController
 
 
 
-    @RequestMapping(path={"/admin/adminpassword"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"newIndustry"})
-    public String configureApplication(@Validated({Admin.application.class}) @ModelAttribute("applicationAdmin") Admin applicationAdmin, BindingResult result, Model model)
+    @RequestMapping(path="/admin/adminpassword", method=RequestMethod.POST, params="newIndustry")
+    public String configureApplication(@Validated({application.class}) @ModelAttribute("applicationAdmin") Admin applicationAdmin,
+                                       BindingResult result, Model model)
     {
         if (!result.hasErrors()) {
             preferencesService.updateApplication(applicationAdmin);
-            model.addAttribute("applicationsuccess", Boolean.valueOf(true));
+            model.addAttribute("applicationsuccess", true);
         } else {
-            model.addAttribute("applicationerror", Boolean.valueOf(true));
+            model.addAttribute("applicationerror", true);
         }
         return "admin/adminpassword";
     }
 
-    @RequestMapping(path={"/admin/adminpassword"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"updatePassword"})
-    public String changePassword(@Validated({Admin.password.class}) @ModelAttribute("passwordAdmin") Admin passwordAdmin, BindingResult result, Model model)
+    @RequestMapping(path="/admin/adminpassword", method= RequestMethod.POST, params="updatePassword")
+    public String changePassword(@Validated({password.class}) @ModelAttribute("passwordAdmin") Admin passwordAdmin,
+                                 BindingResult result, Model model)
     {
         if (!result.hasErrors()) {
             if (userService.checkAdminLogIn(passwordAdmin.getPassword())) {
                 if (passwordAdmin.getNewPassword().trim().equals(passwordAdmin.getConfirmPassword().trim())) {
                     userService.updateAdminPassword(passwordAdmin.getNewPassword().trim());
-                    model.addAttribute("success", Boolean.valueOf(true));
+                    model.addAttribute("success", true);
                 } else {
-                    model.addAttribute("error", Boolean.valueOf(true));
+                    model.addAttribute("error", true);
                 }
             } else {
-                model.addAttribute("error", Boolean.valueOf(true));
+                model.addAttribute("error", true);
             }
         } else {
-            model.addAttribute("error", Boolean.valueOf(true));
+            model.addAttribute("error", true);
         }
         return "admin/adminpassword";
     }

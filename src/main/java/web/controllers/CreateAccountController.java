@@ -8,15 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.User;
 import web.domain.User.createAccount;
 import web.service.UserService;
-
-
-
-
-
-
 
 @Controller
 public class CreateAccountController
@@ -29,7 +24,7 @@ public class CreateAccountController
         this.userService = userService;
     }
 
-    @RequestMapping(path={"/newaccount"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="/newaccount", method= RequestMethod.GET)
     public String viewCreateAccountPage(Model model) {
         User user = new User();
         model.addAttribute("newUser", user);
@@ -37,8 +32,9 @@ public class CreateAccountController
     }
 
 
-    @RequestMapping(path={"/newaccount"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
-    public String addUser(@Validated({User.createAccount.class}) @ModelAttribute("newUser") User newUser, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="/newaccount", method=RequestMethod.POST)
+    public String addUser(@Validated({createAccount.class}) @ModelAttribute("newUser") User newUser,
+                          BindingResult result, Model model, HttpSession session)
     {
         boolean check = userService.checkUsername(newUser.getUsername());
 
@@ -48,10 +44,10 @@ public class CreateAccountController
                 session.setAttribute("currentUser", newUser);
                 return "redirect:/user/personaldetails";
             }
-            model.addAttribute("exists", Boolean.valueOf(true));
+            model.addAttribute("exists", true);
         }
         else {
-            model.addAttribute("error", Boolean.valueOf(true));
+            model.addAttribute("error", true);
             return "createaccount";
         }
 

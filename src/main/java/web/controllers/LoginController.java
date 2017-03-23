@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.User;
 import web.domain.User.logIn;
 import web.domain.application.Admin;
@@ -24,7 +25,7 @@ public class LoginController
         this.userService = userService;
     }
 
-    @RequestMapping(path={"/newlogin"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="/newlogin", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session) {
         String page = "";
         if (session.getAttribute("currentUser") != null) {
@@ -39,8 +40,9 @@ public class LoginController
         return page;
     }
 
-    @RequestMapping(path={"/newlogin"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
-    public String confirmEmployerPreferences(@Validated({User.logIn.class}) @ModelAttribute("loginUser") User loginUser, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="/newlogin", method=RequestMethod.POST)
+    public String confirmEmployerPreferences(@Validated({logIn.class}) @ModelAttribute("loginUser") User loginUser,
+                                             BindingResult result, Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             boolean login = userService.checkUserLogIn(loginUser.getUsername(), loginUser.getPassword());
@@ -48,7 +50,7 @@ public class LoginController
                 User currentUser = userService.getLogIn(loginUser);
                 session.setAttribute("currentUser", currentUser);
                 return "redirect:/user/userhome"; }
-            if (loginUser.getUsername().equals("admin")) {
+            else if (loginUser.getUsername().equals("admin")) {
                 boolean adminLogIn = userService.checkAdminLogIn(loginUser.getPassword());
                 if (adminLogIn) {
                     Admin admin = userService.getAdminLogIn(loginUser);
@@ -68,7 +70,7 @@ public class LoginController
         return "login";
     }
 
-    @RequestMapping(path={"/logoutuser"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="/logoutuser", method=RequestMethod.GET)
     public String logOut(Model model, HttpSession session) {
         session.removeAttribute("currentUser");
         session.removeAttribute("adminUser");

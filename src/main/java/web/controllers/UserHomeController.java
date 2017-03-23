@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.User;
 import web.domain.Worker;
 import web.service.WorkerService;
@@ -17,7 +18,7 @@ public class UserHomeController
 
     public UserHomeController() {}
 
-    @RequestMapping(path={"user/userhome"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="user/userhome", method=RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session)
     {
         if (session.getAttribute("currentUser") != null) {

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.Match;
 import web.domain.User;
 import web.domain.Worker;
@@ -35,7 +36,7 @@ public class MatchController
         this.matchService = matchService;
     }
 
-    @RequestMapping(path={"user/yourmatch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="user/yourmatch", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
             User getUser = (User)session.getAttribute("currentUser");
@@ -89,13 +90,13 @@ public class MatchController
     }
 
 
-    @RequestMapping(path={"user/yourmatch"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
+    @RequestMapping(path="user/yourmatch", method=RequestMethod.POST)
     public String confirmEmployerPreferences()
     {
         return "user/match";
     }
 
-    @RequestMapping(path={"user/nomatch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="user/nomatch", method=RequestMethod.GET)
     public String noMatch(HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
             return "user/nomatch";
@@ -103,7 +104,7 @@ public class MatchController
         return "redirect:/newlogin";
     }
 
-    @RequestMapping(path={"user/completematch"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="user/completematch", method=RequestMethod.GET)
     public String completeMatch(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
             Rating giveRating = new Rating();
@@ -113,8 +114,9 @@ public class MatchController
         return "redirect:/newlogin";
     }
 
-    @RequestMapping(path={"user/completematch"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
-    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="user/completematch", method=RequestMethod.POST)
+    public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating,
+                                       BindingResult result, Model model, HttpSession session)
     {
         User user = (User)session.getAttribute("currentUser");
         Worker worker = workerService.getWorkerDetails(user);

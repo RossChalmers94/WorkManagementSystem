@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.User;
 import web.domain.Worker;
 import web.domain.Worker.preferencesDetailsEmployer;
@@ -31,7 +32,7 @@ public class PreferencesController
         this.workerService = workerService;
     }
 
-    @RequestMapping(path={"user/preferencesdetails"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="user/preferencesdetails", method=RequestMethod.GET)
     public String viewPreferences(Model model, HttpSession session)
     {
         if (session.getAttribute("currentUser") != null) {
@@ -45,8 +46,9 @@ public class PreferencesController
         return "redirect:/newlogin";
     }
 
-    @RequestMapping(path={"user/preferencesdetails"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"employer"})
-    public String confirmEmployerPreferences(@Validated({Worker.preferencesDetailsEmployer.class}) @ModelAttribute("newWorker") Worker newWorker, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="user/preferencesdetails", method=RequestMethod.POST, params="employer")
+    public String confirmEmployerPreferences(@Validated({preferencesDetailsEmployer.class}) @ModelAttribute("newWorker")
+                                                         Worker newWorker, BindingResult result, Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             User user = (User)session.getAttribute("currentUser");
@@ -58,14 +60,15 @@ public class PreferencesController
             session.setAttribute("currentWorker", newWorker);
             return "redirect:/user/yourmatch";
         }
-        model.addAttribute("employererror", Boolean.valueOf(true));
+        model.addAttribute("employererror", true);
         model.addAttribute(setApplication());
         return "user/preferences";
     }
 
 
-    @RequestMapping(path={"user/preferencesdetails"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"freelancer"})
-    public String confirmFreelancerPreferences(@Validated({Worker.preferencesDetailsFreelancer.class}) @ModelAttribute("newWorker") Worker newWorker, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="user/preferencesdetails", method=RequestMethod.POST, params="freelancer")
+    public String confirmFreelancerPreferences(@Validated({preferencesDetailsFreelancer.class}) @ModelAttribute("newWorker")
+                                                           Worker newWorker, BindingResult result, Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             User user = (User)session.getAttribute("currentUser");
@@ -77,7 +80,7 @@ public class PreferencesController
             session.setAttribute("currentWorker", newWorker);
             return "redirect:/user/yourmatch";
         }
-        model.addAttribute("freelancererror", Boolean.valueOf(true));
+        model.addAttribute("freelancererror", true);
         model.addAttribute(setApplication());
         return "user/preferences";
     }

@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.User;
 import web.domain.UserPersonal;
 import web.domain.UserPersonal.personalDetailsEmployer;
@@ -25,7 +26,7 @@ public class PersonalDetailsController
         this.userService = userService;
     }
 
-    @RequestMapping(path={"/user/personaldetails"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="/user/personaldetails", method= RequestMethod.GET)
     public String viewPersonal(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
             User user = (User)session.getAttribute("currentUser");
@@ -39,22 +40,22 @@ public class PersonalDetailsController
 
 
 
-    @RequestMapping(path={"/user/personaldetails"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"employer"})
-    public String confirmPersonalEmployer(@Validated({UserPersonal.personalDetailsEmployer.class}) @ModelAttribute("userPersonal") UserPersonal personal, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="/user/personaldetails", method=RequestMethod.POST, params="employer")
+    public String confirmPersonalEmployer(@Validated({personalDetailsEmployer.class}) @ModelAttribute("userPersonal")
+                                                      UserPersonal personal, BindingResult result, Model model, HttpSession session)
     {
         User user = (User)session.getAttribute("currentUser");
         user.setUserPersonal(personal);
-
         return enterPersonalDetails(user, result, model, session);
     }
 
 
-    @RequestMapping(path={"/user/personaldetails"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"freelancer"})
-    public String confirmPersonalFreelancer(@Validated({UserPersonal.personalDetailsFreelancer.class}) @ModelAttribute("userPersonal") UserPersonal personal, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="/user/personaldetails", method=RequestMethod.POST, params="freelancer")
+    public String confirmPersonalFreelancer(@Validated({personalDetailsFreelancer.class}) @ModelAttribute("userPersonal")
+                                                        UserPersonal personal, BindingResult result, Model model, HttpSession session)
     {
         User user = (User)session.getAttribute("currentUser");
         user.setUserPersonal(personal);
-
         return enterPersonalDetails(user, result, model, session);
     }
 
@@ -66,7 +67,7 @@ public class PersonalDetailsController
             userService.insertUserPersonal(user);
             return "redirect:/user/preferencesdetails";
         }
-        model.addAttribute("error", Boolean.valueOf(true));
+        model.addAttribute("error", true);
         return "user/personal";
     }
 }
