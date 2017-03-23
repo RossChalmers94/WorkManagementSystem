@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.application.Application;
 import web.domain.application.JobLength;
 import web.domain.application.Location;
@@ -30,7 +31,7 @@ public class ConfigureApplicationController
         this.preferencesService = preferencesService;
     }
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(path="admin/configureapplication", method= RequestMethod.GET)
     public String viewConfigureApplication(Model model, HttpSession session) {
         if (session.getAttribute("adminUser") != null) {
             prePopulateValues(model);
@@ -40,65 +41,70 @@ public class ConfigureApplicationController
     }
 
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"newSkill"})
-    public String addSkill(@Validated({Skill.addSkill.class}) @ModelAttribute("configureSkills") Skill configureSkills, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newSkill")
+    public String addSkill(@Validated(addSkill.class) @ModelAttribute("configureSkills") Skill configureSkills, BindingResult result,
+                           Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             preferencesService.addSkill(configureSkills.getSkillName().trim());
-            model.addAttribute("skillSuccess", Boolean.valueOf(true));
+            model.addAttribute("skillSuccess", true);
             return "redirect:/admin/configureapplication";
         }
-        model.addAttribute("error", Boolean.valueOf(true));
-        model.addAttribute("skills", Boolean.valueOf(true));
+        model.addAttribute("error", true);
+        model.addAttribute("skills", true);
         return "redirect:/admin/configureapplication";
     }
 
 
 
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"deleteskill"})
-    public String deleteSkills(@ModelAttribute("configureSkills") Skill configureSkills, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="deleteskill")
+    public String deleteSkills(@ModelAttribute("configureSkills") Skill configureSkills, BindingResult result,
+                               Model model, HttpSession session)
     {
         preferencesService.deleteSkill(configureSkills.getSkillsSet());
         return "redirect:/admin/configureapplication";
     }
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"newLocation"})
-    public String addLocation(@Validated({Location.addLocation.class}) @ModelAttribute("configureLocations") Location configureLocations, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newLocation")
+    public String addLocation(@Validated(addLocation.class) @ModelAttribute("configureLocations") Location configureLocations, BindingResult result,
+                              Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             preferencesService.addLocation(configureLocations.getLocationName().trim());
-            model.addAttribute("locationSuccess", Boolean.valueOf(true));
+            model.addAttribute("locationSuccess", true);
             return "redirect:/admin/configureapplication";
         }
-        model.addAttribute("error", Boolean.valueOf(true));
-        model.addAttribute("locations", Boolean.valueOf(true));
+        model.addAttribute("error", true);
+        model.addAttribute("locations", true);
         return "redirect:/admin/configureapplication";
     }
 
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"deletelocation"})
-    public String deleteLocation(@ModelAttribute("configureLocations") Location configureLocations, BindingResult result, Model model, HttpSession session)
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="deletelocation")
+    public String deleteLocation(@ModelAttribute("configureLocations") Location configureLocations, BindingResult result,
+                                 Model model, HttpSession session)
     {
         preferencesService.deleteLocation(configureLocations.getLocationSet());
         return "redirect:/admin/configureapplication";
     }
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"newSalaries"})
-    public String configureSalaries(@ModelAttribute("configureSalaries") Salary configureSalaries, Model model, HttpSession session)
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newSalaries")
+    public String configureSalaries(@ModelAttribute("configureSalaries") Salary configureSalaries,
+                                    Model model, HttpSession session)
     {
         preferencesService.updateSalaries(configureSalaries);
-        model.addAttribute("salarySuccess", Boolean.valueOf(true));
+        model.addAttribute("salarySuccess", true);
         prePopulateValues(model);
         return "admin/configureapplication";
     }
 
 
-    @RequestMapping(path={"admin/configureapplication"}, method={org.springframework.web.bind.annotation.RequestMethod.POST}, params={"newJobLengths"})
+    @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newJobLengths")
     public String configureJobLengths(@ModelAttribute("configureJobLengths") JobLength configureJobLengths, Model model, HttpSession session)
     {
         preferencesService.updateJobLengths(configureJobLengths);
-        model.addAttribute("jobLengthSuccess", Boolean.valueOf(true));
+        model.addAttribute("jobLengthSuccess", true);
         prePopulateValues(model);
         return "admin/configureapplication";
     }
