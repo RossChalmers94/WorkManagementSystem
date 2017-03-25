@@ -58,19 +58,16 @@ public class MatchDAOImpl implements MatchDAO
     }
 
     public List<Integer> getSkills(String storedProc, int id) {
-        List<Integer> get = jdbcTemplate.queryForList(storedProc, Integer.class, id);
-        return get;
+        return jdbcTemplate.queryForList(storedProc, Integer.class, id);
     }
 
     public List<Worker> getFreelancers(String storedProc) {
-        List<Worker> freelancers = getWorkers(storedProc, WorkerDetails.FREELANCER_ID.getValue());
-        return freelancers;
+        return getWorkers(storedProc, WorkerDetails.FREELANCER_ID.getValue());
     }
 
     public List<Worker> getEmployers(String storedProc)
     {
-        List<Worker> employers = getWorkers(storedProc, WorkerDetails.EMPLOYER_ID.getValue());
-        return employers;
+        return getWorkers(storedProc, WorkerDetails.EMPLOYER_ID.getValue());
     }
 
     private List<Worker> getWorkers(String storedProc, String parameterName) {
@@ -97,7 +94,7 @@ public class MatchDAOImpl implements MatchDAO
     }
 
     public Match getMatch(Worker worker) {
-        web.domain.Match match = new web.domain.Match();
+        Match match = new Match();
         match.setMatchID(worker.getWorkerID());
         match.setSalary(getSalary(worker.getSalary()));
         match.setLocation(getLocation(worker.getLocation()));
@@ -241,20 +238,4 @@ public class MatchDAOImpl implements MatchDAO
         return matches;
     }
 
-    private Worker configWorker(Map<String, Object> out) {
-        web.domain.Worker worker = new web.domain.Worker();
-        worker.setSalary(((Integer)out.get(WorkerDetails.SALARY.getValue())));
-        worker.setLocation(((Integer)out.get(WorkerDetails.LOCATION.getValue())));
-        worker.setJobLength(((Integer)out.get(WorkerDetails.JOB_LENGTH.getValue())));
-        worker.setRating(((Integer)out.get(WorkerDetails.RATING.getValue())));
-        worker.setRelaxPreferences(((Integer)out.get(WorkerDetails.RELAX_PREFERENCES.getValue())));
-        worker.setMinimumMatch(((Integer)out.get(WorkerDetails.MINIMUM_MATCH.getValue())));
-        worker.setJobTitle((String)out.get(WorkerDetails.JOB_TITLE.getValue()));
-        worker.setJobDescription((String)out.get(WorkerDetails.JOB_DESCRIPTION.getValue()));
-        if (out.get(WorkerDetails.JOB_MATCH.getValue()) != null) {
-            worker.setJobMatch(((Integer)out.get(WorkerDetails.JOB_MATCH.getValue())));
-        }
-
-        return worker;
-    }
 }

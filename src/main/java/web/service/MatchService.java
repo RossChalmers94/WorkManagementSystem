@@ -7,7 +7,8 @@ import web.domain.Worker;
 import java.util.List;
 
 /**
- * Created by RossChalmers on 26/02/2017.
+ * This service is responsible for processing the business logic associated with a match
+ * @Author Ross Chalmers
  */
 public interface MatchService {
 

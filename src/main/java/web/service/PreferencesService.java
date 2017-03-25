@@ -5,7 +5,8 @@ import java.util.List;
 import web.domain.application.*;
 
 /**
- * Created by RossChalmers on 13/02/2017.
+ * This service is responsible for processing the business logic associated with preferences
+ * @Author Ross Chalmers
  */
 public interface PreferencesService {
 

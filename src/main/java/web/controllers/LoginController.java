@@ -75,7 +75,7 @@ public class LoginController
             else if (loginUser.getUsername().equals("admin")) {
                 boolean adminLogIn = userService.checkAdminLogIn(loginUser.getPassword());
                 if (adminLogIn) {
-                    Admin admin = userService.getAdminLogIn(loginUser);
+                    Admin admin = userService.getAdminLogIn();
                     session.setAttribute("adminUser", admin);
                     return "redirect:/admin/adminhome";
                 }
