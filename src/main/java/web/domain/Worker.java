@@ -34,7 +34,6 @@ public class Worker
 
     private int compareValue;
 
-    private Match currentMatch;
 
     public Worker() {}
 
@@ -72,7 +71,7 @@ public class Worker
 
     public void setSalary(int salary)
     {
-        this.salary = Integer.valueOf(salary);
+        this.salary = salary;
     }
 
     public int getLocation() {
@@ -84,7 +83,7 @@ public class Worker
 
     public void setLocation(int location)
     {
-        this.location = Integer.valueOf(location);
+        this.location = location;
     }
 
     public int getJobLength() {
@@ -96,7 +95,7 @@ public class Worker
 
     public void setJobLength(int jobLength)
     {
-        this.jobLength = Integer.valueOf(jobLength);
+        this.jobLength = jobLength;
     }
 
     public int getRelaxPreferences() {
@@ -108,7 +107,7 @@ public class Worker
 
     public void setRelaxPreferences(int relaxPreferences)
     {
-        this.relaxPreferences = Integer.valueOf(relaxPreferences);
+        this.relaxPreferences = relaxPreferences;
     }
 
     public int getRating() {
@@ -120,7 +119,7 @@ public class Worker
 
     public void setRating(int rating)
     {
-        this.rating = Integer.valueOf(rating);
+        this.rating = rating;
     }
 
     public int getMinimumMatch() {
@@ -132,7 +131,7 @@ public class Worker
 
     public void setMinimumMatch(int minimumMatch)
     {
-        this.minimumMatch = Integer.valueOf(minimumMatch);
+        this.minimumMatch = minimumMatch;
     }
 
     public int getWorkerID() {
@@ -175,57 +174,4 @@ public class Worker
         this.previousMatch = previousMatch;
     }
 
-    public Match getCurrentMatch() {
-        return currentMatch;
-    }
-
-    public void setCurrentMatch(Match currentMatch) {
-        this.currentMatch = currentMatch;
-    }
-
-    public float compareTo(Worker worker)
-    {
-        float counter = 0.0F;
-        float skillSetOne = 0.0F;
-        float skillSetTwo = 0.0F;
-
-        if (getSalary() == worker.getSalary()) {
-            counter += 3.0F;
-        }
-
-        if (getLocation() == worker.getLocation()) {
-            counter += 4.0F;
-        }
-
-        if (getJobLength() == worker.getJobLength()) {
-            counter += 1.0F;
-        }
-
-        if (getRating() <= worker.getPreviousRating()) {
-            counter += 1.0F;
-        }
-
-        if (worker.getRating() <= getPreviousRating()) {
-            counter += 1.0F;
-        }
-
-        for (int i = 0; i < getSkill().size(); i++) {
-            if (worker.getSkill().contains(getSkill().get(i))) {
-                skillSetOne += 1.0F;
-            }
-        }
-        skillSetOne /= getSkill().size();
-
-        for (int j = 0; j < worker.getSkill().size(); j++) {
-            if (getSkill().contains(worker.getSkill().get(j))) {
-                skillSetTwo += 1.0F;
-            }
-        }
-        skillSetTwo /= worker.getSkill().size();
-        float skillResult = (skillSetOne + skillSetTwo) / 2.0F;
-        counter += skillResult * 10.0F;
-
-        float percentage = counter / 20.0F * 100.0F;
-        return percentage;
-    }
 }

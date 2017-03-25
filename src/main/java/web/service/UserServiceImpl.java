@@ -13,8 +13,6 @@ import web.enumconstants.UserDetails;
 import web.repository.UserDAO;
 
 
-
-
 @Service
 public class UserServiceImpl implements UserService
 {
@@ -62,8 +60,7 @@ public class UserServiceImpl implements UserService
     }
 
     public boolean checkUsername(String username) {
-        boolean check = false;
-        check = userDAO.getUsername(username);
+        boolean check = userDAO.getUsername(username);
         return check;
     }
 
@@ -81,7 +78,7 @@ public class UserServiceImpl implements UserService
     }
 
 
-    public Admin getAdminLogIn(User user)
+    public Admin getAdminLogIn()
     {
         Admin admin = userDAO.getAdmin();
         return admin;

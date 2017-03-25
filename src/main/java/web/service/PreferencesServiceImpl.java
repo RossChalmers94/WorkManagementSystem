@@ -130,15 +130,4 @@ public class PreferencesServiceImpl implements PreferencesService
         preferencesDAO.updateApplication(admin.getIndustryName());
     }
 
-    public void updatePassword(Admin admin) {
-        preferencesDAO.updatePassword(passwordEncoder.encode(admin.getNewPassword().trim()));
-    }
-
-    public boolean checkAdminPassword(String password) {
-        String adminPassword = preferencesDAO.checkAdminPassword();
-        if (password.equals(adminPassword)) {
-            return true;
-        }
-        return false;
-    }
 }

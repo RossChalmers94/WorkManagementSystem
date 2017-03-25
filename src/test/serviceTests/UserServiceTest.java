@@ -94,12 +94,12 @@ public class UserServiceTest {
 //        Assert.assertEquals(userService.getAdminLogIn(returnedUser), notAdmin);
 //    }
 
-    @Test
-    public void getUserBy(){
-        when(userDAO.getUserByEmployer(1)).thenReturn(user);
-        Assert.assertEquals(userService.getUserByEmployer(1), user);
-        when(userDAO.getUserByFreelancer(1)).thenReturn(returnedUser);
-        Assert.assertEquals(userService.getUserByFreelancer(1), returnedUser);
-    }
+//    @Test
+//    public void getUserBy(){
+//        when(userDAO.getUserByEmployer(1)).thenReturn(user);
+//        Assert.assertEquals(userService.getUserByEmployer(1), user);
+//        when(userDAO.getUserByFreelancer(1)).thenReturn(returnedUser);
+//        Assert.assertEquals(userService.getUserByFreelancer(1), returnedUser);
+//    }
 
 }

@@ -12,8 +12,7 @@ import web.repository.UserDAO;
 import web.repository.WorkerDAO;
 
 @Service
-public class MatchServiceImpl
-        implements MatchService
+public class MatchServiceImpl implements MatchService
 {
     private MatchDAO matchDAO;
     private WorkerDAO workerDAO;
@@ -28,9 +27,8 @@ public class MatchServiceImpl
     }
 
     public Match getEmployerMatch(User user) {
-        List<Worker> workers = matchDAO.getFreelancers("SELECT freelancerID, salary, location, jobLength, rating, minimumMatch, previousRating FROM freelancer WHERE jobMatch IS NULL AND previousMatch IS NULL");
-
-
+        List<Worker> workers = matchDAO.getFreelancers("SELECT freelancerID, salary, location, jobLength, rating, minimumMatch, previousRating " +
+                "FROM freelancer WHERE jobMatch IS NULL AND previousMatch IS NULL");
         List<Worker> possibleWorkers = new ArrayList<Worker>();
         for (Worker worker : workers) {
             int compareValue = getWorker(worker, user.getUserWorker());
@@ -39,7 +37,6 @@ public class MatchServiceImpl
                 possibleWorkers.add(worker);
             }
         }
-
         if (possibleWorkers.isEmpty()) {
             return null;
         }
@@ -54,7 +51,6 @@ public class MatchServiceImpl
     public Match getFreelancerMatch(User user)
     {
         List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, jobLength, jobTitle, jobDescription, minimumMatch, previousRating FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
-
 
         List<Worker> possibleWorkers = new ArrayList<Worker>();
         for (Worker worker : workers) {
@@ -76,7 +72,12 @@ public class MatchServiceImpl
         return match;
     }
 
-
+    /**
+     * This calculates whether a compare value is high enough to be considered a match
+     * @param worker the {@link Worker worker} being compared to the current worker
+     * @param currentWorker the {@link Worker worker} that is searching for a match
+     * @return if the compare value is high enough
+     */
     private int getWorker(Worker worker, Worker currentWorker)
     {
         float compareWorkers = compareTo(worker, currentWorker);
@@ -141,6 +142,11 @@ public class MatchServiceImpl
         }
     }
 
+    /**
+     * This searches a list of workers to distinguish the one that has the best compared value
+     * @param possibleWorkers the {@link List list} of workers to search
+     * @return the {@link Worker worker} with the best compared value
+     */
     private Worker findBestWorker(List<Worker> possibleWorkers)
     {
         int counter = 0;
@@ -155,49 +161,55 @@ public class MatchServiceImpl
         return bestWorker;
     }
 
+    /**
+     * This calculates a percentage value that symbolises how closely matched an employer and freelancer are
+     * @param worker the {@link Worker worker} that is being compared to the current worker
+     * @param currentWorker the {@link Worker worker} that is searching for a match
+     * @return a percentage value of how closely matched a freelancer and employer are
+     */
     private float compareTo(Worker worker, Worker currentWorker)
     {
-        float counter = 0.0F;
-        float skillSetOne = 0.0F;
-        float skillSetTwo = 0.0F;
+        float counter = 0;
+        float skillSetOne = 0;
+        float skillSetTwo = 0;
 
         if (currentWorker.getSalary() == worker.getSalary()) {
-            counter += 3.0F;
+            counter += 3;
         }
 
         if (currentWorker.getLocation() == worker.getLocation()) {
-            counter += 4.0F;
+            counter += 4;
         }
 
         if (currentWorker.getJobLength() == worker.getJobLength()) {
-            counter += 1.0F;
+            counter += 1;
         }
 
         if (currentWorker.getRating() <= worker.getPreviousRating()) {
-            counter += 1.0F;
+            counter += 1;
         }
 
         if (worker.getRating() <= currentWorker.getPreviousRating()) {
-            counter += 1.0F;
+            counter += 1;
         }
 
         for (int i = 0; i < currentWorker.getSkill().size(); i++) {
             if (worker.getSkill().contains(currentWorker.getSkill().get(i))) {
-                skillSetOne += 1.0F;
+                skillSetOne += 1;
             }
         }
         skillSetOne /= currentWorker.getSkill().size();
 
         for (int j = 0; j < worker.getSkill().size(); j++) {
             if (currentWorker.getSkill().contains(worker.getSkill().get(j))) {
-                skillSetTwo += 1.0F;
+                skillSetTwo += 1;
             }
         }
         skillSetTwo /= worker.getSkill().size();
-        float skillResult = (skillSetOne + skillSetTwo) / 2.0F;
-        counter += skillResult * 10.0F;
+        float skillResult = (skillSetOne + skillSetTwo) / 2;
+        counter += skillResult * 10;
 
-        float percentage = counter / 20.0F * 100.0F;
+        float percentage = counter / 20 * 100;
         return percentage;
     }
 }

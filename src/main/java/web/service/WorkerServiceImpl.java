@@ -48,7 +48,12 @@ public class WorkerServiceImpl implements WorkerService
         return workerID;
     }
 
-
+    /**
+     * This is responsible for entering an employer's preferences
+     * @param user the {@link User user} to enter preferences for
+     * @param inParameters the {@link Map map} containing the preferences to enter
+     * @return the id of the employer
+     */
     private int insertEmployer(User user, Map<String, Object> inParameters)
     {
         int employerID;
@@ -62,7 +67,12 @@ public class WorkerServiceImpl implements WorkerService
         return employerID;
     }
 
-
+    /**
+     * This is responsible for entering a freelancer's preferences
+     * @param user the {@link User user} to enter preferences for
+     * @param inParameters the {@link Map map} containing the preferences to enter
+     * @return the id of the freelancer
+     */
     private int insertFreelancer(User user, Map<String, Object> inParameters)
     {
         int freelancerID;
@@ -78,7 +88,11 @@ public class WorkerServiceImpl implements WorkerService
         return freelancerID;
     }
 
-
+    /**
+     * This is responsible for entering an employer's skills
+     * @param employerID the id of the employer to enter skills for
+     * @param skills the {@link List list} of {@link Integer integers} to add as skills
+     */
     private void insertEmployerSkills(int employerID, List<Integer> skills)
     {
         workerDAO.deleteEmployerSkills(employerID);
@@ -91,7 +105,11 @@ public class WorkerServiceImpl implements WorkerService
         }
     }
 
-
+    /**
+     * This is responsible for entering an freelancer's skills
+     * @param freelancerID the id of the freelancer to enter skills for
+     * @param skills the {@link List list} of {@link Integer integers} to add as skills
+     */
     private void insertFreelancerSkills(int freelancerID, List<Integer> skills)
     {
         workerDAO.deleteFreelancerSkills(freelancerID);
