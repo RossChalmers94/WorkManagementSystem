@@ -10,14 +10,33 @@ import web.domain.User;
 import web.domain.Worker;
 import web.service.WorkerService;
 
+/**
+ * This is responsible for loading the user home page
+ *
+ * @Author Ross Chalmers
+ */
 @Controller
 public class UserHomeController
 {
-    @Autowired
+
     private WorkerService workerService;
 
-    public UserHomeController() {}
+    /**
+     * Configure the service to use
+     * @param workerService the {@link WorkerService workerService} that handles the worker's details
+     */
+    @Autowired
+    public UserHomeController(WorkerService workerService) {
+        this.workerService = workerService;
+    }
 
+
+    /**
+     * This is responsible for loading the user home page
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="user/userhome", method=RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session)
     {

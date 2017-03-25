@@ -13,8 +13,8 @@ import java.util.Arrays;
 
 public class WorkerTest {
 
-    Worker currentWorker;
-    Worker worker1;
+    private Worker currentWorker;
+    private Worker worker1;
 
     @Before
     public void setUp(){

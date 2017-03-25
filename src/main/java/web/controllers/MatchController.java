@@ -17,10 +17,10 @@ import web.service.MatchService;
 import web.service.UserService;
 import web.service.WorkerService;
 
-
-
-
-
+/**
+ * This is responsible for handling all requests concerned with a match
+ * @Author Ross Chalmers
+ */
 @Controller
 public class MatchController
 {
@@ -28,6 +28,12 @@ public class MatchController
     private WorkerService workerService;
     private MatchService matchService;
 
+    /**
+     * Configuring the services to be used
+     * @param userService the {@link UserService userService} for user details
+     * @param workerService the {@link WorkerService workerService} for worker details
+     * @param matchService the {@link MatchService matchService} for match details
+     */
     @Autowired
     public MatchController(UserService userService, WorkerService workerService, MatchService matchService)
     {
@@ -36,6 +42,13 @@ public class MatchController
         this.matchService = matchService;
     }
 
+    /**
+     * This is responsible for calculating a match for a user.
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned. This will be dependent on the result
+     * of the match calculation
+     */
     @RequestMapping(path="user/yourmatch", method= RequestMethod.GET)
     public String viewEmployerPreferences(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
@@ -60,8 +73,11 @@ public class MatchController
     }
 
 
-
-
+    /**
+     * This is responsible for getting an employer's match.
+     * @param user the {@link User user} that is searching for a match
+     * @return the {@link String String} of the view to be returned
+     */
     private Match getEmployerMatch(User user)
     {
         if (user.getUserWorker().getJobMatch() == 0) {
@@ -76,6 +92,11 @@ public class MatchController
     }
 
 
+    /**
+     * This is responsible for getting an freelancer's match.
+     * @param user the {@link User user} that is searching for a match
+     * @return the {@link String String} of the view to be returned
+     */
     private Match getFreelancerMatch(User user)
     {
         if (user.getUserWorker().getJobMatch() == 0) {
@@ -96,6 +117,11 @@ public class MatchController
         return "user/match";
     }
 
+    /**
+     * This is responsible for loading the no match page.
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="user/nomatch", method=RequestMethod.GET)
     public String noMatch(HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
@@ -104,6 +130,12 @@ public class MatchController
         return "redirect:/newlogin";
     }
 
+    /**
+     * This is responsible for loading the complete match page.
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="user/completematch", method=RequestMethod.GET)
     public String completeMatch(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
@@ -114,6 +146,14 @@ public class MatchController
         return "redirect:/newlogin";
     }
 
+    /**
+     * This is responsible for completing a match
+     * @param giveRating the {@link Rating giveRating} object that holds the rating to complete match
+     * @param result the validation binding {@link BindingResult result}
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="user/completematch", method=RequestMethod.POST)
     public String confirmCompleteMatch(@Valid @ModelAttribute("giveRating") Rating giveRating,
                                        BindingResult result, Model model, HttpSession session)

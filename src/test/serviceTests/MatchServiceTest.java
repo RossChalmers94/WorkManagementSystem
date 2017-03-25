@@ -41,15 +41,10 @@ public class MatchServiceTest {
     Match matchOne;
     Match matchTwo;
     List<Worker> freelancers;
-    List<Worker> employers;
-    Worker currentFreelancer;
     Worker currentEmployer;
     Worker freelancerOne;
     Worker freelancerTwo;
     Worker freelancerThree;
-    Worker employerOne;
-    Worker employerTwo;
-    Worker employerThree;
 
     @Before
     public void setUp(){

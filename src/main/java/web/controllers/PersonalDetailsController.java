@@ -15,17 +15,31 @@ import web.domain.UserPersonal.personalDetailsEmployer;
 import web.domain.UserPersonal.personalDetailsFreelancer;
 import web.service.UserService;
 
+/**
+ * This is responsible for entering a user's personal details
+ * @Author Ross Chalmers
+ */
 @Controller
 public class PersonalDetailsController
 {
     private UserService userService;
 
+    /**
+     * Configure the service to use
+     * @param userService the {@link UserService userService} that handles user details
+     */
     @Autowired
     public PersonalDetailsController(UserService userService)
     {
         this.userService = userService;
     }
 
+    /**
+     * This is responsible for loading the personal details page
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="/user/personaldetails", method= RequestMethod.GET)
     public String viewPersonal(Model model, HttpSession session) {
         if (session.getAttribute("currentUser") != null) {
@@ -39,7 +53,14 @@ public class PersonalDetailsController
     }
 
 
-
+    /**
+     * This is responsible for gathering an employer's personal details
+     * @param personal the {@link UserPersonal personal} object that holds the user's personal details
+     * @param result the validation binding {@link BindingResult result}
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="/user/personaldetails", method=RequestMethod.POST, params="employer")
     public String confirmPersonalEmployer(@Validated({personalDetailsEmployer.class}) @ModelAttribute("userPersonal")
                                                       UserPersonal personal, BindingResult result, Model model, HttpSession session)
@@ -50,6 +71,14 @@ public class PersonalDetailsController
     }
 
 
+    /**
+     * This is responsible for gathering an freelancer's personal details
+     * @param personal the {@link UserPersonal personal} object that holds the user's personal details
+     * @param result the validation binding {@link BindingResult result}
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     @RequestMapping(path="/user/personaldetails", method=RequestMethod.POST, params="freelancer")
     public String confirmPersonalFreelancer(@Validated({personalDetailsFreelancer.class}) @ModelAttribute("userPersonal")
                                                         UserPersonal personal, BindingResult result, Model model, HttpSession session)
@@ -60,7 +89,14 @@ public class PersonalDetailsController
     }
 
 
-
+    /**
+     * This is responsible for entering a user's personal details
+     * @param user the {@link User user} object that holds the user's personal details
+     * @param result the validation binding {@link BindingResult result}
+     * @param model the {@link Model model} for view attributes
+     * @param session the {@link HttpSession session} for session variables
+     * @return the {@link String String} of the view to be returned
+     */
     private String enterPersonalDetails(User user, BindingResult result, Model model, HttpSession session)
     {
         if (!result.hasErrors()) {

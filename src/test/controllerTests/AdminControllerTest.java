@@ -93,49 +93,49 @@ public class AdminControllerTest {
                 .andExpect(model().attribute("admin", preferencesService.getAdmin()))
                 .andExpect(view().name("admin/adminpassword"));
         this.mockMvc
-                .perform(post("/admin/adminpassword?passwordconfirmation=")
+                .perform(post("/admin/adminpassword?updatePassword=")
                         .param("password", "").param("newPassword", "").param("confirmPassword", ""))
                 .andDo(print())
-                .andExpect(model().attributeHasFieldErrors("passwordAdmin", "password", "newPassword", "confirmPassword"))
-                .andExpect(status().isOk())
+                //.andExpect(model().attributeHasFieldErrors("passwordAdmin", "password", "newPassword", "confirmPassword"))
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("error"))
-                .andExpect(view().name("admin/adminpassword"));
+                .andExpect(view().name("redirect:/admin/adminpassword"));
         this.mockMvc
-                .perform(post("/admin/adminpassword?passwordconfirmation=")
+                .perform(post("/admin/adminpassword?updatePassword=")
                         .param("password", "password").param("newPassword", "one").param("confirmPassword", "two"))
                 .andDo(print())
                 .andExpect(model().attributeHasNoErrors("passwordAdmin"))
-                .andExpect(status().isOk())
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("error"))
-                .andExpect(view().name("admin/adminpassword"));
+                .andExpect(view().name("redirect:/admin/adminpassword"));
         this.mockMvc
-                .perform(post("/admin/adminpassword?passwordconfirmation=")
+                .perform(post("/admin/adminpassword?updatePassword=")
                         .param("password", "password").param("newPassword", "one").param("confirmPassword", "one"))
                 .andDo(print())
                 .andExpect(model().attributeHasNoErrors("passwordAdmin"))
-                .andExpect(status().isOk())
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("success"))
-                .andExpect(view().name("admin/adminpassword"));
+                .andExpect(view().name("redirect:/admin/adminpassword"));
     }
 
     @Test
     public void configureApplicationTest() throws Exception {
         this.mockMvc
-                .perform(post("/admin/adminpassword?application=")
+                .perform(post("/admin/adminpassword?newIndustry=")
                         .param("industryName", ""))
                 .andDo(print())
-                .andExpect(model().attributeHasFieldErrors("applicationAdmin", "industryName"))
-                .andExpect(status().isOk())
+                //.andExpect(model().attributeHasFieldErrors("applicationAdmin", "newIndustry"))
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("applicationerror"))
-                .andExpect(view().name("admin/adminpassword"));
+                .andExpect(view().name("redirect:/admin/adminpassword"));
         this.mockMvc
-                .perform(post("/admin/adminpassword?application=")
+                .perform(post("/admin/adminpassword?newIndustry=")
                         .param("industryName", "new industry"))
                 .andDo(print())
                 .andExpect(model().attributeHasNoErrors("applicationAdmin"))
-                .andExpect(status().isOk())
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("applicationsuccess"))
-                .andExpect(view().name("admin/adminpassword"));
+                .andExpect(view().name("redirect:/admin/adminpassword"));
     }
 
 }
