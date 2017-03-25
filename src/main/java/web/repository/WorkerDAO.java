@@ -5,7 +5,7 @@ import web.domain.*;
 
 /**
  * This is responsible for communicating with the database concerning workers
- * @Author Ross Chalmers
+ *
  */
 public interface WorkerDAO {
     /**

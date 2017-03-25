@@ -4,7 +4,7 @@ import java.util.*;
 import web.domain.*;
 /**
  * This is responsible for communicating with the database concerning matches
- * @Author Ross Chalmers
+ *
  */
 public interface MatchDAO {
 

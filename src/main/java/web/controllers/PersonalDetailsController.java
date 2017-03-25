@@ -17,7 +17,7 @@ import web.service.UserService;
 
 /**
  * This is responsible for entering a user's personal details
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class PersonalDetailsController

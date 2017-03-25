@@ -16,7 +16,7 @@ import web.service.UserService;
 /**
  * This controller is responsible for handling requests for creating an account.
  *
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class CreateAccountController

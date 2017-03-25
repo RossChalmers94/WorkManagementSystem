@@ -9,7 +9,7 @@ import web.service.UserService;
 
 /**
  * This is responsible for loading the home page.
- * @Author Ross Chalmers
+ *
  */
 @Controller
 @RequestMapping({"/home"})

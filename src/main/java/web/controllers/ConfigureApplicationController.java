@@ -23,7 +23,7 @@ import web.service.PreferencesService;
  * This controller is responsible for handling requests from an admin user.
  * Specifically, it will handle requests for configuring the preferences for the application.
  *
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class ConfigureApplicationController

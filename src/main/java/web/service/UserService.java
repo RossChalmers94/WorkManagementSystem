@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  * This service is responsible for processing the business logic associated with a user
- * @Author Ross Chalmers
+ *
  */
 public interface UserService {
      /**

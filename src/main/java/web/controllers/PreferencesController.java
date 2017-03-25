@@ -19,7 +19,7 @@ import web.service.WorkerService;
 
 /**
  * This is responsible for gathering and entering a user's preferences
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class PreferencesController

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * This service is responsible for processing the business logic associated with a match
- * @Author Ross Chalmers
+ *
  */
 public interface MatchService {
 

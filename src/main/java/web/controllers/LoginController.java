@@ -16,7 +16,7 @@ import web.service.UserService;
 
 /**
  * This is responsible for logging a user into the application
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class LoginController

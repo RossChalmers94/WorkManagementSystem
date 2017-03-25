@@ -4,7 +4,7 @@ import java.util.List;
 import web.domain.application.Admin;
 /**
  * This is responsible for communicating with the database concerning preferences
- * @Author Ross Chalmers
+ *
  */
 public interface PreferencesDAO {
 

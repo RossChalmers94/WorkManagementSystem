@@ -19,7 +19,7 @@ import web.service.WorkerService;
 
 /**
  * This is responsible for handling all requests concerned with a match
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class MatchController

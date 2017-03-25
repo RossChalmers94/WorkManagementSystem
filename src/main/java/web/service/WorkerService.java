@@ -4,7 +4,7 @@ import java.util.*;
 import web.domain.*;
 /**
  * This service is responsible for processing the business logic associated with a worker (Freelancer and Employer)
- * @Author Ross Chalmers
+ *
  */
 public interface WorkerService {
 

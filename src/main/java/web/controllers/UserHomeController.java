@@ -13,7 +13,7 @@ import web.service.WorkerService;
 /**
  * This is responsible for loading the user home page
  *
- * @Author Ross Chalmers
+ *
  */
 @Controller
 public class UserHomeController

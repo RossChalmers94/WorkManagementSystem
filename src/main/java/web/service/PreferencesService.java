@@ -6,7 +6,7 @@ import web.domain.application.*;
 
 /**
  * This service is responsible for processing the business logic associated with preferences
- * @Author Ross Chalmers
+ *
  */
 public interface PreferencesService {
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * This is responsible for communicating with the database concerning users
- * @Author Ross Chalmers
+ *
  */
 
 public interface UserDAO {
