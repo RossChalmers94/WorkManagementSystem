@@ -88,7 +88,6 @@ public class WorkerDAOImpl implements WorkerDAO
 
     public Worker getFreelancer(int freelancerID) {
         getFreelancerDetails.withProcedureName("get_freelancer_details");
-
         SqlParameterSource in = new MapSqlParameterSource()
                 .addValue(WorkerDetails.FREELANCER_ID.getValue(), freelancerID);
         Map<String, Object> out = getFreelancerDetails.execute(in);

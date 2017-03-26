@@ -1,6 +1,8 @@
 package web.controllers;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import web.domain.application.Application;
 import web.domain.application.JobLength;
 import web.domain.application.Location;
-import web.domain.application.Location.addLocation;
+import web.domain.application.Location.addingNewLocation;
 import web.domain.application.Salary;
 import web.domain.application.Skill;
-import web.domain.application.Skill.addSkill;
+import web.domain.application.Skill.addingNewSkill;
 import web.service.PreferencesService;
 
 
@@ -66,17 +68,21 @@ public class ConfigureApplicationController
      * @return the {@link String String} of the view to be returned
      */
     @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newSkill")
-    public String addSkill(@Validated(addSkill.class) @ModelAttribute("configureSkills") Skill configureSkills, BindingResult result,
+    public String addSkill(@Validated({addingNewSkill.class}) @ModelAttribute("configureSkills") Skill configureSkills,
+                           BindingResult result,
                            Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             preferencesService.addSkill(configureSkills.getSkillName().trim());
             model.addAttribute("skillSuccess", true);
-            return "redirect:/admin/configureapplication";
+            prePopulateValues(model);
+            return "/admin/configureapplication";
+        } else {
+            model.addAttribute("error", true);
+            model.addAttribute("skills", true);
+            prePopulateValues(model);
+            return "/admin/configureapplication";
         }
-        model.addAttribute("error", true);
-        model.addAttribute("skills", true);
-        return "redirect:/admin/configureapplication";
     }
 
 
@@ -98,24 +104,27 @@ public class ConfigureApplicationController
 
     /**
      * This is responsible for adding a new location
-     * @param configureLocations the {@link Location configureLocations} that holds the new location name
+     * @param configureLocations the {@link Location location} object that holds the new location name
      * @param result the validation binding {@link BindingResult result}
      * @param model the {@link Model model} for view attributes
      * @param session the {@link HttpSession session} for session variables
      * @return the {@link String String} of the view to be returned
      */
     @RequestMapping(path="admin/configureapplication", method=RequestMethod.POST, params="newLocation")
-    public String addLocation(@Validated(addLocation.class) @ModelAttribute("configureLocations") Location configureLocations, BindingResult result,
-                              Model model, HttpSession session)
+    public String addLocation(@Validated({addingNewLocation.class})@ModelAttribute("configureLocations") Location configureLocations,
+                              BindingResult result, Model model, HttpSession session)
     {
         if (!result.hasErrors()) {
             preferencesService.addLocation(configureLocations.getLocationName().trim());
             model.addAttribute("locationSuccess", true);
-            return "redirect:/admin/configureapplication";
+            prePopulateValues(model);
+            return "/admin/configureapplication";
+        } else {
+            model.addAttribute("error", true);
+            model.addAttribute("locations", true);
+            prePopulateValues(model);
+            return "/admin/configureapplication";
         }
-        model.addAttribute("error", true);
-        model.addAttribute("locations", true);
-        return "redirect:/admin/configureapplication";
     }
 
 

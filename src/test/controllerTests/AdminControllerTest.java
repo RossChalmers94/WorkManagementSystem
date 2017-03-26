@@ -51,7 +51,7 @@ public class AdminControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         this.adminController = new AdminController(preferencesService, matchService, userService, workerService);
-        when(preferencesService.checkAdminPassword("password")).thenReturn(true);
+        //when(preferencesService.checkAdminPassword("password")).thenReturn(true);
         this.mockMvc = MockMvcBuilders.standaloneSetup(adminController).build();
     }
 

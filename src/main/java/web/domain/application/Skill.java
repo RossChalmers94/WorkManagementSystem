@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 public class Skill
 {
-    public interface addSkill{}
+    public interface addingNewSkill{}
     private int skillID;
-    @Size(groups={addSkill.class}, min=1, max=20, message="Skill must not be empty and must be less than 20 characters.")
-    @Pattern(groups={addSkill.class}, regexp="^[a-zA-Z\\s]+$", message="Skill Name must only consist of letters.")
+    @Size(groups={addingNewSkill.class}, min=1, max=20, message="Skill must not be empty and must be less than 20 characters.")
+    @Pattern(groups={addingNewSkill.class}, regexp="^[a-zA-Z\\s]+$", message="Skill Name must only consist of letters.")
     private String skillName;
     private List<Skill> skills;
     private List<Integer> skillsSet;

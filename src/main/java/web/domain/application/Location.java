@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 public class Location
 {
-    public interface addLocation{}
+    public interface addingNewLocation{}
     private int locationID;
-    @Pattern(groups={addLocation.class}, regexp="^[a-zA-Z\\s]+$", message="Location must only consist of letters.")
-    @Size(groups={addLocation.class}, min=1, max=20, message="Location must not be empty and must be less than 20 characters.")
+    @Pattern(groups={addingNewLocation.class}, regexp="^[a-zA-Z\\s]+$", message="Location must only consist of letters.")
+    @Size(groups={addingNewLocation.class}, min=1, max=20, message="Location must not be empty and must be less than 20 characters.")
     private String locationName;
     private List<Location> locations;
     private List<Integer> locationSet;

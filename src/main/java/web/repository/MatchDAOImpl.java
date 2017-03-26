@@ -71,15 +71,18 @@ public class MatchDAOImpl implements MatchDAO
     }
 
     private List<Worker> getWorkers(String storedProc, String parameterName) {
-        java.util.List<Map<String, Object>> allWorkers = jdbcTemplate.queryForList(storedProc);
+        List<Map<String, Object>> allWorkers = jdbcTemplate.queryForList(storedProc);
         List<Worker> workers = new ArrayList<Worker>();
         for (int i = 0; i < allWorkers.size(); i++) {
-            web.domain.Worker worker = new web.domain.Worker();
+            Worker worker = new Worker();
             worker.setWorkerID(((Integer)(allWorkers.get(i)).get(parameterName)));
             worker.setSalary(((Integer)(allWorkers.get(i)).get(WorkerDetails.SALARY.getValue())));
             worker.setLocation(((Integer)(allWorkers.get(i)).get(WorkerDetails.LOCATION.getValue())));
             worker.setJobLength(((Integer)(allWorkers.get(i)).get(WorkerDetails.JOB_LENGTH.getValue())));
             worker.setMinimumMatch(((Integer)(allWorkers.get(i)).get(WorkerDetails.MINIMUM_MATCH.getValue())));
+            if (allWorkers.get(i).get(WorkerDetails.PREVIOUS_RATING.getValue()) != null) {
+                worker.setPreviousRating((Integer) allWorkers.get(i).get(WorkerDetails.PREVIOUS_RATING.getValue()));
+            }
             if (parameterName.equals(WorkerDetails.EMPLOYER_ID.getValue())) {
                 worker.setJobTitle((String)(allWorkers.get(i)).get(WorkerDetails.JOB_TITLE.getValue()));
                 worker.setJobDescription((String)(allWorkers.get(i)).get(WorkerDetails.JOB_DESCRIPTION.getValue()));

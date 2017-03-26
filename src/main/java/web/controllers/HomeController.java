@@ -12,7 +12,7 @@ import web.service.UserService;
  *
  */
 @Controller
-@RequestMapping({"/home"})
+@RequestMapping({"/home", "/"})
 public class HomeController
 {
     private UserService userService;

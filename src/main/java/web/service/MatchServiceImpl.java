@@ -50,7 +50,8 @@ public class MatchServiceImpl implements MatchService
 
     public Match getFreelancerMatch(User user)
     {
-        List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, jobLength, jobTitle, jobDescription, minimumMatch, previousRating FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
+        List<Worker> workers = matchDAO.getEmployers("SELECT employerID, salary, location, jobLength, jobTitle, jobDescription, minimumMatch, previousRating " +
+                "FROM employer WHERE jobMatch IS NULL AND previousMatch IS NULL");
 
         List<Worker> possibleWorkers = new ArrayList<Worker>();
         for (Worker worker : workers) {
@@ -123,12 +124,14 @@ public class MatchServiceImpl implements MatchService
     }
 
     public List<Worker> getEmployers() {
-        return matchDAO.getEmployers("SELECT employerID, salary, location, jobLength, jobTitle, minimumMatch, jobDescription FROM employer");
+        return matchDAO.getEmployers("SELECT employerID, salary, location, jobLength, jobTitle, " +
+                "minimumMatch, jobDescription, previousRating FROM employer");
     }
 
     public List<Worker> getFreelancers()
     {
-        return matchDAO.getFreelancers("SELECT freelancerID, salary, location, jobLength, minimumMatch FROM freelancer");
+        return matchDAO.getFreelancers("SELECT freelancerID, salary, location, jobLength, " +
+                "minimumMatch, previousRating FROM freelancer");
     }
 
     public List<Match> getAllMatches()

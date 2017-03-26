@@ -8,17 +8,17 @@
     <div class="row">
         <h1>Configure Application</h1>
     </div>
-    <c:if test="${param.error == true}">
+    <c:if test="${error == true}">
         <div class="row">
             <div class="alert alert-danger col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <c:if test="${error == true}">
                     <label>There has been an error.</label><br>
                 </c:if>
-                <c:if test="${param.skills == true}">
+                <c:if test="${skills == true}">
                     <label>There has been an error submitting a new skill.
                         Please ensure the skill is between 5-20 characters.</label>
                 </c:if>
-                <c:if test="${param.locations == true}">
+                <c:if test="${locations == true}">
                     <label>There has been an error submitting a new location.
                         Please ensure the location is between 5-20 characters.</label>
                 </c:if>
@@ -27,59 +27,70 @@
     </c:if>
     <div class="row">
         <form:form modelAttribute="configureSkills" method="post">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <label>Skills:</label>
-            <table class="table table-sm table-striped table-hover table-bordered">
-                <thead class="thead">
-                <tr>
-                    <td>Skill Name</td>
-                    <td>Remove?</td>
-                </tr>
-                </thead>
-                <c:forEach items="${configureSkills.skills}" varStatus="i">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <label>Skills:</label>
+                <table class="table table-sm table-striped table-hover table-bordered">
+                    <thead class="thead">
                     <tr>
-                        <td><label>${configureSkills.skills[i.index].skillName}</label></td>
-                        <td><form:checkbox path="skillsSet" value="${configureSkills.skills[i.index].skillID}"/></td>
+                        <td>Skill Name</td>
+                        <td>Remove?</td>
                     </tr>
-                </c:forEach>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" class="text-right contact btn btn-default" name="deleteskill"
-                               value="Delete Skills"></td>
-                </tr>
-            </table>
-            <form:input path="skillName" class="form-control" placeholder="Skill Name"/>
-            <form:errors path="skillName" class="alert alert-danger"/>
-            <input type="submit" class="contact btn btn-default" name="newSkill" value="Add Skill">
-        </div>
+                    </thead>
+                    <c:forEach items="${configureSkills.skills}" varStatus="i">
+                        <tr>
+                            <td><label>${configureSkills.skills[i.index].skillName}</label></td>
+                            <td><form:checkbox path="skillsSet"
+                                               value="${configureSkills.skills[i.index].skillID}"/></td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" class="text-right contact btn btn-default" name="deleteskill"
+                                   value="Delete Skills"></td>
+                    </tr>
+                </table>
+                <form:input path="skillName" class="form-control" placeholder="Skill Name"/>
+                <form:errors path="skillName" class="alert alert-danger"/>
+                <input type="submit" class="contact btn btn-default" name="newSkill" value="Add Skill">
+                <c:if test="${skillSuccess == true}">
+                    <div class="alert alert-success col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label>You have successfully added a new skill!</label><br>
+                    </div>
+                </c:if>
+            </div>
         </form:form>
         <form:form modelAttribute="configureLocations" method="post">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <label>Location:</label>
-            <table class="table table-striped table-sm table-hover table-bordered">
-                <thead class="thead">
-                <tr>
-                    <td>Location</td>
-                    <td>Remove?</td>
-                </tr>
-                </thead>
-                <c:forEach items="${configureLocations.locations}" varStatus="i">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <label>Location:</label>
+                <table class="table table-striped table-sm table-hover table-bordered">
+                    <thead class="thead">
                     <tr>
-                        <td><label>${configureLocations.locations[i.index].locationName}</label></td>
-                        <td><form:checkbox path="locationSet"
-                                           value="${configureLocations.locations[i.index].locationID}"/></td>
+                        <td>Location</td>
+                        <td>Remove?</td>
                     </tr>
-                </c:forEach>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" class="text-right contact btn btn-default" name="deletelocation"
-                               value="Delete Location"></td>
-                </tr>
-            </table>
-            <form:input path="locationName" class="form-control" placeholder="Location Name"/>
-            <form:errors path="locationName" class="alert alert-danger"/>
-            <input type="submit" class="contact btn btn-default" name="newLocation" value="Add Location">
-        </div>
+                    </thead>
+                    <c:forEach items="${configureLocations.locations}" varStatus="i">
+                        <tr>
+                            <td><label>${configureLocations.locations[i.index].locationName}</label></td>
+                            <td><form:checkbox path="locationSet"
+                                               value="${configureLocations.locations[i.index].locationID}"/></td>
+                        </tr>
+                    </c:forEach>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" class="text-right contact btn btn-default" name="deletelocation"
+                                   value="Delete Location"></td>
+                    </tr>
+                </table>
+                <form:input path="locationName" class="form-control" placeholder="Location Name"/>
+                <form:errors path="locationName" class="alert alert-danger"/>
+                <input type="submit" class="contact btn btn-default" name="newLocation" value="Add Location">
+                <c:if test="${locationSuccess == true}">
+                    <div class="alert alert-success col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label>You have successfully added a new location!</label><br>
+                    </div>
+                </c:if>
+            </div>
         </form:form>
     </div>
     <form:form modelAttribute="configureSalaries" method="post">
